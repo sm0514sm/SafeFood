@@ -31,9 +31,28 @@
    		from board_q
    </select>
    
+   <select id="searchBoard" parameterType="java.util.Map"	resultType="board">
+    	select * from board_q
+	    <where>
+	        <if test='keyword != null'>
+	            <choose>
+	                <when test="keyword == 'uid'">
+	                    uid like concat('%',#{name},'%')
+	                </when>
+	                <when test="keyword == 'title'">
+	                    title like concat('%',#{name},'%')
+	                </when>
+	                <when test="keyword == 'contents'">
+	                    contents like concat('%',#{name},'%')
+	                </when>
+	            </choose>
+	        </if>
+	    </where>
+	</select>
+   
    <insert id="insertBoard"		parameterType="board">
    		insert into board_q (sno, title, contents, bregdate, hits, goods, uid) 
-   		values (#{sno}, #{title}, #{contents}, #{bregdate}, #{hits}, #{goods}, #{uid} )
+   		values (#{sno}, #{title}, #{contents}, now(), #{hits}, #{goods}, #{uid} )
    </insert>
    
    <update id="updateBoard"		parameterType="board">
@@ -47,6 +66,7 @@
    <delete id="deleteBoard"		parameterType="string">
    		delete from board_q where bno = #{bno}
    </delete>
+   
 </mapper>
 
 

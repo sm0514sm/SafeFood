@@ -1,6 +1,7 @@
 package com.ssafy.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,15 @@ public class BoardServiceImpl implements BoardService {
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new BoardException("전체 게시글 검색 중 오류 발생");
+		}
+	}
+	
+	public List<Board> searchBoard(Map<String,String> map){
+		try {
+			return dao.searchBoard(map);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new BoardException("게시글 검색 중 오류 발생");
 		}
 	}
 	

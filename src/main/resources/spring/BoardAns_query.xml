@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	
+<!--여러 도메인을 위한 쿼리 xml를 작성할 때  도메인을 식별하기 위해 
+    namespace 부여 
+=> sqlSession.쿼리메서드("식별자", paramdata);
+    식별자 =>  namespace.id
+  ex)sqlSession.insert("member.insert", member);    
+  ex)sqlSession.selectOne("member.search", no);    
+-->	
+<mapper namespace="com.ssafy.model.dao.BoardAnsDAO">
+   <!--
+      insert나 update에 대한 데이타 설정시 버그가 발생하므로 
+      문제를 해결하기 위해 데이타 설정시 #{속성:JDBCType} 으로 한다. 
+    org.apache.ibatis.type.JdbcType에서 확인
+      문자열 VARCHAR
+      정수   INTEGER
+      실수   DOUBLE
+	-->
+	
+	 
+   <select id="search"				parameterType="string"		resultType="boardans">
+   		select * 
+   		from board_a
+   		where bno=#{bno}
+   </select>
+   
+   <select id="searchAll"			parameterType="string"		resultType="boardans">
+   		select * 
+   		from board_a
+   </select>
+   
+   <insert id="insertBoardAns"		parameterType="boardans">
+   		insert into board_a (sno, title, contents, bregdate, hits, goods, uid, qno) 
+   		values (#{sno}, #{title}, #{contents}, now(), #{hits}, #{goods}, #{uid} , #{qno})
+   </insert>
+   
+   <update id="updateBoardAns"		parameterType="boardans">
+   		update board_a
+   		set title = #{title},
+   			contents = #{contents},
+   			bregdate = now()
+   		where bno = #{bno}
+   </update>
+   
+   <delete id="deleteBoardAns"		parameterType="string">
+   		delete from board_q where bno = #{bno}
+   </delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+

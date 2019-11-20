@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.model.dto.Board;
+import com.ssafy.model.dto.BoardAns;
+import com.ssafy.model.service.BoardAnsService;
 import com.ssafy.model.service.BoardService;
 
 import io.swagger.annotations.ApiOperation;
@@ -27,6 +29,8 @@ import io.swagger.annotations.ApiOperation;
 public class BoardRestController {
 	@Autowired
 	private BoardService service;
+	@Autowired
+	private BoardAnsService aService;
 
 	@ExceptionHandler
 	public ResponseEntity<Map<String, Object>> handle(Exception e) {
@@ -47,6 +51,16 @@ public class BoardRestController {
 		return handleSuccess(list);
 	}
 	
+	@ApiOperation("게시글 목록을 검색하는 기능")
+	@GetMapping("/rest/boardsearch/{keyword}_{name}")
+	public ResponseEntity<Map<String, Object>> searchBoard(@PathVariable String keyword,@PathVariable String name) {
+		Map<String, String> m = new HashMap<>();
+		m.put("keyword", keyword);
+		m.put("name", name);
+		List<Board> list = service.searchBoard(m);
+		return handleSuccess(list);
+	}
+	
 	@ApiOperation("게시글을 등록하는 기능")
 	@PostMapping("/rest/board")
 	public ResponseEntity<Map<String, Object>> insertBoard(@RequestBody Board board) {
@@ -63,8 +77,44 @@ public class BoardRestController {
 	
 	@ApiOperation("게시글을 삭제하는 기능")
 	@DeleteMapping("/rest/board/{bno}")
-	public ResponseEntity<Map<String, Object>> foodDetail(@PathVariable String bno) {
+	public ResponseEntity<Map<String, Object>> deleteBoard(@PathVariable String bno) {
 		service.deleteBoard(bno);
+		return handleSuccess("삭제 완료");
+	}
+	
+	//BoardAns
+	@ApiOperation("bno에 해당하는 답변 게시글 목록을 조회하는 기능")
+	@GetMapping("/rest/boardans/{bno}")
+	public ResponseEntity<Map<String, Object>> searchBoardAns(@PathVariable String bno) {
+		BoardAns boardAns = aService.search(bno);
+		return handleSuccess(boardAns);
+	}
+	
+	@ApiOperation("전체 답변 게시글 목록을 조회하는 기능")
+	@GetMapping("/rest/boardansq/{qno}")
+	public ResponseEntity<Map<String, Object>> searchAll(@PathVariable String qno) {
+		List<BoardAns> list = aService.searchAll(qno);
+		return handleSuccess(list);
+	}
+	
+	@ApiOperation("답변 게시글을 등록하는 기능")
+	@PostMapping("/rest/boardans")
+	public ResponseEntity<Map<String, Object>> insertBoardAns(@RequestBody BoardAns boardans) {
+		aService.insertBoardAns(boardans);
+		return handleSuccess("등록 완료");
+	}
+	
+	@ApiOperation("답변 게시글을 수정하는 기능")
+	@PutMapping("/rest/boardans")
+	public ResponseEntity<Map<String, Object>> updateBoardAns(@RequestBody BoardAns boardans) {
+		aService.updateBoardAns(boardans);
+		return handleSuccess("수정 완료");
+	}
+	
+	@ApiOperation("답변 게시글을 삭제하는 기능")
+	@DeleteMapping("/rest/boardans/{bno}")
+	public ResponseEntity<Map<String, Object>> foodDetail(@PathVariable String bno) {
+		aService.deleteBoardAns(bno);
 		return handleSuccess("삭제 완료");
 	}
 	

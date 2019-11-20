@@ -13,7 +13,7 @@ public class BoardAns implements Serializable {
 	private int hits		 ;          //조회수
 	private int goods    	 ;          //좋아요 수
 	private String uid       ;          //작성자 id
-	private String qno       ;          //질문 게시글 id
+	private int qno       ;          	//질문 게시글 id
 	
 	public BoardAns() {}
 	
@@ -91,6 +91,14 @@ public class BoardAns implements Serializable {
 
 	public void setUid(String uid) {
 		this.uid = uid;
+	}
+
+	public int getQno() {
+		return qno;
+	}
+
+	public void setQno(int qno) {
+		this.qno = qno;
 	}
 
 	@Override
