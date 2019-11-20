@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+	google.charts.load("current", {
+		packages : [ "corechart" ]
+	});
+	google.charts.setOnLoadCallback(drawChart);
+	function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+				[ 'Task', 'Hours per Day' ], [ '칼로리', 58.33 ],
+				[ '탄수화물', 13.33 ], [ '단백질', 0.83 ], [ '지방', 0.1 ],
+				[ '당류', 11.68 ], [ '나트륨', 91.67 ], [ '콜레스테롤', 0.1 ],
+				[ '포화 지방산', 0.1 ], [ '트렌스 지방', 0.1 ],
+
+		]);
+
+		var options = {
+			title : 'My Daily Activities',
+			pieHole : 0.4,
+		};
+
+		var chart = new google.visualization.PieChart(document
+				.getElementById('donutchart'));
+		chart.draw(data, options);
+	}
+</script>
+
+<script type='text/javascript' src='../js/jquery-3.3.1.js'></script>
+<script type="text/javascript">
+	$(function() {
+		$.ajax({
+			url : '../res/foodInfo.xml',
+			data : {
+				no : 1
+			//게시글 번호 
+			},
+			dataType : 'xml',
+			success : processResult,
+			error : function(err) {
+				console.log(err);
+			}
+		})
+		$('#search').on('click', function(event) {
+			str = $('#searchword').val();
+			$.ajax({
+				url : '../res/foodInfo.xml',
+				data : {
+					no : 1
+				//게시글 번호 
+				},
+				dataType : 'xml',
+				success : searchResult,
+				error : function(err) {
+					console.log(err);
+				}
+			})
+
+		});
+	})
+	function processResult(xmlData, status, xhr) {
+		var errorMsg = $('error', xmlData).text(); //<error>의 body 정보 추출
+		if (errorMsg != '') { //error가 발생한경우 
+			alert(errorMsg);
+		} else {
+			$('#contents').empty();
+			var html = '<div class="row">';
+			$('food', xmlData)
+					.each(
+							function(index, item) {
+								var imageSrc = "../" + $('image', item).text();
+								var name = $('name', item).text();
+								html += '<div class="col-md-6"><img id="image" class="img-responsive" alt="';
+				html += name;
+				html += ' poster"src="';
+				html += imageSrc;
+				html += '"></div><div class="col-md-6"><h2>';
+								html += name;
+								html += "</h2><p>";
+								html += $('material', item).text();
+								html += '</p><p><a class="btn btn-primary" href="#" role="button">추가</a> <aclass="btn btn-primary" href="#" role="button">찜</a></p>';
+								html += '</div>';
+							});
+			html += '</div>';
+			$('#contents').append(html);
+		}
+	}
+	function searchResult(xmlData, status, xhr) {
+		var errorMsg = $('error', xmlData).text(); //<error>의 body 정보 추출
+		if (errorMsg != '') { //error가 발생한경우 
+			alert(errorMsg);
+		} else {
+			$('#contents').empty();
+			var html = '<div class="row">';
+			$('food', xmlData).each(function(index, item) {
+				var name = $('name', item).text();
+				if(name.search(str) != -1){
+					console.log("찾음");
+					var imageSrc = "../" + $('image', item).text();
+					html += '<div class="col-md-6"><img id="image" class="img-responsive" alt="';
+					html += name;
+					html += ' poster"src="';
+					html += imageSrc;
+					html += '"></div><div class="col-md-6"><h2>';
+					html += name;
+					html += "</h2><p>";
+					html += $('material', item).text();
+					html += '</p><p><a class="btn btn-primary" href="#" role="button">추가</a> <aclass="btn btn-primary" href="#" role="button">찜</a></p>';
+					html += '</div>';
+				}
+			});
+			html += '</div>';
+			$('#contents').append(html);
+		}
+	}
+</script>
+
+</head>
+<body>
+	<div class="jumbotron" id='container'>
+		<div class="container">
+
+			<div class="serarch-group">
+				<div class="dataTables_search" id="dataTables_search">
+					<select class="form-control">
+						<option value="" disabled selected>검색 항목 선택</option>
+						<option value="product">상품명</option>
+						<option value="company">제조사</option>
+						<option value="price">가격</option>
+					</select>
+				</div>
+				<div class="dataTables_search" id="dataTables_search">
+					<input id="searchword" type="text" class="form-control" placeholder="Text input">
+				</div>
+				<div class="dataTables_search" id="dataTables_search">
+					<button class="btn btn-primary" type="button" id='search'>검색</button>
+				</div>
+
+
+			</div>
+
+		</div>
+	</div>
+	<div id="contents"></div>
+	<article id="donutchart" style="width: 50%; height: 500px; float: left">
+</body>
+</html>

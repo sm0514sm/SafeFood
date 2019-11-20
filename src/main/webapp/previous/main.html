@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../favicon.ico">
+
+<title>SafeFood</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="../dist/css/bootstrap-theme.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="theme.css" rel="stylesheet">
+
+</head>
+
+<body role="document">
+
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="main.html">Safe Food</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="#">공지 사항</a></li>
+					<li><a href="product.html">상품 정보</a></li>
+					<li><a href="#contact">베스트 섭취 정보</a></li>
+					<li><a href="#contact">내 섭취 정보</a></li>
+					<li><a href="#contact">예상 섭취 정보</a></li>
+				</ul>
+				<form class="navbar-form navbar-right">
+					<div class="form-group">
+						<input type="text" placeholder="ID" class="form-control">
+					</div>
+					<div class="form-group">
+						<input type="password" placeholder="Password" class="form-control">
+					</div>
+					<div class="form-group">
+						<a class="btn btn-primary" href="#" role="button">Login</a>
+						<a class="btn btn-primary" href="SignIn.html" role="button">Sign in</a>
+					</div>						
+				</form>
+			</div>
+			<!--/.navbar-collapse -->
+		</div>
+	</nav>
+
+
+
+	<!-- Main jumbotron for a primary marketing message or call to action -->
+	<!-- Main jumbotron for a primary marketing message or call to action -->
+	<div class="jumbotron">
+		<div class="container" id='container1'>
+			<h1>WHAT WE PROVIDE</h1>
+			<p>건강한 삶을 위한 먹거리 프로젝트</p>
+		</div>
+	</div>
+	<div class="jumbotron2" id='container2'>
+		<div class="container">
+
+			<div class="serarch-group">
+				<div class="dataTables_search" id="dataTables_search">
+					<select id = "searchbox" class="form-control">
+						<option value="" disabled selected>검색 항목 선택</option>
+						<option value="product">상품명</option>
+						<option value="company">제조사</option>
+					<!-- 	<option value="price">가격</option> -->
+					</select>
+				</div>
+				<div class="dataTables_search" id="dataTables_search">
+					<input id = "searchword" type="text" class="form-control" placeholder="검색어를 입력하세요">
+				</div>
+				<div class="dataTables_search" id="dataTables_search">
+					<a href="product.html">
+						<button id="search" class="btn btn-primary" type="button">검색</button>
+				</a>	
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+
+	<div class="container theme-showcase" role="main" id="contents">
+
+
+
+	</div>
+	
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type='text/javascript' src='../js/jquery-3.3.1.js'></script>
+	<script type="text/javascript">
+		$(function() {
+			$.ajax({
+				url : '../res/foodInfo.xml',
+				data : {
+				},
+				dataType : 'xml',
+				success : processResult,
+				error : function(err) {
+					console.log(err);
+				}
+			})
+		});
+
+		function processResult(xmlData, status, xhr) {
+			var errorMsg = $('error', xmlData).text(); //<error>의 body 정보 추출
+			if (errorMsg != '') { //error가 발생한경우 
+				alert(errorMsg);
+			} else {
+				$('#content').empty();
+				var html = '<div class="row">';
+				$('food', xmlData).each(function(index, item) {
+					var imageSrc = $('image', item).text();
+					var name = $('name', item).text();
+					var material = $('material', item).text();
+					html+='<div class="col-lg-6 portfolio-item">';
+					html+='<div class="card h-100"> <a href="FoodDetail.html"><img class="card-img-top" src="../';
+					html+=imageSrc;
+					html+='"alt="';
+					html+=name;
+					html+='"></a><div class="card-body"><h4 class="card-title"><a href="#">';
+					html+=name;
+					html+='</a></h4><p class="card-text">';
+					html+=material;
+					html+='</p><p><a class="btn btn-primary" href="#" role="button">추가</a>' 
+					html+='<a class="btn btn-primary" href="#" role="button">찜</a></p></div></div></div>'
+					
+				});
+				html+='</div>'
+				$('#contents').append(html);
+			}
+		}
+		
+	</script>
+
+</html>

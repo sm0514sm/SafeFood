@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../favicon.ico">
+
+<title>제품 정보</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="../dist/css/bootstrap-theme.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="theme.css" rel="stylesheet">
+
+<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<script type='text/javascript' src='../js/jquery-3.3.1.js'></script>
+<title>Doughnut Chart</title>
+<script src="../dist/js/Chart.min.js"></script>
+<script src="../utils.js"></script>
+<style>
+canvas {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+</style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type='text/javascript' src='../js/jquery-3.3.1.js'></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+	var NUTR = []
+	$(function() {
+		$.ajax({
+					url : '../res/foodInfo.xml',
+					data : {
+						no : 1
+					},
+					dataType : 'xml',
+					success : function(xml) {
+						$('#contents').empty();
+
+						var foods = $(xml).find('food');
+						var food = foods.eq(2);
+						var name = food.find('name').text();
+						var maker = food.find('maker').text();
+						var material = food.find('material').text();
+						var imageSrc = '../' + food.find('image').text();
+						var html = "";
+
+						html += '<div class="col-lg-4"><section><img id="image" class="img-responsive" alt="'
+				html += name;
+				html += ' poster" src="';
+				html += imageSrc;
+				html += '"></section></div>';
+						html += '<div class="col-lg-8">';
+						html += '<table class="table table-condensed"><tbody><tr><td>제품명</td><td>';
+						html += name;
+						html += '</td></tr><tr><td>제조사</td><td>'
+						html += maker;
+						html += '</td></tr><tr><td>원재료</td><td>'
+						html += material;
+						html += '</td></tr><tr><td>알레르기 성분</td><td>없음</td></tr></tbody></table></div>';
+
+						$('#contents').append(html);
+					},
+					error : function(err) {
+						console.log(err);
+					}
+				})
+		$.ajax({
+					url : '../res/FoodNutritionInfo.xml',
+					data : {
+						no : 1
+					},
+					dataType : 'xml',
+					success : function(xml) {
+						$('#nutritions').empty();
+						var nutris = $(xml).find('item');
+						var nutri = nutris.eq(2);
+						var name = nutri.find('DESC_KOR').text();
+						var wt = nutri.find('SERVING_WT').text();
+						NUTR[1] = nutri.find('NUTR_CONT1').text();
+						NUTR[2] = nutri.find('NUTR_CONT2').text();
+						NUTR[3] = nutri.find('NUTR_CONT3').text();
+						NUTR[4] = nutri.find('NUTR_CONT4').text();
+						NUTR[5] = nutri.find('NUTR_CONT5').text();
+						NUTR[6] = nutri.find('NUTR_CONT6').text();
+						NUTR[7] = nutri.find('NUTR_CONT7').text();
+						NUTR[8] = nutri.find('NUTR_CONT8').text();
+						NUTR[9] = nutri.find('NUTR_CONT9').text();
+						var year = nutri.find('BGN_YEAR').text();
+						var html = "";
+
+						html += '<table class="table table-condensed"><tbody><tr><td>일일 제공량</td><td>';
+						html += wt;
+						html += '</td></tr><tr><td>칼로리</td><td>'
+						html += NUTR[1];
+						html += '</td></tr><tr><td>탄수화물</td><td>';
+						html += NUTR[2];
+						html += '</td></tr><tr><td>단백질</td><td>';
+						html += NUTR[3];
+						html += '</td></tr><tr><td>지방</td><td>';
+						html += NUTR[4];
+						html += '</td></tr><tr><td>당류</td><td>';
+						html += NUTR[5];
+						html += '</td></tr><tr><td>나트륨</td><td>';
+						html += NUTR[6];
+						html += '</td></tr><tr><td>콜레스테롤</td><td>';
+						html += NUTR[7];
+						html += '</td></tr><tr><td>포화 지방산</td><td>';
+						html += NUTR[8];
+						html += '</td></tr><tr><td>트렌스지방</td><td>';
+						html += NUTR[9];
+						html += '</td></tr></tbody></table>';
+
+						$('#nutritions').append(html);
+						
+						console.log(NUTR.length);
+						google.charts.load("current", {packages:["corechart"]});
+						google.charts.setOnLoadCallback(drawChart);
+						function drawChart() {
+						var data = google.visualization.arrayToDataTable([
+						['Nutrition', 'value'],
+						['칼로리', NUTR[1]*1],
+						['탄수화물', NUTR[2]*1],
+						['단백질', NUTR[3]*1],
+						['지방', NUTR[4]*1],
+						['당류', NUTR[5]*1],
+						['나트륨', NUTR[6]*1],
+						['콜레스테롤', NUTR[7]*1],
+						['포화 지방산', NUTR[8]*1],
+						['트렌스지방', NUTR[9]*1],
+						]);
+						
+						var options = {
+						title: 'My Daily Activities',
+						pieHole: 0.4,
+						};
+						
+						var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+						chart.draw(data, options);
+						}
+					},
+					error : function(err) {
+						console.log(err);
+					}
+				})
+				
+			
+	});
+	
+</script>
+
+ <script type="text/javascript">
+	/* var config = {
+		type : 'doughnut',
+		data : {
+			datasets : [ {
+				data : [ 58.33, 13.33, 0.83, 0.0, 11.68, 91.67, 0.0, 0.0, 0.0 ],
+				backgroundColor : [ window.chartColors.red,
+						window.chartColors.orange, window.chartColors.yellow,
+						window.chartColors.green, window.chartColors.blue,
+						window.chartColors.red, window.chartColors.orange,
+						window.chartColors.yellow, window.chartColors.green, ],
+				label : 'Dataset 1'
+			} ],
+			labels : [ '칼로리', '탄수화물', '단백질', '지방', '당류', '나트륨', '콜레스테롤',
+					'포화 지방산', '트렌스 지방' ]
+		},
+		options : {
+			responsive : true,
+			legend : {
+				position : 'top',
+			},
+			title : {
+				display : true,
+			},
+			animation : {
+				animateScale : true,
+				animateRotate : true
+			}
+		}
+	};
+
+	window.onload = function() {
+		var ctx = document.getElementById('chart-area').getContext('2d');
+		window.myDoughnut = new Chart(ctx, config);
+	}; */
+</script>
+
+
+</head>
+
+<body role="document">
+
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Safe Food</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">공지 사항</a></li>
+					<li><a href="#about">상품 정보</a></li>
+					<li><a href="#contact">베스트 섭취 정보</a></li>
+					<li><a href="#contact">내 섭취 정보</a></li>
+					<li><a href="#contact">예상 섭취 정보</a></li>
+				</ul>
+				<form class="navbar-form navbar-right">
+					<div class="form-group">
+						<input type="text" placeholder="Email" class="form-control">
+					</div>
+					<div class="form-group">
+						<input type="password" placeholder="Password" class="form-control">
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-success">Login</button>
+						<button type="submit" class="btn btn-success">Sign in</button>
+					</div>
+				</form>
+			</div>
+			<!--/.navbar-collapse -->
+		</div>
+	</nav>
+
+
+
+
+
+	<div class="container theme-showcase" role="main">
+		<div class="page-header2">
+			<h1>제품 정보</h1>
+		</div>
+		<div class="row" id="contents">
+			<div class="col-lg-4">
+				<section>
+					<img id="image" class="img-responsive" alt="비비빅 poster"
+						src="../img/비비빅.jpg">
+				</section>
+			</div>
+			<div class="col-lg-8">
+				<table class="table table-condensed">
+					<tbody>
+						<tr>
+							<td>제품명</td>
+							<td>아카페라아메리카노</td>
+						</tr>
+						<tr>
+							<td>제조사</td>
+							<td>빙그레</td>
+						</tr>
+						<tr>
+							<td>원재료</td>
+							<td>정제수,콜드브루커피추출액 등등</td>
+						</tr>
+						<tr>
+							<td>알레르기 성분</td>
+							<td>없음</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-8">
+				<div class="form-group2">
+					<label for="exampleInputEmail1">Quantity</label> <input
+						type="email" class="form-control" id="exampleInputEmail1"
+						placeholder="수량">
+					<p>
+						<button type="button" class="btn btn-xs btn-default">추가</button>
+						<button type="button" class="btn btn-xs btn-primary">찜</button>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="page-header">
+			<h1>Wells</h1>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-6">
+				<article id="donutchart" style="height: 100%;">
+			</div>
+			<div class="col-sm-6" id="nutritions">
+				<table class="table table-condensed">
+					<tbody>
+						<tr>
+							<td>일일 제공량</td>
+							<td>200.0</td>
+						</tr>
+						<tr>
+							<td>칼로리</td>
+							<td>58.33</td>
+						</tr>
+						<tr>
+							<td>탄수화물</td>
+							<td>13.33</td>
+						</tr>
+						<tr>
+							<td>단백질</td>
+							<td>0.83</td>
+						</tr>
+						<tr>
+							<td>지방</td>
+							<td>0.0</td>
+						</tr>
+						<tr>
+							<td>당류</td>
+							<td>11.68</td>
+						</tr>
+						<tr>
+							<td>나트륨</td>
+							<td>91.67</td>
+						</tr>
+						<tr>
+							<td>콜레스테롤</td>
+							<td>0.0</td>
+						</tr>
+						<tr>
+							<td>포화 지방산</td>
+							<td>0.0</td>
+						</tr>
+						<tr>
+							<td>트렌스지방</td>
+							<td>0.0</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+
+
+		<!-- /container -->
+
+
+		<!-- Bootstrap core JavaScript
+    ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+</body>
+</html>
