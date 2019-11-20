@@ -45,7 +45,7 @@
 				<li><a href="foodList.do">상품 정보</a></li>
 				<li><a href="#contact">베스트 섭취 정보</a></li>
 				<li><a href="CaloryFood.jsp">칼로리별 섭취</a>
-				<li><a href="dist/sam.html">Q&A</a></li>
+				<li><a href="dist/sam.jsp">Q&A</a></li>
 				<c:choose>
 					<c:when test="${sessionScope.id != null}">
 					<li><a href="ingestionList.do">내 섭취 정보</a></li>
