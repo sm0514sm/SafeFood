@@ -35,11 +35,6 @@ public class FoodController {
 		model.addAttribute("list", service.searchAll());
 		return "index";
 	}
-	
-	@GetMapping("qna.do")
-	public String qna(Model model) {
-		return "redirect:index.html";
-	}
 
 	@GetMapping("foodList.do")
 	public String foodList(Model model) {
