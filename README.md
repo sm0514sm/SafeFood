@@ -64,9 +64,9 @@ Spring SafeFood
 
 ### 알레르기 성분 관리
 
-![calory](README/calory.png)
+![calory](README/alle.png)
 
 
 ### 칼로리로 검색 시 그 칼로리와 가까운 조합 표시
 
-![image-20191108150612372](README/image-20191108150612372.png)![calory](README/calory.png)
+![calory](README/calory.png)
