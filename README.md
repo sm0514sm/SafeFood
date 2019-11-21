@@ -28,6 +28,7 @@ Spring SafeFood
 | **게시글 목록**     | ![image-20191120174128041](README/image-20191120174128041.png) |
 | ------------------- | ------------------------------------------------------------ |
 | **게시글 등록**     | ![image-20191120174146201](README/image-20191120174146201.png) |
+| **게시글 삭제**     | ![image-20191121093811797](README/image-20191121093811797.png) |
 | **게시글 수정**     | ![image-20191120174248839](README/image-20191120174248839.png) |
 | **게시글상세 검색** | ![image-20191120174302129](README/image-20191120174302129.png) |
 
@@ -63,9 +64,9 @@ Spring SafeFood
 
 ### 알레르기 성분 관리
 
-![calory](README/calory.png)
+![calory](README/alle.png)
 
 
 ### 칼로리로 검색 시 그 칼로리와 가까운 조합 표시
 
-![image-20191108150612372](README/image-20191108150612372.png)![calory](README/calory.png)
+![calory](README/calory.png)
