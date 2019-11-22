@@ -72,6 +72,23 @@ const store = new Vuex.Store({
           store.dispatch(Constant.GET_BULLETINLIST);
         })
         .catch(() => console.log("추가에 실패하였습니다."));
+    },
+    [Constant.ADD_BOARDANS]: (store, payload) => {
+      http.post("/rest/boardans", {
+        sno : payload.sno,
+        title : payload.title,
+        contents : payload.contents,
+        hits : payload.hits,
+        goods : payload.goods,
+        uid : payload.uid,
+        qno : payload.qno
+      })
+      .then( () =>{
+        store.dispatch(Constant.GET_COMMENTS, {qno : payload.qno});
+      })
+      .catch( err => {
+        console.log(err);
+      });
     }
 
     // [Constant.REMOVE_BULLETIN]: (store, payload) => {

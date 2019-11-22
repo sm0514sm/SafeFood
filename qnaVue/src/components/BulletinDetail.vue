@@ -32,18 +32,25 @@
 
       <br /><br /><br />
 
-      <!-- <tr id="header" style="background-color: lightblue">
-          <td>작성자</td>
-          <td>작성일</td>
-          <td>조회수</td>
-          <td>추천수</td>
-        </tr> -->
-
       <table>
+        <tr id="header" style="background-color: lightblue">
+          <td>댓글</td>
+          <td colspan="2">
+            <input type="text" size="65" v-model="boardAns.contents" />
+          </td>
+          <td>
+            <input type="button" value="등록" @click="addBoardAns()" />
+          </td>
+        </tr>
+        <tr id="header" style="background-color: lightblue">
+          <td>작성자</td>
+          <td colspan="2">내용</td>
+          <td>시간</td>
+        </tr>
         <tr
           v-for="comment in comments"
           v-bind:key="comment.bno"
-          style="background-color: lightblue"
+          
         >
           <td>{{ comment.uid }}</td>
           <td colspan="2">{{ comment.contents }}</td>
@@ -53,6 +60,7 @@
 
       <br />
       <input type="button" value="목록" @click="GoBoard()" />
+      {sessionScope.id}
     </div>
   </div>
 </template>
@@ -62,6 +70,17 @@ import Constant from "../Constant";
 
 export default {
   name: "BulletinDetail",
+  data(){
+    return{
+      boardAns : {
+        sno : "",
+        contents : "",
+        bregdate : "",
+        uid : "",
+        qno : ""
+      }
+    };
+  },
   created() {
     this.$store.dispatch(Constant.GET_BULLETIN, { no: this.$route.params.no });
     this.$store.dispatch(Constant.GET_COMMENTS, { qno: this.$route.params.no });
@@ -77,6 +96,17 @@ export default {
   methods: {
     GoBoard() {
       this.$router.push("/");
+    },
+    addBoardAns(){
+      this.$store.dispatch(Constant.ADD_BOARDANS, {
+        sno : 2,
+        title : "",
+        contents : this.boardAns.contents,
+        hits : 0,
+        goods : 0,
+        uid : "jaen",
+        qno : this.$route.params.no,
+      });
     }
   }
 };

@@ -10,7 +10,7 @@
         </tr>
         <tr>
           <td colspan="2">
-            <input type="text" v-model="bulletin.contents" id="contents" />
+            <input type="text" v-model="boardAns.contents" id="contents" />
           </td>
         </tr>
         <tr>
@@ -35,14 +35,12 @@ export default {
   name: "addBulletin",
   data() {
     return {
-      bulletin: {
-        bregdate: "",
-        contents: "",
-        goods: 0,
-        hits: 0,
-        sno: 2,
-        title: "",
-        uid: ""
+      boardAns: {
+        sno : "",
+        contents : "",
+        bregdate : "",
+        uid : "",
+        qno : ""
       }
     };
   },
