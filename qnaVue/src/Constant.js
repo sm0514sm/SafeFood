@@ -6,5 +6,6 @@ export default {
   ADD_BULLETIN: "addBulletin",
   MODIFY_BULLETIN: "modifyBulletin",
   ADD_BOARDANS: "addBoardAns",
-  DELETE_BULLETIN: "deleteBulletin"
+  DELETE_BULLETIN: "deleteBulletin",
+  GET_ID: "getId"
 };

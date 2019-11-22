@@ -97,6 +97,7 @@ export default {
   },
   created() {
     this.getAllBulltein();
+    this.getId();
   },
   computed: {
     bulletins() {
@@ -130,6 +131,10 @@ export default {
       this.$store.dispatch(Constant.DELETE_BULLETIN, {
         bno
       });
+    },
+    getId(){
+      console.log("## this.getId() ##");
+      this.$store.dispatch(Constant.GET_ID);
     }
   }
 };

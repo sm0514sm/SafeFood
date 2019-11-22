@@ -2,14 +2,14 @@ import Vue from "vue";
 import Vuex from "vuex";
 import Constant from "./Constant";
 import http from "./http-common";
-
 Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     bulletins: [],
     bulletin: {},
     searchBulletin: {},
-    comments: []
+    comments: [],
+    id: ""
   },
   actions: {
     [Constant.GET_BULLETINLIST]: store => {
@@ -101,6 +101,17 @@ const store = new Vuex.Store({
         .catch(err => {
           console.log(err);
         });
+    },
+    [Constant.GET_ID] : (store) => {
+      http.get("/session.do",{withCredentials: true})
+      .then( (response) => {
+        console.log("## actions : "+response);
+        console.log(response.data.id);
+        store.commit(Constant.GET_ID, {uid : response.data.id});
+      })
+      .catch( err => {
+        console.log(err);
+      })
     }
   },
   mutations: {
@@ -116,6 +127,10 @@ const store = new Vuex.Store({
     },
     [Constant.GET_COMMENTS]: (state, payload) => {
       store.state.comments = payload.comments;
+    },
+    [Constant.GET_ID]: (state, payload) =>{
+      store.state.id = payload.uid;
+      console.log("## mutations : "+store.state.id);
     }
   }
 });

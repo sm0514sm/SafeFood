@@ -10,7 +10,7 @@
         </tr>
         <tr>
           <td colspan="2">
-            <input type="text" v-model="boardAns.contents" id="contents" />
+            <input type="text" v-model="bulletin.contents" id="contents" />
           </td>
         </tr>
         <tr>
@@ -35,17 +35,20 @@ export default {
   name: "addBulletin",
   data() {
     return {
-      boardAns: {
-        sno : "",
-        contents : "",
-        bregdate : "",
-        uid : "",
-        qno : ""
+      bulletin: {
+        bregdate: "",
+        contents: "",
+        goods: 0,
+        hits: 0,
+        sno: 2,
+        title: "",
+        uid: ""
       }
     };
   },
   methods: {
     addBulletin() {
+      console.log("## id : " + this.$store.state.id);
       if (this.bulletin.title.trim() == "") alert("제목을 입력하세요!");
       else if (this.bulletin.uid.trim() == "") alert("작성자를 입력하세요!");
       else if (this.bulletin.contents.trim() == "") alert("내용을 입력하세요!");

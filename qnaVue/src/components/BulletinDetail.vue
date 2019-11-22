@@ -60,7 +60,7 @@
 
       <br />
       <input type="button" value="목록" @click="GoBoard()" />
-      {sessionScope.id}
+
     </div>
   </div>
 </template>
