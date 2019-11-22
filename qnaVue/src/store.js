@@ -83,7 +83,23 @@ const store = new Vuex.Store({
           store.dispatch(Constant.GET_BULLETINLIST);
         })
         .catch(exp => alert("삭제 처리에 실패하였습니다" + exp));
-    }
+    },
+    [Constant.ADD_BOARDANS]: (store, payload) => {
+      http.post("/rest/boardans", {
+        sno : payload.sno,
+        title : payload.title,
+        contents : payload.contents,
+        hits : payload.hits,
+        goods : payload.goods,
+        uid : payload.uid,
+        qno : payload.qno
+      })
+      .then( () =>{
+        store.dispatch(Constant.GET_COMMENTS, {qno : payload.qno});
+      })
+      .catch( err => {
+        console.log(err);
+      });
   },
   mutations: {
     // 저장소에 데이터 실제 반영(commit시 호출)

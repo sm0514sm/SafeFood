@@ -29,6 +29,7 @@
    <select id="searchAll"			parameterType="string"		resultType="boardans">
    		select * 
    		from board_a
+   		where qno = #{qno}
    </select>
    
    <insert id="insertBoardAns"		parameterType="boardans">

@@ -5,6 +5,6 @@ export default {
   GET_COMMENTS: "getComments",
   ADD_BULLETIN: "addBulletin",
   MODIFY_BULLETIN: "modifyBulletin",
-  REMOVE_BULLETIN: "removeBulletin",
+  ADD_BOARDANS: "addBoardAns",
   DELETE_BULLETIN: "deleteBulletin"
 };

@@ -30,6 +30,12 @@ public class FoodController {
 		return mav;
 	}
 
+	@GetMapping("/")
+	public String index0(Model model) {
+		model.addAttribute("list", service.searchAll());
+		return "foodList";
+	}
+	
 	@GetMapping("index.do")
 	public String index(Model model) {
 		model.addAttribute("list", service.searchAll());
