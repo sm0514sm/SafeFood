@@ -1,0 +1,115 @@
+<template>
+  <div>
+    <div>Board.vue 입니다.</div>
+    <br />
+    <div>
+      <table>
+        <th>게시글 번호</th>
+        <th width="50%">제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>삭제</th>
+        <tr v-for="bulletin in bulletins" v-bind:key="bulletin.no">
+          <td>{{ bulletin.bno }}</td>
+          <td @click="getBulletin(bulletin.bno)">{{ bulletin.title }}</td>
+          <td>{{ bulletin.uid }}</td>
+          <td>{{ bulletin.bregdate }}</td>
+          <td>
+            <input type="button" value="삭제" />
+          </td>
+        </tr>
+        <br />
+        <tr>
+          <td colspan="3">
+            <select name="searchType" style="height:22px;" v-model="searchBulletin.searchType">
+              <option value="notSelect">검색선택</option>
+              <option value="title">제목</option>
+              <option value="contents">내용</option>
+              <option value="uid">작성자</option>
+            </select>
+            &nbsp;
+            <input
+              type="text"
+              style="height:22px;"
+              v-model="searchBulletin.searchWord"
+            />
+            &nbsp;
+            <input
+              type="button"
+              style="height:25px;"
+              value="검색"
+              @click="search()"
+            />
+          </td>
+          <td>
+            <input type="button" style="height:25px;" value="글쓰기" @click="GoAddBulletin()" />
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</template>
+
+<script>
+import Constant from "../Constant";
+
+export default {
+  name: "Board",
+  data() {
+    return {
+      searchBulletin: {
+        searchType: "notSelect",
+        searchWord: ""
+      }
+    };
+  },
+  created() {
+    this.$store.dispatch(Constant.GET_BULLETINLIST);
+  },
+  computed: {
+    bulletins() {
+      return this.$store.state.bulletins;
+    }
+  },
+  methods: {
+    getBulletin(no) {
+      console.log("getBulletin....." + no);
+      this.$router.push("/detail/" + no);
+    },
+    GoAddBulletin() {
+      this.$router.push("/addBulletin");
+    },
+    search() {
+      if (this.searchBulletin.searchType == "notSelect")
+        alert("검색 종류를 선택하세요!");
+      else if (this.searchBulletin.searchWord == "")
+        alert("검색할 단어를 입력하세요!");
+      else {
+        console.log(this.searchBulletin);
+        this.$store.dispatch(Constant.GET_SEARCH_BULLETINLIST, {
+          searchBulletin: this.searchBulletin
+        });
+      }
+    }
+  }
+};
+</script>
+
+<style scoped>
+table {
+  margin: auto;
+  width: 90%;
+  border-top: 3px solid #696969;
+  border-collapse: collapse;
+}
+td {
+  border-bottom: 1px solid #444444;
+  padding: 10px;
+}
+th {
+  border-top: 50px;
+  border-bottom: 3px solid #707070;
+  padding: 10px;
+  background: #c6f5fd;
+}
+</style>

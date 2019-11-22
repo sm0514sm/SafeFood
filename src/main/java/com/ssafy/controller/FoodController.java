@@ -38,7 +38,7 @@ public class FoodController {
 	
 	@GetMapping("qna.do")
 	public String qna(Model model) {
-		return "redirect:board.html";
+		return "redirect:/qna.html";
 	}
 
 	@GetMapping("foodList.do")
