@@ -85,35 +85,37 @@ const store = new Vuex.Store({
         .catch(exp => alert("삭제 처리에 실패하였습니다" + exp));
     },
     [Constant.ADD_BOARDANS]: (store, payload) => {
-      http.post("/rest/boardans", {
-        sno : payload.sno,
-        title : payload.title,
-        contents : payload.contents,
-        hits : payload.hits,
-        goods : payload.goods,
-        uid : payload.uid,
-        qno : payload.qno
-      })
-      .then( () =>{
-        store.dispatch(Constant.GET_COMMENTS, {qno : payload.qno});
-      })
-      .catch( err => {
-        console.log(err);
-      });
-  },
-  mutations: {
-    // 저장소에 데이터 실제 반영(commit시 호출)
-    [Constant.GET_BULLETINLIST]: (state, payload) => {
-      store.state.bulletins = payload.bulletins;
+      http
+        .post("/rest/boardans", {
+          sno: payload.sno,
+          title: payload.title,
+          contents: payload.contents,
+          hits: payload.hits,
+          goods: payload.goods,
+          uid: payload.uid,
+          qno: payload.qno
+        })
+        .then(() => {
+          store.dispatch(Constant.GET_COMMENTS, { qno: payload.qno });
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
-    [Constant.GET_BULLETIN]: (state, payload) => {
-      store.state.bulletin = payload.bulletin;
-    },
-    [Constant.GET_SEARCH_BULLETINLIST]: (state, payload) => {
-      store.state.bulletins = payload.bulletins;
-    },
-    [Constant.GET_COMMENTS]: (state, payload) => {
-      store.state.comments = payload.comments;
+    mutations: {
+      // 저장소에 데이터 실제 반영(commit시 호출)
+      [Constant.GET_BULLETINLIST]: (state, payload) => {
+        store.state.bulletins = payload.bulletins;
+      },
+      [Constant.GET_BULLETIN]: (state, payload) => {
+        store.state.bulletin = payload.bulletin;
+      },
+      [Constant.GET_SEARCH_BULLETINLIST]: (state, payload) => {
+        store.state.bulletins = payload.bulletins;
+      },
+      [Constant.GET_COMMENTS]: (state, payload) => {
+        store.state.comments = payload.comments;
+      }
     }
   }
 });
