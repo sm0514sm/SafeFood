@@ -72,17 +72,18 @@ const store = new Vuex.Store({
           store.dispatch(Constant.GET_BULLETINLIST);
         })
         .catch(() => console.log("추가에 실패하였습니다."));
+    },
+    [Constant.DELETE_BULLETIN]: (store, payload) => {
+      http
+        .delete("rest/board/" + payload.bno)
+        .then(response => {
+          console.log(response);
+          console.log(payload.bulletin);
+          console.log("삭제 처리 되었습니다.");
+          store.dispatch(Constant.GET_BULLETINLIST);
+        })
+        .catch(exp => alert("삭제 처리에 실패하였습니다" + exp));
     }
-
-    // [Constant.REMOVE_BULLETIN]: (store, payload) => {
-    //   http
-    //     .delete("todolist/todo/" + payload.no)
-    //     .then(() => {
-    //       console.log("삭제 처리 되었습니다.");
-    //       store.dispatch(Constant.GET_TODOLIST);
-    //     })
-    //     .catch(exp => alert("삭제 처리에 실패하였습니다" + exp));
-    // },
   },
   mutations: {
     // 저장소에 데이터 실제 반영(commit시 호출)
