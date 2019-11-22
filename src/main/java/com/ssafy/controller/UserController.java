@@ -1,19 +1,27 @@
 package com.ssafy.controller;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ssafy.model.dto.User;
 import com.ssafy.model.service.UserService;
 
+@CrossOrigin(origins="*", maxAge=6000)
 @Controller
 public class UserController {
 	@Autowired
@@ -26,7 +34,16 @@ public class UserController {
 		return mav;
 	}
 
-
+	@GetMapping("session.do")
+	@ResponseBody
+	public ResponseEntity<Map<String, Object>> qna(HttpSession session) {
+		System.out.println("## session.do ");
+		String id = (String)session.getAttribute("id");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		return new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
+	}
+	
 	@PostMapping("signIn.do")
 	public String signIn(HttpSession session, String id, String pw, String name, 
 			String email, String address, String phone, String[] allergy) {
@@ -48,10 +65,11 @@ public class UserController {
 
 	@PostMapping("login.do")
 	public String login(HttpSession session, Model model, String id, String pw) {
-		System.out.println("id:" + id + "pw:" + pw);
+		System.out.println(session.getId()+"id:" + id + "pw:" + pw);
 		try {
 			service.login(id, pw);
 			session.setAttribute("id", id);
+			System.out.println(session.getAttribute("id"));
 		} catch (Exception e) {
 			System.out.println("login 에러");
 			e.printStackTrace();
