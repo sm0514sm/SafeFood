@@ -101,21 +101,21 @@ const store = new Vuex.Store({
         .catch(err => {
           console.log(err);
         });
+    }
+  },
+  mutations: {
+    // 저장소에 데이터 실제 반영(commit시 호출)
+    [Constant.GET_BULLETINLIST]: (state, payload) => {
+      store.state.bulletins = payload.bulletins;
     },
-    mutations: {
-      // 저장소에 데이터 실제 반영(commit시 호출)
-      [Constant.GET_BULLETINLIST]: (state, payload) => {
-        store.state.bulletins = payload.bulletins;
-      },
-      [Constant.GET_BULLETIN]: (state, payload) => {
-        store.state.bulletin = payload.bulletin;
-      },
-      [Constant.GET_SEARCH_BULLETINLIST]: (state, payload) => {
-        store.state.bulletins = payload.bulletins;
-      },
-      [Constant.GET_COMMENTS]: (state, payload) => {
-        store.state.comments = payload.comments;
-      }
+    [Constant.GET_BULLETIN]: (state, payload) => {
+      store.state.bulletin = payload.bulletin;
+    },
+    [Constant.GET_SEARCH_BULLETINLIST]: (state, payload) => {
+      store.state.bulletins = payload.bulletins;
+    },
+    [Constant.GET_COMMENTS]: (state, payload) => {
+      store.state.comments = payload.comments;
     }
   }
 });
