@@ -15,21 +15,13 @@
           <td>{{ bulletin.uid }}</td>
           <td>{{ bulletin.bregdate }}</td>
           <td>
-            <input
-              type="button"
-              value="삭제"
-              @click="deleteBulletin(bulletin.bno)"
-            />
+            <input type="button" value="삭제" @click="deleteBulletin(bulletin.bno)" />
           </td>
         </tr>
         <br />
         <tr>
           <td colspan="3">
-            <select
-              name="searchType"
-              style="height:22px;"
-              v-model="searchBulletin.searchType"
-            >
+            <select name="searchType" style="height:22px;" v-model="searchBulletin.searchType">
               <option value="notSelect">검색선택</option>
               <option value="title">제목</option>
               <option value="contents">내용</option>
@@ -50,25 +42,13 @@
             />
           </td>
           <td>
-            <input
-              type="button"
-              style="height:25px;"
-              value="전체목록"
-              @click="getAllBulltein()"
-            />
+            <input type="button" style="height:25px;" value="전체목록" @click="getAllBulltein()" />
           </td>
           <td>
-            <input
-              type="button"
-              style="height:25px;"
-              value="글쓰기"
-              @click="GoAddBulletin()"
-            />
+            <input type="button" style="height:25px;" value="글쓰기" @click="GoAddBulletin()" />
           </td>
         </tr>
-      </table>
-
-      wefwef
+      </table>wefwef
       <br />
       <iframe
         width="728"
@@ -77,6 +57,7 @@
         src="https://tab2.clickmon.co.kr/pop/wp_ad_728.php?PopAd=CM_M_1003067%7C%5E%7CCM_A_1065523%7C%5E%7CAdver_M_1046207&mon_rf=REFERRER_URL"
         frameborder="0"
         scrolling="no"
+        id="ad"
       ></iframe>
     </div>
   </div>
@@ -132,7 +113,7 @@ export default {
         bno
       });
     },
-    getId(){
+    getId() {
       console.log("## this.getId() ##");
       this.$store.dispatch(Constant.GET_ID);
     }
@@ -156,5 +137,9 @@ th {
   border-bottom: 3px solid #707070;
   padding: 10px;
   background: #c6f5fd;
+}
+#id {
+  margin: auto;
+  display: block;
 }
 </style>
