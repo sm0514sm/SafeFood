@@ -90,7 +90,6 @@ export default {
       this.$store.dispatch(Constant.GET_BULLETINLIST);
     },
     getBulletin(no) {
-      console.log("getBulletin....." + no);
       this.$router.push("/detail/" + no);
     },
     GoAddBulletin() {
@@ -114,7 +113,6 @@ export default {
       });
     },
     getId() {
-      console.log("## this.getId() ##");
       this.$store.dispatch(Constant.GET_ID);
     }
   }

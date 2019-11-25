@@ -44,7 +44,6 @@ public class FoodController {
 	
 	@GetMapping("qna.do")
 	public String qna(Model model) {
-		System.out.println("move to qna.html");
 		return "redirect:/qna.html";
 	}
 

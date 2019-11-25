@@ -105,9 +105,16 @@ const store = new Vuex.Store({
     [Constant.GET_ID] : (store) => {
       http.get("/session.do",{withCredentials: true})
       .then( (response) => {
-        console.log("## actions : "+response);
-        console.log(response.data.id);
         store.commit(Constant.GET_ID, {uid : response.data.id});
+      })
+      .catch( err => {
+        console.log(err);
+      })
+    },
+    [Constant.REMOVE_BOARDANS] : (store, payload) => {
+      http.delete("/rest/boardans/" + payload.bno)
+      .then( () => {
+        store.dispatch(Constant.GET_COMMENTS, { qno: payload.qno });
       })
       .catch( err => {
         console.log(err);
@@ -130,7 +137,6 @@ const store = new Vuex.Store({
     },
     [Constant.GET_ID]: (state, payload) =>{
       store.state.id = payload.uid;
-      console.log("## mutations : "+store.state.id);
     }
   }
 });
