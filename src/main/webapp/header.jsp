@@ -42,6 +42,7 @@ function login() {
 									<li><a href="about.html">공지사항</a></li>
 									<li><a href="foodList.do">상품 정보</a></li>
 									<li><a href="CaloryFood.jsp">칼로리별 섭취</a></li>
+									<li><a href="bestfood.do">베스트 섭취 음식</a></li>
 									<!-- <li><a href="#">blog <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="blog.html">blog</a></li>

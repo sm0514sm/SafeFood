@@ -37,6 +37,7 @@ public interface FoodDAO {
 	
 	public void addCount(int code);
 	
+	public List<Food> freIngesFoodList();			//자주 섭취한 식품 정보 보여주기
 	
 //	아래 미구현
 //	/**

@@ -101,4 +101,13 @@ public class FoodServiceImpl implements FoodService{
 		}
 		return false;
 	}
+	
+	public List<Food> freIngesFoodList(){
+		try {
+			return dao.freIngesFoodList();
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
+	}
 }

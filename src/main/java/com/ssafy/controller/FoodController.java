@@ -96,4 +96,11 @@ public class FoodController {
 		model.addAttribute("calory", service.caloryCalc("all", calval));
 		return "CaloryFood";
 	}
+	
+	@GetMapping("bestfood.do")
+	public String bestFood(Model model) {
+		model.addAttribute("list", service.freIngesFoodList());
+		return "bestFood";
+	}
+	
 }

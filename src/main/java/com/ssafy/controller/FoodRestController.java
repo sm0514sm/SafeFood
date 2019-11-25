@@ -36,6 +36,13 @@ public class FoodRestController {
 		return handleSuccess(list);
 	}
 	
+	@ApiOperation("자주 섭취한 식품 정보를 조회하는 기능")
+	@GetMapping("/rest/frefoodlist")
+	public ResponseEntity<Map<String, Object>> freIngesFoodList() {
+		List<Food> list = service.freIngesFoodList();
+		return handleSuccess(list);
+	}
+	
 	@ApiOperation("키워드에 해당하는 음식 목록을 조회하는 기능\nKeyword (name, maker, material)")
 	@GetMapping("/rest/food/{searchSelect}/{searchWord}")
 	public ResponseEntity<Map<String, Object>> searchKeyword(@PathVariable String searchSelect, @PathVariable String searchWord) {
