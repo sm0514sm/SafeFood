@@ -3,8 +3,8 @@
     <div>우리 민기 삼성갑니다!!!5</div>
     <br />
     <div>
-      <div v-if="id == bulletin.uid">
-        <input type="button" value="로그인 되어있군요! 수정하기" @click="GoEditBulletin(id)" />
+      <div v-if="id != null && id != ''">
+        <input type="button" value="로그인 되어있군요! 수정하기" @click="GoEditBulletin()" />
       </div>
       <table>
         <tr id="header">
@@ -43,10 +43,11 @@
             <input type="button" value="등록" @click="addBoardAns()" />
           </td>
           <td></td>
+          <td></td>
         </tr>
         <tr id="header" style="background-color: lightblue">
           <td>작성자</td>
-          <td colspan="2">내용</td>
+          <td colspan="3">내용</td>
           <td>시간</td>
           <td width="25px"></td>
         </tr>
@@ -54,6 +55,14 @@
           <td>{{ comment.uid }}</td>
           <td colspan="2">{{ comment.contents }}</td>
           <td>{{ comment.bregdate }}</td>
+          <td>
+            {{comment.goods}}
+            <input
+              type="button"
+              value="좋아요"
+              @click="goodBoardAns(comment.bno, comment.qno)"
+            />
+          </td>
           <td>
             <input
               v-if="comment.uid == id"
@@ -129,9 +138,11 @@ export default {
     ansClear() {
       this.boardAns.contents = "";
     },
-    GoEditBulletin(id) {
-      alert("id : " + id);
+    GoEditBulletin() {
       this.$router.push("/updateBulletin");
+    },
+    goodBoardAns(bno, qno){     //좋아요 증가 기능
+      this.$store.dispatch(Constant.GOOD_BOARDANS, {bno, qno});
     }
   }
 };

@@ -26,9 +26,10 @@
    		where bno=#{bno}
    </select>
    
-   <select id="searchAll"									resultType="board">
+   <select id="searchAll"		parameterType="string"		resultType="board">
    		select * 
    		from board_q
+   		where sno = #{sno}
    </select>
    
    <select id="searchBoard" parameterType="java.util.Map"	resultType="board">
@@ -59,7 +60,21 @@
    		update board_q 
    		set title = #{title},
    			contents = #{contents},
-   			bregdate = now()
+   			bregdate = now(),
+   			goods = #{goods},
+   			hits = #{hits}
+   		where bno = #{bno}
+   </update>
+   
+   <update id="goodBoard"		parameterType="board">
+   		update board_q
+   		set goods = goods + 1
+   		where bno = #{bno}
+   </update>
+   
+   <update id="hitBoard"		parameterType="board">
+   		update board_q
+   		set hits = hits + 1
    		where bno = #{bno}
    </update>
    
@@ -68,43 +83,5 @@
    </delete>
    
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
 
 

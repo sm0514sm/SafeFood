@@ -12,9 +12,9 @@ const store = new Vuex.Store({
     id: "test"
   },
   actions: {
-    [Constant.GET_BULLETINLIST]: store => {
+    [Constant.GET_BULLETINLIST]: (store, payload) => {
       http
-        .get("/rest/board")
+        .get("/rest/boardlist/"+payload.sno)
         .then(response => {
           store.commit(Constant.GET_BULLETINLIST, {
             bulletins: response.data.data
@@ -45,6 +45,18 @@ const store = new Vuex.Store({
         .get("/rest/board/" + payload.no)
         .then(response => {
           store.commit(Constant.GET_BULLETIN, { bulletin: response.data.data });
+          console.log(store.state.bulletin.bno);
+          var newhits = store.state.bulletin.hits + 1;
+          console.log("## newhits : " + newhits);
+          store.dispatch(Constant.UPDATE_BULLETIN, { 
+            bulletin : {
+              bno : store.state.bulletin.bno,
+              contents : store.state.bulletin.contents,
+              goods : store.state.bulletin.goods,
+              hits : newhits,
+              title : store.state.bulletin.title
+            }
+          });
         })
         .catch(exp => alert("처리에 실패하였습니다." + exp));
     },
@@ -69,7 +81,7 @@ const store = new Vuex.Store({
         .then(response => {
           console.log(response);
           console.log(payload.bulletin);
-          store.dispatch(Constant.GET_BULLETINLIST);
+          store.dispatch(Constant.GET_BULLETINLIST, payload.sno);
         })
         .catch(() => console.log("추가에 실패하였습니다."));
     },
@@ -88,7 +100,7 @@ const store = new Vuex.Store({
         .then(response => {
           console.log(response);
           console.log(payload.bulletin);
-          store.dispatch(Constant.GET_BULLETINLIST);
+          store.dispatch(Constant.GET_BULLETINLIST, payload.sno);
         })
         .catch(() => console.log("수정에 실패하였습니다."));
     },
@@ -99,7 +111,7 @@ const store = new Vuex.Store({
           console.log(response);
           console.log(payload.bulletin);
           console.log("삭제 처리 되었습니다.");
-          store.dispatch(Constant.GET_BULLETINLIST);
+          store.dispatch(Constant.GET_BULLETINLIST, payload.sno);
         })
         .catch(exp => alert("삭제 처리에 실패하였습니다" + exp));
     },
@@ -135,6 +147,17 @@ const store = new Vuex.Store({
       http
         .delete("/rest/boardans/" + payload.bno)
         .then(() => {
+          store.dispatch(Constant.GET_COMMENTS, { qno: payload.qno });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    [Constant.GOOD_BOARDANS]: (store, payload) => {
+      http.put("/rest/goodboardans", {
+        bno : payload.bno,
+      })
+        .then( () => {
           store.dispatch(Constant.GET_COMMENTS, { qno: payload.qno });
         })
         .catch(err => {

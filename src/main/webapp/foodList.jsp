@@ -63,7 +63,7 @@
 
 						<tr>
 							<td>알레르기 성분</td>
-							<td></td>
+							<td>${food.allergy}</td>
 						</tr>
 					</tbody>
 				</table>

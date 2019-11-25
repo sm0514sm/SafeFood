@@ -13,4 +13,5 @@ public interface BoardAnsDAO {
 	public void insertBoardAns(BoardAns board);		//boardAns 추가
 	public void updateBoardAns(BoardAns board);		//boardAns 수정
 	public void deleteBoardAns(String bno) ;		//boardAns 삭제
+	public void goodBoardAns(BoardAns boardAns);	//goods++
 }
