@@ -33,7 +33,7 @@
 			, (f.name) as foodName
 			, f.material as material
 			, f.allergy
-			,f.img as foodImg
+			,f.img as img
             ,calory
 		from ingestion join food f using (code)
 		where id=#{id}
