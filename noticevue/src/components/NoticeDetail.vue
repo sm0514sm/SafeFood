@@ -1,27 +1,23 @@
 <template>
   <div>
-    <div>우리 민기 삼성갑니다!!!5</div>
+    <div>NoticeDetail</div>
     <br />
     <div>
-      <div v-if="id == bulletin.uid">
+      <div v-if="id == 'root'">
         <input
           type="button"
-          value="로그인 되어있군요! 수정하기"
+          value="우리 관리자님 로그인 되어있군요! 수정하기"
           @click="GoEditBulletin(id)"
         />
       </div>
       <table>
         <tr id="header">
-          <td>작성자</td>
           <td>작성일</td>
           <td>조회수</td>
-          <td>추천수</td>
         </tr>
         <tr id="header">
-          <td>{{ bulletin.uid }}</td>
           <td>{{ bulletin.bregdate }}</td>
           <td>{{ bulletin.hits }}</td>
-          <td>{{ bulletin.goods }}</td>
         </tr>
         <tr>
           <td colspan="4">
@@ -38,41 +34,6 @@
       </table>
 
       <br />
-      <br />
-      <br />
-
-      <table>
-        <tr id="header" style="background-color: lightblue">
-          <td>댓글</td>
-          <td colspan="2">
-            <input type="text" size="65" v-model="boardAns.contents" />
-          </td>
-          <td>
-            <input type="button" value="등록" @click="addBoardAns()" />
-          </td>
-          <td></td>
-        </tr>
-        <tr id="header" style="background-color: lightblue">
-          <td>작성자</td>
-          <td colspan="2">내용</td>
-          <td>시간</td>
-          <td width="25px"></td>
-        </tr>
-        <tr v-for="comment in comments" v-bind:key="comment.bno">
-          <td>{{ comment.uid }}</td>
-          <td colspan="2">{{ comment.contents }}</td>
-          <td>{{ comment.bregdate }}</td>
-          <td>
-            <input
-              v-if="comment.uid == id"
-              type="button"
-              value="삭제"
-              @click="removeBoardAns(comment.bno)"
-            />
-          </td>
-        </tr>
-      </table>
-
       <br />
       <input type="button" value="목록" @click="GoBoard()" />
     </div>
@@ -97,6 +58,7 @@ export default {
     };
   },
   created() {
+    alert(this.id + "로 로그인되어 있습니다.");
     this.$store.dispatch(Constant.GET_BULLETIN, { no: this.$route.params.no });
     this.$store.dispatch(Constant.GET_COMMENTS, { qno: this.$route.params.no });
   },
@@ -108,7 +70,8 @@ export default {
       return this.$store.state.comments;
     },
     id() {
-      return this.$store.state.id;
+      return "root";
+      // return this.$store.state.id;
     }
   },
   methods: {
@@ -138,7 +101,7 @@ export default {
       this.boardAns.contents = "";
     },
     GoEditBulletin(id) {
-      this.$router.push("/updateBulletin");
+      this.$router.push("/updateNotice/" + id);
     }
   }
 };

@@ -1659,8 +1659,9 @@ h3 {
 
 /* line 4, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_footer.scss */
 .footer_area {
-  padding-top: 150px;
-  padding-bottom: 150px;
+  padding-top: 20px;
+ /*  padding-top: 150px;
+  padding-bottom: 150px; */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -1756,7 +1757,7 @@ h3 {
 
 /* line 80, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_footer.scss */
 .footer_area .footer-bottom {
-  padding-top: 75px;
+  /* padding-top: 75px; */
 }
 
 /* line 83, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_footer.scss */
