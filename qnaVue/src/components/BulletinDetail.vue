@@ -50,6 +50,7 @@
           <td colspan="2">내용</td>
           <td>시간</td>
           <td width="25px"></td>
+          <td></td>
         </tr>
         <tr v-for="comment in comments" v-bind:key="comment.bno">
           <td>{{ comment.uid }}</td>
