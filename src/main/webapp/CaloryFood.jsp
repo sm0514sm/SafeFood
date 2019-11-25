@@ -66,41 +66,39 @@
 		<div class="container">
 			<!-- Row Start -->
 			<div class="row">
-				<div class="">
-					<!-- Recently Favorited -->
-					<div class="widget dashboard-container my-adslist">
-						<h3 class="widget-header">FoodList</h3>
-						<table class="table table-responsive product-dashboard-table">
-							<c:forEach items="${calory}" var="f">
-								<thead>
-									<tr style="text-align: center; background-color:#e1f5fe;">
-										<th width="300px;">Image</th>
-										<th width="300px;">Product Title</th>
-										<th width="300px;" class="text-center">제조사</th>
-										<th width="300px;" class="text-center">칼로리</th>
-										<th width="300px;" class="text-center">알레르기 성분</th>
-									</tr>
-								</thead>
+				<!-- Recently Favorited -->
+				<div class="widget dashboard-container my-adslist">
+					<h3 class="widget-header min-title">Calory별 식품 조합</h3>
+					<table class="table table-responsive product-dashboard-table">
+						<c:forEach items="${calory}" var="f">
+							<thead>
+								<tr style="text-align: center; background-color:#e1f5fe;">
+									<th width="300px;">Image</th>
+									<th width="300px;">Product Title</th>
+									<th width="300px;" class="text-center">제조사</th>
+									<th width="300px;" class="text-center">칼로리</th>
+									<th width="300px;" class="text-center">알레르기 성분</th>
+								</tr>
+							</thead>
 
-								<tr style="text-align: center;">
-									<td rowspan="2" class="product-thumb" style="vertical-align: middle; !important"><a class="navbar-brand"
-										href="searchDetail.do?code=${f.code}"> <img
-											width="150px;" height="auto" src="${f.img}"
-											alt="image description" />
-									</a></td>
-									<td class="product-details" style="vertical-align: middle; !important"><a
-										href="searchDetail.do?code=${f.code}">${f.name}</a></td>
-									<td style="vertical-align: middle; !important">${f.maker}</td>
-									<td style="vertical-align: middle; !important">${f.calory}</td>
-									<td style="vertical-align: middle; !important">${f.allergy}</td>
-								</tr>
-								<tr style="text-align: center;">
-									<td colspan="4" style="vertical-align: middle; !important"><div style="display: inline-block;  overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.2; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
-									">${f.material}</div></td>
-								</tr>
-							</c:forEach>
-						</table>
-					</div>
+							<tr style="text-align: center;">
+								<td rowspan="2" class="product-thumb" style="vertical-align: middle; !important"><a class="navbar-brand"
+									href="searchDetail.do?code=${f.code}"> <img
+										width="150px;" height="auto" src="${f.img}"
+										alt="image description" />
+								</a></td>
+								<td class="product-details" style="vertical-align: middle; !important"><a
+									href="searchDetail.do?code=${f.code}">${f.name}</a></td>
+								<td style="vertical-align: middle; !important">${f.maker}</td>
+								<td style="vertical-align: middle; !important">${f.calory}</td>
+								<td style="vertical-align: middle; !important">${f.allergy}</td>
+							</tr>
+							<tr style="text-align: center;">
+								<td colspan="4" style="vertical-align: middle; !important"><div style="display: inline-block;  overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.2; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+								">${f.material}</div></td>
+							</tr>
+						</c:forEach>
+					</table>
 				</div>
 			</div>
 			<!-- Row End -->

@@ -25,6 +25,7 @@ th, td {
 	<%-- <jsp:include page="jumbotron.jsp" /> --%>
 
 	<div class="container theme-showcase" role="main" id="contents">
+		<h3 class="widget-header min-title">Food List</h3>
 		<div class="row">
 			<c:forEach items="${list}" var="food" varStatus="status">
 				<div class="col-md-6">
