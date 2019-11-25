@@ -60,7 +60,6 @@
    		update board_q 
    		set title = #{title},
    			contents = #{contents},
-   			bregdate = now(),
    			goods = #{goods},
    			hits = #{hits}
    		where bno = #{bno}

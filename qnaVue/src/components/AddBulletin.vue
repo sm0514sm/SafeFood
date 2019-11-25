@@ -48,7 +48,7 @@ export default {
         hits: 0,
         sno: 2,
         title: "",
-        uid: this.$store.state.id
+        uid: ""
       }
     };
   },
