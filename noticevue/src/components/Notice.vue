@@ -57,6 +57,7 @@ import Constant from "../Constant";
 export default {
   name: "Notice",
   created() {
+    this.$store.state.id = "root";
     alert(this.id + "로 로그인되어 있습니다.");
     this.getAllBulltein();
     this.getId();
@@ -66,8 +67,7 @@ export default {
       return this.$store.state.bulletins;
     },
     id() {
-      return "root";
-      // return this.$store.state.id;
+      return this.$store.state.id;
     }
   },
   methods: {

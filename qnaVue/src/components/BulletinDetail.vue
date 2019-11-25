@@ -137,7 +137,7 @@ export default {
     ansClear() {
       this.boardAns.contents = "";
     },
-    GoEditBulletin(id) {
+    GoEditBulletin() {
       this.$router.push("/updateBulletin");
     }
   }

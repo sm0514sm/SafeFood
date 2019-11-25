@@ -70,8 +70,7 @@ export default {
       return this.$store.state.comments;
     },
     id() {
-      return "root";
-      // return this.$store.state.id;
+      return this.$store.state.id;
     }
   },
   methods: {

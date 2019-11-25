@@ -21,6 +21,7 @@ const router = new VueRouter({
     { path: "/", component: Board },
     { path: "/board", component: Board },
     { path: "/qna.html", component: Board },
+    { path: "/QNA.jsp", component: Board },
     { path: "/detail/:no", component: BulletinDetail },
     { path: "/addBulletin", component: AddBulletin },
     { path: "/updateBulletin", component: UpdateBulletin }
