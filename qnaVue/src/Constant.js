@@ -4,7 +4,7 @@ export default {
   GET_BULLETIN: "getBulletin",
   GET_COMMENTS: "getComments",
   ADD_BULLETIN: "addBulletin",
-  MODIFY_BULLETIN: "modifyBulletin",
+  UPDATE_BULLETIN: "updateBulletin",
   ADD_BOARDANS: "addBoardAns",
   DELETE_BULLETIN: "deleteBulletin",
   GET_ID: "getId"

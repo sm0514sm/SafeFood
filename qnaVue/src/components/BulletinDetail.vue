@@ -3,6 +3,9 @@
     <div>우리 민기 삼성갑니다!!!5</div>
     <br />
     <div>
+      <div v-if="id != null && id != ''">
+        <input type="button" value="로그인 되어있군요! 수정하기" @click="GoEditBulletin()" />
+      </div>
       <table>
         <tr id="header">
           <td>작성자</td>
@@ -22,15 +25,13 @@
           </td>
         </tr>
         <tr>
-          <td
-            colspan="4"
-            v-html="bulletin.contents"
-            style="text-align: left"
-          ></td>
+          <td colspan="4" v-html="bulletin.contents" style="text-align: left"></td>
         </tr>
       </table>
 
-      <br /><br /><br />
+      <br />
+      <br />
+      <br />
 
       <table>
         <tr id="header" style="background-color: lightblue">
@@ -47,11 +48,7 @@
           <td colspan="2">내용</td>
           <td>시간</td>
         </tr>
-        <tr
-          v-for="comment in comments"
-          v-bind:key="comment.bno"
-          
-        >
+        <tr v-for="comment in comments" v-bind:key="comment.bno">
           <td>{{ comment.uid }}</td>
           <td colspan="2">{{ comment.contents }}</td>
           <td>{{ comment.bregdate }}</td>
@@ -60,7 +57,6 @@
 
       <br />
       <input type="button" value="목록" @click="GoBoard()" />
-
     </div>
   </div>
 </template>
@@ -70,14 +66,14 @@ import Constant from "../Constant";
 
 export default {
   name: "BulletinDetail",
-  data(){
-    return{
-      boardAns : {
-        sno : "",
-        contents : "",
-        bregdate : "",
-        uid : "",
-        qno : ""
+  data() {
+    return {
+      boardAns: {
+        sno: "",
+        contents: "",
+        bregdate: "",
+        uid: "",
+        qno: ""
       }
     };
   },
@@ -91,22 +87,28 @@ export default {
     },
     comments() {
       return this.$store.state.comments;
+    },
+    id() {
+      return this.$store.state.id;
     }
   },
   methods: {
     GoBoard() {
       this.$router.push("/");
     },
-    addBoardAns(){
+    addBoardAns() {
       this.$store.dispatch(Constant.ADD_BOARDANS, {
-        sno : 2,
-        title : "",
-        contents : this.boardAns.contents,
-        hits : 0,
-        goods : 0,
-        uid : "jaen",
-        qno : this.$route.params.no,
+        sno: 2,
+        title: "",
+        contents: this.boardAns.contents,
+        hits: 0,
+        goods: 0,
+        uid: "jaen",
+        qno: this.$route.params.no
       });
+    },
+    GoEditBulletin() {
+      this.$router.push("/updateBulletin");
     }
   }
 };

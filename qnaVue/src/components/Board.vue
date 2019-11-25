@@ -48,7 +48,7 @@
             <input type="button" style="height:25px;" value="글쓰기" @click="GoAddBulletin()" />
           </td>
         </tr>
-      </table>wefwef
+      </table>
       <br />
       <iframe
         width="728"
