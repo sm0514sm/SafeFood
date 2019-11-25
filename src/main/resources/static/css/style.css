@@ -5273,9 +5273,15 @@ h6 {
 
 /* add*/
 #navigation li a {
-	font-size: 1.5em;
+	font-size: 1.3em;
 	color: black;
-	font-family: 'Do Hyeon', sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.service_info div div h4, p {
+	font-family: 'Sunflower', sans-serif;
 }
 
 /*# sourceMappingURL=style.css.map */

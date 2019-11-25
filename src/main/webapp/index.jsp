@@ -29,25 +29,12 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic|Nanum+Gothic+Coding|Sunflower:300&display=swap">
 <script type="text/javascript">
-/*  $(document).ready(function() {
-    $("#loginModal").modal();
- });  */
-/* $('#loginModal').on('shown.bs.modal', function () {
-	  $('#exampleInputEmail1').trigger('focus')
-	}) */
-/* $('#loginModal').on('shown.bs.modal', function () {
-    $('#exampleInputEmail1').focus();
-}) */
-/* $('.modal').on('shown.bs.modal', function() {
-	  $(this).find('[autofocus]').focus();
-	}); */
 function login() {
 	var frm = document.getElementById("loginForm");
 	frm.submit();
 }	
 </script>
 
-<!-- <script type='text/javascript' src='js/jquery-3.3.1.js'></script> -->
 </head>
 
 <body>
@@ -62,25 +49,22 @@ function login() {
 				<div class="container">
 					<div class="row align-items-center"
 						style="margin-top: 0px !important">
-						<div class="col-xl-12 col-lg-12">
+						<div class="">
 							<div class="main-menu d-none d-lg-block">
 								<nav>
 									<ul class="mein_menu_list" id="navigation">
+										<div class="logo-img d-none d-lg-block">
+											<a href="index.html"> <img src="img/logo.png" alt="" style="width:100px;"></a>
+										</div>
 										<li><a href="about.html">공지사항</a></li>
 										<li><a href="foodList.do">상품 정보</a></li>
 										<li><a href="CaloryFood.jsp">칼로리별 섭취</a></li>
-
-										<div class="logo-img d-none d-lg-block">
-											<a href="index.html"> <img src="img/logo.png" alt="">
-											</a>
-										</div>
 										<!-- <li><a href="#">blog <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="blog.html">blog</a></li>
                                                 <li><a href="single-blog.html">single-blog</a></li>
                                             </ul>
                                         </li> -->
-										<li><a href="qna.do">추가예정</a></li>
 										<li><a href="qna.do">Q&A</a></li>
 										<c:choose>
 											<c:when test="${sessionScope.id != null}">
@@ -88,16 +72,27 @@ function login() {
 												<li><a href="#contact">예상 섭취 정보</a></li>
 											</c:when>
 										</c:choose>
-										<li><a href="contact.html">Contact</a></li>
-										<li class="nav-item active"><button type="button"
-												class="btn btn-outline-success" data-toggle="modal"
-												data-target="#loginModal">Login</button></li>
-										<li class="nav-item active"><button type="button"
-												class="btn btn-outline-info" data-toggle="modal"
-												data-target="#registerModal">Register</button></li>
-
+										<!-- <li><a href="contact.html">Contact</a></li> -->
+										
+										<c:choose>
+											<c:when test="${sessionScope.id == null}">
+												<li class="nav-item active"><button type="button"
+														class="btn btn-outline-success" data-toggle="modal"
+														data-target="#loginModal">Login</button></li>&nbsp;&nbsp;&nbsp;&nbsp;
+												<li class="nav-item active"><button type="button"
+														class="btn btn-outline-info" data-toggle="modal"
+														data-target="#registerModal">Register</button></li>
+											</c:when>
+										<c:otherwise>
+										<div class="form-group">
+											<%-- <a class="btn btn-primary">${sessionScope.id } 님 환영합니다</a> --%> 
+											<a class="btn btn-outline-success" href="userInfo.do" role="button">Modify</a> 
+											<a class="btn btn-outline-info" href="logout.do" role="button">Logout</a>
+										</div>
+										</c:otherwise>
+									</c:choose>
 									</ul>
-
+									${sessionScope.id } 님 환영합니다
 									<div class="modal login_modal" id="loginModal" tabindex="-1"
 										role="dialog">
 										<div class="modal-dialog" role="document">
@@ -224,14 +219,14 @@ function login() {
 	<div class="slider_area zigzag_bg_2">
 		<div class="slider_sctive owl-carousel">
 			<div class="single_slider slider_img_1"
-				style="background-image: url(../img/banner/banner.png)">
+				style="background-image: url(../img/banner/banner-2.png)">
 				<div class="single_slider-iner">
 					<div class="slider_contant text-center"
 						style="background: #ffffffdd !important">
 						<h3>
 							Safe Food <br> Service.
 						</h3>
-						<p style="font-size: 1.5em">made by ssafy seoul team kmando</p>
+						<p style="font-size: 1.5em ">made by ssafy seoul team kmando</p>
 					</div>
 				</div>
 			</div>
@@ -283,10 +278,8 @@ function login() {
 						<div class="service_icon">
 							<i class="flaticon-gift"></i>
 						</div>
-						<h4>Birthday Catering</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.</p>
+						<h4>식품 영양정보 관리</h4>
+						<p>공공데이터를 통해 식품별 첨가물, 영양 정보를 파싱하여 관리하고, 식품별, 제조사별, 원재료별 검색 기능을 제공</p>
 					</div>
 				</div>
 				<div class="col-xl-4 col-md-6">
@@ -294,10 +287,8 @@ function login() {
 						<div class="service_icon">
 							<i class="flaticon-cake"></i>
 						</div>
-						<h4>Wedding Service</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.</p>
+						<h4>개인별 데이터 관리</h4>
+						<p>식품 영양 성분, 섭취 식품 통계를 그래프로 표시, CRUD 등록시 회원별 알레르기 주의 경보 표시</p>
 					</div>
 				</div>
 				<div class="col-xl-4 col-md-6">
@@ -305,10 +296,8 @@ function login() {
 						<div class="service_icon">
 							<i class="flaticon-dance"></i>
 						</div>
-						<h4>Party Catering</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.</p>
+						<h4>섭취식품 영양별 통계</h4>
+						<p>일당, 주당, 월당 통계 (수치, 그래프), 영양소별(나트륨별, 탄수화물 등) Sort, Search</p>
 					</div>
 				</div>
 				<div class="col-xl-4 col-md-6">
@@ -424,7 +413,7 @@ function login() {
 			<div class="row">
 				<div class="col-xl-12">
 					<div class="section_title white mb-60">
-						<h3>Feedback from Customers</h3>
+						<h3>This website is made by</h3>
 						<p>
 							inappropriate behavior is often laughed off as “boys will be
 							boys,” women face higher conduct standards <br> especially
@@ -441,7 +430,7 @@ function login() {
 								<img src="img/testmonial/1.png" alt="" style="width: 150px; height: 200px;">
 							</div>
 							<div class="testmonial_author">
-								<h3>minki-gang</h3>
+								<h3>mingi-kang</h3>
 								<span>kmandu</span>
 								<p>You're had. Subdue grass Meat us winged years you'll
 									doesn't. fruit two also won one yielding creepeth third give
@@ -465,8 +454,8 @@ function login() {
 								<img src="img/testmonial/3.png" alt="" style="width: 150px; height: 200px;">
 							</div>
 							<div class="testmonial_author">
-								<h3>Adame Nesane</h3>
-								<span>Chief Customer</span>
+								<h3>juhee kim</h3>
+								<span>smileH</span>
 								<p>You're had. Subdue grass Meat us winged years you'll
 									doesn't. fruit two also won one yielding creepeth third give
 									may never lie alternet food.</p>
@@ -477,7 +466,7 @@ function login() {
 								<img src="img/testmonial/1.png" alt="" style="width: 150px; height: 200px;">
 							</div>
 							<div class="testmonial_author">
-								<h3>Adam Nahan</h3>
+								<h3>mingi-kang</h3>
 								<span>Chief Customer</span>
 								<p>You're had. Subdue grass Meat us winged years you'll
 									doesn't. fruit two also won one yielding creepeth third give
@@ -489,7 +478,7 @@ function login() {
 								<img src="img/testmonial/2.png" alt="" style="width: 150px; height: 200px;">
 							</div>
 							<div class="testmonial_author">
-								<h3>Adame Nesane</h3>
+								<h3>sangmin-lee</h3>
 								<span>Chief Customer</span>
 								<p>You're had. Subdue grass Meat us winged years you'll
 									doesn't. fruit two also won one yielding creepeth third give
@@ -501,7 +490,7 @@ function login() {
 								<img src="img/testmonial/3.png" alt="" style="width: 150px; height: 200px;">
 							</div>
 							<div class="testmonial_author">
-								<h3>Adam Nahan</h3>
+								<h3>juhee kim</h3>
 								<span>Chief Customer</span>
 								<p>You're had. Subdue grass Meat us winged years you'll
 									doesn't. fruit two also won one yielding creepeth third give
