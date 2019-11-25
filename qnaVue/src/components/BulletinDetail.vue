@@ -128,6 +128,9 @@ export default {
     },
     ansClear() {
       this.boardAns.contents = "";
+    },
+    GoEditBulletin() {
+      this.$router.push("/updateBulletin");
     }
   }
 };
