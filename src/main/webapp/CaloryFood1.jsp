@@ -7,10 +7,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>detailList</title>
-
+<link rel="stylesheet" href="css/index.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<!-- Bootstrap core CSS -->
+<link href="dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="theme.css" rel="stylesheet">
 <script type='text/javascript' src='js/jquery-3.3.1.js'></script>
-
 <script>
 	function check() {
 		var str = calory.calval.value;
@@ -25,27 +29,37 @@
 </script>
 
 </head>
+<header>
+<jsp:include page="navBar.jsp"/>
+</header>
 <body role="document">
-	<jsp:include page="header.jsp"/>
-	<div class="header-margin" style="margin-top: 150px;"></div>
 	<section class="page-search">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<!-- Advance Search -->
 					<div class="advance-search">
-					
-						<form name="calory form-inline" action="calory.do" method="post" onsubmit="return check()">
+						<form name="calory" action="calory.do" method="post" onsubmit="return check()">
 							<div class="row">
-								<div class="col-sm-2">
-									<label for="calinput" class="sr-only">칼로리 입력</label>
-   									<input type="text" readonly class="form-control-plaintext" id="calinput" value="칼로리 입력">
+								<!-- Store Search -->
+								<div class="col-lg-4 col-md-12">
+									<div class="block d-flex">
+										<select class="form-control mb-2 mr-sm-2 mb-sm-0" id="search1"
+											style="height: 50px; background-color: #5672F9;"
+											name="keyword">
+											<option value="cal" selected>칼로리</option>
+										</select>
+									</div>
 								</div>
-								<div class="col-sm-5">
-									<input type="text" class="form-control" id="search2" name="calval"  placeholder="칼로리 입력">
-								</div>
-								<div class="col-sm-5">
-								<button type="submit" class="btn btn-info mb-2" id="searchbtn">검색</button>
+								<div class="col-lg-8 col-md-12">
+									<div class="block d-flex">
+										<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0"
+											id="search2" placeholder="칼로리 입력" name="calval" />
+										<!-- Search Button -->
+										<button class="btn btn-main" id="searchbtn"
+											style="height: 50px; border: solid 1px white; border-radius: 2px;">
+											검색</button>
+									</div>
 								</div>
 							</div>
 						</form>
@@ -108,6 +122,5 @@
 		</div>
 		<!-- Container End -->
 	</section>
-	<jsp:include page="footer.jsp"/>
 </body>
 </html>
