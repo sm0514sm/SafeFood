@@ -22,62 +22,66 @@ function login() {
 <link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="css/slicknav.css">
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic|Nanum+Gothic+Coding|Sunflower:300&display=swap">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic|Nanum+Gothic+Coding|Sunflower:300&display=swap">
 
 <!-- header-start -->
 <header>
 	<div class="header-area ">
 		<div id="sticky-header" class="main-header-area">
 			<div class="container">
-				<div class="row align-items-center"
-					style="margin-top: 0px !important">
+				<div class="row align-items-center">
 					<div class="">
 						<div class="main-menu d-none d-lg-block">
 							<nav>
 								<ul class="mein_menu_list" id="navigation">
 									<div class="logo-img d-none d-lg-block">
-										<a href="index.do"> <img src="img/logo2.png" alt=""
+										<a href="index.do"> <img src="img/logo.png" alt=""
 											style="width: 100px;"></a>
 									</div>
-									<li><a href="notice.do">공지사항</a></li>
-									<li><a href="foodList.do">상품 정보</a></li>
-									<li><a href="CaloryFood.jsp">칼로리별 섭취</a></li>
-									<li><a href="bestfood.do">베스트 섭취 음식</a></li>
-									<!-- <li><a href="#">blog <i class="ti-angle-down"></i></a>
-                                            <ul class="submenu">
-                                                <li><a href="blog.html">blog</a></li>
-                                                <li><a href="single-blog.html">single-blog</a></li>
-                                            </ul>
-                                        </li> -->
-									<li><a href="qna.do">Q&A</a></li>
+									<li><a href="#">공지사항<i class="ti-angle-down"></i></a>
+										<ul class="submenu">
+											<li><a href="about.html">공지사항</a></li>
+											<li><a href="qna.do">Q&A</a></li>
+										</ul>
+									</li>
+									<!-- <li><a href="about.html">공지사항</a></li>
+									<li><a href="qna.do">Q&A</a></li> -->
+									<li><a href="foodList.do">상품정보</a></li>
+									<li><a href="bestfood.do">Best상품</a></li>
+									<li><a href="CaloryFood.jsp">칼로리별조합</a></li>
+
 									<c:choose>
 										<c:when test="${sessionScope.id != null}">
-											<li><a href="ingestionList.do">내 섭취 정보</a></li>
+											<li><a href="#">섭취 정보<i class="ti-angle-down"></i></a>
+												<ul class="submenu">
+													<li><a href="ingestionList.do">내 섭취 정보</a></li>
 											<li><a href="#contact">예상 섭취 정보</a></li>
+												</ul>
+											</li>
 										</c:when>
 									</c:choose>
-									<!-- <li><a href="contact.html">Contact</a></li> -->
 
 									<c:choose>
 										<c:when test="${sessionScope.id == null}">
 											<li class="nav-item active"><button type="button"
 													class="btn btn-success" data-toggle="modal"
-													data-target="#loginModal">Login</button></li>&nbsp;&nbsp;&nbsp;&nbsp;
+													data-target="#loginModal">Login</button></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 												<li class="nav-item active"><button type="button"
 													class="btn btn-info" data-toggle="modal"
 													data-target="#registerModal">Register</button></li>
 										</c:when>
 										<c:otherwise>
 											<div class="form-group">
-												<%-- <a class="btn btn-primary">${sessionScope.id } 님 환영합니다</a> --%>
-												<a class="btn btn-success" href="userInfo.do"
-													role="button">Modify</a> <a class="btn btn-info"
-													href="logout.do" role="button">Logout</a>
+												<a class="btn btn-light">${sessionScope.id } 님 환영합니다</a><br>
+												<a class="btn btn-success" href="userInfo.do" role="button" style="margin-right: 9px;">Modify</a>
+												<a class="btn btn-info" href="logout.do" role="button">Logout</a>
 											</div>
+											<%-- <li>${sessionScope.id } 님 <br />환영합니다</li> --%>
 										</c:otherwise>
 									</c:choose>
 								</ul>
-								${sessionScope.id } 님 환영합니다
+								<%-- ${sessionScope.id } 님 환영합니다 --%>
 								<div class="modal login_modal" id="loginModal" tabindex="-1"
 									role="dialog">
 									<div class="modal-dialog" role="document">
@@ -123,7 +127,7 @@ function login() {
 										</div>
 									</div>
 								</div>
-								
+
 
 								<div class="modal register_modal" id="registerModal"
 									tabindex="-1" role="dialog">

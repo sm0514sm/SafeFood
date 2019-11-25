@@ -38,8 +38,8 @@
 
 						<form name="calory form-inline" action="calory.do" method="post"
 							onsubmit="return check()">
-							<h1>섭취 음식 Best 3</h1> 
-							<c:forEach items="${list}" var="food" varStatus="status">
+							<h3 class="widget-header min-title">섭취 음식 Best 3</h3>
+							<%-- <c:forEach items="${list}" var="food" varStatus="status">
 								<div class="row">
 									${food.name} ${food.count}회
 									<img src="${food.img}" width="150px" height="150px"/> 
