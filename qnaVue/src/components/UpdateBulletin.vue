@@ -6,10 +6,6 @@
       <table>
         <tr>
           <td>
-            작성자 :
-            <input type="text" disabled v-model="oriBulletin.uid" />
-          </td>
-          <td>
             제목 :
             <input type="text" v-model="bulletin.title" />
           </td>

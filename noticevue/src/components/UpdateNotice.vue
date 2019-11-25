@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div>AddBulletin.vue 입니다.</div>
+    <div>UpdateBulletin.vue 입니다.</div>
     <br />
     <div>
       <table>
         <tr>
           <td>
             작성자 :
-            <input type="text" disabled v-model="bulletin.uid" />
+            <input type="text" disabled v-model="oriBulletin.uid" />
           </td>
           <td>
             제목 :
@@ -26,7 +26,7 @@
             <input type="button" value="초기화" @click="clear()" />
           </td>
           <td>
-            <input type="button" value="작성하기" @click="addBulletin()" />
+            <input type="button" value="작성하기" @click="updateBulletin()" />
           </td>
         </tr>
       </table>
@@ -48,17 +48,25 @@ export default {
         hits: 0,
         sno: 2,
         title: "",
-        uid: this.$store.state.id
+        uid: ""
       }
     };
   },
+  computed: {
+    oriBulletin() {
+      return this.$store.state.bulletin;
+    }
+  },
+  created() {
+    this.bulletin = this.oriBulletin;
+  },
   methods: {
-    addBulletin() {
+    updateBulletin() {
+      console.log("## id : " + this.$store.state.id);
       if (this.bulletin.title.trim() == "") alert("제목을 입력하세요!");
-      else if (this.bulletin.uid.trim() == "") alert("작성자를 입력하세요!");
       else if (this.bulletin.contents.trim() == "") alert("내용을 입력하세요!");
       else {
-        this.$store.dispatch(Constant.ADD_BULLETIN, {
+        this.$store.dispatch(Constant.UPDATE_BULLETIN, {
           bulletin: this.bulletin
         });
         this.$router.push("/");
