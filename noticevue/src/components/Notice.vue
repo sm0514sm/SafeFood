@@ -28,6 +28,7 @@
           <td></td>
           <td>
             <input
+              v-if="id == 'root'"
               type="button"
               style="height:25px;"
               value="글쓰기"

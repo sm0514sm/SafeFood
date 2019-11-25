@@ -41,7 +41,7 @@ function login() {
 									</div>
 									<li><a href="#">공지사항<i class="ti-angle-down"></i></a>
 										<ul class="submenu">
-											<li><a href="about.html">공지사항</a></li>
+											<li><a href="notice.do">공지사항</a></li>
 											<li><a href="qna.do">Q&A</a></li>
 										</ul>
 									</li>
