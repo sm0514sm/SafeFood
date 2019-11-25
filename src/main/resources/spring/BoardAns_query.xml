@@ -41,12 +41,14 @@
    		update board_a
    		set title = #{title},
    			contents = #{contents},
-   			bregdate = now()
+   			bregdate = now(),
+   			goods = #{goods},
+   			hits = #{hits}
    		where bno = #{bno}
    </update>
    
    <delete id="deleteBoardAns"		parameterType="string">
-   		delete from board_q where bno = #{bno}
+   		delete from board_a where bno = #{bno}
    </delete>
 </mapper>
 

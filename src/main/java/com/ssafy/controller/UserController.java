@@ -37,7 +37,6 @@ public class UserController {
 	@GetMapping("session.do")
 	@ResponseBody
 	public ResponseEntity<Map<String, Object>> qna(HttpSession session) {
-		System.out.println("## session.do ");
 		String id = (String)session.getAttribute("id");
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);

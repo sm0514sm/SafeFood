@@ -9,7 +9,7 @@ const store = new Vuex.Store({
     bulletin: {},
     searchBulletin: {},
     comments: [],
-    id: ""
+    id: "test"
   },
   actions: {
     [Constant.GET_BULLETINLIST]: store => {
@@ -73,6 +73,25 @@ const store = new Vuex.Store({
         })
         .catch(() => console.log("추가에 실패하였습니다."));
     },
+    [Constant.UPDATE_BULLETIN]: (store, payload) => {
+      http
+        .put("/rest/board", {
+          bno: payload.bulletin.bno,
+          bregdate: "",
+          contents: payload.bulletin.contents,
+          goods: payload.bulletin.goods,
+          hits: payload.bulletin.hits,
+          sno: payload.bulletin.sno,
+          title: payload.bulletin.title,
+          uid: payload.bulletin.uid
+        })
+        .then(response => {
+          console.log(response);
+          console.log(payload.bulletin);
+          store.dispatch(Constant.GET_BULLETINLIST);
+        })
+        .catch(() => console.log("수정에 실패하였습니다."));
+    },
     [Constant.DELETE_BULLETIN]: (store, payload) => {
       http
         .delete("rest/board/" + payload.bno)
@@ -102,16 +121,25 @@ const store = new Vuex.Store({
           console.log(err);
         });
     },
-    [Constant.GET_ID] : (store) => {
-      http.get("/session.do",{withCredentials: true})
-      .then( (response) => {
-        console.log("## actions : "+response);
-        console.log(response.data.id);
-        store.commit(Constant.GET_ID, {uid : response.data.id});
-      })
-      .catch( err => {
-        console.log(err);
-      })
+    [Constant.GET_ID]: store => {
+      http
+        .get("/session.do", { withCredentials: true })
+        .then(response => {
+          store.commit(Constant.GET_ID, { uid: response.data.id });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    [Constant.REMOVE_BOARDANS]: (store, payload) => {
+      http
+        .delete("/rest/boardans/" + payload.bno)
+        .then(() => {
+          store.dispatch(Constant.GET_COMMENTS, { qno: payload.qno });
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
   mutations: {
@@ -128,9 +156,8 @@ const store = new Vuex.Store({
     [Constant.GET_COMMENTS]: (state, payload) => {
       store.state.comments = payload.comments;
     },
-    [Constant.GET_ID]: (state, payload) =>{
+    [Constant.GET_ID]: (state, payload) => {
       store.state.id = payload.uid;
-      console.log("## mutations : "+store.state.id);
     }
   }
 });

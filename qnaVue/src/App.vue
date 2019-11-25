@@ -9,6 +9,7 @@
 import Board from "./components/Board";
 import BulletinDetail from "./components/BulletinDetail";
 import AddBulletin from "./components/AddBulletin";
+import UpdateBulletin from "./components/UpdateBulletin";
 import Vue from "vue";
 import VueRouter from "vue-router";
 
@@ -21,7 +22,8 @@ const router = new VueRouter({
     { path: "/board", component: Board },
     { path: "/qna.html", component: Board },
     { path: "/detail/:no", component: BulletinDetail },
-    { path: "/addBulletin", component: AddBulletin }
+    { path: "/addBulletin", component: AddBulletin },
+    { path: "/updateBulletin", component: UpdateBulletin }
   ]
 });
 

@@ -3,6 +3,9 @@
     <div>우리 민기 삼성갑니다!!!5</div>
     <br />
     <div>
+      <div v-if="id == bulletin.uid">
+        <input type="button" value="로그인 되어있군요! 수정하기" @click="GoEditBulletin(id)" />
+      </div>
       <table>
         <tr id="header">
           <td>작성자</td>
@@ -22,15 +25,13 @@
           </td>
         </tr>
         <tr>
-          <td
-            colspan="4"
-            v-html="bulletin.contents"
-            style="text-align: left"
-          ></td>
+          <td colspan="4" v-html="bulletin.contents" style="text-align: left"></td>
         </tr>
       </table>
 
-      <br /><br /><br />
+      <br />
+      <br />
+      <br />
 
       <table>
         <tr id="header" style="background-color: lightblue">
@@ -41,26 +42,31 @@
           <td>
             <input type="button" value="등록" @click="addBoardAns()" />
           </td>
+          <td></td>
         </tr>
         <tr id="header" style="background-color: lightblue">
           <td>작성자</td>
           <td colspan="2">내용</td>
           <td>시간</td>
+          <td width="25px"></td>
         </tr>
-        <tr
-          v-for="comment in comments"
-          v-bind:key="comment.bno"
-          
-        >
+        <tr v-for="comment in comments" v-bind:key="comment.bno">
           <td>{{ comment.uid }}</td>
           <td colspan="2">{{ comment.contents }}</td>
           <td>{{ comment.bregdate }}</td>
+          <td>
+            <input
+              v-if="comment.uid == id"
+              type="button"
+              value="삭제"
+              @click="removeBoardAns(comment.bno)"
+            />
+          </td>
         </tr>
       </table>
 
       <br />
       <input type="button" value="목록" @click="GoBoard()" />
-
     </div>
   </div>
 </template>
@@ -70,14 +76,15 @@ import Constant from "../Constant";
 
 export default {
   name: "BulletinDetail",
-  data(){
-    return{
-      boardAns : {
-        sno : "",
-        contents : "",
-        bregdate : "",
-        uid : "",
-        qno : ""
+  data() {
+    return {
+      boardAns: {
+        bno: "",
+        sno: "",
+        contents: "",
+        bregdate: "",
+        uid: this.$store.state.id,
+        qno: this.$route.params.no
       }
     };
   },
@@ -91,22 +98,40 @@ export default {
     },
     comments() {
       return this.$store.state.comments;
+    },
+    id() {
+      return this.$store.state.id;
     }
   },
   methods: {
     GoBoard() {
       this.$router.push("/");
     },
-    addBoardAns(){
+    addBoardAns() {
       this.$store.dispatch(Constant.ADD_BOARDANS, {
-        sno : 2,
-        title : "",
-        contents : this.boardAns.contents,
-        hits : 0,
-        goods : 0,
-        uid : "jaen",
-        qno : this.$route.params.no,
+        sno: 2,
+        title: "",
+        contents: this.boardAns.contents,
+        hits: 0,
+        goods: 0,
+        uid: this.$store.state.id,
+        qno: this.$route.params.no
       });
+      this.ansClear();
+    },
+    removeBoardAns(bno) {
+      //bno : 답글 번호 , qno : 게시글 번호
+      this.$store.dispatch(Constant.REMOVE_BOARDANS, {
+        bno,
+        qno: this.boardAns.qno
+      });
+    },
+    ansClear() {
+      this.boardAns.contents = "";
+    },
+    GoEditBulletin(id) {
+      alert("id : " + id);
+      this.$router.push("/updateBulletin");
     }
   }
 };

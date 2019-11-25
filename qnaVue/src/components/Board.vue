@@ -48,7 +48,7 @@
             <input type="button" style="height:25px;" value="글쓰기" @click="GoAddBulletin()" />
           </td>
         </tr>
-      </table>wefwef
+      </table>
       <br />
       <iframe
         width="728"
@@ -90,7 +90,6 @@ export default {
       this.$store.dispatch(Constant.GET_BULLETINLIST);
     },
     getBulletin(no) {
-      console.log("getBulletin....." + no);
       this.$router.push("/detail/" + no);
     },
     GoAddBulletin() {
@@ -114,7 +113,6 @@ export default {
       });
     },
     getId() {
-      console.log("## this.getId() ##");
       this.$store.dispatch(Constant.GET_ID);
     }
   }
