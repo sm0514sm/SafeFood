@@ -45,16 +45,15 @@ const store = new Vuex.Store({
         .get("/rest/board/" + payload.no)
         .then(response => {
           store.commit(Constant.GET_BULLETIN, { bulletin: response.data.data });
-          console.log(store.state.bulletin.bno);
           var newhits = store.state.bulletin.hits + 1;
-          console.log("## newhits : " + newhits);
-          store.dispatch(Constant.UPDATE_BULLETIN, { 
+
+          store.dispatch(Constant.UPDATE_BULLETIN, {
             bulletin : {
-              bno : store.state.bulletin.bno,
-              contents : store.state.bulletin.contents,
-              goods : store.state.bulletin.goods,
-              hits : newhits,
-              title : store.state.bulletin.title
+              contents: store.state.bulletin.contents,
+              goods: store.state.bulletin.goods,
+              hits: newhits,
+              title: store.state.bulletin.title,
+              bno: store.state.bulletin.bno
             }
           });
         })
@@ -100,7 +99,7 @@ const store = new Vuex.Store({
         .then(response => {
           console.log(response);
           console.log(payload.bulletin);
-          store.dispatch(Constant.GET_BULLETINLIST, payload.sno);
+          // store.dispatch(Constant.GET_BULLETIN, {no : payload.bulletin.bno});
         })
         .catch(() => console.log("수정에 실패하였습니다."));
     },

@@ -6,6 +6,10 @@
       <table>
         <tr>
           <td>
+            작성자 :
+            <input type="text" disabled v-model="oriBulletin.uid" />
+          </td>
+          <td>
             제목 :
             <input type="text" v-model="bulletin.title" />
           </td>
@@ -38,6 +42,7 @@ export default {
   data() {
     return {
       bulletin: {
+        bno : "",
         bregdate: "",
         contents: "",
         goods: 0,
@@ -65,7 +70,7 @@ export default {
         this.$store.dispatch(Constant.UPDATE_BULLETIN, {
           bulletin: this.bulletin
         });
-        this.$router.push("/");
+        this.$router.push("/detail/"+ this.bulletin.bno);
       }
     },
     clear() {
