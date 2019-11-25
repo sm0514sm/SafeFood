@@ -70,12 +70,12 @@
 	</select>
 	
 	<select id="freIngesFoodList" 						resultType="food">
-   		select count(i.code) cnt, f.code, f.name, f.img, maker
+   		select count(i.code) count, f.code, f.name, f.img, maker
 		from ingestion i
 		left join food f
 		using (code)
 		group by code
-		order by cnt desc limit 3;
+		order by count desc limit 3;
    </select>
 </mapper>
 
