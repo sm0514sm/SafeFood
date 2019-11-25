@@ -9,34 +9,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-
 <title>상품 목록</title>
-
-<link rel="icon" href="../favicon.ico">
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/bootstrap-theme.css">
-<link rel="stylesheet" href="theme.css">
-
-<!-- add -->
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<link rel="stylesheet" href="css/themify-icons.css">
-<link rel="stylesheet" href="css/nice-select.css">
-<link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/slicknav.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic|Nanum+Gothic+Coding|Sunflower:300&display=swap">
-
 </head>
-
 <body role="document">
 	<jsp:include page="header.jsp" />
 	<div class="header-margin" style="margin-top: 150px;"></div>
 	<%-- <jsp:include page="jumbotron.jsp" /> --%>
-
 	<div class="container theme-showcase" role="main" id="contents">
 		<div class="row">
 			<c:forEach items="${list}" var="food" varStatus="status">
@@ -50,7 +28,6 @@
 				</div>
 				<div class="col-md-4">
 					<h3>${food.name}</h3>
-
 					<table class="table table-condensed">
 						<tbody>
 							<tr>
@@ -78,5 +55,6 @@
 			</c:forEach>
 		</div>
 	</div>
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>

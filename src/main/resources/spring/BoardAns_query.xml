@@ -41,9 +41,13 @@
    		update board_a
    		set title = #{title},
    			contents = #{contents},
-   			bregdate = now(),
    			goods = #{goods},
-   			hits = #{hits}
+   		where bno = #{bno}
+   </update>
+   
+   <update id="goodBoardAns"		parameterType="boardans">
+   		update board_a
+   		set goods = goods + 1
    		where bno = #{bno}
    </update>
    
@@ -51,40 +55,6 @@
    		delete from board_a where bno = #{bno}
    </delete>
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
 
 
 

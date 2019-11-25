@@ -8,5 +8,6 @@ export default {
   ADD_BOARDANS: "addBoardAns",
   DELETE_BULLETIN: "deleteBulletin",
   GET_ID: "getId",
-  REMOVE_BOARDANS: "removeBoardAns"
+  REMOVE_BOARDANS: "removeBoardAns",
+  GOOD_BOARDANS : "goodBoardAns"
 };

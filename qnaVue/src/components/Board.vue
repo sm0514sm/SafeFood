@@ -42,7 +42,7 @@
             />
           </td>
           <td>
-            <input type="button" style="height:25px;" value="전체목록" @click="getAllBulltein()" />
+            <input type="button" style="height:25px;" value="전체목록" @click="getAllBulltein(2)" />
           </td>
           <td>
             <input type="button" style="height:25px;" value="글쓰기" @click="GoAddBulletin()" />
@@ -77,7 +77,7 @@ export default {
     };
   },
   created() {
-    this.getAllBulltein();
+    this.getAllBulltein(2);
     this.getId();
   },
   computed: {
@@ -86,8 +86,8 @@ export default {
     }
   },
   methods: {
-    getAllBulltein() {
-      this.$store.dispatch(Constant.GET_BULLETINLIST);
+    getAllBulltein(sno) {
+      this.$store.dispatch(Constant.GET_BULLETINLIST, {sno});
     },
     getBulletin(no) {
       this.$router.push("/detail/" + no);

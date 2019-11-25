@@ -10,4 +10,5 @@ public interface BoardAnsService {
 	public void insertBoardAns(BoardAns boardAns);
 	public void updateBoardAns(BoardAns boardAns);
 	public void deleteBoardAns(String bno);
+	public void goodBoardAns(BoardAns boardAns);	//goods++
 }

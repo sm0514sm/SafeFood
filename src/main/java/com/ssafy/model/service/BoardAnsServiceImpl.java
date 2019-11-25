@@ -58,6 +58,15 @@ public class BoardAnsServiceImpl implements BoardAnsService {
 			throw new BoardException("답변 게시글 삭제 중 오류 발생");
 		}
 	}
+	
+	public void goodBoardAns(BoardAns boardAns) {
+		try{
+			dao.goodBoardAns(boardAns);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new BoardException("답변 게시글 좋아요 중 오류 발생");
+		}
+	}
 }
 
 

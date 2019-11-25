@@ -24,9 +24,9 @@ public class BoardServiceImpl implements BoardService {
 		}
 	}
 	
-	public List<Board> searchAll() {
+	public List<Board> searchAll(String sno) {
 		try {
-			return dao.searchAll();
+			return dao.searchAll(sno);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new BoardException("전체 게시글 검색 중 오류 발생");

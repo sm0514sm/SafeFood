@@ -7,7 +7,7 @@ import com.ssafy.model.dto.Board;
 
 public interface BoardService {
 	public Board search(String bno);
-	public List<Board> searchAll();
+	public List<Board> searchAll(String bno);
 	public List<Board> searchBoard(Map<String,String> map);
 	public void insertBoard(Board board);
 	public void updateBoard(Board board);

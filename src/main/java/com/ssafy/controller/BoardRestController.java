@@ -45,9 +45,9 @@ public class BoardRestController {
 	}
 	
 	@ApiOperation("전체 게시글 목록을 조회하는 기능")
-	@GetMapping("/rest/board")
-	public ResponseEntity<Map<String, Object>> searchAll() {
-		List<Board> list = service.searchAll();
+	@GetMapping("/rest/boardlist/{sno}")
+	public ResponseEntity<Map<String, Object>> searchAll(@PathVariable String sno) {
+		List<Board> list = service.searchAll(sno);
 		return handleSuccess(list);
 	}
 	
@@ -92,7 +92,7 @@ public class BoardRestController {
 	
 	@ApiOperation("전체 답변 게시글 목록을 조회하는 기능")
 	@GetMapping("/rest/boardansq/{qno}")
-	public ResponseEntity<Map<String, Object>> searchAll(@PathVariable String qno) {
+	public ResponseEntity<Map<String, Object>> searchAll2(@PathVariable String qno) {
 		List<BoardAns> list = aService.searchAll(qno);
 		return handleSuccess(list);
 	}
@@ -106,8 +106,8 @@ public class BoardRestController {
 	
 	@ApiOperation("답변 게시글을 수정하는 기능")
 	@PutMapping("/rest/boardans")
-	public ResponseEntity<Map<String, Object>> updateBoardAns(@RequestBody BoardAns boardans) {
-		aService.updateBoardAns(boardans);
+	public ResponseEntity<Map<String, Object>> updateBoardAns(@RequestBody BoardAns boardAns) {
+		aService.updateBoardAns(boardAns);
 		return handleSuccess("수정 완료");
 	}
 	
@@ -116,6 +116,13 @@ public class BoardRestController {
 	public ResponseEntity<Map<String, Object>> foodDetail(@PathVariable String bno) {
 		aService.deleteBoardAns(bno);
 		return handleSuccess("삭제 완료");
+	}
+	
+	@ApiOperation("답변 게시글 좋아요 증가시키는 기능")
+	@PutMapping("/rest/goodboardans")
+	public ResponseEntity<Map<String, Object>> goodBoardAns(@RequestBody BoardAns boardAns) {
+		aService.goodBoardAns(boardAns);
+		return handleSuccess("좋아요 완료");
 	}
 	
 	public ResponseEntity<Map<String, Object>> handleFail(Object data, HttpStatus state) {

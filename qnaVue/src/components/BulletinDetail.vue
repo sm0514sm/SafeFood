@@ -4,7 +4,11 @@
     <br />
     <div>
       <div v-if="id == bulletin.uid">
-        <input type="button" value="로그인 되어있군요! 수정하기" @click="GoEditBulletin(id)" />
+        <input
+          type="button"
+          value="로그인 되어있군요! 수정하기"
+          @click="GoEditBulletin(id)"
+        />
       </div>
       <table>
         <tr id="header">
@@ -25,7 +29,11 @@
           </td>
         </tr>
         <tr>
-          <td colspan="4" v-html="bulletin.contents" style="text-align: left"></td>
+          <td
+            colspan="4"
+            v-html="bulletin.contents"
+            style="text-align: left"
+          ></td>
         </tr>
       </table>
 
