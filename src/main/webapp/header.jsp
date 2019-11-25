@@ -36,10 +36,10 @@ function login() {
 							<nav>
 								<ul class="mein_menu_list" id="navigation">
 									<div class="logo-img d-none d-lg-block">
-										<a href="index.do"> <img src="img/logo.png" alt=""
+										<a href="index.do"> <img src="img/logo2.png" alt=""
 											style="width: 100px;"></a>
 									</div>
-									<li><a href="about.html">공지사항</a></li>
+									<li><a href="notice.do">공지사항</a></li>
 									<li><a href="foodList.do">상품 정보</a></li>
 									<li><a href="CaloryFood.jsp">칼로리별 섭취</a></li>
 									<li><a href="bestfood.do">베스트 섭취 음식</a></li>
@@ -123,7 +123,7 @@ function login() {
 										</div>
 									</div>
 								</div>
-
+								
 
 								<div class="modal register_modal" id="registerModal"
 									tabindex="-1" role="dialog">

@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
     <router-view></router-view>
   </div>
 </template>
@@ -21,6 +20,7 @@ const router = new VueRouter({
   routes: [
     { path: "/", component: Notice },
     { path: "/notice.html", component: Notice },
+    { path: "/notice.jsp", component: Notice },
     { path: "/detail/:no", component: NoticeDetail },
     { path: "/updateNotice/:no", component: UpdateNotice },
     { path: "/addNotice", component: AddNotice }
