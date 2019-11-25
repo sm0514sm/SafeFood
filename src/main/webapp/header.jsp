@@ -60,17 +60,17 @@ function login() {
 									<c:choose>
 										<c:when test="${sessionScope.id == null}">
 											<li class="nav-item active"><button type="button"
-													class="btn btn-outline-success" data-toggle="modal"
+													class="btn btn-success" data-toggle="modal"
 													data-target="#loginModal">Login</button></li>&nbsp;&nbsp;&nbsp;&nbsp;
 												<li class="nav-item active"><button type="button"
-													class="btn btn-outline-info" data-toggle="modal"
+													class="btn btn-info" data-toggle="modal"
 													data-target="#registerModal">Register</button></li>
 										</c:when>
 										<c:otherwise>
 											<div class="form-group">
 												<%-- <a class="btn btn-primary">${sessionScope.id } 님 환영합니다</a> --%>
-												<a class="btn btn-outline-success" href="userInfo.do"
-													role="button">Modify</a> <a class="btn btn-outline-info"
+												<a class="btn btn-success" href="userInfo.do"
+													role="button">Modify</a> <a class="btn btn-info"
 													href="logout.do" role="button">Logout</a>
 											</div>
 										</c:otherwise>

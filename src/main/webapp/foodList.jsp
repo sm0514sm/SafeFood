@@ -11,6 +11,12 @@
 <meta name="author" content="">
 
 <title>상품 목록</title>
+<style>
+th, td {
+	padding-top: 2px !important;
+	padding-bottom: 2px !important;
+}
+</style>
 </head>
 
 <body role="document">
@@ -21,44 +27,44 @@
 	<div class="container theme-showcase" role="main" id="contents">
 		<div class="row">
 			<c:forEach items="${list}" var="food" varStatus="status">
-				<div class="col-md-2">
-					<section>
-						<a href="foodDetail.do?code=${food.code}"> <img id="image"
-							class="img-responsive" alt="${food.name} poster"
-							src="img/${food.name}.jpg" style="width: 150px;">
-						</a>
-					</section>
-				</div>
-				<div class="col-md-4">
-					<h3>${food.name}</h3>
+				<div class="col-md-6">
+					<table class="table table-responsive product-dashboard-table">
+						<tr style="text-align: center; background-color: #e1f5fe; height: 45px;">
+							<th width="200">Image</th>
+							<th width="300">Product</th>
+							<th width="200" class="text-center">Maker</th>
+						</tr>
 
-					<table class="table table-condensed">
-						<tbody>
-							<tr>
-								<td>제품명</td>
-								<td colspan="2">${food.name}</td>
-							</tr>
-							<tr>
-								<td>제조사</td>
-								<td colspan="2">${food.maker}</td>
-							</tr>
-							<tr>
-								<td>알레르기 성분</td>
-								<td colspan="2">${food.allergy}</td>
-							</tr>
-						</tbody>
+						<tr style="text-align: center;">
+							<td rowspan="3" class="product-thumb" style="vertical-align: middle; !important">
+								<a href="foodDetail.do?code=${food.code}"><img id="image" class="img-responsive" alt="${food.name} poster" src="img/${food.name}.jpg" style="width: 150px;"></a>
+							</td>
+							<td style="vertical-align: middle; !important">${food.name}</td>
+							<td style="vertical-align: middle; !important">${food.maker}</td>
+
+						</tr>
+
+						<tr style="text-align: center; background-color: #e1f5fe;">
+							<th>Allergy</th>
+							<th>Calory</th>
+						</tr>
+
+						<tr style="text-align: center;">
+							<td style="vertical-align: middle; !important">${food.allergy}</td>
+							<td style="vertical-align: middle; !important">${food.calory}</td>
+						</tr>
+						<%-- <p>
+							<c:if test="${not empty sessionScope.id}">
+								<a class="btn btn-primary" href="ingestion.do?code=${food.code}"
+									role="button">추가</a>\
+							<a class="btn btn-primary" href="#" role="button">찜</a>
+							</c:if>
+						</p> --%>
 					</table>
-					<p>
-						<c:if test="${not empty sessionScope.id}">
-							<a class="btn btn-primary" href="ingestion.do?code=${food.code}"
-								role="button">추가</a>\
-						<a class="btn btn-primary" href="#" role="button">찜</a>
-						</c:if>
-					</p>
 				</div>
 			</c:forEach>
 		</div>
 	</div>
-	<jsp:include page="footer.jsp"/>
+	<jsp:include page="footer.jsp" />
 </body>
 </html>
