@@ -9,12 +9,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
+
 <title>상품 목록</title>
 </head>
+
 <body role="document">
 	<jsp:include page="header.jsp" />
 	<div class="header-margin" style="margin-top: 150px;"></div>
 	<%-- <jsp:include page="jumbotron.jsp" /> --%>
+
 	<div class="container theme-showcase" role="main" id="contents">
 		<div class="row">
 			<c:forEach items="${list}" var="food" varStatus="status">
@@ -28,6 +31,7 @@
 				</div>
 				<div class="col-md-4">
 					<h3>${food.name}</h3>
+
 					<table class="table table-condensed">
 						<tbody>
 							<tr>
