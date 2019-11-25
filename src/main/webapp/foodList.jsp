@@ -26,14 +26,16 @@ th, td {
 
 	<div class="container theme-showcase" role="main" id="contents">
 		<h3 class="widget-header min-title">Food List</h3>
+		<!-- <h5 style="text-align:right">조회순 정렬</h5> -->
+		
 		<div class="row">
 			<c:forEach items="${list}" var="food" varStatus="status">
 				<div class="col-md-6">
-					<table class="table table-responsive product-dashboard-table">
-						<tr style="text-align: center; background-color: #e1f5fe; height: 45px;">
-							<th width="200">Image</th>
-							<th width="300">Product</th>
-							<th width="200" class="text-center">Maker</th>
+					<table class="table table-responsive product-dashboard-table" style="border: 1.5px solid #e1f5fe;">
+						<tr style="text-align: center; background-color: #e1f5fe; height: 50px;">
+							<th width="200" style="vertical-align: middle; !important">Image</th>
+							<th width="350" style="vertical-align: middle; !important">Product</th>
+							<th width="200" class="text-center" style="vertical-align: middle; !important">Maker</th>
 						</tr>
 
 						<tr style="text-align: center;">
@@ -46,8 +48,8 @@ th, td {
 						</tr>
 
 						<tr style="text-align: center; background-color: #e1f5fe;">
-							<th>Allergy</th>
-							<th>Calory</th>
+							<th width="350" style="vertical-align: middle; !important">Allergy</th>
+							<th width="200" style="vertical-align: middle; !important">Calory</th>
 						</tr>
 
 						<tr style="text-align: center;">

@@ -68,7 +68,9 @@
 			<div class="row">
 				<!-- Recently Favorited -->
 				<div class="widget dashboard-container my-adslist">
-					<h3 class="widget-header min-title">Calory별 식품 조합</h3>
+					<c:if test="${not empty calory}">
+						<h3 class="widget-header min-title">Calory별 식품 조합</h3>
+					</c:if>
 					<table class="table table-responsive product-dashboard-table">
 						<c:forEach items="${calory}" var="f">
 							<thead>
