@@ -58,7 +58,6 @@ export default {
   name: "Notice",
   created() {
     this.$store.state.id = "root";
-    alert(this.id + "로 로그인되어 있습니다.");
     this.getAllBulltein();
     this.getId();
   },
@@ -93,7 +92,7 @@ export default {
 <style scoped>
 table {
   margin: auto;
-  width: 90%;
+  width: 80%;
   border-top: 3px solid #696969;
   border-collapse: collapse;
 }

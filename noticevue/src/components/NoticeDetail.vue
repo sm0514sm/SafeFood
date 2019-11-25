@@ -58,7 +58,6 @@ export default {
     };
   },
   created() {
-    alert(this.id + "로 로그인되어 있습니다.");
     this.$store.dispatch(Constant.GET_BULLETIN, { no: this.$route.params.no });
     this.$store.dispatch(Constant.GET_COMMENTS, { qno: this.$route.params.no });
   },

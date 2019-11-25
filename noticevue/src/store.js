@@ -12,9 +12,9 @@ const store = new Vuex.Store({
     id: ""
   },
   actions: {
-    [Constant.GET_BULLETINLIST]: (store, payload) => {
+    [Constant.GET_BULLETINLIST]: store => {
       http
-        .get("/rest/boardlist/" + payload.sno)
+        .get("/rest/boardlist/" + 1)
         .then(response => {
           store.commit(Constant.GET_BULLETINLIST, {
             bulletins: response.data.data
@@ -81,7 +81,7 @@ const store = new Vuex.Store({
         .then(response => {
           console.log(response);
           console.log(payload.bulletin);
-          store.dispatch(Constant.GET_BULLETINLIST, payload.sno);
+          store.dispatch(Constant.GET_BULLETINLIST, 1);
         })
         .catch(() => console.log("추가에 실패하였습니다."));
     },
@@ -100,7 +100,7 @@ const store = new Vuex.Store({
         .then(response => {
           console.log(response);
           console.log(payload.bulletin);
-          store.dispatch(Constant.GET_BULLETINLIST, payload.sno);
+          store.dispatch(Constant.GET_BULLETINLIST, 1);
         })
         .catch(() => console.log("수정에 실패하였습니다."));
     },
@@ -108,7 +108,8 @@ const store = new Vuex.Store({
       http
         .delete("rest/board/" + payload.bno)
         .then(() => {
-          store.dispatch(Constant.GET_BULLETINLIST, payload.bno);
+          console.log(payload.bno);
+          store.dispatch(Constant.GET_BULLETINLIST, 1);
           console.log("삭제 처리 되었습니다.");
         })
         .catch(exp => alert("삭제 처리에 실패하였습니다" + exp));
