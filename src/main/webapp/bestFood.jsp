@@ -46,7 +46,7 @@
 									${food.maker} <br/>
 								</div>
 							</c:forEach>
-							
+													
 						</form>
 					</div>
 				</div>

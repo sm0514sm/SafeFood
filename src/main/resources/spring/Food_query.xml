@@ -77,6 +77,22 @@
 		group by code
 		order by count desc limit 3;
    </select>
+   
+   <insert id="insertSelectFood"	parameterType="ingestion">
+   		insert into selectfood (id, code, selectdate, quantity) 
+   		values ( #{id}, #{code}, now(), #{quantity} );
+   </insert>
+   
+   <select id="selectSelectFood"	parameterType="string"	resultType="ingestion">
+   		select *
+   		from selectfood 
+   		where id = #{id};
+   </select>
+   
+   <delete id="deleteSelectFood" 	parameterType="string">
+   		delete from selectfood
+   		where no = #{ino};
+   </delete>
 </mapper>
 
 

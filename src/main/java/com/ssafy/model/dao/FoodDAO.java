@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.ssafy.model.dto.Food;
 import com.ssafy.model.dto.FoodPageBean;
+import com.ssafy.model.dto.Ingestion;
 
 @Mapper	//query.xml을 자동 매핑
 public interface FoodDAO {
@@ -37,8 +38,13 @@ public interface FoodDAO {
 	
 	public void addCount(int code);
 	
-	public List<Food> freIngesFoodList();			//자주 섭취한 식품 정보 보여주기
+	public List<Food> freIngesFoodList();					//자주 섭취한 식품 정보 보여주기
 	
+	public void insertSelectFood(Ingestion ingestion);		//찜한 음식 추가
+	
+	public List<Ingestion> selectSelectFood(String id);		//찜한 음식 조회
+	
+	public void deleteSelectFood(String ino);				//찜한 음식 삭제
 //	아래 미구현
 //	/**
 //	 * 가장 많이 검색한 Food  정보 리턴하기 

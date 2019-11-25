@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.ssafy.model.dao.FoodDAO;
 import com.ssafy.model.dto.Food;
 import com.ssafy.model.dto.FoodPageBean;
+import com.ssafy.model.dto.Ingestion;
 import com.ssafy.model.dto.SafeFoodException;
 
 @Service
@@ -108,6 +109,34 @@ public class FoodServiceImpl implements FoodService{
 		}catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException();
+		}
+	}
+	
+	public void insertSelectFood(Ingestion ingestion) {
+		try {
+			System.out.println(ingestion);
+			dao.insertSelectFood(ingestion);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("찜 목록 추가 중 오류");
+		}
+	}
+	
+	public List<Ingestion> selectSelectFood(String id){
+		try {
+			return dao.selectSelectFood(id);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("찜 목록 조회 중 오류");
+		}
+	}
+	
+	public void deleteSelectFood(String ino) {
+		try {
+			dao.deleteSelectFood(ino);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("찜 목록 삭제 중 오류");
 		}
 	}
 }

@@ -33,6 +33,8 @@
 			, (f.name) as foodName
 			, f.material as material
 			, u.allergy as allergy
+			,f.img as foodImg
+            ,calory
 		from ingestion join food f using (code) join user u using (id)
 		where id=#{id}
 		order by ingdate desc;
