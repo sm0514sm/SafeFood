@@ -3,8 +3,8 @@
     <div>우리 민기 삼성갑니다!!!5</div>
     <br />
     <div>
-      <div v-if="id != null && id != ''">
-        <input type="button" value="로그인 되어있군요! 수정하기" @click="GoEditBulletin()" />
+      <div v-if="id == bulletin.uid">
+        <input type="button" value="로그인 되어있군요! 수정하기" @click="GoEditBulletin(id)" />
       </div>
       <table>
         <tr id="header">
@@ -129,7 +129,8 @@ export default {
     ansClear() {
       this.boardAns.contents = "";
     },
-    GoEditBulletin() {
+    GoEditBulletin(id) {
+      alert("id : " + id);
       this.$router.push("/updateBulletin");
     }
   }
