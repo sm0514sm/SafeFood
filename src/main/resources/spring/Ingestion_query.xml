@@ -32,10 +32,10 @@
    		select ino, id, code, ingdate, quantity
 			, (f.name) as foodName
 			, f.material as material
-			, u.allergy as allergy
+			, f.allergy
 			,f.img as foodImg
             ,calory
-		from ingestion join food f using (code) join user u using (id)
+		from ingestion join food f using (code)
 		where id=#{id}
 		order by ingdate desc;
    </select>
