@@ -33,7 +33,7 @@ public class FoodController {
 	@GetMapping("/")
 	public String index0(Model model) {
 		model.addAttribute("list", service.searchAll());
-		return "foodList";
+		return "index";
 	}
 	
 	@GetMapping("index.do")
@@ -44,7 +44,6 @@ public class FoodController {
 	
 	@GetMapping("qna.do")
 	public String qna(Model model) {
-		System.out.println("move to qna.html");
 		return "redirect:/qna.html";
 	}
 

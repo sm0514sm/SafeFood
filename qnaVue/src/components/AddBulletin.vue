@@ -54,7 +54,6 @@ export default {
   },
   methods: {
     addBulletin() {
-      console.log("## id : " + this.$store.state.id);
       if (this.bulletin.title.trim() == "") alert("제목을 입력하세요!");
       else if (this.bulletin.uid.trim() == "") alert("작성자를 입력하세요!");
       else if (this.bulletin.contents.trim() == "") alert("내용을 입력하세요!");

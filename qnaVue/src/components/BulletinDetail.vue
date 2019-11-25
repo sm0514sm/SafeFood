@@ -42,16 +42,26 @@
           <td>
             <input type="button" value="등록" @click="addBoardAns()" />
           </td>
+          <td></td>
         </tr>
         <tr id="header" style="background-color: lightblue">
           <td>작성자</td>
           <td colspan="2">내용</td>
           <td>시간</td>
+          <td width="25px"></td>
         </tr>
         <tr v-for="comment in comments" v-bind:key="comment.bno">
           <td>{{ comment.uid }}</td>
           <td colspan="2">{{ comment.contents }}</td>
           <td>{{ comment.bregdate }}</td>
+          <td>
+            <input
+              v-if="comment.uid == id"
+              type="button"
+              value="삭제"
+              @click="removeBoardAns(comment.bno)"
+            />
+          </td>
         </tr>
       </table>
 
@@ -69,11 +79,12 @@ export default {
   data() {
     return {
       boardAns: {
+        bno: "",
         sno: "",
         contents: "",
         bregdate: "",
-        uid: "",
-        qno: ""
+        uid: this.$store.state.id,
+        qno: this.$route.params.no
       }
     };
   },
@@ -103,12 +114,20 @@ export default {
         contents: this.boardAns.contents,
         hits: 0,
         goods: 0,
-        uid: "jaen",
+        uid: this.$store.state.id,
         qno: this.$route.params.no
       });
+      this.ansClear();
     },
-    GoEditBulletin() {
-      this.$router.push("/updateBulletin");
+    removeBoardAns(bno) {
+      //bno : 답글 번호 , qno : 게시글 번호
+      this.$store.dispatch(Constant.REMOVE_BOARDANS, {
+        bno,
+        qno: this.boardAns.qno
+      });
+    },
+    ansClear() {
+      this.boardAns.contents = "";
     }
   }
 };
