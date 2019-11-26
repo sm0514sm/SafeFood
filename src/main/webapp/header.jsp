@@ -56,7 +56,7 @@ function login() {
 											<li><a href="#">섭취 정보<i class="ti-angle-down"></i></a>
 												<ul class="submenu">
 													<li><a href="ingestionList.do">내 섭취 정보</a></li>
-											<li><a href="#contact">예상 섭취 정보</a></li>
+											<li><a href="selectList.do">예상 섭취 정보</a></li>
 												</ul>
 											</li>
 										</c:when>

@@ -12,4 +12,5 @@ public interface BoardService {
 	public void insertBoard(Board board);
 	public void updateBoard(Board board);
 	public void deleteBoard(String bno);
+	public void hitBoard(String bno) ;						//board 조회수 증가
 }

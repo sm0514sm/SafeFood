@@ -3,6 +3,8 @@ package com.ssafy.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -106,4 +108,10 @@ public class FoodController {
 		return "bestFood";
 	}
 	
+	@GetMapping("selectList.do")
+	public String selectList(Model model,HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		model.addAttribute("list", service.selectSelectFood(id));
+		return "selectList";
+	}
 }

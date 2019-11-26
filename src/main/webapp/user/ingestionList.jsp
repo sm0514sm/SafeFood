@@ -10,7 +10,103 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" href="favicon.ico">
+<script type='text/javascript' src='js/jquery-3.3.1.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	DoughnutChart();
+});
 
+function DoughnutChart() {		
+	var ctx = document.getElementById("myChart").getContext('2d');
+/*
+- Chart를 생성하면서, 
+- ctx를 첫번째 argument로 넘겨주고, 
+- 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줍니다. 
+*/
+	var myChart = new Chart(ctx,
+	{
+		type : 'bar',
+		data : {
+			labels :['# 총 합산 영양소'],
+			datasets:[{
+				label:"칼로리",
+				backgroundColor : 'rgba(255, 99, 132, 0.2)',
+				data : [${food.calory}]
+			},{
+				label:"탄수화물",
+				backgroundColor : 'rgba(54, 162, 235, 0.2)',
+				data : [${food.carbo}]
+			},{
+				label:"단백질",
+				backgroundColor : 'rgba(255, 206, 86, 0.2)',
+				data : [${food.protein}]
+			},{
+				label:"지방",
+				backgroundColor : 'rgba(75, 192, 192, 0.2)',
+				data : [${food.fat}]
+			},{
+				label:"당류",
+				backgroundColor : 'rgba(153, 102, 255, 0.2)',
+				data : [${food.sugar}]
+			},{
+				label:"나트륨",
+				backgroundColor : 'rgba(255, 159, 64, 0.2)',
+				data : [${food.natrium}]
+			},{
+				label:"콜레스테롤",
+				backgroundColor : 'rgba(255, 215, 000, 0.2)',
+				data : [${food.chole}]
+			},{
+				label:"포화지방산",
+				backgroundColor : 'rgba(075, 000, 130, 0.2)',
+				data : [${food.fattyacid}]
+			},{
+				label:"트랜스지방",
+				backgroundColor : 'rgba(105, 105, 105, 0.2)',
+				data : [${food.transfat}]
+			}]
+// 				backgroundColor : [ 
+// 						'rgba(255, 99, 132, 0.2)',
+// 						'rgba(54, 162, 235, 0.2)',
+// 						'rgba(255, 206, 86, 0.2)',
+// 						'rgba(75, 192, 192, 0.2)',
+// 						'rgba(153, 102, 255, 0.2)',
+// 						'rgba(255, 159, 64, 0.2)',
+// 						'rgba(255, 215, 000, 0.2)',
+// 						'rgba(075, 000, 130, 0.2)',
+// 						'rgba(105, 105, 105, 0.2)' ],
+// 				borderColor : [ 
+// 						'rgba(255,99,132,1)',
+// 						'rgba(54, 162, 235, 1)',
+// 						'rgba(255, 206, 86, 1)',
+// 						'rgba(75, 192, 192, 1)',
+// 						'rgba(153, 102, 255, 1)',
+// 						'rgba(255, 159, 64, 1)',
+// 						'rgba(255, 215, 000, 1)',
+// 						'rgba(075, 000, 130, 1)',
+// 						'rgba(105, 105, 105, 1)' ],
+// 				borderWidth : 1
+// 				}]
+		},
+		options : {
+			maintainAspectRatio : true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+			scales : {
+				yAxes : [{
+					ticks : {
+						beginAtZero : true
+					}
+				}]
+			},
+			legend:{
+				display:true,
+				position:'bottom'
+			}
+			
+		}
+	});
+}
+</script>
 <title>섭취 목록</title>
 
 </head>
@@ -78,12 +174,12 @@
 							</tr>
 						</c:forEach>
 					</table>
+					<div class="container theme-showcase" role="main" id="contents">
+						<canvas id="myChart"></canvas>
+					</div>
 				</div>
 			</div>
 			<!-- Row End -->
-		</div>
-		<div style="margin:auto;">
-			<a class="btn btn-primary" href="showGraph.do" role="button">섭취정보 그래프로 보기</a>
 		</div>
 		<!-- Container End -->
 	</section>
