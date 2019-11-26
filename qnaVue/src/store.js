@@ -31,9 +31,6 @@ const store = new Vuex.Store({
             payload.searchBulletin.searchWord
         )
         .then(response => {
-          console.log("아무거나");
-          console.log(payload);
-          console.log(response.data.data);
           store.commit(Constant.GET_SEARCH_BULLETINLIST, {
             bulletins: response.data.data
           });
@@ -44,6 +41,8 @@ const store = new Vuex.Store({
       http
         .get("/rest/board/" + payload.no)
         .then(response => {
+          console.log("get_bulletin");
+          console.log(response.data.data);
           store.commit(Constant.GET_BULLETIN, { bulletin: response.data.data });
         })
         .catch(exp => alert("처리에 실패하였습니다." + exp));
@@ -96,11 +95,17 @@ const store = new Vuex.Store({
           uid: payload.bulletin.uid
         })
         .then(response => {
+          console.log("update_bulletin 실행");
           console.log(response);
           console.log(payload.bulletin);
-          // store.dispatch(Constant.GET_BULLETIN, { no: payload.bulletin.bno });
+          store.commit(Constant.GET_BULLETIN, {
+            bulletin: payload.bulletin
+          });
         })
-        .catch(() => console.log("수정에 실패하였습니다."));
+        .catch(err => {
+          console.log(err);
+          console.log("수정에 실패하였습니다.");
+        });
     },
     [Constant.DELETE_BULLETIN]: (store, payload) => {
       http
