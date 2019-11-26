@@ -139,4 +139,13 @@ public class FoodServiceImpl implements FoodService{
 			throw new RuntimeException("찜 목록 삭제 중 오류");
 		}
 	}
+	
+	public List<Food> searchNutrientS(String id) {
+		try {
+			return dao.searchNutrientS(id);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("그래프 데이터 조회 중 오류");
+		}
+	}
 }

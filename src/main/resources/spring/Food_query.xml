@@ -84,15 +84,25 @@
    </insert>
    
    <select id="selectSelectFood"	parameterType="string"	resultType="ingestion">
-   		select *
-   		from selectfood 
-   		where id = #{id};
+   		select code,no ino,name foodname, selectdate as ingdate, quantity, calory, allergy, img
+		from selectfood
+		left join food
+		using (code)
+		where id=#{id};
    </select>
    
    <delete id="deleteSelectFood" 	parameterType="string">
    		delete from selectfood
    		where no = #{ino};
    </delete>
+   
+   <select id="searchNutrientS" parameterType="string" resultType="food">
+   		select calory, carbo, protein, fat, sugar, natrium, chole, fattyacid, transfat
+		from selectfood s
+		join food f
+		using (code)
+		where id=#{id};
+   </select>
 </mapper>
 
 

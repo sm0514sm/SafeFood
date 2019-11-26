@@ -9,6 +9,7 @@ public class Ingestion {
 	String foodName;
 	String material;
 	String allergy;
+	String img;
 	
 	public Ingestion() {
 		super();
@@ -105,6 +106,14 @@ public class Ingestion {
 
 	public void setAllergy(String allergy) {
 		this.allergy = allergy;
+	}
+	
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 	@Override

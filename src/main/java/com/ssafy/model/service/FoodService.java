@@ -44,6 +44,9 @@ public interface FoodService {
 	public List<Ingestion> selectSelectFood(String id);		//찜한 음식 조회
 	
 	public void deleteSelectFood(String ino);				//찜한 음식 삭제
+	
+	public List<Food> searchNutrientS(String id);					//그래프 정보
+	
 //	아래 미구현
 //	/**
 //	 * 가장 많이 검색한 Food  정보 리턴하기 
