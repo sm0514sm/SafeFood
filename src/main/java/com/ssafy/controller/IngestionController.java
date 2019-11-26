@@ -14,12 +14,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ssafy.model.dto.Food;
 import com.ssafy.model.dto.Ingestion;
+import com.ssafy.model.service.FoodService;
 import com.ssafy.model.service.IngestionService;
+import com.ssafy.model.service.UserService;
 
 @Controller
 public class IngestionController {
 	@Autowired
 	private IngestionService service;
+	@Autowired
+	private UserService userService;
 
 	@ExceptionHandler
 	public ModelAndView handler(Exception e) {
@@ -90,6 +94,8 @@ public class IngestionController {
 		//그래프 데이터
 		System.out.println("## showGraph.do ##");
 		String id = (String)session.getAttribute("id");
+		String[] allergies = userService.search(id).getAllergy().replaceAll(" ", "").split("[,]");
+		
 		List<Food> list = service.searchNutrient(id);
 		Food food = new Food();
 		double calory =	 	0.0;
@@ -102,6 +108,13 @@ public class IngestionController {
 		double fattyacid = 	0.0;
 		double transfat = 	0.0;
 		
+		int[] allerCnt = new int[14];
+		String[] allergyList = new String[] {"대두", "땅콩","우유", "게"
+											, "새우", "참치", "연어", "숙"
+											, "소고기", "닭고기", "돼지고기"
+											, "복숭아", "민들레", "계란흰자"};
+
+		
 		for(Food f : list) {
 			calory 		+= 	f.getCalory();
 			carbo 		+= 	f.getCarbo();
@@ -113,6 +126,10 @@ public class IngestionController {
 			fattyacid 	+=	f.getProtein();
 			transfat 	+=	f.getProtein();
 			protein 	+=	f.getProtein();
+			for (int i = 0; i < 14; i++) {
+				if(f.getMaterial().contains(allergyList[i]))
+					allerCnt[i]++;
+			}
 		}
 		
 		food.setCalory(calory);
@@ -128,6 +145,9 @@ public class IngestionController {
 		System.out.println(food);
 		model.addAttribute("food", food);
 		
+		model.addAttribute("allerCnt", allerCnt);
+		model.addAttribute("allergies", allergies);
+		model.addAttribute("allerCount", allergies.length);
 		
 		//섭취 식품 list
 		model.addAttribute("list", service.searchAll((String) session.getAttribute("id")));
