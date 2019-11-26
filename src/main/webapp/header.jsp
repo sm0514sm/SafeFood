@@ -199,7 +199,7 @@ function login() {
 						<div class="mobile_menu d-block d-lg-none"></div>
 					</div>
 					<div class="logo-img-small d-sm-block d-md-block d-lg-none">
-						<a href="index.html"> <img src="img/logo.png" alt="">
+						<a href="index.do"> <img src="img/logo.png" alt="">
 						</a>
 					</div>
 				</div>
