@@ -50,7 +50,7 @@ function login() {
 									<li><a href="foodList.do">상품정보</a></li>
 									<li><a href="bestfood.do">Best상품</a></li>
 									<li><a href="CaloryFood.jsp">칼로리별조합</a></li>
-									<li><a href="origin.jsp">원산지정보</a></li>
+									<li><a href="origin.do">원산지정보</a></li>
 
 									<c:choose>
 										<c:when test="${sessionScope.id != null}">
