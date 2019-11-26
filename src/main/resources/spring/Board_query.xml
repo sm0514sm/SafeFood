@@ -65,13 +65,13 @@
    		where bno = #{bno}
    </update>
    
-   <update id="goodBoard"		parameterType="board">
+   <update id="goodBoard"		parameterType="string">
    		update board_q
    		set goods = goods + 1
    		where bno = #{bno}
    </update>
    
-   <update id="hitBoard"		parameterType="board">
+   <update id="hitBoard"		parameterType="string">
    		update board_q
    		set hits = hits + 1
    		where bno = #{bno}
