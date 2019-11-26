@@ -4,10 +4,11 @@ export default {
   GET_BULLETIN: "getBulletin",
   GET_COMMENTS: "getComments",
   ADD_BULLETIN: "addBulletin",
+  ADD_BULLETIN_CNT: "addBulletinCnt",
   UPDATE_BULLETIN: "updateBulletin",
+  GET_ID: "getId",
   ADD_BOARDANS: "addBoardAns",
   DELETE_BULLETIN: "deleteBulletin",
-  GET_ID: "getId",
   REMOVE_BOARDANS: "removeBoardAns",
-  GOOD_BOARDANS : "goodBoardAns"
+  GOOD_BOARDANS: "goodBoardAns"
 };
