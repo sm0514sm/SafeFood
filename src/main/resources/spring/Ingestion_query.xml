@@ -33,8 +33,9 @@
 			, (f.name) as foodName
 			, f.material as material
 			, f.allergy
-			,f.img as img
-            ,calory
+			<!-- dto에 없어서 현재는 사용 안됨. 현재 이미지 경로는 임의설정함 -->
+			<!-- ,f.img as img
+            ,calory -->
 		from ingestion join food f using (code)
 		where id=#{id}
 		order by ingdate desc;

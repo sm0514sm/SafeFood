@@ -9,8 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-
 <title>SafeFood</title>
+<script src="js/vendor/jquery-1.12.4.min.js"></script>
 </head>
 <body>
 	<jsp:include page="header.jsp"/>
