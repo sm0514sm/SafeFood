@@ -30,10 +30,13 @@ $(function(){
 	 });
 });
 function search() {
-	if (document.getElementById("selectBox") == null) {
+	if (document.getElementById("searchbox").value == null) {
 		alert("검색 조건을 설정해 주세요");
 		return;
 	}
+	/* alert(document.getElementById("searchbox").selectedIndex);
+	alert(document.getElementById("searchbox").text);
+	alert(document.getElementById("searchbox").value); */
 	var frm = document.getElementById("searchForm");
 	frm.submit();
 }
