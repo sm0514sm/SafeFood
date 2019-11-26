@@ -264,7 +264,7 @@ function DoRed(){
 							<tr style="text-align: center;">
 								<td rowspan="2" class="product-thumb" style="vertical-align: middle; !important"><a class="navbar-brand"
 									href="foodDetail.do?code=${food.code}"> <img
-										width="150px;" height="auto" src="img/${food.foodName}.jpg"
+										width="150px;" height="auto" src="${food.img}"
 										alt="image description" />
 								</a></td>
 								<td class="product-details" style="vertical-align: middle; !important"><a
