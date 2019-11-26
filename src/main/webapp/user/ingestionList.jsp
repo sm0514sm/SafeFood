@@ -12,7 +12,7 @@
 <link rel="icon" href="favicon.ico">
 
 <title>섭취 목록</title>
-
+<script type='text/javascript' src='js/jquery-3.3.1.js'></script>
 </head>
 
 <body role="document">
@@ -53,23 +53,23 @@
 									<th width="200">Image</th>
 									<th>Product Title</th>
 									<th class="text-center">섭취일</th>
-									<th class="text-center">칼로리</th>
-									<!-- <th class="text-center">알레르기 성분</th> -->
-									<th class="text-center">삭제</th>
+									<!-- <th class="text-center">칼로리</th> -->
+									<th class="text-center">알레르기 성분</th>
+									<th class="text-center">비고</th>
 								</tr>
 							</thead>
 
 							<tr style="text-align: center;">
 								<td rowspan="2" class="product-thumb" style="vertical-align: middle; !important"><a class="navbar-brand"
-									href="searchDetail.do?code=${food.code}"> <img
+									href="foodDetail.do?code=${food.code}"> <img
 										width="150px;" height="auto" src="img/${food.foodName}.jpg"
 										alt="image description" />
 								</a></td>
 								<td class="product-details" style="vertical-align: middle; !important"><a
-									href="searchDetail.do?code=${food.code}">${food.foodName}</a></td>
+									href="foodDetail.do?code=${food.code}">${food.foodName}</a></td>
 								<td style="vertical-align: middle; !important">${food.ingdate}</td>
+								<%-- <td style="vertical-align: middle; !important">${food.calory}</td> --%>
 								<td style="vertical-align: middle; !important">${food.allergy}</td>
-								<%-- <td style="vertical-align: middle; !important">${f.allergy}</td> --%>
 								<td style="vertical-align: middle; !important"><a href="removeIng.do?ino=${food.ino }">삭제</a></td>
 							</tr>
 							<tr style="text-align: center;">

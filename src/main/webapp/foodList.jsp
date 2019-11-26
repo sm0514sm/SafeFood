@@ -9,8 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-
 <title>상품 목록</title>
+<script src="js/vendor/jquery-1.12.4.min.js"></script>
 <style>
 th, td {
 	padding-top: 2px !important;
@@ -41,6 +41,9 @@ th, td {
 						<tr style="text-align: center;">
 							<td rowspan="3" class="product-thumb" style="vertical-align: middle; !important">
 								<a href="foodDetail.do?code=${food.code}"><img id="image" class="img-responsive" alt="${food.name} poster" src="img/${food.name}.jpg" style="width: 150px;"></a>
+								<c:if test="${not empty sessionScope.id}">
+									<button type="button" class="btn btn-info btn-sm" onclick="location.href='ingestion.do?code=${food.code}'">추가</button> <button type="button" class="btn btn-info btn-sm">찜</button>
+								</c:if>
 							</td>
 							<td style="vertical-align: middle; !important">${food.name}</td>
 							<td style="vertical-align: middle; !important">${food.maker}</td>
@@ -56,13 +59,6 @@ th, td {
 							<td style="vertical-align: middle; !important">${food.allergy}</td>
 							<td style="vertical-align: middle; !important">${food.calory}</td>
 						</tr>
-						<%-- <p>
-							<c:if test="${not empty sessionScope.id}">
-								<a class="btn btn-primary" href="ingestion.do?code=${food.code}"
-									role="button">추가</a>\
-							<a class="btn btn-primary" href="#" role="button">찜</a>
-							</c:if>
-						</p> --%>
 					</table>
 				</div>
 			</c:forEach>
