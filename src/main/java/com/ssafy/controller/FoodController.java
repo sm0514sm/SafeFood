@@ -186,13 +186,17 @@ public class FoodController {
 				"외국산","수입산"//번외
 				};
 		
+		boolean isfind = false;
 		for(Food f : list) {
+			isfind = false;
 			for(String s : nations) {
 				if(f.getMaterial().contains(s)) {
-					domestic.add(f);
+					isfind = true;
 					break;
 				}
 			}
+			if(!isfind)
+				domestic.add(f);
 		}
 		
 		model.addAttribute("list", domestic);
