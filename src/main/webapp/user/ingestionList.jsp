@@ -15,16 +15,17 @@
 <script type="text/javascript">
 $(function(){
 	DoughnutChart();
+	DoRed();
 });
 
 function DoughnutChart() {		
-	var ctx = document.getElementById("myChart").getContext('2d');
+	var ctx = document.getElementById("nutrientChart").getContext('2d');
 /*
 - Chart를 생성하면서, 
 - ctx를 첫번째 argument로 넘겨주고, 
 - 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줍니다. 
 */
-	var myChart = new Chart(ctx,
+	var nutrientChart = new Chart(ctx,
 	{
 		type : 'bar',
 		data : {
@@ -105,7 +106,112 @@ function DoughnutChart() {
 			
 		}
 	});
+	var ctx = document.getElementById("allergyChart").getContext('2d');
+	/*
+	- Chart를 생성하면서, 
+	- ctx를 첫번째 argument로 넘겨주고, 
+	- 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줍니다. 
+	*/
+		var allergyChart = new Chart(ctx,
+		{
+			type : 'bar',
+			data : {
+				labels :['# 총 합산 알레르기 유발 성분'],
+				datasets:[{
+					label:"대두",
+					backgroundColor : 'rgba(255, 99, 132, 0.2)',
+					data : [${allerCnt[0]}]
+				},{
+					label:"땅콩",
+					backgroundColor : 'rgba(54, 162, 235, 0.2)',
+					data : [${allerCnt[1]}]
+				},{
+					label:"우유",
+					backgroundColor : 'rgba(255, 206, 86, 0.2)',
+					data : [${allerCnt[2]}]
+				},{
+					label:"게",
+					backgroundColor : 'rgba(75, 192, 192, 0.2)',
+					data : [${allerCnt[3]}]
+				},{
+					label:"새우",
+					backgroundColor : 'rgba(153, 102, 255, 0.2)',
+					data : [${allerCnt[4]}]
+				},{
+					label:"참치",
+					backgroundColor : 'rgba(255, 159, 64, 0.2)',
+					data : [${allerCnt[5]}]
+				},{
+					label:"연어",
+					backgroundColor : 'rgba(255, 215, 000, 0.2)',
+					data : [${allerCnt[6]}]
+				},{
+					label:"쑥",
+					backgroundColor : 'rgba(075, 000, 130, 0.2)',
+					data : [${allerCnt[7]}]
+				},{
+					label:"소고기",
+					backgroundColor : 'rgba(222, 222, 105, 0.2)',
+					data : [${allerCnt[8]}]
+				},{
+					label:"닭고기",
+					backgroundColor : 'rgba(105, 222, 222, 0.2)',
+					data : [${allerCnt[9]}]
+				},{
+					label:"돼지고기",
+					backgroundColor : 'rgba(157, 100, 85, 0.2)',
+					data : [${allerCnt[10]}]
+				},{
+					label:"복숭아",
+					backgroundColor : 'rgba(35, 25, 105, 0.2)',
+					data : [${allerCnt[11]}]
+				},{
+					label:"민들레",
+					backgroundColor : 'rgba(195, 195, 195, 0.2)',
+					data : [${allerCnt[12]}]
+				},{
+					label:"계란흰자",
+					backgroundColor : 'rgba(5, 105, 15, 0.2)',
+					data : [${allerCnt[13]}]
+				}]
+			},
+			options : {
+				maintainAspectRatio : false, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+				scales : {
+					yAxes : [{
+						ticks : {
+							beginAtZero : true
+						}
+					}]
+				},
+				legend:{
+					display:true,
+					position:'bottom'
+				}
+				
+			}
+		});
 }
+function DoRed(){
+	Array.prototype.forEach.call(document.getElementsByTagName("td"), function(el) { 
+		el.innerHTML = el.innerHTML.replace("${allergies[0]}", "<span style='color: red;'>${allergies[0]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[1]}", "<span style='color: red;'>${allergies[1]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[2]}", "<span style='color: red;'>${allergies[2]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[3]}", "<span style='color: red;'>${allergies[3]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[4]}", "<span style='color: red;'>${allergies[4]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[5]}", "<span style='color: red;'>${allergies[5]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[6]}", "<span style='color: red;'>${allergies[6]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[7]}", "<span style='color: red;'>${allergies[7]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[8]}", "<span style='color: red;'>${allergies[8]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[9]}", "<span style='color: red;'>${allergies[9]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[10]}", "<span style='color: red;'>${allergies[10]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[11]}", "<span style='color: red;'>${allergies[11]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[12]}", "<span style='color: red;'>${allergies[12]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[13]}", "<span style='color: red;'>${allergies[13]}</span>"); 
+	});
+} 
+
+
 </script>
 <title>섭취 목록</title>
 
@@ -170,12 +276,19 @@ function DoughnutChart() {
 							</tr>
 							<tr style="text-align: center;">
 								<td colspan="4" style="vertical-align: middle; !important"><div style="display: inline-block;  overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.2; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
-								">${food.material}</div></td>
+								">
+									${food.material}
+									<c:if test="contain"></c:if>
+								</div>
+								</td>
 							</tr>
 						</c:forEach>
 					</table>
 					<div class="container theme-showcase" role="main" id="contents">
-						<canvas id="myChart"></canvas>
+						<canvas id="nutrientChart"></canvas>
+					</div>
+					<div class="container theme-showcase" role="main" id="contents">
+						<canvas id="allergyChart"></canvas>
 					</div>
 				</div>
 			</div>

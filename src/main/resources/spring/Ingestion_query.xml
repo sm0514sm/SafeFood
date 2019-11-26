@@ -41,7 +41,7 @@
    </select>
    
    <select id="searchNutrient" parameterType="string" resultType="food">
-   		select calory, carbo, protein, fat, sugar, natrium, chole, fattyacid, transfat
+   		select calory, carbo, protein, fat, sugar, natrium, chole, fattyacid, transfat, material, img
 		from ingestion i
 		join food f
 		using (code)
