@@ -1,9 +1,11 @@
 <template>
   <div>
+    <!-- 나중에 삭제 바람 -->
     <div>우리 민기 삼성갑니다!!!5</div>
+    로그인 아이디 : {{id}}
     <br />
     <div>
-      <div v-if="id != null && id != ''">
+      <div v-if="id == bulletin.uid">
         <input type="button" value="로그인 되어있군요! 수정하기" @click="GoEditBulletin()" />
       </div>
       <table>
@@ -142,8 +144,9 @@ export default {
     GoEditBulletin() {
       this.$router.push("/updateBulletin");
     },
-    goodBoardAns(bno, qno){     //좋아요 증가 기능
-      this.$store.dispatch(Constant.GOOD_BOARDANS, {bno, qno});
+    goodBoardAns(bno, qno) {
+      //좋아요 증가 기능
+      this.$store.dispatch(Constant.GOOD_BOARDANS, { bno, qno });
     }
   }
 };
