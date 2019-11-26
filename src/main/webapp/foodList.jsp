@@ -20,12 +20,25 @@ th, td {
 </head>
 
 <body role="document">
+	<c:if test="${sessionScope.addFlag==true}">
+		<script type="text/javascript">
+			alert('식품 추가에 성공하였습니다.');		
+		</script>
+		<c:remove var="addFlag" scope="session"/>
+	</c:if>
+	<c:if test="${sessionScope.selectFlag==true}">
+		<script type="text/javascript">
+			alert('식품 찜에 성공하였습니다.');		
+		</script>
+		<c:remove var="selectFlag" scope="session"/>
+	</c:if>
+
 	<jsp:include page="header.jsp" />
-	<div class="header-margin" style="margin-top: 150px;"></div>
+	<div class="header-margin" style="margin-top: 170px;"></div>
 	<%-- <jsp:include page="jumbotron.jsp" /> --%>
 
 	<div class="container theme-showcase" role="main" id="contents">
-		<h3 class="widget-header min-title">Food List</h3>
+		<h3 class="widget-header min-title">Food List</h3><hr />
 		<!-- <h5 style="text-align:right">조회순 정렬</h5> -->
 		
 		<div class="row">
@@ -42,7 +55,8 @@ th, td {
 							<td rowspan="3" class="product-thumb" style="vertical-align: middle; !important">
 								<a href="foodDetail.do?code=${food.code}"><img id="image" class="img-responsive" alt="${food.name} poster" src="img/${food.name}.jpg" style="width: 150px;"></a>
 								<c:if test="${not empty sessionScope.id}">
-									<button type="button" class="btn btn-info btn-sm" onclick="location.href='ingestion.do?code=${food.code}'">추가</button> <button type="button" class="btn btn-info btn-sm">찜</button>
+									<button type="button" class="btn btn-info btn-sm" onclick="location.href='ingestion.do?code=${food.code}'">추가</button> 
+									<button type="button" class="btn btn-info btn-sm" onclick="location.href='selectfood.do?code=${food.code}'">찜</button>
 								</c:if>
 							</td>
 							<td style="vertical-align: middle; !important">${food.name}</td>

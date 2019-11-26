@@ -81,10 +81,10 @@ public class IngestionController {
 		System.out.println("code : " + code);
 		int codeInt = Integer.parseInt(code);
 		if(session.getAttribute("id") == null) {
-			model.addAttribute("msg", "로그인부터 하세요!");
 			return "redirect:index.do";
 		}
 		service.add(new Ingestion((String) session.getAttribute("id"), codeInt, 1));
+		session.setAttribute("addFlag",true);
 		return "redirect:foodList.do";
 	}
 

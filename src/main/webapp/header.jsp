@@ -47,7 +47,7 @@ function login() {
 									</li>
 									<!-- <li><a href="about.html">공지사항</a></li>
 									<li><a href="qna.do">Q&A</a></li> -->
-									<li><a href="foodList.do">상품정보</a></li>
+									<li><a href="foodList.do">상품전체목록</a></li>
 									<li><a href="bestfood.do">Best상품</a></li>
 									<li><a href="CaloryFood.jsp">칼로리별조합</a></li>
 									<li><a href="origin.do">원산지정보</a></li>
@@ -69,17 +69,15 @@ function login() {
 										<c:when test="${sessionScope.id == null}">
 											<li class="nav-item active"><button type="button"
 													class="btn btn-success" data-toggle="modal"
-													data-target="#loginModal">Login</button></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													data-target="#loginModal">Login</button></li>&nbsp;&nbsp;
 												<li class="nav-item active"><button type="button"
 													class="btn btn-info" data-toggle="modal"
 													data-target="#registerModal">Register</button></li>
 										</c:when>
 										<c:otherwise>
-											<div class="form-group">
-												<a class="btn btn-light">${sessionScope.id } 님 환영합니다</a><br>
-												<a class="btn btn-success" href="userInfo.do" role="button" style="margin-right: 9px;">Modify</a>
-												<a class="btn btn-info" href="logout.do" role="button">Logout</a>
-											</div>
+											<%-- <a class="btn btn-light">${sessionScope.id } 님 환영합니다</a><br> --%>
+											<li class="nav-item active"><button type="button" class="btn btn-success" onclick="location.href='userInfo.do'">Modify</button></li>&nbsp;&nbsp;
+											<li class="nav-item active"><button type="button" class="btn btn-info" onclick="location.href='logout.do'">Logout</button></li>
 											<%-- <li>${sessionScope.id } 님 <br />환영합니다</li> --%>
 										</c:otherwise>
 									</c:choose>

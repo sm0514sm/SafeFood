@@ -23,7 +23,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="widget dashboard-container my-adslist">
-						<h3 class="widget-header min-title"> 국내산 식품 정보 </h3>
+						<h3 class="widget-header min-title"> 국내산 식품 정보 </h3><hr/>
 						<table class="table table-responsive product-dashboard-table" style="width:800px; border: 1.5px solid #e1f5fe;">
 							<tr style="text-align: center; background-color:#e1f5fe;">
 								<th>Image</th>
