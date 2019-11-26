@@ -1,5 +1,6 @@
 package com.ssafy.controller;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ssafy.model.dto.Food;
 import com.ssafy.model.dto.FoodPageBean;
+import com.ssafy.model.dto.Ingestion;
 import com.ssafy.model.service.FoodService;
 import com.ssafy.model.service.IngestionService;
 
@@ -179,11 +181,11 @@ public class FoodController {
 				"아랍에미리트","아르헨티나","아이슬란드","아이티","아일랜드","아프가니스탄","알바니아","에스토니아","에콰도르","에티오피아","영국","예멘","오만","오스트레일리아","오스트리아","온두라스","요르단","우간다","우루과이","우즈베키스탄","우크라이나","이라크","이란","이스라엘","이집트","이탈리아","인도","인도네시아","일본",//ㅇ
 				"중국","자메이카","잠비아","북한","짐바브웨",//ㅈ
 				"체코","칠레",//ㅊ
-				"카메룬","카타르","캄보디아","캐나다","콜롬비아","콩고","쿠바","쿠웨이트","크로아티아",//ㅋ
+				"카메룬","카타르","캄보디아","캐나다","콜롬비아","콩고","쿠바","쿠웨이트","크로아티아","케냐",//ㅋ
 				"타이완","타지키스탄","탄자니아","태국","터키","토고","튀니지",//ㅌ
 				"파나마","파라과이","파키스탄","파푸아뉴기니","페루","포르투칼","폴란드","프랑스","피지","핀란드","필리핀",//ㅍ
 				"헝가리","호주","홍콩",//ㅎ
-				"외국산","수입산"//번외
+				"미제","외국산","수입산"//번외
 				};
 		
 		boolean isfind = false;
@@ -202,5 +204,17 @@ public class FoodController {
 		model.addAttribute("list", domestic);
 		
 		return "origin";
+	}
+	
+	@GetMapping("selectfood.do")
+	public String ingestion(HttpSession session, String code) throws SQLException {
+		System.out.println("code : " + code);
+		int codeInt = Integer.parseInt(code);
+		if(session.getAttribute("id") == null) {
+			return "redirect:index.do";
+		}
+		service.insertSelectFood(new Ingestion((String) session.getAttribute("id"), codeInt, 1));
+		session.setAttribute("selectFlag",true);
+		return "redirect:foodList.do";
 	}
 }

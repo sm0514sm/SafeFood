@@ -116,8 +116,8 @@ th, td {
 				<th>조회수</th>
 				<td>${food.count}</td>
 				<td style="text-align: right">
-					<button type='button' class='btn btn-info'>추가</button>
-					<button type='button' class='btn btn-info'>찜</button>
+					<button type="button" class="btn btn-info btn-sm" onclick="location.href='ingestion.do?code=${food.code}'">추가</button> 
+					<button type="button" class="btn btn-info btn-sm" onclick="location.href='selectfood.do?code=${food.code}'">찜</button>
 				</td>
 			</tr>
 			<!-- <tr>
