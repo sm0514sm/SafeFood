@@ -1,6 +1,8 @@
 <template>
   <div>
+    <!-- 나중에 삭제 바람 -->
     <div>AddBulletin.vue 입니다.</div>
+    로그인 아이디 : {{id}}
     <br />
     <div>
       <table>
@@ -39,6 +41,11 @@ import Constant from "../Constant";
 
 export default {
   name: "addBulletin",
+  computed: {
+    id() {
+      return this.$store.state.id;
+    }
+  },
   data() {
     return {
       bulletin: {
@@ -48,7 +55,7 @@ export default {
         hits: 0,
         sno: 2,
         title: "",
-        uid: "jaen"
+        uid: this.$store.state.id
       }
     };
   },

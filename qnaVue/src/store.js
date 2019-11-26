@@ -9,7 +9,7 @@ const store = new Vuex.Store({
     bulletin: {},
     searchBulletin: {},
     comments: [],
-    id: "test"
+    id: "ssafy"
   },
   actions: {
     [Constant.GET_BULLETINLIST]: store => {

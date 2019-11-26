@@ -1,6 +1,8 @@
 <template>
   <div>
+    <!-- 나중에 삭제 바람 -->
     <div>UpdateBulletin.vue 입니다.</div>
+    로그인 아이디 : {{id}}
     <br />
     <div>
       <table>
@@ -42,7 +44,7 @@ export default {
   data() {
     return {
       bulletin: {
-        bno : "",
+        bno: "",
         bregdate: "",
         contents: "",
         goods: 0,
@@ -56,6 +58,9 @@ export default {
   computed: {
     oriBulletin() {
       return this.$store.state.bulletin;
+    },
+    id() {
+      return this.$store.state.id;
     }
   },
   created() {
@@ -70,7 +75,7 @@ export default {
         this.$store.dispatch(Constant.UPDATE_BULLETIN, {
           bulletin: this.bulletin
         });
-        this.$router.push("/detail/"+ this.bulletin.bno);
+        this.$router.push("/detail/" + this.bulletin.bno);
       }
     },
     clear() {
