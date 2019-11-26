@@ -66,7 +66,7 @@ public class FoodController {
 	@GetMapping("searchKeyword.do")
 	public String searchKeyword(Model model, String searchSelect, String searchWord) {
 		model.addAttribute("list", service.searchAllBean(new FoodPageBean(searchSelect, searchWord, null, null)));
-		return "index"; // 메인 페이지 리턴, 검색 결과 Data는 Request에 가지고
+		return "foodList"; // 메인 페이지 리턴, 검색 결과 Data는 Request에 가지고
 	}
 
 	@GetMapping("foodDetail.do")

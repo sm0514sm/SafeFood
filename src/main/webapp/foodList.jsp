@@ -34,11 +34,11 @@ th, td {
 	</c:if>
 
 	<jsp:include page="header.jsp" />
-	<div class="header-margin" style="margin-top: 150px;"></div>
+	<div class="header-margin" style="margin-top: 170px;"></div>
 	<%-- <jsp:include page="jumbotron.jsp" /> --%>
 
 	<div class="container theme-showcase" role="main" id="contents">
-		<h3 class="widget-header min-title">Food List</h3>
+		<h3 class="widget-header min-title">Food List</h3><hr />
 		<!-- <h5 style="text-align:right">조회순 정렬</h5> -->
 		
 		<div class="row">
