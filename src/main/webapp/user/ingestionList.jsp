@@ -47,32 +47,34 @@
 						<h3 class="widget-header min-title">내 섭취 정보</h3>
 					</c:if>
 					<table class="table table-responsive product-dashboard-table">
-						<c:forEach items="${list}" var="f">
+						<c:forEach items="${list}" var="food">
 							<thead>
 								<tr style="text-align: center; background-color:#e1f5fe;">
-									<th width="300px;">Image</th>
-									<th width="300px;">Product Title</th>
-									<th width="300px;" class="text-center">섭취일</th>
-									<th width="300px;" class="text-center">칼로리</th>
-									<th width="300px;" class="text-center">알레르기 성분</th>
+									<th width="200">Image</th>
+									<th>Product Title</th>
+									<th class="text-center">섭취일</th>
+									<th class="text-center">칼로리</th>
+									<!-- <th class="text-center">알레르기 성분</th> -->
+									<th class="text-center">삭제</th>
 								</tr>
 							</thead>
 
 							<tr style="text-align: center;">
-								<td rowspan="2" class="product-thumb" style="vertical-align: middle; !important"><%-- <a class="navbar-brand"
-									href="searchDetail.do?code=${f.ino}"> <img
-										width="150px;" height="auto" src="${f.img}"
+								<td rowspan="2" class="product-thumb" style="vertical-align: middle; !important"><a class="navbar-brand"
+									href="searchDetail.do?code=${food.code}"> <img
+										width="150px;" height="auto" src="img/${food.foodName}.jpg"
 										alt="image description" />
-								</a> --%></td>
+								</a></td>
 								<td class="product-details" style="vertical-align: middle; !important"><a
-									href="searchDetail.do?code=${f.ino}">${f.foodName}</a></td>
-								<td style="vertical-align: middle; !important">${f.ingdate}</td>
-								<td style="vertical-align: middle; !important">${f.ingdate}</td>
-								<td style="vertical-align: middle; !important">${f.allergy}</td>
+									href="searchDetail.do?code=${food.code}">${food.foodName}</a></td>
+								<td style="vertical-align: middle; !important">${food.ingdate}</td>
+								<td style="vertical-align: middle; !important">${food.allergy}</td>
+								<%-- <td style="vertical-align: middle; !important">${f.allergy}</td> --%>
+								<td style="vertical-align: middle; !important"><a href="removeIng.do?ino=${food.ino }">삭제</a></td>
 							</tr>
 							<tr style="text-align: center;">
 								<td colspan="4" style="vertical-align: middle; !important"><div style="display: inline-block;  overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.2; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
-								">${f.material}</div></td>
+								">${food.material}</div></td>
 							</tr>
 						</c:forEach>
 					</table>
