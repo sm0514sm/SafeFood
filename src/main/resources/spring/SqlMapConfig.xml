@@ -13,6 +13,7 @@
 		<typeAlias type="com.ssafy.model.dto.FoodPageBean"  alias="pagebean"/>
 		<typeAlias type="com.ssafy.model.dto.Board" 		alias="board"/>
 		<typeAlias type="com.ssafy.model.dto.BoardAns" 		alias="boardans"/>		
+		<typeAlias type="com.ssafy.model.dto.Quiz" 		alias="quiz"/>		
 	</typeAliases>
 	<mappers>
 		<mapper resource="spring/Food_query.xml" />
@@ -20,6 +21,7 @@
 		<mapper resource="spring/User_query.xml" />
 		<mapper resource="spring/Board_query.xml" />
 		<mapper resource="spring/BoardAns_query.xml" />
+		<mapper resource="spring/Quiz_query.xml" />
 	</mappers>
 </configuration>
 

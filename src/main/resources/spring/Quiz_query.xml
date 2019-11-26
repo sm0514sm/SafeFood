@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	
+<!--여러 도메인을 위한 쿼리 xml를 작성할 때  도메인을 식별하기 위해 
+    namespace 부여 
+=> sqlSession.쿼리메서드("식별자", paramdata);
+    식별자 =>  namespace.id
+  ex)sqlSession.insert("member.insert", member);    
+  ex)sqlSession.selectOne("member.search", no);    
+-->	
+<mapper namespace="com.ssafy.model.dao.QuizDAO">
+   <select id="search"		 parameterType="int"    resultType="quiz">
+   		select * from quiz_list 
+   		where no=#{no}
+   </select>
+   
+   <select id="searchAll"	resultType="quiz">
+   		select * from quiz_list 
+   </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
