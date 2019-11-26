@@ -24,7 +24,14 @@
 		}
 	}
 </script>
-
+<!-- <style>
+th {
+	font-size: 1.2em;
+}
+td {
+	font-size: 1.1em;
+}
+</style> -->
 </head>
 <body role="document">
 	<jsp:include page="header.jsp" />
@@ -38,7 +45,7 @@
 
 						<form name="calory form-inline" action="calory.do" method="post"
 							onsubmit="return check()">
-							<h3 class="widget-header min-title">섭취 음식 Best 3</h3><hr />
+							<h3 class="widget-header min-title">섭취 음식 Best 5</h3><hr />
 							<%-- <c:forEach items="${list}" var="food" varStatus="status">
 								<div class="row">
 									${food.name} ${food.count}회
@@ -53,25 +60,26 @@
 										<tr style="text-align: center; background-color:#e1f5fe;">
 											<th width="300px;">Image</th>
 											<th width="300px;">Product Title</th>
-											<th width="300px;" class="text-center">제조사</th>
-											<th width="300px;" class="text-center">섭취횟수</th>
+											<th width="200px;" class="text-center">제조사</th>
+											<th width="200px;" class="text-center">칼로리</th>
+											<th width="200px;" class="text-center">섭취횟수</th>
 										</tr>
 									</thead>
 		
 									<tr style="text-align: center;">
-										<td class="product-thumb" style="vertical-align: middle; !important"><a class="navbar-brand"
+										<td class="product-thumb" style="padding:0px; vertical-align: middle; !important"><a class="navbar-brand"
 											href="foodDetail.do?code=${f.code}"> <img
-												width="150px;" height="auto" src="${f.img}"
+												width="120px;" height="auto" src="${f.img}"
 												alt="image description" />
 										</a></td>
 										<td class="product-details" style="vertical-align: middle; !important"><a
 											href="foodDetail.do?code=${f.code}">${f.name}</a></td>
 										<td style="vertical-align: middle; !important">${f.maker}</td>
+										<td style="vertical-align: middle; !important">${f.calory}</td>
 										<td style="vertical-align: middle; !important">${f.count}</td>
 									</tr>
 								</c:forEach>
 							</table>
-							
 						</form>
 					</div>
 				</div>
