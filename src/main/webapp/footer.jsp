@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- footer-start -->
-<footer class="footer_area footer-bg zigzag_bg_1">
+<footer class="footer_area footer-bg zigzag_bg_1" style="margin-top: 80px;">
 	<div class="footer-top">
 		<div class="container">
 			<div class="row">

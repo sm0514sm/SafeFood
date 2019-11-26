@@ -219,7 +219,7 @@ function DoRed(){
 
 <body role="document">
 	<jsp:include page="../header.jsp" />
-	<div class="header-margin" style="margin-top: 150px;"></div>
+	<div class="header-margin" style="margin-top: 170px;"></div>
 
 	<%-- <div class="container theme-showcase" role="main" id="contents">
 		<table class="table table-condensed">
@@ -246,9 +246,9 @@ function DoRed(){
 				<!-- Recently Favorited -->
 				<div class="widget dashboard-container my-adslist">
 					<c:if test="${not empty list}">
-						<h3 class="widget-header min-title">내 섭취 정보</h3>
+						<h3 class="widget-header min-title">내 섭취 정보</h3><hr/>
 					</c:if>
-					<table class="table table-responsive product-dashboard-table">
+					<table class="table table-responsive product-dashboard-table" style="margin-bottom: 80px">
 						<c:forEach items="${list}" var="food">
 							<thead>
 								<tr style="text-align: center; background-color:#e1f5fe;">
@@ -284,12 +284,17 @@ function DoRed(){
 							</tr>
 						</c:forEach>
 					</table>
-					<div class="container theme-showcase" role="main" id="contents">
-						<canvas id="nutrientChart"></canvas>
-					</div>
-					<div class="container theme-showcase" role="main" id="contents">
-						<canvas id="allergyChart"></canvas>
-					</div>
+					
+					<c:if test="${not empty list}">
+						<h3 class="widget-header min-title" style="margin-bottom: 10px">총 합산 영양소</h3><hr/>
+						<div class="container theme-showcase" role="main" id="contents" style="margin-bottom: 100px">
+							<canvas id="nutrientChart"></canvas>
+						</div>
+						<h3 class="widget-header min-title" style="margin-bottom: 10px">알레르기 유발 성분</h3><hr/>
+						<div class="container theme-showcase" role="main" id="contents">
+							<canvas id="allergyChart"></canvas>
+						</div>
+					</c:if>
 				</div>
 			</div>
 			<!-- Row End -->

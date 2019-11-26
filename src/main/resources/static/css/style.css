@@ -807,7 +807,7 @@ h3 {
 
 /* line 140, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_header.scss */
 .header-area .main-header-area .slicknav_icon-bar {
-  background: #fff !important;
+  background: #d9ef74 !important;
 }
 
 /* line 143, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_header.scss */
@@ -5274,11 +5274,11 @@ h6 {
 
 /* add*/
 #navigation li a {
-	font-size: 1.4em;
+	font-size: 1.3em;
 	color: black;
 	font-family: 'Sunflower', sans-serif;
-	margin-left: 10px;
-	margin-right: 10px;
+	margin-left: 7px;
+	margin-right: 7px;
 }
 
 .service_info div div h4, p {

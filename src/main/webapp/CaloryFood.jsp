@@ -13,7 +13,7 @@
 <script>
 	function check() {
 		var str = calory.calval.value;
-		if (typeof str == "undefined" || str == null || str == "") {
+		if (typeof str == "undefined" || str == null || str == "" || $("#search2").val() == null) {
 			alert("값을 입력해 주세요.");
 			calory.calval.focus();
 			return false;
@@ -26,7 +26,7 @@
 </head>
 <body role="document">
 	<jsp:include page="header.jsp" />
-	<div class="header-margin" style="margin-top: 150px;"></div>
+	<div class="header-margin" style="margin-top: 170px;"></div>
 	<section class="page-search">
 		<div class="container">
 			<div class="row">
@@ -67,7 +67,7 @@
 				<!-- Recently Favorited -->
 				<div class="widget dashboard-container my-adslist">
 					<c:if test="${not empty calory}">
-						<h3 class="widget-header min-title">Calory별 식품 조합</h3>
+						<h3 class="widget-header min-title">Calory별 식품 조합</h3><hr/>
 					</c:if>
 					<table class="table table-responsive product-dashboard-table">
 						<c:forEach items="${calory}" var="f">

@@ -28,7 +28,7 @@
 </head>
 <body role="document">
 	<jsp:include page="header.jsp" />
-	<div class="header-margin" style="margin-top: 150px;"></div>
+	<div class="header-margin" style="margin-top: 170px;"></div>
 	<section class="page-search">
 		<div class="container">
 			<div class="row">
@@ -38,7 +38,7 @@
 
 						<form name="calory form-inline" action="calory.do" method="post"
 							onsubmit="return check()">
-							<h3 class="widget-header min-title">섭취 음식 Best 3</h3>
+							<h3 class="widget-header min-title">섭취 음식 Best 3</h3><hr />
 							<%-- <c:forEach items="${list}" var="food" varStatus="status">
 								<div class="row">
 									${food.name} ${food.count}회
