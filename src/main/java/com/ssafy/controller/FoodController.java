@@ -3,6 +3,8 @@ package com.ssafy.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,11 +16,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ssafy.model.dto.Food;
 import com.ssafy.model.dto.FoodPageBean;
 import com.ssafy.model.service.FoodService;
+import com.ssafy.model.service.IngestionService;
 
 @Controller
 public class FoodController {
 	@Autowired
 	private FoodService service;
+	@Autowired
+	private IngestionService iService;
 
 	@ExceptionHandler
 	public ModelAndView handler(Exception e) {
@@ -106,4 +111,57 @@ public class FoodController {
 		return "bestFood";
 	}
 	
+	@GetMapping("selectList.do")
+	public String selectList(Model model,HttpSession session) {
+		//찜 추가 전 그래프
+		String id = (String)session.getAttribute("id");
+		List<Food> list = iService.searchNutrient(id);
+		Food food = new Food();
+		double calory =	 	0.0; double carbo = 		0.0; double protein = 	0.0;
+		double fat = 		0.0; double sugar = 		0.0; double natrium = 	0.0;
+		double chole = 		0.0; double fattyacid = 	0.0; double transfat = 	0.0;
+		
+		for(Food f : list) {
+			calory 		+= 	f.getCalory(); carbo 		+= 	f.getCarbo();
+			protein 	+=	f.getProtein(); fat 		+=	f.getProtein();
+			sugar 		+=	f.getProtein(); natrium 	+=	f.getProtein();
+			chole 		+=	f.getProtein(); fattyacid 	+=	f.getProtein();
+			transfat 	+=	f.getProtein(); protein 	+=	f.getProtein();
+		}
+		
+		food.setCalory(calory); 	food.setCarbo(carbo);
+		food.setProtein(protein); 	food.setFat(fat);
+		food.setSugar(sugar); 		food.setNatrium(natrium);
+		food.setChole(chole); 		food.setFattyacid(fattyacid);
+		food.setTransfat(transfat);
+		model.addAttribute("food", food);
+		
+		//찜 추가 후 그래프
+		List<Food> list2 = service.searchNutrientS(id);
+		Food food2 = new Food();
+		food2.setCalory(calory); 	food2.setCarbo(carbo);
+		food2.setProtein(protein); 	food2.setFat(fat);
+		food2.setSugar(sugar); 		food2.setNatrium(natrium);
+		food2.setChole(chole); 		food2.setFattyacid(fattyacid);
+		food2.setTransfat(transfat);
+		
+		for(Food f : list) {
+			calory 		+= 	f.getCalory(); carbo 		+= 	f.getCarbo();
+			protein 	+=	f.getProtein(); fat 		+=	f.getProtein();
+			sugar 		+=	f.getProtein(); natrium 	+=	f.getProtein();
+			chole 		+=	f.getProtein(); fattyacid 	+=	f.getProtein();
+			transfat 	+=	f.getProtein(); protein 	+=	f.getProtein();
+		}
+		
+		food2.setCalory(calory); 	food2.setCarbo(carbo);
+		food2.setProtein(protein); 	food2.setFat(fat);
+		food2.setSugar(sugar); 		food2.setNatrium(natrium);
+		food2.setChole(chole); 		food2.setFattyacid(fattyacid);
+		food2.setTransfat(transfat);
+		model.addAttribute("food2", food2);
+		
+		//찜 목록 리스트
+		model.addAttribute("list", service.selectSelectFood(id));
+		return "user/selectList";
+	}
 }

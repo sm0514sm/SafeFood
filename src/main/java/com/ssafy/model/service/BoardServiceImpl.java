@@ -68,6 +68,15 @@ public class BoardServiceImpl implements BoardService {
 			throw new BoardException("게시글 삭제 중 오류 발생");
 		}
 	}
+	
+	public void hitBoard(String bno) {
+		try {
+			dao.hitBoard(bno);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new BoardException("게시글 조회수 증가 중 오류 발생");
+		}
+	}
 }
 
 

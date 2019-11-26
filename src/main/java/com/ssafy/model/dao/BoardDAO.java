@@ -15,4 +15,5 @@ public interface BoardDAO {
 	public void insertBoard(Board board);					//board 추가
 	public void updateBoard(Board board);					//board 수정
 	public void deleteBoard(String bno) ;					//board 삭제
+	public void hitBoard(String bno) ;						//board 조회수 증가
 }

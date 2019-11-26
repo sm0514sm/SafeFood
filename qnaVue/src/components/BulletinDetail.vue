@@ -101,6 +101,7 @@ export default {
     };
   },
   created() {
+    this.$store.dispatch(Constant.ADD_BULLETIN_CNT, { bno: this.bulletin.bno });
     this.$store.dispatch(Constant.GET_BULLETIN, { no: this.$route.params.no });
     this.$store.dispatch(Constant.GET_COMMENTS, { qno: this.$route.params.no });
   },

@@ -82,6 +82,13 @@ public class BoardRestController {
 		return handleSuccess("삭제 완료");
 	}
 	
+	@ApiOperation("게시글을 조회수 증가 하는 기능")
+	@PutMapping("/rest/board/{bno}")
+	public ResponseEntity<Map<String, Object>> updateBoard(@PathVariable String bno) {
+		service.hitBoard(bno);
+		return handleSuccess("조회수 증가 완료");
+	}
+	
 	//BoardAns
 	@ApiOperation("bno에 해당하는 답변 게시글 목록을 조회하는 기능")
 	@GetMapping("/rest/boardans/{bno}")
