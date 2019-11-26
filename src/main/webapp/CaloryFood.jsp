@@ -7,11 +7,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>detailList</title>
-
+<script src="js/vendor/jquery-1.12.4.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-<script type='text/javascript' src='js/jquery-3.3.1.js'></script>
-
 <script>
 	function check() {
 		var str = calory.calval.value;
@@ -85,12 +83,12 @@
 
 							<tr style="text-align: center;">
 								<td rowspan="2" class="product-thumb" style="vertical-align: middle; !important"><a class="navbar-brand"
-									href="searchDetail.do?code=${f.code}"> <img
+									href="foodDetail.do?code=${f.code}"> <img
 										width="150px;" height="auto" src="${f.img}"
 										alt="image description" />
 								</a></td>
 								<td class="product-details" style="vertical-align: middle; !important"><a
-									href="searchDetail.do?code=${f.code}">${f.name}</a></td>
+									href="foodDetail.do?code=${f.code}">${f.name}</a></td>
 								<td style="vertical-align: middle; !important">${f.maker}</td>
 								<td style="vertical-align: middle; !important">${f.calory}</td>
 								<td style="vertical-align: middle; !important">${f.allergy}</td>
