@@ -193,7 +193,7 @@ function DoughnutChart() {
 		});
 }
 function DoRed(){
-	Array.prototype.forEach.call(document.getElementsByTagName("td"), function(el) { 
+	Array.prototype.forEach.call(document.getElementsByClassName("allergyTd"), function(el) { 
 		el.innerHTML = el.innerHTML.replace("${allergies[0]}", "<span style='color: red;'>${allergies[0]}</span>"); 
 		el.innerHTML = el.innerHTML.replace("${allergies[1]}", "<span style='color: red;'>${allergies[1]}</span>"); 
 		el.innerHTML = el.innerHTML.replace("${allergies[2]}", "<span style='color: red;'>${allergies[2]}</span>"); 
@@ -271,12 +271,12 @@ function DoRed(){
 									href="foodDetail.do?code=${food.code}">${food.foodName}</a></td>
 								<td style="vertical-align: middle; !important">${food.ingdate}</td>
 								<%-- <td style="vertical-align: middle; !important">${food.calory}</td> --%>
-								<td style="vertical-align: middle; !important">${food.allergy}</td>
+								<td style="vertical-align: middle; !important" class="allergyTd">${food.allergy}</td>
 								<td style="vertical-align: middle; !important"><a href="removeIng.do?ino=${food.ino }">삭제</a></td>
 							</tr>
 							<tr style="text-align: center;">
-								<td colspan="4" style="vertical-align: middle; !important"><div style="display: inline-block;  overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.2; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
-								">
+								<td colspan="4" style="vertical-align: middle; !important" class="allergyTd"><div style="display: inline-block;  overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.2; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+								" >
 									${food.material}
 									<c:if test="contain"></c:if>
 								</div>
