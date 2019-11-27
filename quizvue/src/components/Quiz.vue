@@ -16,16 +16,16 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-sm" style="font-family: sunflower; font-size: 1.3em;">
+        <div class="col-sm" style="font-family: 'Do Hyeon'; font-size: 1.3em;">
           사용자 {{ id }}
         </div>
-        <div class="col-sm" style="font-family: sunflower; font-size: 1.3em;">
+        <div class="col-sm" style="font-family: 'Do Hyeon'; font-size: 1.3em;">
           현재 레벨 {{ level }}
         </div>
-        <div class="col-sm" style="font-family: sunflower; font-size: 1.3em;">
+        <div class="col-sm" style="font-family: 'Do Hyeon'; font-size: 1.3em;">
           맞춘 개수 {{ solvedCnt }}
         </div>
-        <div class="col-sm" style="font-family: sunflower; font-size: 1.3em;">
+        <div class="col-sm" style="font-family: 'Do Hyeon'; font-size: 1.3em;">
           최고 점수 {{ bestScore }} <br />
           현재 점수 {{ score }}
         </div>

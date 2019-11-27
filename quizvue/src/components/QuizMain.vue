@@ -1,7 +1,8 @@
 <template>
   <div>
-    <h2 style="font-family: 'Sunflower', sans-serif;">QuizMain</h2>
-    <h3>먹거리 쿠이이이이이즈~!</h3>
+    <h2 style="font-family: 'Do Hyeon', sans-serif;">
+      먹거리 쿠이이이이이즈~!
+    </h2>
     <p class="lead">
       가공식품들에 대한 퀴즈를 풀며 (매우 유용!하고 쓸모!있는) 지식을 쌓고 다른
       사람들과 실시간 경쟁을 해보세요!
@@ -9,7 +10,7 @@
     <button
       type="button"
       class="btn btn-warning btn-lg btn-block col-sm-2"
-      style="margin-left: auto; margin-right: auto;"
+      style="margin-left: auto; margin-right: auto; font-family: 'Do Hyeon';"
       @click="GoQuiz()"
     >
       게임 시작하기
