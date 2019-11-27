@@ -69,12 +69,13 @@ public class UserController {
 			service.login(id, pw);
 			session.setAttribute("id", id);
 			System.out.println(session.getAttribute("id"));
+			return "redirect:index.do";
 		} catch (Exception e) {
 			System.out.println("login 에러");
 			e.printStackTrace();
 			model.addAttribute("msg", e.getMessage());
 		}
-		return "index";
+		return "redirect:index.do";
 	}
 
 	@GetMapping("logout.do")
