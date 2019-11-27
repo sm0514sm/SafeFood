@@ -44,7 +44,8 @@
 </script>
 <link rel="icon" href="../favicon.ico">
 <link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/bootstrap-theme.css">
+<!-- 파일 없는데 이건 왜..? -->
+<!-- <link rel="stylesheet" href="css/bootstrap-theme.css"> -->
 <link rel="stylesheet" href="theme.css">
 
 <!-- add -->

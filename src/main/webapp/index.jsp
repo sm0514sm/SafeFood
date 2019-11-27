@@ -15,7 +15,7 @@
 $(function(){
 	 $("#searchword").keyup(function(){
 		 var input = document.getElementById("searchword").value; 
-		 console.log("input : ", input)
+		 /* console.log("input : ", input) */
 		 $.ajax({
 			 url : "searchCharacter.do",
 			 type : "get",
@@ -58,7 +58,7 @@ function search() {
 						<p style="font-size: 1.5em">made by ssafy seoul team kmando</p>
 						<br>
 						<form method="get" action="searchKeyword.do" id="searchForm">
-							<div class="input-group mb-3">
+							<div class="input-group mb-3" style="margin-bottom: 0px !important;">
 								<div class="col-4" style="padding: 0px !important;">
 									<select id="searchbox" name="searchSelect" class="form-control">
 										<option value="" disabled selected>검색 조건</option>
