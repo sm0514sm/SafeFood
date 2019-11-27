@@ -32,7 +32,6 @@ const store = new Vuex.Store({
       http
         .get("/rest/quizOneWithLevel/" + payload.level)
         .then(response => {
-          console.log(response.data.data);
           store.commit(Constant.GET_QUIZ_ONE, {
             quiz: response.data.data[0]
           });
