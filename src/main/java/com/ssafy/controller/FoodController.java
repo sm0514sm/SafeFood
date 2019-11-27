@@ -1,10 +1,8 @@
 package com.ssafy.controller;
 
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -22,6 +20,7 @@ import com.ssafy.model.dto.FoodPageBean;
 import com.ssafy.model.dto.Ingestion;
 import com.ssafy.model.service.FoodService;
 import com.ssafy.model.service.IngestionService;
+import com.ssafy.model.service.UserService;
 
 @Controller
 public class FoodController {
