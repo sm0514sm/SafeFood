@@ -9,6 +9,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
+
+<title>섭취 목록</title>
+<jsp:include page="../link_script.jsp" />
 <link rel="icon" href="favicon.ico">
 <script type='text/javascript' src='js/jquery-3.3.1.js'></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
@@ -210,17 +213,12 @@ function DoRed(){
 		el.innerHTML = el.innerHTML.replace("${allergies[13]}", "<span style='color: red;'>${allergies[13]}</span>"); 
 	});
 }
-
-
 </script>
-<title>섭취 목록</title>
-<script type='text/javascript' src='js/jquery-3.3.1.js'></script>
 </head>
 
 <body role="document">
 	<jsp:include page="../header.jsp" />
 	<div class="header-margin" style="margin-top: 170px;"></div>
-
 	<%-- <div class="container theme-showcase" role="main" id="contents">
 		<table class="table table-condensed">
 			<c:forEach items="${list}" var="ingestion">

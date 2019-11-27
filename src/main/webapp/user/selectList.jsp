@@ -9,6 +9,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
+
+<title>내 찜 목록</title>
+<jsp:include page="../link_script.jsp" />
 <link rel="icon" href="favicon.ico">
 <script type='text/javascript' src='js/jquery-3.3.1.js'></script>
 <script
@@ -161,15 +164,11 @@ function DoughnutChart2() {
 	});
 }
 </script>
-
-<title>내 찜 목록</title>
-
 </head>
 
 <body role="document">
 	<jsp:include page="../header.jsp" />
 	<div class="header-margin" style="margin-top: 170px;"></div>
-
 	<section class="dashboard section">
 		<!-- Container Start -->
 		<div class="container">

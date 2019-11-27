@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>SafeFood</title>
-<script src="js/vendor/jquery-1.12.4.min.js"></script>
+<jsp:include page="link_script.jsp" />
 <script type="text/javascript">
 $(function(){
 	 $("#searchword").keyup(function(){
@@ -43,8 +43,8 @@ function search() {
 </script>
 </head>
 <body>
-	<jsp:include page="header.jsp" />
 	<!-- slider_area-start -->
+	<jsp:include page="header.jsp" />
 	<div class="slider_area zigzag_bg_2">
 		<div class="slider_sctive owl-carousel">
 			<div class="single_slider slider_img_1"

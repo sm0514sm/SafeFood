@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>detailList</title>
-
+<jsp:include page="link_script.jsp" />
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script type='text/javascript' src='js/jquery-3.3.1.js'></script>
