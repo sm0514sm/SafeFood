@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>상품 목록</title>
-<script src="js/vendor/jquery-1.12.4.min.js"></script>
+<jsp:include page="link_script.jsp" />
 <style>
 th, td {
 	padding-top: 2px !important;

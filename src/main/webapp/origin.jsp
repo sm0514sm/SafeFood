@@ -9,8 +9,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<script type='text/javascript' src='js/jquery-3.3.1.js'></script>
 <title>SafeFood - 원산지 정보</title>
+<jsp:include page="link_script.jsp" />
+<script type='text/javascript' src='js/jquery-3.3.1.js'></script>
 </head>
 
 <body role="document">

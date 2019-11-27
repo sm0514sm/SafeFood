@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <script type="text/javascript">
 /* 	function login() {
 		var frm = document.getElementById("loginForm");
@@ -33,35 +34,14 @@
 				console.log(message);
 			}
 		});
-	
 	}
-	
 </script>
-<link rel="icon" href="../favicon.ico">
-<link rel="stylesheet" href="css/bootstrap.css">
-<!-- 파일 없는데 이건 왜..? -->
-<!-- <link rel="stylesheet" href="css/bootstrap-theme.css"> -->
-<link rel="stylesheet" href="theme.css">
-
-<!-- add -->
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<link rel="stylesheet" href="css/themify-icons.css">
-<link rel="stylesheet" href="css/nice-select.css">
-<link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/slicknav.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Do+Hyeon|Nanum+Gothic|Nanum+Gothic+Coding|Sunflower:300&display=swap">
 
 <style>
 label {
 	color: black;
 }
 </style>
-
 <!-- header-start -->
 <header>
 	<div class="header-area ">
