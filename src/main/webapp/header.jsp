@@ -16,26 +16,17 @@
 			data : "",
 			success : function(data){
 				var user = data.data;
-				console.log(user);
 				$('#ePassword').val(user.password);
 				$('#eName').val(user.name);
 				$('#ePhone').val(user.phone);
 				$('#eEmail').val(user.email);
 				$('#eAddress').val(user.address);
-				
+
 				var allergy = user.allergy;
 				$("input[name=allergy2]").each(function(){
 					if( allergy.includes( $(this).val() ) ){
-						console.log($(this).val());
-						console.log($(this).is(":checked"));
-						
-// 						this.checked = true;
-// 						$(this).attr("checked", true);
-// 						$(this).prop("checked",true);
-
-						console.log($(this).is(":checked"));
+						$(this).attr("checked","checked");
 					}
-				
 				});
 			},
 			error  : function(xhr, status,message){

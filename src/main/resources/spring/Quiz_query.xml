@@ -15,8 +15,18 @@
    		where no=#{no}
    </select>
    
-   <select id="searchAll"	resultType="quiz">
+   <select id="searchRealAll"	resultType="quiz">
    		select * from quiz_list 
+   </select>
+   
+   <select id="searchAll"	parameterType="int"	resultType="quiz" >
+   		select * from quiz_list 
+   		where level=#{level}
+   </select>
+   <select id="searchOneWithLevel"	parameterType="int"	resultType="quiz" >
+   		select * from quiz_list
+   		where level=#{level}
+   		order by rand() limit 1 
    </select>
 </mapper>
 

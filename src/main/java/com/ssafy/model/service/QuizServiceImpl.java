@@ -32,9 +32,27 @@ public class QuizServiceImpl implements QuizService {
 	}
 
 	@Override
-	public List<Quiz> searchAll() throws SQLException {
+	public List<Quiz> searchRealAll() throws SQLException {
 		try {
-			return dao.searchAll();
+			return dao.searchRealAll();
+		}catch (SQLException e) {
+			throw new UserException();
+		}
+	}
+
+	@Override
+	public List<Quiz> searchAll(int level) throws SQLException {
+		try {
+			return dao.searchAll(level);
+		}catch (SQLException e) {
+			throw new UserException();
+		}
+	}
+
+	@Override
+	public List<Quiz> searchOneWithLevel(int level) throws SQLException {
+		try {
+			return dao.searchOneWithLevel(level);
 		}catch (SQLException e) {
 			throw new UserException();
 		}
