@@ -91,6 +91,12 @@
 		where id=#{id};
    </select>
    
+   <select id="selectOneSelectFood"	parameterType="string"	resultType="ingestion">
+   		select no ino, id, code, selectdate ingdate, quantity
+		from selectfood
+		where no=#{ino};
+   </select>
+   
    <update id="updateSelectFood" 	parameterType="ingestion">
    		update selectfood 
    		set date = #{ingdate},

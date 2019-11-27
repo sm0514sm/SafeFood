@@ -1,7 +1,9 @@
 package com.ssafy.controller;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -273,8 +275,10 @@ public class FoodController {
 
 	@GetMapping("selectToIngesFood.do")
 	public String selectToIngesFood(HttpSession session, String code, String ino) throws SQLException {
-		System.out.println("## selectToIngesFood");
-		iService.add(new Ingestion((String) session.getAttribute("id"), Integer.parseInt(code), 1));
+		
+		Ingestion ingestion = service.selectOneSelectFood(ino);
+		System.out.println(ingestion);
+		iService.add(ingestion);
 		service.deleteSelectFood(ino);
 		return "redirect:selectList.do";
 	}

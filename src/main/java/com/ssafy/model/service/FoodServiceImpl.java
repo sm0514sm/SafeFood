@@ -186,6 +186,16 @@ public class FoodServiceImpl implements FoodService{
 		}
 	}
 	
+	//찜한 음식 -> 섭취 음식
+	public Ingestion selectOneSelectFood(String ino) {			
+		try {
+			return dao.selectOneSelectFood(ino);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("찜 섭취 중 오류");
+		}
+	}
+	
 	public List<Food> searchNutrientS(String id) {
 		try {
 			return dao.searchNutrientS(id);
