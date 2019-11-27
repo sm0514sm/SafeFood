@@ -283,6 +283,7 @@ export default {
   },
   methods: {
     nextQuiz() {
+      if (this.solvedCnt >= 10) this.$router.push("/quizEnd");
       this.progress = 0;
       this.timer = "";
       this.possible = true;
@@ -290,10 +291,19 @@ export default {
       this.$store.dispatch(Constant.GET_QUIZ_ONE, {
         level: this.$store.state.level
       });
-      this.getId();
-      this.timer = setInterval(() => {
-        this.progress += 1;
-      }, 100);
+      console.log("this.$store.state.quizNo : " + this.$store.state.quizNo);
+      console.log("this.quiz.no  :" + this.quiz.no);
+      console.log(
+        "true? false?" + this.$store.state.quizNo.indexOf(this.quiz.no)
+      );
+
+      if (this.$store.state.quizNo.indexOf(this.quiz.no) != -1) this.nextQuiz();
+      else {
+        this.getId();
+        this.timer = setInterval(() => {
+          this.progress += 1;
+        }, 100);
+      }
     },
     GoQuizMain() {
       this.$router.push("/quiz.jsp");
@@ -310,6 +320,7 @@ export default {
         this.$store.state.score += 100 - this.progress;
         this.$store.state.solvedCnt += 1;
         this.$store.state.level = parseInt(this.$store.state.solvedCnt / 4 + 1);
+        this.$store.state.quizNo.push(this.quiz.no);
       } else {
         this.possible = false;
       }
