@@ -71,7 +71,6 @@ public class FoodController {
 
 	@GetMapping("foodDetail.do")
 	public String foodDetail(Model model, String code) {
-		System.out.println("여기까지는 들어옴");
 		int codeInt = Integer.parseInt(code);
 		service.addCount(codeInt);
 		model.addAttribute("food", service.search(codeInt));

@@ -85,10 +85,14 @@ label {
 								</ul></li>
 							<!-- <li><a href="about.html">공지사항</a></li>
 									<li><a href="qna.do">Q&A</a></li> -->
-							<li><a href="foodList.do">상품전체목록</a></li>
+							<li><a href="#">상품목록<i class="ti-angle-down"></i></a>
+								<ul class="submenu">
+									<li><a href="foodList.do">상품전체목록</a></li>
+									<li><a href="origin.do">국내산식품</a></li>
+								</ul>
+							</li>
 							<li><a href="bestfood.do">Best상품</a></li>
 							<li><a href="CaloryFood.jsp">칼로리별조합</a></li>
-							<li><a href="origin.do">원산지정보</a></li>
 							<li><a href="quiz.jsp">퀴즈</a></li>
 							<li><a href="trend.do">Food Trend</a></li>
 
@@ -97,7 +101,7 @@ label {
 									<li><a href="#">섭취 정보<i class="ti-angle-down"></i></a>
 										<ul class="submenu">
 											<li><a href="ingestionList.do">내 섭취 정보</a></li>
-											<li><a href="selectList.do">예상 섭취 정보</a></li>
+											<li><a href="selectList.do">내 찜 목록</a></li>
 										</ul></li>
 								</c:when>
 							</c:choose>

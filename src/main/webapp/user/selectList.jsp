@@ -11,7 +11,8 @@
 <meta name="author" content="">
 <link rel="icon" href="favicon.ico">
 <script type='text/javascript' src='js/jquery-3.3.1.js'></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	DoughnutChart();
@@ -155,31 +156,14 @@ function DoughnutChart2() {
 }
 </script>
 
-<title>섭취 목록</title>
+<title>내 찜 목록</title>
 
 </head>
 
 <body role="document">
 	<jsp:include page="../header.jsp" />
-	<div class="header-margin" style="margin-top: 150px;"></div>
+	<div class="header-margin" style="margin-top: 170px;"></div>
 
-	<%-- <div class="container theme-showcase" role="main" id="contents">
-		<table class="table table-condensed">
-			<c:forEach items="${list}" var="ingestion">
-				<tr>
-					<td>${ingestion.id}</td>
-					<td>${ingestion.foodName}</td>
-					<td>${ingestion.ingdate}</td>
-					<td>${ingestion.material}</td>
-					<td><a href="removeIng.do?ino=${ingestion.ino }">삭제</a></td>
-				</tr>
-			</c:forEach>
-		</table>
-		<!-- 이거 가운데 정렬 해주라 -->
-		<div style="margin:auto;">
-			<a class="btn btn-primary" href="showGraph.do" role="button">섭취정보 그래프로 보기</a>
-		</div> --%>
-	</div>
 	<section class="dashboard section">
 		<!-- Container Start -->
 		<div class="container">
@@ -190,8 +174,8 @@ function DoughnutChart2() {
 					<c:if test="${not empty list}">
 						<h3 class="widget-header min-title">예상 섭취 정보</h3>
 					</c:if>
-					<table class="table table-responsive product-dashboard-table">
-						<c:forEach items="${list}" var="f">
+					<table class="table table-responsive product-dashboard-table" style="margin-bottom: 80px">
+						<c:forEach items="${list}" var="food">
 							<thead>
 								<tr style="text-align: center; background-color:#e1f5fe;">
 									<th width="300px;">Image</th>
@@ -203,11 +187,10 @@ function DoughnutChart2() {
 							</thead>
 
 							<tr style="text-align: center;">
-								<td rowspan="2" class="product-thumb" style="vertical-align: middle; !important">
-									<a class="navbar-brand"
-									href="searchDetail.do?code=${f.ino}"> 
-										<img
-										width="150px;" height="auto" src="${f.img}"
+								<td rowspan="2" class="product-thumb"
+									style="vertical-align: middle; !important"><a
+									class="navbar-brand" href="foodDetail.do?code=${food.code}">
+										<img width="150px;" height="auto" src="${food.img}"
 										alt="image description" />
 									</a>
 								</td>
@@ -221,24 +204,34 @@ function DoughnutChart2() {
 								</td>
 							</tr>
 							<tr style="text-align: center;">
-								<td colspan="4" style="vertical-align: middle; !important"><div style="display: inline-block;  overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.2; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
-								">${f.material}</div></td>
+								<td colspan="4" style="vertical-align: middle; !important"
+									class="allergyTd"><div
+										style="display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.2; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+										${food.material}
+										<c:if test="contain"></c:if>
+									</div></td>
 							</tr>
 						</c:forEach>
 					</table>
-					<div class="container theme-showcase" role="main" id="contents">
-						<h4>찜 목록 추가 전 섭취 그래프</h4>
+
+					<h3 class="widget-header min-title" style="margin-bottom: 10px">찜
+						목록 추가 전 섭취 영양소 그래프</h3>
+					<hr />
+					<div class="container theme-showcase" role="main" id="contents"
+						style="margin-bottom: 100px">
 						<canvas id="myChart"></canvas>
 					</div>
+					<h3 class="widget-header min-title" style="margin-bottom: 10px">찜
+						목록 추가 시 섭취 영양소 그래프</h3>
+					<hr />
 					<div class="container theme-showcase" role="main" id="contents">
-						<h4>찜 목록 추가 시 섭취 그래프</h4>
 						<canvas id="myChart2"></canvas>
 					</div>
 				</div>
 			</div>
 			<!-- Row End -->
 		</div>
-		
+
 		<!-- Container End -->
 	</section>
 	<jsp:include page="../footer.jsp" />

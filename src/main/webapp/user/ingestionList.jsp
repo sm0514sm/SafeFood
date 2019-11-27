@@ -209,7 +209,7 @@ function DoRed(){
 		el.innerHTML = el.innerHTML.replace("${allergies[12]}", "<span style='color: red;'>${allergies[12]}</span>"); 
 		el.innerHTML = el.innerHTML.replace("${allergies[13]}", "<span style='color: red;'>${allergies[13]}</span>"); 
 	});
-} 
+}
 
 
 </script>
@@ -236,8 +236,9 @@ function DoRed(){
 		<!-- 이거 가운데 정렬 해주라 -->
 		<div style="margin:auto;">
 			<a class="btn btn-primary" href="showGraph.do" role="button">섭취정보 그래프로 보기</a>
-		</div> --%>
-	</div>
+		</div> 
+	</div> --%>
+	
 	<section class="dashboard section">
 		<!-- Container Start -->
 		<div class="container">

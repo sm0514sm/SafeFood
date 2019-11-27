@@ -24,7 +24,8 @@
 				<div class="col-md-12">
 					<div class="widget dashboard-container my-adslist">
 						<h3 class="widget-header min-title"> 국내산 식품 정보 </h3><hr/>
-						<table class="table table-responsive product-dashboard-table" style="width:800px; border: 1.5px solid #e1f5fe;">
+						
+						<%-- <table class="table table-responsive product-dashboard-table" style="width:800px; border: 1.5px solid #e1f5fe;">
 							<tr style="text-align: center; background-color:#e1f5fe;">
 								<th>Image</th>
 								<th>Product</th>
@@ -39,7 +40,39 @@
 									<td width="200"  style="text-align: center; background-color:#e1f5fe; vertical-align: middle;">국내산</td>
 								</tr>
 							</c:forEach>
-						</table>
+						</table> --%>
+						
+						<table class="table table-responsive product-dashboard-table">
+							<thead>
+								<tr style="text-align: center; background-color:#e1f5fe;">
+									<th width="300px;">Image</th>
+									<th width="300px;">Product Title</th>
+									<th width="200px;" class="text-center">제조사</th>
+									<th width="200px;" class="text-center">칼로리</th>
+									<th width="200px;" class="text-center">섭취횟수</th>
+								</tr>
+							</thead>
+								<c:forEach items="${list}" var="f">
+		
+									<tr style="text-align: center;">
+										<td class="product-thumb" style="padding:0px; vertical-align: middle; !important"><a class="navbar-brand"
+											href="foodDetail.do?code=${f.code}"> <img
+												width="120px;" height="auto" src="${f.img}"
+												alt="image description" />
+										</a></td>
+										<td class="product-details" style="vertical-align: middle; !important"><a
+											href="foodDetail.do?code=${f.code}">${f.name}</a></td>
+										<td style="vertical-align: middle; !important">${f.maker}</td>
+										<td style="vertical-align: middle; !important">${f.calory}</td>
+										<td style="vertical-align: middle; !important">${f.count}</td>
+									</tr>
+								</c:forEach>
+							</table>
+						
+						
+						
+						
+						
 					</div>
 				</div>
 			</div>

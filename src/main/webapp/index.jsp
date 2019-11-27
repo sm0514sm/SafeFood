@@ -30,10 +30,13 @@ $(function(){
 	 });
 });
 function search() {
-	if (document.getElementById("selectBox") == null) {
+	if (document.getElementById("searchbox").value == null) {
 		alert("검색 조건을 설정해 주세요");
 		return;
 	}
+	/* alert(document.getElementById("searchbox").selectedIndex);
+	alert(document.getElementById("searchbox").text);
+	alert(document.getElementById("searchbox").value); */
 	var frm = document.getElementById("searchForm");
 	frm.submit();
 }
@@ -233,27 +236,40 @@ function search() {
 				</div>
 			</div>
 			<div class="row">
-				<c:forEach items="${list}" var="food">
-					<!-- 요걸로하면 한줄에 세개씩 나옴 3,4가 세개/4,6이 두개 -->
+				<c:forEach items="${list}" var="food" varStatus="status">
+					<c:if test="${status.index < 9}">
+					<!-- 요걸로하면 한줄에 세개씩 나옴 3,4가 세개/4,6이 두개 ..? 아닌 것 같습니다만 -->
 					<!-- <div class="col-xl-3 col-md-4"> -->
 					<div class="col-xl-4 col-md-6">
 						<div class="single_order">
 							<div class="order_thumb">
-								<img src="img/${food.name}.jpg" alt="${food.name} poster">
+								<div style="text-align: center;">
+									<a href="foodDetail.do?code=${food.code}">
+										<img src="img/${food.name}.jpg" alt="${food.name} poster" width="200">
+									</a>
+								</div>
 								<div class="order_prise">
-									<span>칼로리 : ${food.calory}</span>
+									<span>Best ${status.count}</span>
 								</div>
 							</div>
 							<div class="order_info">
 								<h3>
-									<a href="#">${food.name}</a>
+									<a href="foodDetail.do?code=${food.code}" style="font-family: 'Sunflower', sans-serif;">${food.name}</a>
 								</h3>
-								<p
-									style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${food.material}</p>
-								<a href="#" class="boxed_btn">Order Now!</a>
+								<p style="margin-bottom: 0 !important">제조사 : ${food.maker}</p>
+								<p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${food.material}</p>
+								
+								<c:if test="${not empty sessionScope.id}">
+									<button type="button" class="btn btn-info btn-sm" onclick="location.href='ingestion.do?code=${food.code}'">추가</button> 
+									<button type="button" class="btn btn-info btn-sm" onclick="location.href='selectfood.do?code=${food.code}'">찜</button>
+								</c:if>
+								
+								<%-- <a href="location.href='ingestion.do?code=${food.code}'" class="boxed_btn">추가</a>
+								<a href="location.href='selectfood.do?code=${food.code}'" class="boxed_btn">찜하기</a> --%>
 							</div>
 						</div>
 					</div>
+					</c:if>
 				</c:forEach>
 			</div>
 		</div>

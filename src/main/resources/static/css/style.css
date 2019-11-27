@@ -1317,24 +1317,26 @@ h3 {
 
 /* line 10, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_order.scss */
 .order_area .single_order .order_thumb {
-  position: relative;
+	position: relative;
+	border: 1px solid skyblue;
+	border-radius: 15px;
 }
 
 /* line 12, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_order.scss */
-.order_area .single_order .order_thumb img {
+/* .order_area .single_order .order_thumb img {
   width: 100%;
-}
+} */
 
 /* line 15, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_order.scss */
 .order_area .single_order .order_thumb .order_prise {
   position: absolute;
-  right: 10px;
-  bottom: 10px;
-  background: #fff;
-  color: #78b454;
-  padding: 17px 21px 13px 24px;
+  left: 10px;
+  top: 10px;
+  color: black;
+  background: #e1f5fe;
+  padding: 10px 15px 10px 15px;
   border-radius: 5px;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 18px;
   margin-bottom: 0;
   line-height: 18px;
@@ -1348,7 +1350,7 @@ h3 {
 /* line 29, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_order.scss */
 .order_area .single_order .order_thumb .order_prise span::before {
   position: absolute;
-  content: "$";
+  /* content: "$"; */
   left: -5px;
   top: -1px;
   color: #78b454;
@@ -5277,6 +5279,7 @@ h6 {
 	font-size: 1.3em;
 	color: black;
 	font-family: 'Sunflower', sans-serif;
+	font-weight: 600;
 	margin-left: 7px;
 	margin-right: 7px;
 }
@@ -5289,3 +5292,27 @@ h6 {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+/* login modal */
+@media (max-width: 767px) {
+  /* line 4, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_video.scss */
+	#loginModal {
+		width: 30%;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /* line 4, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_video.scss */
+	#loginModal {
+		width: 30%;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  /* line 4, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_video.scss */
+	#loginModal {
+		width: 30%;
+	}
+}
+
+

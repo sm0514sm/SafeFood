@@ -70,12 +70,12 @@
 	</select>
 	
 	<select id="freIngesFoodList" 						resultType="food">
-   		select count(i.code) count, f.code, f.name, f.img, maker
+   		select count(i.code) count, f.code, f.name, f.img, maker, calory
 		from ingestion i
 		left join food f
 		using (code)
 		group by code
-		order by count desc limit 3;
+		order by count desc limit 5;
    </select>
    
    <insert id="insertSelectFood"	parameterType="ingestion">
@@ -84,7 +84,7 @@
    </insert>
    
    <select id="selectSelectFood"	parameterType="string"	resultType="ingestion">
-   		select code,no ino,name foodname, selectdate as ingdate, quantity, calory, allergy, img
+   		select code,no ino,name foodname, selectdate as ingdate, quantity, calory, allergy, img, material
 		from selectfood
 		left join food
 		using (code)
