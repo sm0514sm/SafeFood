@@ -39,19 +39,18 @@ public class FoodController {
 		model.addAttribute("list", service.searchAll());
 		return "index";
 	}
-	
+
 	@GetMapping("index.do")
 	public String index(Model model) {
 		model.addAttribute("list", service.searchAll());
 		return "index";
 	}
-	
+
 	@GetMapping("notice.do")
 	public String notice(Model model) {
 		return "redirect:/notice.jsp";
 	}
-	
-	
+
 	@GetMapping("qna.do")
 	public String qna(Model model) {
 		return "redirect:/QNA.jsp";
@@ -101,137 +100,192 @@ public class FoodController {
 	}
 
 	@PostMapping("calory.do")
-	public String calory(Model model, String calval) {
+	public String calory(Model model, String calval, HttpSession session) {
+		if (calval == "") {
+			session.setAttribute("msg", "값을 입력해 주세요.");
+			return "redirect:/CaloryFood.jsp";
+		} else if (!isNumber(calval)) {
+			session.setAttribute("msg", "숫자만 입력 가능합니다.");
+			return "redirect:/CaloryFood.jsp";
+		} else if (Integer.parseInt(calval) > 2000) {
+			session.setAttribute("msg", "2000칼로리 이하로 입력해 주세요.");
+			return "redirect:/CaloryFood.jsp";
+		}
+		// 오차범위는 3으로, 조합의 개수는 3개 이하로, 조합 식품 개수는 최대 7개로 제한, 칼로리가 너무 크면 너무 많이 돌기 때문에 칼로리는
+		// 2000으로 제한.
 		model.addAttribute("calory", service.caloryCalc("all", calval));
 		return "CaloryFood";
 	}
-	
+
 	@GetMapping("bestfood.do")
 	public String bestFood(Model model) {
 		model.addAttribute("list", service.freIngesFoodList());
 		return "bestFood";
 	}
-	
+
 	@GetMapping("selectList.do")
-	public String selectList(Model model,HttpSession session) {
-		//찜 추가 전 그래프
-		String id = (String)session.getAttribute("id");
+	public String selectList(Model model, HttpSession session) {
+		// 찜 추가 전 그래프
+		String id = (String) session.getAttribute("id");
 		List<Food> list = iService.searchNutrient(id);
 		Food food = new Food();
-		double calory =	 	0.0; double carbo = 		0.0; double protein = 	0.0;
-		double fat = 		0.0; double sugar = 		0.0; double natrium = 	0.0;
-		double chole = 		0.0; double fattyacid = 	0.0; double transfat = 	0.0;
-		
-		for(Food f : list) {
-			calory 		+= 	f.getCalory(); carbo 		+= 	f.getCarbo();
-			protein 	+=	f.getProtein(); fat 		+=	f.getProtein();
-			sugar 		+=	f.getProtein(); natrium 	+=	f.getProtein();
-			chole 		+=	f.getProtein(); fattyacid 	+=	f.getProtein();
-			transfat 	+=	f.getProtein(); protein 	+=	f.getProtein();
+		double calory = 0.0;
+		double carbo = 0.0;
+		double protein = 0.0;
+		double fat = 0.0;
+		double sugar = 0.0;
+		double natrium = 0.0;
+		double chole = 0.0;
+		double fattyacid = 0.0;
+		double transfat = 0.0;
+
+		for (Food f : list) {
+			calory += f.getCalory();
+			carbo += f.getCarbo();
+			protein += f.getProtein();
+			fat += f.getProtein();
+			sugar += f.getProtein();
+			natrium += f.getProtein();
+			chole += f.getProtein();
+			fattyacid += f.getProtein();
+			transfat += f.getProtein();
+			protein += f.getProtein();
 		}
-		
-		food.setCalory(calory); 	food.setCarbo(carbo);
-		food.setProtein(protein); 	food.setFat(fat);
-		food.setSugar(sugar); 		food.setNatrium(natrium);
-		food.setChole(chole); 		food.setFattyacid(fattyacid);
+
+		food.setCalory(calory);
+		food.setCarbo(carbo);
+		food.setProtein(protein);
+		food.setFat(fat);
+		food.setSugar(sugar);
+		food.setNatrium(natrium);
+		food.setChole(chole);
+		food.setFattyacid(fattyacid);
 		food.setTransfat(transfat);
 		model.addAttribute("food", food);
-		
-		//찜 추가 후 그래프
+
+		// 찜 추가 후 그래프
 		List<Food> list2 = service.searchNutrientS(id);
 		Food food2 = new Food();
-		food2.setCalory(calory); 	food2.setCarbo(carbo);
-		food2.setProtein(protein); 	food2.setFat(fat);
-		food2.setSugar(sugar); 		food2.setNatrium(natrium);
-		food2.setChole(chole); 		food2.setFattyacid(fattyacid);
+		food2.setCalory(calory);
+		food2.setCarbo(carbo);
+		food2.setProtein(protein);
+		food2.setFat(fat);
+		food2.setSugar(sugar);
+		food2.setNatrium(natrium);
+		food2.setChole(chole);
+		food2.setFattyacid(fattyacid);
 		food2.setTransfat(transfat);
-		
-		for(Food f : list) {
-			calory 		+= 	f.getCalory(); carbo 		+= 	f.getCarbo();
-			protein 	+=	f.getProtein(); fat 		+=	f.getProtein();
-			sugar 		+=	f.getProtein(); natrium 	+=	f.getProtein();
-			chole 		+=	f.getProtein(); fattyacid 	+=	f.getProtein();
-			transfat 	+=	f.getProtein(); protein 	+=	f.getProtein();
+
+		for (Food f : list) {
+			calory += f.getCalory();
+			carbo += f.getCarbo();
+			protein += f.getProtein();
+			fat += f.getProtein();
+			sugar += f.getProtein();
+			natrium += f.getProtein();
+			chole += f.getProtein();
+			fattyacid += f.getProtein();
+			transfat += f.getProtein();
+			protein += f.getProtein();
 		}
-		
-		food2.setCalory(calory); 	food2.setCarbo(carbo);
-		food2.setProtein(protein); 	food2.setFat(fat);
-		food2.setSugar(sugar); 		food2.setNatrium(natrium);
-		food2.setChole(chole); 		food2.setFattyacid(fattyacid);
+
+		food2.setCalory(calory);
+		food2.setCarbo(carbo);
+		food2.setProtein(protein);
+		food2.setFat(fat);
+		food2.setSugar(sugar);
+		food2.setNatrium(natrium);
+		food2.setChole(chole);
+		food2.setFattyacid(fattyacid);
 		food2.setTransfat(transfat);
 		model.addAttribute("food2", food2);
-		
-		//찜 목록 리스트
+
+		// 찜 목록 리스트
 		model.addAttribute("list", service.selectSelectFood(id));
 		return "user/selectList";
 	}
-	
+
 	@GetMapping("origin.do")
 	public String origin(Model model) {
 		List<Food> list = service.searchAll();
 		List<Food> domestic = new ArrayList<Food>();
-		String[] nations = {"가나","가봉","가이아나","감비아","과테말라","그레나다","그리스","기니","기니비사우",//ㄱ
-				"나미비아","나우루","나이지리아","남수단","남아프리카","네덜란드","네팔","노르웨이","뉴질랜드","니제르","니카라과","남오세티야",//ㄴ
-				"대만","덴마크","도미니카","독일","동티모르",//ㄷ
-				"라오스","라이베리아","라트비아","러시아","레바논","레소토","루마니아","룩셈부르크","르완다","리비아","리투아니아","리히텐슈타인",//ㄹ
-				"마다가스카르","마셜","말라위","말레이시아","말리","멕시코","모나코","모로코","모리셔스","모리타니","모잠비크","몬테네그로","몰도바","몰디브","몰타","몽골","미국","미얀마","미크로네시아",//ㅁ
-				"바누아투","바레인","바베이도스","바티칸","바하마","방글라데시","베냉","베네수엘라","베트남","벨기에","벨라루스","벨리즈","벨라루스","벨리즈","보스니아","보츠와나","볼리비아","부룬디","부르키나파소","부탄","북마케도니아","북키프로스","불가리아","브라질","브루나이",//ㅂ
-				"사모아","사우디아라비아","사하라 아랍 민주 공화국","산마리노","상투메 프린시페","세네갈","세르비아","세이셸","세인트루시아","소말리아","수단","스리랑카","스웨덴","스위스","스페인","슬로바키아","슬로베니아","시리아","싱가포르",//ㅅ
-				"아랍에미리트","아르헨티나","아이슬란드","아이티","아일랜드","아프가니스탄","알바니아","에스토니아","에콰도르","에티오피아","영국","예멘","오만","오스트레일리아","오스트리아","온두라스","요르단","우간다","우루과이","우즈베키스탄","우크라이나","이라크","이란","이스라엘","이집트","이탈리아","인도","인도네시아","일본",//ㅇ
-				"중국","자메이카","잠비아","북한","짐바브웨",//ㅈ
-				"체코","칠레",//ㅊ
-				"카메룬","카타르","캄보디아","캐나다","콜롬비아","콩고","쿠바","쿠웨이트","크로아티아","케냐",//ㅋ
-				"타이완","타지키스탄","탄자니아","태국","터키","토고","튀니지",//ㅌ
-				"파나마","파라과이","파키스탄","파푸아뉴기니","페루","포르투칼","폴란드","프랑스","피지","핀란드","필리핀",//ㅍ
-				"헝가리","호주","홍콩",//ㅎ
-				"미제","외국산","수입산"//번외
-				};
-		
+		String[] nations = { "가나", "가봉", "가이아나", "감비아", "과테말라", "그레나다", "그리스", "기니", "기니비사우", // ㄱ
+				"나미비아", "나우루", "나이지리아", "남수단", "남아프리카", "네덜란드", "네팔", "노르웨이", "뉴질랜드", "니제르", "니카라과", "남오세티야", // ㄴ
+				"대만", "덴마크", "도미니카", "독일", "동티모르", // ㄷ
+				"라오스", "라이베리아", "라트비아", "러시아", "레바논", "레소토", "루마니아", "룩셈부르크", "르완다", "리비아", "리투아니아", "리히텐슈타인", // ㄹ
+				"마다가스카르", "마셜", "말라위", "말레이시아", "말리", "멕시코", "모나코", "모로코", "모리셔스", "모리타니", "모잠비크", "몬테네그로", "몰도바",
+				"몰디브", "몰타", "몽골", "미국", "미얀마", "미크로네시아", // ㅁ
+				"바누아투", "바레인", "바베이도스", "바티칸", "바하마", "방글라데시", "베냉", "베네수엘라", "베트남", "벨기에", "벨라루스", "벨리즈", "벨라루스",
+				"벨리즈", "보스니아", "보츠와나", "볼리비아", "부룬디", "부르키나파소", "부탄", "북마케도니아", "북키프로스", "불가리아", "브라질", "브루나이", // ㅂ
+				"사모아", "사우디아라비아", "사하라 아랍 민주 공화국", "산마리노", "상투메 프린시페", "세네갈", "세르비아", "세이셸", "세인트루시아", "소말리아", "수단",
+				"스리랑카", "스웨덴", "스위스", "스페인", "슬로바키아", "슬로베니아", "시리아", "싱가포르", // ㅅ
+				"아랍에미리트", "아르헨티나", "아이슬란드", "아이티", "아일랜드", "아프가니스탄", "알바니아", "에스토니아", "에콰도르", "에티오피아", "영국", "예멘", "오만",
+				"오스트레일리아", "오스트리아", "온두라스", "요르단", "우간다", "우루과이", "우즈베키스탄", "우크라이나", "이라크", "이란", "이스라엘", "이집트", "이탈리아",
+				"인도", "인도네시아", "일본", // ㅇ
+				"중국", "자메이카", "잠비아", "북한", "짐바브웨", // ㅈ
+				"체코", "칠레", // ㅊ
+				"카메룬", "카타르", "캄보디아", "캐나다", "콜롬비아", "콩고", "쿠바", "쿠웨이트", "크로아티아", "케냐", // ㅋ
+				"타이완", "타지키스탄", "탄자니아", "태국", "터키", "토고", "튀니지", // ㅌ
+				"파나마", "파라과이", "파키스탄", "파푸아뉴기니", "페루", "포르투칼", "폴란드", "프랑스", "피지", "핀란드", "필리핀", // ㅍ
+				"헝가리", "호주", "홍콩", // ㅎ
+				"미제", "외국산", "수입산"// 번외
+		};
+
 		boolean isfind = false;
-		for(Food f : list) {
+		for (Food f : list) {
 			isfind = false;
-			for(String s : nations) {
-				if(f.getMaterial().contains(s)) {
+			for (String s : nations) {
+				if (f.getMaterial().contains(s)) {
 					isfind = true;
 					break;
 				}
 			}
-			if(!isfind)
+			if (!isfind)
 				domestic.add(f);
 		}
-		
+
 		model.addAttribute("list", domestic);
-		
+
 		return "origin";
 	}
-	
+
 	@GetMapping("selectfood.do")
 	public String selectfood(HttpSession session, String code) throws SQLException {
 		int codeInt = Integer.parseInt(code);
-		if(session.getAttribute("id") == null) {
+		if (session.getAttribute("id") == null) {
 			return "redirect:index.do";
 		}
 		service.insertSelectFood(new Ingestion((String) session.getAttribute("id"), codeInt, 1));
-		session.setAttribute("selectFlag",true);
+		session.setAttribute("selectFlag", true);
 		return "redirect:foodList.do";
 	}
-	
+
 	@GetMapping("trend.do")
 	public String trned(HttpSession session, String code) throws SQLException {
 		return "trend";
 	}
-	
+
 	@GetMapping("deleteSelectFood.do")
 	public String deleteSelectFood(String code) {
 		service.deleteSelectFood(code);
 		return "redirect:selectList.do";
 	}
-	
+
 	@GetMapping("selectToIngesFood.do")
 	public String selectToIngesFood(HttpSession session, String code, String ino) throws SQLException {
 		System.out.println("## selectToIngesFood");
 		iService.add(new Ingestion((String) session.getAttribute("id"), Integer.parseInt(code), 1));
 		service.deleteSelectFood(ino);
 		return "redirect:selectList.do";
+	}
+
+	public static boolean isNumber(String str) {
+		boolean result = false;
+		try {
+			Double.parseDouble(str);
+			result = true;
+		} catch (Exception e) {
+		}
+		return result;
 	}
 }

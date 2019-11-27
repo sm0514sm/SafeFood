@@ -22,53 +22,6 @@ $(function(){
 	DoRed();
 });
 
-function updateIngestion(ino){
-	console.log("## updateIngestion() ");
-	var objParams = {
-			"ino" : ino,
-			"ingdate" : $('#ingdate').val(),
-			"quantity" : $('#quantity').val()
-		};
-		
-		//비동기통신하는데 data JSON.stringify 안하면 spring에서 json데이터를 vo,dto를 컨버팅을 못하니까 까먹지 말고 꼭!
-		$.ajax({
-			url : "rest/ingestion",
-			type : "PUT",
-			dataType:'json',
-			contentType :   "application/json",
-			data : JSON.stringify(objParams),
-			success : function(data){
-				if(data.state == "fail"){
-					alert("섭취 식품 수정에 실패하였습니다.");
-				}else{
-					alert("섭취 식품에 수정되었습니다.");
-				}
-			},
-			error  : function(xhr, status,message){
-				console.log(message);
-			}
-		});
-}
-
-function deleteIngestion(ino){
-	$.ajax({
-		url : "rest/ingestion/"+ino,
-		type : "DELETE",
-		success : function(data){
-			console.log(data);
-			if(data.state == "fail"){
-				alert("섭취 식품 삭제에 실패하였습니다.");
-			}else{
-				alert("섭취 식품이 삭제되었습니다.");
-			}
-			location.href="ingestionList.do";
-		},
-		error  : function(xhr, status,message){
-			console.log(message);
-		}
-	});
-}
-
 function DoughnutChart() {		
 	var ctx = document.getElementById("nutrientChart").getContext('2d');
 /*
@@ -301,8 +254,7 @@ function DoRed(){
 							<thead>
 								<tr style="text-align: center; background-color:#e1f5fe;">
 									<th width="200">Image</th>
-									<th>Product Title</th>
-									<th class="text-center">Allergy</th>
+									<th>Name</th>
 									<th class="text-center">Date</th>
 									<!-- <th class="text-center">칼로리</th> -->
 									<th class="text-center">Quantity</th>

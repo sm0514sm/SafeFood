@@ -37,7 +37,7 @@
 											<img width="150px;" height="auto" src="${food.img}"
 											alt="image description" />
 									</a></th>
-									<th width="200px;" class="text-center">Product Title</th>
+									<th width="200px;" class="text-center">Name</th>
 									<th width="200px;" class="text-center">Maker</th>
 									<th width="200px;" class="text-center">Calory</th>
 									<th width="200px;" class="text-center">Origin</th>
@@ -66,7 +66,7 @@
 							<thead>
 								<tr style="text-align: center; background-color:#e1f5fe; border: 3px solid #e1f5fe;">
 									<th width="300px;">Image</th>
-									<th width="300px;">Product Title</th>
+									<th width="300px;">Name</th>
 									<th width="200px;" class="text-center">Maker</th>
 									<th width="200px;" class="text-center">Calory</th>
 									<th width="200px;" class="text-center">Origin</th>
