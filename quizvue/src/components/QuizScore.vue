@@ -27,6 +27,7 @@ import Constant from "../Constant";
 export default {
   name: "quizScore",
   created() {
+    this.getTop5();
     setInterval(() => {
       this.getTop5();
     }, 5000);

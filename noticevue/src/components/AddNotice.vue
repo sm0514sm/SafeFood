@@ -7,21 +7,46 @@
         <tr>
           <td>
             제목 :
-            <input type="text" v-model="notice.title" style="width : 80%" />
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              v-model="notice.title"
+              style="width : 80%"
+            />
           </td>
         </tr>
         <tr>
           <td>
-            <input type="text" v-model="notice.contents" id="contents" />
+            <textarea
+              class="form-control"
+              id="contents"
+              rows="3"
+              v-model="notice.contents"
+            ></textarea>
           </td>
         </tr>
         <tr>
           <td>
-            <input type="button" value="목록으로" @click="GoBoard()" />
+            <input
+              type="button"
+              value="목록으로"
+              @click="GoBoard()"
+              class="btn btn-info btn-sm"
+            />
             &nbsp;
-            <input type="button" value="초기화" @click="clear()" />
+            <input
+              type="button"
+              value="초기화"
+              @click="clear()"
+              class="btn btn-info btn-sm"
+            />
             &nbsp;
-            <input type="button" value="작성하기" @click="addBulletin()" />
+            <input
+              type="button"
+              value="작성하기"
+              @click="addBulletin()"
+              class="btn btn-info btn-sm"
+            />
           </td>
         </tr>
       </table>

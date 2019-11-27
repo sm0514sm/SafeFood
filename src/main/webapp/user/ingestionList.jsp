@@ -196,6 +196,7 @@ function DoughnutChart() {
 			}
 		});
 }
+
 function DoRed(){
 	Array.prototype.forEach.call(document.getElementsByClassName("allergyTd"), function(el) { 
 		el.innerHTML = el.innerHTML.replace("${allergies[0]}", "<span style='color: red;'>${allergies[0]}</span>"); 
