@@ -104,7 +104,7 @@ public class FoodServiceImpl implements FoodService{
 		if(k == 20 || sum > parseInt + 3 || calfoodList.size() >= 3) return;
 		
 		if (n == index) {
-			if (sum >= parseInt - 3 && sum <= parseInt + 3) {
+			if (sum >= parseInt - 10 && sum <= parseInt + 10) {
 				List<Food> calfood = new LinkedList<>();
 				for (int j = 0; j < n; j++)
 					calfood.add(food.get(com[j]));

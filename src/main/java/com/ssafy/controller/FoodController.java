@@ -2,6 +2,7 @@ package com.ssafy.controller;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -107,13 +108,57 @@ public class FoodController {
 		} else if (!isNumber(calval)) {
 			session.setAttribute("msg", "숫자만 입력 가능합니다.");
 			return "redirect:/CaloryFood.jsp";
-		} else if (Integer.parseInt(calval) > 2000) {
-			session.setAttribute("msg", "2000칼로리 이하로 입력해 주세요.");
+		} else if (Integer.parseInt(calval) < 300 || Integer.parseInt(calval) > 2000) {
+			session.setAttribute("msg", "300 이상, 2000 이하로 입력해 주세요.");
 			return "redirect:/CaloryFood.jsp";
 		}
-		// 오차범위는 3으로, 조합의 개수는 3개 이하로, 조합 식품 개수는 최대 7개로 제한, 칼로리가 너무 크면 너무 많이 돌기 때문에 칼로리는
-		// 2000으로 제한.
-		model.addAttribute("calory", service.caloryCalc("all", calval));
+		//오차범위는 3으로, 조합의 개수는 3개 이하로, 조합 식품 개수는 최대 7개로 제한, 칼로리가 너무 크면 너무 많이 돌기 때문에 칼로리는 2000으로 제한.
+		//뽑아온 목록 저장
+		List<List<Food>> calList = service.caloryCalc("all", calval);
+		model.addAttribute("calory", calList);
+		
+		List<Food> list = new LinkedList<>();
+		
+		double calory = 0.0;
+		double carbo = 0.0;
+		double protein = 0.0;
+		double fat = 0.0;
+		double sugar = 0.0;
+		double natrium = 0.0;
+		double chole = 0.0;
+		double fattyacid = 0.0;
+		double transfat = 0.0;
+
+		for (List<Food> foodList : calList) {
+			calory = carbo = protein = fat = sugar = natrium = chole = fattyacid = transfat = 0.0;
+			
+			for (Food f : foodList) {
+				calory += f.getCalory();
+				carbo += f.getCarbo();
+				protein += f.getProtein();
+				fat += f.getProtein();
+				sugar += f.getProtein();
+				natrium += f.getProtein();
+				chole += f.getProtein();
+				fattyacid += f.getProtein();
+				transfat += f.getProtein();
+				protein += f.getProtein();
+			}
+			
+			Food food = new Food();
+			food.setCalory(calory);
+			food.setCarbo(carbo);
+			food.setProtein(protein);
+			food.setFat(fat);
+			food.setSugar(sugar);
+			food.setNatrium(natrium);
+			food.setChole(chole);
+			food.setFattyacid(fattyacid);
+			food.setTransfat(transfat);
+
+			list.add(food);
+		}
+		model.addAttribute("nutriList", list);
 		return "CaloryFood";
 	}
 
