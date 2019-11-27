@@ -178,8 +178,9 @@ function DoughnutChart2() {
 				<!-- Recently Favorited -->
 				<div class="widget dashboard-container my-adslist">
 					<c:if test="${not empty list}">
-						<h3 class="widget-header min-title">예상 섭취 정보</h3>
+						<h3 class="widget-header min-title">예상 섭취 정보</h3><hr/>
 					</c:if>
+					<span style="float:right"><b style="color:'red'">*알레르기 성분은 빨갛게 표시 됩니다.</b></span>
 					<table class="table table-responsive product-dashboard-table" style="margin-bottom: 80px">
 						<c:forEach items="${list}" var="food">
 							<thead>
