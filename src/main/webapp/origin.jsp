@@ -11,12 +11,11 @@
 <meta name="author" content="">
 <title>SafeFood - 원산지 정보</title>
 <jsp:include page="link_script.jsp" />
-<script type='text/javascript' src='js/jquery-3.3.1.js'></script>
 </head>
 
 <body role="document">
 	<jsp:include page="header.jsp" />
-	<div class="header-margin" style="margin-top: 150px;"></div>
+	<div class="header-margin" style="margin-top: 170px;"></div>
 	<section class="dashboard section">
 		<!-- Container Start -->
 		<div class="container">
@@ -24,28 +23,48 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="widget dashboard-container my-adslist">
-						<h3 class="widget-header min-title"> 국내산 식품 정보 </h3><hr/>
-						
-						<%-- <table class="table table-responsive product-dashboard-table" style="width:800px; border: 1.5px solid #e1f5fe;">
-							<tr style="text-align: center; background-color:#e1f5fe;">
-								<th>Image</th>
-								<th>Product</th>
-								<th>Maker</th>
-								<th>Origin</th>
-							</tr>
-							<c:forEach items="${list}" var="food" varStatus="status">
-								<tr>
-									<td width="200" style="text-align: center; vertical-align: middle;"><img src="${food.img}" width="150" height="150"/></td>
-									<td width="200"  style="text-align: center; background-color:#e1f5fe; vertical-align: middle;">${food.name}</td>
-									<td width="200"  style="text-align: center; vertical-align: middle;">${food.maker}</td>
-									<td width="200"  style="text-align: center; background-color:#e1f5fe; vertical-align: middle;">국내산</td>
+						<h3 class="widget-header min-title">국내산 식품 정보</h3>
+						<hr />
+
+						<%--수정하다가 더 급한거 먼저 하기로 함 --%>
+						<%-- <c:forEach items="${list}" var="food">
+							<table class="table table-responsive product-dashboard-table"
+								style="text-align: center; border: 3px solid #e1f5fe;">
+								<tr style="text-align: center; background-color: #e1f5fe;">
+									<th rowspan="3" class="product-thumb"
+										style="vertical-align: middle; !important"><a
+										class="navbar-brand" href="foodDetail.do?code=${food.code}">
+											<img width="150px;" height="auto" src="${food.img}"
+											alt="image description" />
+									</a></th>
+									<th width="200px;" class="text-center">Product Title</th>
+									<th width="200px;" class="text-center">Maker</th>
+									<th width="200px;" class="text-center">Calory</th>
+									<th width="200px;" class="text-center">Origin</th>
 								</tr>
-							</c:forEach>
-						</table> --%>
-						
+
+								<tr style="text-align: center;">
+
+									<td class="product-details"
+										style="vertical-align: middle; !important"><a
+										href="foodDetail.do?code=${food.code}">${food.name}</a></td>
+									<td style="vertical-align: middle; !important">${food.maker}</td>
+									<td style="vertical-align: middle; !important">${food.calory}</td>
+									<td style="vertical-align: middle; !important">국내산</td>
+								</tr>
+								<tr style="text-align: center;">
+									<td colspan="4" style="vertical-align: middle; !important"><div
+											style="display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.2; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+											${food.material}
+											<c:if test="contain"></c:if>
+										</div></td>
+								</tr>
+							</table>
+						</c:forEach>
+ --%>
 						<table class="table table-responsive product-dashboard-table">
 							<thead>
-								<tr style="text-align: center; background-color:#e1f5fe;">
+								<tr style="text-align: center; background-color:#e1f5fe; border: 3px solid #e1f5fe;">
 									<th width="300px;">Image</th>
 									<th width="300px;">Product Title</th>
 									<th width="200px;" class="text-center">Maker</th>
@@ -55,7 +74,7 @@
 							</thead>
 								<c:forEach items="${list}" var="f">
 		
-									<tr style="text-align: center;">
+									<tr style="text-align: center; border: 3px solid #e1f5fe;">
 										<td class="product-thumb" style="padding:0px; vertical-align: middle; !important"><a class="navbar-brand"
 											href="foodDetail.do?code=${f.code}"> <img
 												width="120px;" height="auto" src="${f.img}"
@@ -69,18 +88,13 @@
 									</tr>
 								</c:forEach>
 							</table>
-						
-						
-						
-						
-						
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	
 
-	<jsp:include page="footer.jsp"/>
+
+	<jsp:include page="footer.jsp" />
 </body>
 </html>
