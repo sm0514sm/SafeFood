@@ -1,11 +1,14 @@
 <template>
   <div id="app">
     <router-view></router-view>
+    <quiz-score></quiz-score>
   </div>
 </template>
 
 <script>
 import QuizMain from "./components/QuizMain";
+import Quiz from "./components/Quiz";
+import QuizScore from "./components/QuizScore";
 import VueRouter from "vue-router";
 import Vue from "vue";
 
@@ -15,12 +18,15 @@ const router = new VueRouter({
   routes: [
     { path: "/", component: QuizMain },
     { path: "/quiz.html", component: QuizMain },
-    { path: "/quiz.jsp", component: QuizMain }
+    { path: "/quiz.jsp", component: QuizMain },
+    { path: "/quiz", component: Quiz }
   ]
 });
 export default {
   name: "app",
-  components: {},
+  components: {
+    QuizScore
+  },
   router
 };
 </script>

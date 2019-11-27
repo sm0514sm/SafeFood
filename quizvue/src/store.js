@@ -7,33 +7,42 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    bulletins: [],
-    bulletin: {},
-    searchBulletin: {},
-    comments: [],
-    id: "ssafy"
+    id: "ssafy",
+    score: 0,
+    quizNo: [], // 푼 문제 리스트
+    solvedCnt: 0,
+    level: 1,
+    quiz: {
+      no: 1,
+      level: 1,
+      question: "테스트임 신라면의 제조사는?",
+      answer_cnt: 4,
+      answer: 2,
+      ps: "테스트임 농심 신~~라면! 아시죠??",
+      ans1: "테스트임삼양",
+      ans2: "테스트임농심",
+      ans3: "테스트임빙그레",
+      ans4: "테스트임오뚜기"
+    }
   },
   actions: {
+    [Constant.GET_QUIZ_ONE]: (store, payload) => {
+      console.log(payload);
+      http
+        .get("/rest/quizOneWithLevel/" + payload.level)
+        .then(response => {
+          console.log(response.data.data);
+          store.commit(Constant.GET_QUIZ_ONE, {
+            quiz: response.data.data[0]
+          });
+        })
+        .catch(exp => alert("퀴즈 하나 불러오는데 실패하였습니다." + exp));
+    },
     [Constant.GET_BULLETINLIST]: store => {
       http
         .get("/rest/boardlist/" + 2)
         .then(response => {
           store.commit(Constant.GET_BULLETINLIST, {
-            bulletins: response.data.data
-          });
-        })
-        .catch(exp => alert("처리에 실패하였습니다." + exp));
-    },
-    [Constant.GET_SEARCH_BULLETINLIST]: (store, payload) => {
-      http
-        .get(
-          "/rest/boardsearch/" +
-            payload.searchBulletin.searchType +
-            "_" +
-            payload.searchBulletin.searchWord
-        )
-        .then(response => {
-          store.commit(Constant.GET_SEARCH_BULLETINLIST, {
             bulletins: response.data.data
           });
         })
@@ -49,97 +58,7 @@ const store = new Vuex.Store({
         })
         .catch(exp => alert("처리에 실패하였습니다." + exp));
     },
-    [Constant.ADD_BULLETIN_CNT]: (store, payload) => {
-      http
-        .put("/rest/board/" + payload.bno)
-        .then(response => {
-          console.log("ADD_BULLETIN_CNT 수행");
-          console.log(response);
-          console.log(payload.bno);
-        })
-        .catch(exp => alert("조회수 증가에 실패하였습니다." + exp));
-    },
-    [Constant.GET_COMMENTS]: (store, payload) => {
-      http
-        .get("/rest/boardansq/" + payload.qno)
-        .then(response => {
-          store.commit(Constant.GET_COMMENTS, { comments: response.data.data });
-        })
-        .catch(exp => alert("처리에 실패하였습니다." + exp));
-    },
-    [Constant.ADD_BULLETIN]: (store, payload) => {
-      http
-        .post("/rest/board", {
-          contents: payload.bulletin.contents,
-          goods: payload.bulletin.goods,
-          hits: payload.bulletin.hits,
-          sno: payload.bulletin.sno,
-          title: payload.bulletin.title,
-          uid: payload.bulletin.uid
-        })
-        .then(response => {
-          console.log(response);
-          console.log(payload.bulletin);
-          store.dispatch(Constant.GET_BULLETINLIST, payload.sno);
-        })
-        .catch(() => console.log("추가에 실패하였습니다."));
-    },
-    [Constant.UPDATE_BULLETIN]: (store, payload) => {
-      http
-        .put("/rest/board", {
-          bno: payload.bulletin.bno,
-          bregdate: "",
-          contents: payload.bulletin.contents,
-          goods: payload.bulletin.goods,
-          hits: payload.bulletin.hits,
-          sno: payload.bulletin.sno,
-          title: payload.bulletin.title,
-          uid: payload.bulletin.uid
-        })
-        .then(response => {
-          console.log("update_bulletin 실행");
-          console.log(response);
-          console.log(payload.bulletin);
-          store.commit(Constant.GET_BULLETIN, {
-            bulletin: payload.bulletin
-          });
-        })
-        .catch(err => {
-          console.log(err);
-          console.log("수정에 실패하였습니다.");
-        });
-    },
-    [Constant.DELETE_BULLETIN]: (store, payload) => {
-      http
-        .delete("rest/board/" + payload.bno)
-        .then(response => {
-          console.log("response");
-          console.log(response);
-          console.log("payload.bulletin");
-          console.log(payload.bulletin);
-          console.log("삭제 처리 되었습니다.");
-          store.dispatch(Constant.GET_BULLETINLIST, 2);
-        })
-        .catch(exp => alert("삭제 처리에 실패하였습니다" + exp));
-    },
-    [Constant.ADD_BOARDANS]: (store, payload) => {
-      http
-        .post("/rest/boardans", {
-          sno: payload.sno,
-          title: payload.title,
-          contents: payload.contents,
-          hits: payload.hits,
-          goods: payload.goods,
-          uid: payload.uid,
-          qno: payload.qno
-        })
-        .then(() => {
-          store.dispatch(Constant.GET_COMMENTS, { qno: payload.qno });
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    },
+
     [Constant.GET_ID]: store => {
       http
         .get("/session.do", { withCredentials: true })
@@ -149,46 +68,14 @@ const store = new Vuex.Store({
         .catch(err => {
           console.log(err);
         });
-    },
-    [Constant.REMOVE_BOARDANS]: (store, payload) => {
-      http
-        .delete("/rest/boardans/" + payload.bno)
-        .then(() => {
-          store.dispatch(Constant.GET_COMMENTS, { qno: payload.qno });
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    },
-    [Constant.GOOD_BOARDANS]: (store, payload) => {
-      http
-        .put("/rest/goodboardans", {
-          bno: payload.bno
-        })
-        .then(() => {
-          store.dispatch(Constant.GET_COMMENTS, { qno: payload.qno });
-        })
-        .catch(err => {
-          console.log(err);
-        });
     }
   },
   mutations: {
-    // 저장소에 데이터 실제 반영(commit시 호출)
-    [Constant.GET_BULLETINLIST]: (state, payload) => {
-      store.state.bulletins = payload.bulletins;
-    },
-    [Constant.GET_BULLETIN]: (state, payload) => {
-      store.state.bulletin = payload.bulletin;
-    },
-    [Constant.GET_SEARCH_BULLETINLIST]: (state, payload) => {
-      store.state.bulletins = payload.bulletins;
-    },
-    [Constant.GET_COMMENTS]: (state, payload) => {
-      store.state.comments = payload.comments;
-    },
     [Constant.GET_ID]: (state, payload) => {
       store.state.id = payload.uid;
+    },
+    [Constant.GET_QUIZ_ONE]: (state, payload) => {
+      store.state.quiz = payload.quiz;
     }
   }
 });
