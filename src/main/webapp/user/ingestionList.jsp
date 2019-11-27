@@ -14,7 +14,6 @@
 <title>섭취 목록</title>
 <jsp:include page="../link_script.jsp" />
 <link rel="icon" href="favicon.ico">
-<script type='text/javascript' src='js/jquery-3.3.1.js'></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script type="text/javascript">
 $(function(){

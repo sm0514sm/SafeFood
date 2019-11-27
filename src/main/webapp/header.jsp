@@ -8,6 +8,9 @@
 		var frm = document.getElementById("loginForm");
 		frm.submit();
 	} */
+	function findPassword(){
+		window.location.href = '/findPassword.jsp';
+	}
 	function modify(){
 		console.log("## modify()");
 		var id = "${sessionScope.id}";
@@ -149,6 +152,8 @@ label {
 													for="exampleCheck1">ID 저장하기</label>
 											</div> -->
 					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" style="float:left;"
+							onclick="findPassword()" data-dismiss="modal">Find Password</button>
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">Close</button>
 						<button type="submit" class="btn btn-success loginButton">Login</button>
