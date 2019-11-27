@@ -57,30 +57,30 @@ label {
 								<a href="/index.do"> <img src="img/logo.png" alt=""
 									style="width: 100px;"></a>
 							</div>
-							<li><a href="#">공지사항<i class="ti-angle-down"></i></a>
+							<li><a href="#">Notice<i class="ti-angle-down"></i></a>
 								<ul class="submenu">
-									<li><a href="/notice.do">공지사항</a></li>
+									<li><a href="/notice.do">Notice</a></li>
 									<li><a href="/qna.do">Q&A</a></li>
 								</ul></li>
 							<!-- <li><a href="about.html">공지사항</a></li>
 									<li><a href="qna.do">Q&A</a></li> -->
-							<li><a href="#">상품목록<i class="ti-angle-down"></i></a>
+							<li><a href="#">Food List<i class="ti-angle-down"></i></a>
 								<ul class="submenu">
-									<li><a href="/foodList.do">상품전체목록</a></li>
-									<li><a href="/origin.do">국내산식품</a></li>
+									<li><a href="/foodList.do">Food List</a></li>
+									<li><a href="/origin.do">Domestic Origin</a></li>
+									<li><a href="/bestfood.do">Best 5</a></li>
 								</ul>
 							</li>
-							<li><a href="/bestfood.do">Best상품</a></li>
-							<li><a href="/CaloryFood.jsp">칼로리별조합</a></li>
+							<li><a href="/CaloryFood.jsp">Recommend Food</a></li>
 							<li><a href="/trend.do">Food Trend</a></li>
 
 							<c:choose>
 								<c:when test="${sessionScope.id != null}">
-									<li><a href="/quiz.jsp">퀴즈</a></li>
-									<li><a href="#">섭취 정보<i class="ti-angle-down"></i></a>
+									<li><a href="/quiz.jsp">Quiz</a></li>
+									<li><a href="#">My Page<i class="ti-angle-down"></i></a>
 										<ul class="submenu">
-											<li><a href="/ingestionList.do">내 섭취 정보</a></li>
-											<li><a href="/selectList.do">내 찜 목록</a></li>
+											<li><a href="/ingestionList.do">My Ingestion</a></li>
+											<li><a href="/selectList.do">My Wishlist</a></li>
 										</ul></li>
 								</c:when>
 							</c:choose>
