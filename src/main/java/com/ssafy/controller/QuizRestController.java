@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,7 @@ import com.ssafy.model.service.QuizService;
 
 import io.swagger.annotations.ApiOperation;
 
+@CrossOrigin("*")
 @RestController
 public class QuizRestController {
 	@Autowired
@@ -41,8 +43,20 @@ public class QuizRestController {
 	
 	@ApiOperation("퀴즈 모두 가져오기")
 	@GetMapping("/rest/quiz")
-	public ResponseEntity<Map<String, Object>> quizAll() throws SQLException {
-		return handleSuccess(service.searchAll());
+	public ResponseEntity<Map<String, Object>> quizRealAll() throws SQLException {
+		return handleSuccess(service.searchRealAll());
+	}
+	
+	@ApiOperation("레벨에 해당하는 퀴즈 모두 가져오기")
+	@GetMapping("/rest/quizLevel/{level}")
+	public ResponseEntity<Map<String, Object>> quizAll(@PathVariable int level) throws SQLException {
+		return handleSuccess(service.searchAll(level));
+	}
+	
+	@ApiOperation("레벨에 해당하는 퀴즈 하나만 가져오기")
+	@GetMapping("/rest/quizOneWithLevel/{level}")
+	public ResponseEntity<Map<String, Object>> quizOneWithLevel(@PathVariable int level) throws SQLException {
+		return handleSuccess(service.searchOneWithLevel(level));
 	}
 	
 	

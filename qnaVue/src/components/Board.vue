@@ -2,7 +2,7 @@
   <div>
     <!-- 나중에 삭제 바람 -->
     <div>Board.vue 입니다</div>
-    로그인 아이디 : {{id}}
+    로그인 아이디 : {{ id }}
     <br />
     <div>
       <table>
@@ -28,7 +28,11 @@
         <br />
         <tr>
           <td colspan="3">
-            <select name="searchType" style="height:22px;" v-model="searchBulletin.searchType">
+            <select
+              name="searchType"
+              style="height:22px;"
+              v-model="searchBulletin.searchType"
+            >
               <option value="notSelect">검색선택</option>
               <option value="title">제목</option>
               <option value="contents">내용</option>
@@ -49,10 +53,20 @@
             />
           </td>
           <td>
-            <input type="button" style="height:25px;" value="전체목록" @click="getAllBulltein(2)" />
+            <input
+              type="button"
+              style="height:25px;"
+              value="전체목록"
+              @click="getAllBulltein(2)"
+            />
           </td>
           <td>
-            <input type="button" style="height:25px;" value="글쓰기" @click="GoAddBulletin()" />
+            <input
+              type="button"
+              style="height:25px;"
+              value="글쓰기"
+              @click="GoAddBulletin()"
+            />
           </td>
         </tr>
       </table>
