@@ -53,7 +53,7 @@ th, td {
 									<button type="button" class="btn btn-info btn-sm" onclick="location.href='selectfood.do?code=${food.code}'">찜</button>
 								</c:if>
 							</td>
-							<th width="350" style=" background-color: #e1f5fe; height: 50px;vertical-align: middle; !important">Product</th>
+							<th width="350" style=" background-color: #e1f5fe; height: 50px; vertical-align: middle; !important">Name</th>
 							<th width="200" class="text-center" style=" background-color: #e1f5fe; height: 50px;vertical-align: middle; !important">Maker</th>
 						</tr>
 

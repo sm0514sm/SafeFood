@@ -185,7 +185,7 @@ function DoughnutChart2() {
 							<thead>
 								<tr style="text-align: center; background-color:#e1f5fe;">
 									<th width="300px;">Image</th>
-									<th width="300px;">Product Title</th>
+									<th width="300px;">Name</th>
 <!-- 									<th width="300px;" class="text-center">칼로리</th> -->
 									<th width="300px;" class="text-center">Allergy</th>
 									<th width="300px;" class="text-center">Function</th>

@@ -35,7 +35,7 @@ public interface FoodService {
 	
 	public void addCount(int code);
 	
-	public List<Food> caloryCalc(String keyword, String cal);
+	public List<List<Food>> caloryCalc(String keyword, String cal);
 	
 	public List<Food> freIngesFoodList();			//자주 섭취한 식품 정보 보여주기
 	

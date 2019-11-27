@@ -84,7 +84,7 @@
 							<thead>
 								<tr>
 									<th>Image</th>
-									<th>Product Title</th>
+									<th>Name</th>
 									<th class="text-center">Category</th>
 									<th class="text-center">Action</th>
 								</tr>

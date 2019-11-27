@@ -22,23 +22,9 @@
 		}
 	}
 </script>
-<style>
-th {
-	width: 300px;
-	text-align: center;
-	vertical-align: middle;
-	background-color:#e1f5fe;
-}
-</style>
+
 </head>
 <body role="document">
-	<c:if test="${not empty sessionScope.msg}">	
-		<script>	
-			alert("${sessionScope.msg}");
-		</script>
-		<c:remove var="msg" scope="session"/>
-
-	</c:if>
 	<jsp:include page="header.jsp" />
 	<div class="header-margin" style="margin-top: 170px;"></div>
 	<section class="page-search">
@@ -87,42 +73,39 @@ th {
 					<c:forEach items="${calory}" var="cal" varStatus="status">
 						<h3 style="font-family: 'Sunflower', sans-serif;">${status.count}번째 리스트</h3><hr/>
 						<table class="table table-responsive product-dashboard-table">
-							<tr>
-								<th style="vertical-align: middle;">Image</th>
-								<c:forEach items="${cal}" var="f">
-									<td class="product-thumb">
-										<a class="navbar-brand" href="foodDetail.do?code=${f.code}">
-											<img width="150px;" height="auto" src="${f.img}" alt="image description" />
-										</a>
-									</td>
-								</c:forEach>
-							</tr>
-							<tr>
-								<th>Name</th>
-								<c:forEach items="${cal}" var="f">
+							<c:forEach items="${cal}" var="f">
+								<thead>
+									<tr style="text-align: center; background-color:#e1f5fe;">
+										<th width="300px;">Image</th>
+										<th width="300px;">Name</th>
+										<th width="300px;" class="text-center">Maker</th>
+										<th width="300px;" class="text-center">Calory</th>
+										<th width="300px;" class="text-center">Allergy</th>
+									</tr>
+								</thead>
+	
+								<tr style="text-align: center;">
+									<td rowspan="2" class="product-thumb" style="vertical-align: middle; !important"><a class="navbar-brand"
+										href="foodDetail.do?code=${f.code}"> <img
+											width="150px;" height="auto" src="${f.img}"
+											alt="image description" />
+									</a></td>
 									<td class="product-details" style="vertical-align: middle; !important"><a
 										href="foodDetail.do?code=${f.code}">${f.name}</a></td>
-								</c:forEach>
-							</tr>
-							<tr>
-								<th>Maker</th>
-								<c:forEach items="${cal}" var="f">
 									<td style="vertical-align: middle; !important">${f.maker}</td>
-								</c:forEach>
-							</tr>
-							<tr>
-								<th>Calory</th>
-								<c:forEach items="${cal}" var="f">
 									<td style="vertical-align: middle; !important">${f.calory}</td>
-								</c:forEach>
-							</tr>
-							<tr>
-								<th>Origin</th>
-								<c:forEach items="${cal}" var="f">
 									<td style="vertical-align: middle; !important">${f.allergy}</td>
-								</c:forEach>
-							</tr>
+								</tr>
+								<tr style="text-align: center;">
+									<td colspan="4" style="vertical-align: middle; !important"><div style="display: inline-block;  overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.2; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+									">${f.material}</div></td>
+								</tr>
+							</c:forEach>
 						</table>
+						
+						<br>
+						<br>
+						<br>
 					</c:forEach>
 					
 					

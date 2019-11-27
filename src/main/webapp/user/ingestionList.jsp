@@ -253,7 +253,7 @@ function DoRed(){
 							<thead>
 								<tr style="text-align: center; background-color:#e1f5fe;">
 									<th width="200">Image</th>
-									<th>Product Title</th>
+									<th>Name</th>
 									<th class="text-center">Date</th>
 									<!-- <th class="text-center">칼로리</th> -->
 									<th class="text-center">Allergy</th>
