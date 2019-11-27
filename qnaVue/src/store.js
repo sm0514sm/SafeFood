@@ -41,8 +41,6 @@ const store = new Vuex.Store({
       http
         .get("/rest/board/" + payload.no)
         .then(response => {
-          console.log("get_bulletin");
-          console.log(response.data.data);
           store.commit(Constant.GET_BULLETIN, { bulletin: response.data.data });
         })
         .catch(exp => alert("처리에 실패하였습니다." + exp));
@@ -50,11 +48,7 @@ const store = new Vuex.Store({
     [Constant.ADD_BULLETIN_CNT]: (store, payload) => {
       http
         .put("/rest/board/" + payload.bno)
-        .then(response => {
-          console.log("ADD_BULLETIN_CNT 수행");
-          console.log(response);
-          console.log(payload.bno);
-        })
+        .then(() => {})
         .catch(exp => alert("조회수 증가에 실패하였습니다." + exp));
     },
     [Constant.GET_COMMENTS]: (store, payload) => {
@@ -75,9 +69,7 @@ const store = new Vuex.Store({
           title: payload.bulletin.title,
           uid: payload.bulletin.uid
         })
-        .then(response => {
-          console.log(response);
-          console.log(payload.bulletin);
+        .then(() => {
           store.dispatch(Constant.GET_BULLETINLIST, payload.sno);
         })
         .catch(() => console.log("추가에 실패하였습니다."));
@@ -94,10 +86,7 @@ const store = new Vuex.Store({
           title: payload.bulletin.title,
           uid: payload.bulletin.uid
         })
-        .then(response => {
-          console.log("update_bulletin 실행");
-          console.log(response);
-          console.log(payload.bulletin);
+        .then(() => {
           store.commit(Constant.GET_BULLETIN, {
             bulletin: payload.bulletin
           });
@@ -110,12 +99,7 @@ const store = new Vuex.Store({
     [Constant.DELETE_BULLETIN]: (store, payload) => {
       http
         .delete("rest/board/" + payload.bno)
-        .then(response => {
-          console.log("response");
-          console.log(response);
-          console.log("payload.bulletin");
-          console.log(payload.bulletin);
-          console.log("삭제 처리 되었습니다.");
+        .then(() => {
           store.dispatch(Constant.GET_BULLETINLIST, 2);
         })
         .catch(exp => alert("삭제 처리에 실패하였습니다" + exp));

@@ -23,6 +23,8 @@
       </div>
     </div>
     <br /><br />
+    <div v-if="correct == true"><h2>정답!!!</h2></div>
+    <div v-if="correct == false"><h2>.</h2></div>
     <div class="container">
       <div class="row">
         <div class="col-sm-9">
@@ -47,7 +49,7 @@
             </div>
             <div class="row" v-if="quiz.answer_cnt == 3">
               <div
-                class="col-8 col-sm-6 alert alert-dark"
+                class="col-6 col-md-4 alert alert-dark"
                 role="alert"
                 id="quizAns"
                 @click="isAnswer(1)"
@@ -55,7 +57,7 @@
               />
               &nbsp;
               <div
-                class="col-4 col-sm-6 alert alert-dark"
+                class="col-6 col-md-4 alert alert-dark"
                 role="alert"
                 id="quizAns"
                 @click="isAnswer(2)"
@@ -63,7 +65,7 @@
               />
               &nbsp;
               <div
-                class="col-2 col-sm-6 alert alert-dark"
+                class="col-6 col-md-4 alert alert-dark"
                 role="alert"
                 id="quizAns"
                 @click="isAnswer(3)"
@@ -109,14 +111,22 @@
           <template v-if="possible == false">
             <div class="row" v-if="quiz.answer_cnt == 2">
               <div
-                class="col-8 col-sm-6 alert alert-dark"
+                class="col-8 col-sm-6 alert"
+                :class="{
+                  'alert-dark': notAnswer(1),
+                  'alert-success': thisAnswer(1)
+                }"
                 role="alert"
                 id="quizAns"
                 v-html="quiz.ans1"
               />
               &nbsp;
               <div
-                class="col-4 col-sm-6 alert alert-dark"
+                class="col-4 col-sm-6 alert"
+                :class="{
+                  'alert-dark': notAnswer(2),
+                  'alert-success': thisAnswer(2)
+                }"
                 role="alert"
                 id="quizAns"
                 v-html="quiz.ans2"
@@ -124,21 +134,33 @@
             </div>
             <div class="row" v-if="quiz.answer_cnt == 3">
               <div
-                class="col-8 col-sm-6 alert alert-dark"
+                class="col-6 col-md-4 alert"
+                :class="{
+                  'alert-dark': notAnswer(1),
+                  'alert-success': thisAnswer(1)
+                }"
                 role="alert"
                 id="quizAns"
                 v-html="quiz.ans1"
               />
               &nbsp;
               <div
-                class="col-4 col-sm-6 alert alert-dark"
+                class="col-6 col-md-4 alert"
+                :class="{
+                  'alert-dark': notAnswer(2),
+                  'alert-success': thisAnswer(2)
+                }"
                 role="alert"
                 id="quizAns"
                 v-html="quiz.ans2"
               />
               &nbsp;
               <div
-                class="col-2 col-sm-6 alert alert-dark"
+                class="col-6 col-md-4 alert"
+                :class="{
+                  'alert-dark': notAnswer(3),
+                  'alert-success': thisAnswer(3)
+                }"
                 role="alert"
                 id="quizAns"
                 v-html="quiz.ans3"
@@ -146,14 +168,22 @@
             </div>
             <div class="row" v-if="quiz.answer_cnt == 4">
               <div
-                class="col-8 col-sm-6 alert alert-dark"
+                class="col-8 col-sm-6 alert"
+                :class="{
+                  'alert-dark': notAnswer(1),
+                  'alert-success': thisAnswer(1)
+                }"
                 role="alert"
                 id="quizAns"
                 v-html="quiz.ans1"
               />
               &nbsp;
               <div
-                class="col-4 col-sm-6 alert alert-dark"
+                class="col-4 col-sm-6 alert"
+                :class="{
+                  'alert-dark': notAnswer(2),
+                  'alert-success': thisAnswer(2)
+                }"
                 role="alert"
                 id="quizAns"
                 v-html="quiz.ans2"
@@ -161,20 +191,37 @@
             </div>
             <div class="row" v-if="quiz.answer_cnt == 4">
               <div
-                class="cl-8 col-sm-6 alert alert-dark"
+                class="cl-8 col-sm-6 alert"
+                :class="{
+                  'alert-dark': notAnswer(3),
+                  'alert-success': thisAnswer(3)
+                }"
                 role="alert"
                 id="quizAns"
                 v-html="quiz.ans3"
               />
               &nbsp;
               <div
-                class="col-4 col-sm-6 alert alert-dark"
+                class="col-4 col-sm-6 alert"
+                :class="{
+                  'alert-dark': notAnswer(4),
+                  'alert-success': thisAnswer(4)
+                }"
                 role="alert"
                 id="quizAns"
                 v-html="quiz.ans4"
               />
             </div>
-            <div class="col-8 col-sm-4 alert alert-dark" v-html="quiz.ps" />
+            <div
+              class="col-8 col-sm-4 alert alert-dark"
+              v-html="quiz.ps_correct"
+              v-if="correct == true"
+            />
+            <div
+              class="col-8 col-sm-4 alert alert-dark"
+              v-html="quiz.ps_wrong"
+              v-if="correct == false"
+            />
             <button
               type="button"
               class="btn btn-success btn-lg btn-block"
@@ -255,10 +302,8 @@ export default {
       this.$store.dispatch(Constant.GET_ID);
     },
     isAnswer(click) {
-      this.progress = 0;
       clearInterval(this.timer);
       if (this.quiz.answer == click) {
-        alert("정답입니다.");
         this.correct = true;
         this.possible = false;
         this.$store.state.score += 100;
@@ -266,9 +311,17 @@ export default {
         this.$store.state.solvedCnt += 1;
         this.$store.state.level = parseInt(this.$store.state.solvedCnt / 4 + 1);
       } else {
-        alert("안정답입니다.");
         this.possible = false;
       }
+      this.progress = 0;
+    },
+    notAnswer(val) {
+      if (val == this.quiz.answer) return false;
+      else return true;
+    },
+    thisAnswer(val) {
+      if (val == this.quiz.answer) return true;
+      else return false;
     }
   },
   updated() {

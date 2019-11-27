@@ -2,11 +2,15 @@
   <div>
     <!-- 나중에 삭제 바람 -->
     <div>우리 민기 삼성갑니다!!!5</div>
-    로그인 아이디 : {{id}}
+    로그인 아이디 : {{ id }}
     <br />
     <div>
       <div v-if="id == bulletin.uid">
-        <input type="button" value="로그인 되어있군요! 수정하기" @click="GoEditBulletin()" />
+        <input
+          type="button"
+          value="로그인 되어있군요! 수정하기"
+          @click="GoEditBulletin()"
+        />
       </div>
       <table>
         <tr id="header">
@@ -27,7 +31,11 @@
           </td>
         </tr>
         <tr>
-          <td colspan="4" v-html="bulletin.contents" style="text-align: left"></td>
+          <td
+            colspan="4"
+            v-html="bulletin.contents"
+            style="text-align: left"
+          ></td>
         </tr>
       </table>
 
@@ -44,8 +52,8 @@
           <td>
             <input type="button" value="등록" @click="addBoardAns()" />
           </td>
-          <td></td>
-          <td></td>
+          <td style="width: 85px"></td>
+          <td style="width: 85px"></td>
         </tr>
         <tr id="header" style="background-color: lightblue">
           <td>작성자</td>
@@ -59,7 +67,7 @@
           <td colspan="2">{{ comment.contents }}</td>
           <td>{{ comment.bregdate }}</td>
           <td>
-            {{comment.goods}}
+            {{ comment.goods }}
             <input
               type="button"
               value="좋아요"

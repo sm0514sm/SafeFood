@@ -126,7 +126,6 @@ export default {
       else if (this.searchBulletin.searchWord == "")
         alert("검색할 단어를 입력하세요!");
       else {
-        console.log(this.searchBulletin);
         this.$store.dispatch(Constant.GET_SEARCH_BULLETINLIST, {
           searchBulletin: this.searchBulletin
         });

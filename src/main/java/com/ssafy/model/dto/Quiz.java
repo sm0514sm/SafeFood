@@ -11,7 +11,8 @@ public class Quiz implements Serializable {
 	private String question;
 	private int answer_cnt;
 	private int answer;
-	private String ps;
+	private String ps_correct;
+	private String ps_wrong;
 	private String ans1;
 	private String ans2;
 	private String ans3;
@@ -20,18 +21,35 @@ public class Quiz implements Serializable {
 	public Quiz() {
 	}
 
-	public Quiz(int no, int level, String question, int answer_cnt, int answer, String ps, String ans1, String ans2,
+	public Quiz(int no, int level, String question, int answer_cnt, int answer, String ps_correct, String ps_wrong, String ans1, String ans2,
 			String ans3, String ans4) {
 		this.no = no;
 		this.level = level;
 		this.question = question;
 		this.answer_cnt = answer_cnt;
 		this.answer = answer;
-		this.ps = ps;
+		this.ps_correct = ps_correct;
+		this.ps_wrong = ps_wrong;
 		this.ans1 = ans1;
 		this.ans2 = ans2;
 		this.ans3 = ans3;
 		this.ans4 = ans4;
+	}
+
+	public String getPs_correct() {
+		return ps_correct;
+	}
+
+	public void setPs_correct(String ps_correct) {
+		this.ps_correct = ps_correct;
+	}
+
+	public String getPs_wrong() {
+		return ps_wrong;
+	}
+
+	public void setPs_wrong(String ps_wrong) {
+		this.ps_wrong = ps_wrong;
 	}
 
 	public int getNo() {
@@ -74,14 +92,6 @@ public class Quiz implements Serializable {
 		this.answer = answer;
 	}
 
-	public String getPs() {
-		return ps;
-	}
-
-	public void setPs(String ps) {
-		this.ps = ps;
-	}
-
 	public String getAns1() {
 		return ans1;
 	}
@@ -117,7 +127,7 @@ public class Quiz implements Serializable {
 	@Override
 	public String toString() {
 		return "Quiz [no=" + no + ", level=" + level + ", question=" + question + ", answer_cnt=" + answer_cnt
-				+ ", answer=" + answer + ", ps=" + ps + ", ans1=" + ans1 + ", ans2=" + ans2 + ", ans3=" + ans3
+				+ ", answer=" + answer + ", ps=" + ps_correct + ", ans1=" + ans1 + ", ans2=" + ans2 + ", ans3=" + ans3
 				+ ", ans4=" + ans4 + "]";
 	}
 }
