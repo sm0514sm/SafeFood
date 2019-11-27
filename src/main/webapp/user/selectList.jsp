@@ -196,9 +196,9 @@ function DoughnutChart2() {
 								<tr style="text-align: center; background-color:#e1f5fe;">
 									<th width="300px;">Image</th>
 									<th width="300px;">Product Title</th>
-									<th width="300px;" class="text-center">섭취일</th>
-									<th width="300px;" class="text-center">칼로리</th>
+<!-- 									<th width="300px;" class="text-center">칼로리</th> -->
 									<th width="300px;" class="text-center">알레르기 성분</th>
+									<th width="300px;" class="text-center">섭취</th>
 								</tr>
 							</thead>
 
@@ -213,9 +213,12 @@ function DoughnutChart2() {
 								</td>
 								<td class="product-details" style="vertical-align: middle; !important"><a
 									href="searchDetail.do?code=${f.ino}">${f.foodName}</a></td>
-								<td style="vertical-align: middle; !important">${f.ingdate}</td>
-								<td style="vertical-align: middle; !important">${f.ingdate}</td>
+<%-- 								<td style="vertical-align: middle; !important">${f.calory}</td> --%>
 								<td style="vertical-align: middle; !important">${f.allergy}</td>
+								<td style="vertical-align: middle; !important">
+									<button class="btn btn-info btn-sm" onclick="location.href='selectToIngesFood.do?code=${f.code}&ino=${f.ino}'">섭취</button>
+									<button class="btn btn-info btn-sm" onclick="location.href='deleteSelectFood.do?code=${f.code}'">삭제</button>
+								</td>
 							</tr>
 							<tr style="text-align: center;">
 								<td colspan="4" style="vertical-align: middle; !important"><div style="display: inline-block;  overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.2; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;

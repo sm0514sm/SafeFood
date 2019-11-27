@@ -207,8 +207,7 @@ public class FoodController {
 	}
 	
 	@GetMapping("selectfood.do")
-	public String ingestion(HttpSession session, String code) throws SQLException {
-		System.out.println("code : " + code);
+	public String selectfood(HttpSession session, String code) throws SQLException {
 		int codeInt = Integer.parseInt(code);
 		if(session.getAttribute("id") == null) {
 			return "redirect:index.do";
@@ -216,5 +215,24 @@ public class FoodController {
 		service.insertSelectFood(new Ingestion((String) session.getAttribute("id"), codeInt, 1));
 		session.setAttribute("selectFlag",true);
 		return "redirect:foodList.do";
+	}
+	
+	@GetMapping("trend.do")
+	public String trned(HttpSession session, String code) throws SQLException {
+		return "trend";
+	}
+	
+	@GetMapping("deleteSelectFood.do")
+	public String deleteSelectFood(String code) {
+		service.deleteSelectFood(code);
+		return "redirect:selectList.do";
+	}
+	
+	@GetMapping("selectToIngesFood.do")
+	public String selectToIngesFood(HttpSession session, String code, String ino) throws SQLException {
+		System.out.println("## selectToIngesFood");
+		iService.add(new Ingestion((String) session.getAttribute("id"), Integer.parseInt(code), 1));
+		service.deleteSelectFood(ino);
+		return "redirect:selectList.do";
 	}
 }
