@@ -48,6 +48,8 @@ public interface FoodDAO {
 	
 	public void deleteSelectFood(String ino);				//찜한 음식 삭제
 	
+	public Ingestion selectOneSelectFood(String ino);		//찜한 음식 -> 섭취 음식
+	
 	public List<Food> searchNutrientS(String id);			//그래프 정보
 //	아래 미구현
 //	/**

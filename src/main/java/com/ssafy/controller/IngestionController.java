@@ -1,6 +1,8 @@
 package com.ssafy.controller;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -8,15 +10,16 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ssafy.model.dto.Food;
 import com.ssafy.model.dto.Ingestion;
-import com.ssafy.model.service.FoodService;
 import com.ssafy.model.service.IngestionService;
 import com.ssafy.model.service.UserService;
+
 
 @Controller
 public class IngestionController {
@@ -83,7 +86,12 @@ public class IngestionController {
 		if(session.getAttribute("id") == null) {
 			return "redirect:index.do";
 		}
-		service.add(new Ingestion((String) session.getAttribute("id"), codeInt, 1));
+		//현재 날짜 구하기
+		SimpleDateFormat d = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String s = d.format(new Date());
+		
+		Ingestion ingestion = new Ingestion((String) session.getAttribute("id"), codeInt, s, 1);
+		service.add(ingestion);
 		session.setAttribute("addFlag",true);
 		return "redirect:foodList.do";
 	}

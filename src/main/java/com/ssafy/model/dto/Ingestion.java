@@ -26,6 +26,7 @@ public class Ingestion {
 		super();
 		this.id = id;
 		this.code = code;
+		this.ingdate = ingdate;
 		this.quantity = quantity;
 	}
 
