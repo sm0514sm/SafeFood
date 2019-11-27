@@ -45,20 +45,19 @@ th, td {
 			<c:forEach items="${list}" var="food" varStatus="status">
 				<div class="col-md-6">
 					<table class="table table-responsive product-dashboard-table" style="border: 1.5px solid #e1f5fe;">
-						<tr style="text-align: center; background-color: #e1f5fe; height: 50px;">
-							<th width="200" style="vertical-align: middle; !important">Image</th>
-							<th width="350" style="vertical-align: middle; !important">Product</th>
-							<th width="200" class="text-center" style="vertical-align: middle; !important">Maker</th>
-						</tr>
-
 						<tr style="text-align: center;">
-							<td rowspan="3" class="product-thumb" style="vertical-align: middle; !important">
-								<a href="foodDetail.do?code=${food.code}"><img id="image" class="img-responsive" alt="${food.name} poster" src="img/${food.name}.jpg" style="width: 150px;"></a>
+							<td rowspan="4" class="product-thumb" style="vertical-align: middle; !important">
+								<a href="foodDetail.do?code=${food.code}"><img id="image" class="img-responsive" alt="${food.name} poster" src="img/${food.name}.jpg" style="width: 150px; padding: 5px;"></a>
 								<c:if test="${not empty sessionScope.id}">
 									<button type="button" class="btn btn-info btn-sm" onclick="location.href='ingestion.do?code=${food.code}'">추가</button> 
 									<button type="button" class="btn btn-info btn-sm" onclick="location.href='selectfood.do?code=${food.code}'">찜</button>
 								</c:if>
 							</td>
+							<th width="350" style=" background-color: #e1f5fe; height: 50px;vertical-align: middle; !important">Product</th>
+							<th width="200" class="text-center" style=" background-color: #e1f5fe; height: 50px;vertical-align: middle; !important">Maker</th>
+						</tr>
+
+						<tr style="text-align: center;">
 							<td style="vertical-align: middle; !important">${food.name}</td>
 							<td style="vertical-align: middle; !important">${food.maker}</td>
 

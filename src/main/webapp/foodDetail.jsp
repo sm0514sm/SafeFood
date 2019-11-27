@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>상세페이지</title>
 <jsp:include page="link_script.jsp" />
-<link rel="stylesheet" href="css/index.css">
+<!-- <link rel="stylesheet" href="css/index.css"> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script type="text/javascript">
 $(function(){
