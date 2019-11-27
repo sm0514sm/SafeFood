@@ -75,9 +75,9 @@
 								<tr style="text-align: center; background-color:#e1f5fe;">
 									<th width="300px;">Image</th>
 									<th width="300px;">Product Title</th>
-									<th width="300px;" class="text-center">제조사</th>
-									<th width="300px;" class="text-center">칼로리</th>
-									<th width="300px;" class="text-center">알레르기 성분</th>
+									<th width="300px;" class="text-center">Maker</th>
+									<th width="300px;" class="text-center">Calory</th>
+									<th width="300px;" class="text-center">Allergy</th>
 								</tr>
 							</thead>
 
