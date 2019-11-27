@@ -19,6 +19,12 @@ $(function(){
 	DoughnutChart2();
 });
 
+function buy(foodName){
+	var uni = encodeURIComponent(foodName);
+	var url = "https://search.shopping.naver.com/search/all.nhn?query=";
+	url = url + uni;
+	window.open(url, "_blank");
+}
 function DoughnutChart() {		
 	var ctx = document.getElementById("myChart").getContext('2d');
 /*
@@ -195,12 +201,13 @@ function DoughnutChart2() {
 									</a>
 								</td>
 								<td class="product-details" style="vertical-align: middle; !important"><a
-									href="searchDetail.do?code=${f.ino}">${f.foodName}</a></td>
+									href="searchDetail.do?code=${food.ino}">${food.foodName}</a></td>
 <%-- 								<td style="vertical-align: middle; !important">${f.calory}</td> --%>
-								<td style="vertical-align: middle; !important">${f.allergy}</td>
+								<td style="vertical-align: middle; !important">${food.allergy}</td>
 								<td style="vertical-align: middle; !important">
-									<button class="btn btn-info btn-sm" onclick="location.href='selectToIngesFood.do?code=${f.code}&ino=${f.ino}'">섭취</button>
-									<button class="btn btn-info btn-sm" onclick="location.href='deleteSelectFood.do?code=${f.code}'">삭제</button>
+									<button class="btn btn-info btn-sm" onclick="location.href='selectToIngesFood.do?code=${food.code}&ino=${food.ino}'">섭취</button>
+									<button class="btn btn-info btn-sm" onclick="location.href='deleteSelectFood.do?code=${food.code}'">삭제</button>
+									<button class="btn btn-info btn-sm" onclick="buy('${food.foodName}')">구매</button>
 								</td>
 							</tr>
 							<tr style="text-align: center;">
