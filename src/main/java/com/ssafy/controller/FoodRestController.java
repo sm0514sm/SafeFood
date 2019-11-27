@@ -20,6 +20,7 @@ import com.ssafy.model.dto.Food;
 import com.ssafy.model.dto.FoodPageBean;
 import com.ssafy.model.dto.Ingestion;
 import com.ssafy.model.service.FoodService;
+import com.ssafy.model.service.IngestionService;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -27,6 +28,9 @@ import io.swagger.annotations.ApiOperation;
 public class FoodRestController {
 	@Autowired
 	private FoodService service;
+	
+	@Autowired
+	private IngestionService ingestionService;
 
 	@ExceptionHandler
 	public ResponseEntity<Map<String, Object>> handle(Exception e) {

@@ -21,6 +21,13 @@ public class Ingestion {
 		this.code = code;
 		this.quantity = quantity;
 	}
+	
+	public Ingestion(String id, int code, String ingdate, int quantity) {
+		super();
+		this.id = id;
+		this.code = code;
+		this.quantity = quantity;
+	}
 
 	public Ingestion(int ino, String id, int code, String ingdate, int quantity) {
 		super();

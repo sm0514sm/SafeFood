@@ -14,7 +14,12 @@
 $(function(){
 	DoughnutChart();
 });
-
+function ingestion(code){
+	console.log("## code : " + code);
+	var date = $('#date').val();
+	var quantity = $('#quantity').val();
+	
+}
 function DoughnutChart() {		
 	// 우선 컨텍스트를 가져옵니다. 
 	var ctx = document.getElementById("myChart").getContext('2d');
@@ -94,6 +99,7 @@ th, td {
 	<div class="container theme-showcase" role="main" id="contents">
 	<h3 class="widget-header min-title">제품 정보</h3>
 	<div class="table-responsive">
+		<form>
 		<table class="table">
 			<tr>
 				<td rowspan='6'  align="center"><img id="Picture"
@@ -115,21 +121,24 @@ th, td {
 			<tr>
 				<th>조회수</th>
 				<td>${food.count}</td>
-				<td style="text-align: right">
-					<button type="button" class="btn btn-info btn-sm" onclick="location.href='ingestion.do?code=${food.code}'">추가</button> 
-					<button type="button" class="btn btn-info btn-sm" onclick="location.href='selectfood.do?code=${food.code}'">찜</button>
-				</td>
 			</tr>
-			<!-- <tr>
-				<th align='left'>Quantity&nbsp;<br /> <input type="number"
-					required="required" min="1" id='person' />
-					<p /> <br />
-					<button type='button' class='btn btn-info'>추가</button>
-					<button type='button' class='btn btn-info'>찜</button>
-				</th>
-				<td></td>
-			</tr> -->
+			<tr>
+				
+					<td style="width: 250px">
+						날짜 <input type="date" required="required" id="date" name="date" style="width: 150px;"/>
+					</td>
+					<td style="width: 150px">
+						수량 <input type="number" required="required" min="1" id="quantity" name="quantity" size="50"
+							style="width: 50px;"/>
+					</td>
+					<td style="text-align: right">
+<%-- 						<button type="button" class="btn btn-info btn-sm" onclick="location.href='ingestion.do?code=${food.code}'">추가</button>  --%>
+						<button type="button" class="btn btn-info btn-sm" onclick="ingestion('${food.code}')">추가</button> 
+						<button type="button" class="btn btn-info btn-sm" onclick="location.href='selectfood.do?code=${food.code}'">찜</button>
+					</td>
+			</tr>
 		</table>
+		</form>
 	</div>
 	</div>
 	<div class="container theme-showcase" role="main" id="contents" style="margin-bottom: 100px;">
