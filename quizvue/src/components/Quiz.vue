@@ -16,10 +16,16 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-sm">사용자 {{ id }}</div>
-        <div class="col-sm">현재 레벨 {{ level }}</div>
-        <div class="col-sm">맞춘 개수 {{ solvedCnt }}</div>
-        <div class="col-sm">
+        <div class="col-sm" style="font-family: sunflower; font-size: 1.3em;">
+          사용자 {{ id }}
+        </div>
+        <div class="col-sm" style="font-family: sunflower; font-size: 1.3em;">
+          현재 레벨 {{ level }}
+        </div>
+        <div class="col-sm" style="font-family: sunflower; font-size: 1.3em;">
+          맞춘 개수 {{ solvedCnt }}
+        </div>
+        <div class="col-sm" style="font-family: sunflower; font-size: 1.3em;">
           최고 점수 {{ bestScore }} <br />
           현재 점수 {{ score }}
         </div>
@@ -27,10 +33,10 @@
     </div>
     <br /><br />
     <div v-if="correct == true"><h2>정답!!!</h2></div>
-    <div v-if="correct == false"><h2>.</h2></div>
+    <div v-if="correct == false"><br /><br /></div>
     <div class="container">
       <div class="row">
-        <div class="col-sm-9">
+        <div class="col-sm-9" style="margin-left: auto; margin-right: auto;">
           <div v-html="quiz.question" />
           <template v-if="possible == true">
             <div class="row" v-if="quiz.answer_cnt == 2">
@@ -216,14 +222,16 @@
               />
             </div>
             <div
-              class="col-8 col-sm-4 alert alert-dark"
+              class="col-8 col-sm-6 alert alert-info"
               v-html="quiz.ps_correct"
               v-if="correct == true"
+              style="margin-left: auto; margin-right: auto;"
             />
             <div
-              class="col-8 col-sm-4 alert alert-dark"
+              class="col-8 col-sm-4 alert alert-warning"
               v-html="quiz.ps_wrong"
               v-if="correct == false"
+              style="margin-left: auto; margin-right: auto;"
             />
             <button
               type="button"
@@ -234,10 +242,11 @@
               다음 문제!
             </button>
           </template>
-
+          <br /><br /><br />
           <button
             type="button"
-            class="btn btn-secondary btn-lg btn-block"
+            class="btn btn-secondary btn-block col-sm-3"
+            style="margin-right: auto;"
             @click="GoQuizMain()"
           >
             메인화면으로 돌아가기
