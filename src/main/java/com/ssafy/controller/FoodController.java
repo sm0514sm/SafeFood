@@ -21,6 +21,7 @@ import com.ssafy.model.dto.FoodPageBean;
 import com.ssafy.model.dto.Ingestion;
 import com.ssafy.model.service.FoodService;
 import com.ssafy.model.service.IngestionService;
+import com.ssafy.model.service.UserService;
 
 @Controller
 public class FoodController {
@@ -28,6 +29,8 @@ public class FoodController {
 	private FoodService service;
 	@Autowired
 	private IngestionService iService;
+	@Autowired
+	private UserService userService;
 
 	@ExceptionHandler
 	public ModelAndView handler(Exception e) {
@@ -129,6 +132,7 @@ public class FoodController {
 	public String selectList(Model model, HttpSession session) {
 		// 찜 추가 전 그래프
 		String id = (String) session.getAttribute("id");
+		String[] allergies = userService.search(id).getAllergy().replaceAll(" ", "").split("[,]");
 		List<Food> list = iService.searchNutrient(id);
 		Food food = new Food();
 		double calory = 0.0;
@@ -141,6 +145,12 @@ public class FoodController {
 		double fattyacid = 0.0;
 		double transfat = 0.0;
 
+		int[] allerCnt = new int[14];
+		String[] allergyList = new String[] {"대두", "땅콩","우유", "게"
+											, "새우", "참치", "연어", "숙"
+											, "소고기", "닭고기", "돼지고기"
+											, "복숭아", "민들레", "계란흰자"};
+
 		for (Food f : list) {
 			calory += f.getCalory();
 			carbo += f.getCarbo();
@@ -152,6 +162,10 @@ public class FoodController {
 			fattyacid += f.getProtein();
 			transfat += f.getProtein();
 			protein += f.getProtein();
+			for (int i = 0; i < 14; i++) {
+				if(f.getMaterial().contains(allergyList[i]))
+					allerCnt[i]++;
+			}
 		}
 
 		food.setCalory(calory);
@@ -201,7 +215,9 @@ public class FoodController {
 		food2.setFattyacid(fattyacid);
 		food2.setTransfat(transfat);
 		model.addAttribute("food2", food2);
-
+		model.addAttribute("allerCnt", allerCnt);
+		model.addAttribute("allergies", allergies);
+		model.addAttribute("allerCount", allergies.length);
 		// 찜 목록 리스트
 		model.addAttribute("list", service.selectSelectFood(id));
 		return "user/selectList";

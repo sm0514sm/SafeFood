@@ -8,6 +8,7 @@
           type="button"
           value="우리 관리자님 로그인 되어있군요! 수정하기"
           @click="GoEditBulletin(id)"
+          class="btn btn-info btn-sm"
         />
       </div>
       <table>
@@ -35,7 +36,12 @@
 
       <br />
       <br />
-      <input type="button" value="목록" @click="GoBoard()" />
+      <input
+        type="button"
+        value="목록"
+        @click="GoBoard()"
+        class="btn btn-info btn-sm"
+      />
     </div>
   </div>
 </template>

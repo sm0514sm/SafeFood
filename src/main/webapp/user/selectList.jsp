@@ -20,6 +20,7 @@
 $(function(){
 	DoughnutChart();
 	DoughnutChart2();
+	DoRed();
 });
 
 function buy(foodName){
@@ -163,6 +164,24 @@ function DoughnutChart2() {
 		}
 	});
 }
+function DoRed(){
+	Array.prototype.forEach.call(document.getElementsByClassName("allergyTd"), function(el) { 
+		el.innerHTML = el.innerHTML.replace("${allergies[0]}", "<span style='color: red;'>${allergies[0]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[1]}", "<span style='color: red;'>${allergies[1]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[2]}", "<span style='color: red;'>${allergies[2]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[3]}", "<span style='color: red;'>${allergies[3]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[4]}", "<span style='color: red;'>${allergies[4]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[5]}", "<span style='color: red;'>${allergies[5]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[6]}", "<span style='color: red;'>${allergies[6]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[7]}", "<span style='color: red;'>${allergies[7]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[8]}", "<span style='color: red;'>${allergies[8]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[9]}", "<span style='color: red;'>${allergies[9]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[10]}", "<span style='color: red;'>${allergies[10]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[11]}", "<span style='color: red;'>${allergies[11]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[12]}", "<span style='color: red;'>${allergies[12]}</span>"); 
+		el.innerHTML = el.innerHTML.replace("${allergies[13]}", "<span style='color: red;'>${allergies[13]}</span>"); 
+	});
+}
 </script>
 </head>
 
@@ -203,7 +222,7 @@ function DoughnutChart2() {
 								<td class="product-details" style="vertical-align: middle; !important"><a
 									href="searchDetail.do?code=${food.ino}">${food.foodName}</a></td>
 <%-- 								<td style="vertical-align: middle; !important">${f.calory}</td> --%>
-								<td style="vertical-align: middle; !important">${food.allergy}</td>
+								<td style="vertical-align: middle; !important" class="allergyTd">${food.allergy}</td>
 								<td style="vertical-align: middle; !important">
 									<button class="btn btn-info btn-sm" onclick="location.href='selectToIngesFood.do?code=${food.code}&ino=${food.ino}'">섭취</button>
 									<button class="btn btn-info btn-sm" onclick="location.href='deleteSelectFood.do?code=${food.code}'">삭제</button>

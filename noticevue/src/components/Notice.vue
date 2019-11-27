@@ -17,6 +17,7 @@
               v-if="id == 'root'"
               type="button"
               value="삭제"
+              class="btn btn-info btn-sm"
               @click="deleteBulletin(bulletin.bno)"
             />
           </td>
@@ -30,8 +31,8 @@
             <input
               v-if="id == 'root'"
               type="button"
-              style="height:25px;"
               value="글쓰기"
+              class="btn btn-info btn-sm"
               @click="GoAddBulletin()"
             />
           </td>

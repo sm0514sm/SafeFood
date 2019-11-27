@@ -7,26 +7,55 @@
         <tr>
           <td>
             작성자 :
-            <input type="text" disabled v-model="oriBulletin.uid" />
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              disabled
+              v-model="oriBulletin.uid"
+            />
           </td>
           <td>
             제목 :
-            <input type="text" v-model="bulletin.title" />
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              v-model="bulletin.title"
+            />
           </td>
         </tr>
         <tr>
           <td colspan="2">
-            <input type="text" v-model="bulletin.contents" id="contents" />
+            <textarea
+              class="form-control"
+              id="contents"
+              rows="3"
+              v-model="bulletin.contents"
+            ></textarea>
           </td>
         </tr>
         <tr>
           <td>
-            <input type="button" value="목록으로" @click="GoBoard()" />
+            <input
+              type="button"
+              value="목록으로"
+              @click="GoBoard()"
+              class="btn btn-info btn-sm"
+            />
             &nbsp;
-            <input type="button" value="초기화" @click="clear()" />
+            <input
+              type="button"
+              value="초기화"
+              @click="clear()"
+              class="btn btn-info btn-sm"
+            />
           </td>
           <td>
-            <input type="button" value="작성하기" @click="updateBulletin()" />
+            <input
+              type="button"
+              value="작성하기"
+              @click="updateBulletin()"
+              class="btn btn-info btn-sm"
+            />
           </td>
         </tr>
       </table>
