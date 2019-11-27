@@ -69,11 +69,11 @@ label {
 							</li>
 							<li><a href="/bestfood.do">Best상품</a></li>
 							<li><a href="/CaloryFood.jsp">칼로리별조합</a></li>
-							<li><a href="/quiz.jsp">퀴즈</a></li>
 							<li><a href="/trend.do">Food Trend</a></li>
 
 							<c:choose>
 								<c:when test="${sessionScope.id != null}">
+									<li><a href="/quiz.jsp">퀴즈</a></li>
 									<li><a href="#">섭취 정보<i class="ti-angle-down"></i></a>
 										<ul class="submenu">
 											<li><a href="/ingestionList.do">내 섭취 정보</a></li>

@@ -80,7 +80,7 @@
    
    <insert id="insertSelectFood"	parameterType="ingestion">
    		insert into selectfood (id, code, selectdate, quantity) 
-   		values ( #{id}, #{code}, now(), #{quantity} );
+   		values ( #{id}, #{code}, #{ingdate}, #{quantity} );
    </insert>
    
    <select id="selectSelectFood"	parameterType="string"	resultType="ingestion">
@@ -90,6 +90,13 @@
 		using (code)
 		where id=#{id};
    </select>
+   
+   <update id="updateSelectFood" 	parameterType="ingestion">
+   		update selectfood 
+   		set date = #{ingdate},
+   			quantity = #{quantity}
+   		where ino = #{ino} 
+   </update>
    
    <delete id="deleteSelectFood" 	parameterType="string">
    		delete from selectfood

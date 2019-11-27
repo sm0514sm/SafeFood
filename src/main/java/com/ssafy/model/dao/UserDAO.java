@@ -13,6 +13,7 @@ import com.ssafy.model.dto.User;
 public interface UserDAO {
 	public User search( String id) throws SQLException;
 	public List<User> searchAll( ) throws SQLException;
+	public List<User> searchTop5( ) throws SQLException;
 	public void add(User user)	 throws SQLException;
 	public void update(User user)throws SQLException;
 	public void remove(String id)    throws SQLException;

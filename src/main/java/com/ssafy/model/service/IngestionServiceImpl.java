@@ -15,12 +15,24 @@ public class IngestionServiceImpl implements IngestionService{
 	@Autowired
 	private IngestionDAO dao;
 
-	public List<Ingestion> searchAll(String id) throws SQLException {
-		return dao.searchAll(id);
+	public List<Ingestion> searchAll(String id){
+		try {
+			return dao.searchAll(id);
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
-	public Ingestion search(int ino) 			throws SQLException {
-		Ingestion find = dao.search(ino);
-		return find;
+	public Ingestion search(int ino) 			{
+		
+		try {
+			Ingestion find = dao.search(ino);
+			return find;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	public List<Food> searchNutrient(String id)	{
 		try {
@@ -32,13 +44,28 @@ public class IngestionServiceImpl implements IngestionService{
 			return null;
 		}
 	}
-	public void add(Ingestion ingestion) 		throws SQLException {
-		dao.add(ingestion);
+	public void add(Ingestion ingestion){
+		try {
+			dao.add(ingestion);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("섭취 음식 추가 중 오류");
+		}
 	}
-	public void update(Ingestion ingestion) 	throws SQLException {
-		dao.update(ingestion);
+	public void update(Ingestion ingestion) {
+		try {
+			dao.update(ingestion);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("섭취 음식 수정 중 오류");
+		}
 	}
-	public void remove(int ino) 				throws SQLException {
-		dao.remove(ino);
+	public void remove(int ino) {
+		try {
+			dao.remove(ino);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("섭취 음식 삭제 중 오류");
+		}
 	}
 }

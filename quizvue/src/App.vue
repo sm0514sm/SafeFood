@@ -9,6 +9,7 @@
 import QuizMain from "./components/QuizMain";
 import Quiz from "./components/Quiz";
 import QuizScore from "./components/QuizScore";
+import QuizEnd from "./components/QuizEnd";
 import VueRouter from "vue-router";
 import Vue from "vue";
 
@@ -19,7 +20,8 @@ const router = new VueRouter({
     { path: "/", component: QuizMain },
     { path: "/quiz.html", component: QuizMain },
     { path: "/quiz.jsp", component: QuizMain },
-    { path: "/quiz", component: Quiz }
+    { path: "/quiz", component: Quiz },
+    { path: "/quizEnd", component: QuizEnd }
   ]
 });
 export default {

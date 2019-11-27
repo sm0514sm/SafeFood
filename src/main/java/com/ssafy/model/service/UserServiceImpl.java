@@ -14,13 +14,14 @@ import com.ssafy.model.dto.UserException;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDAO dao;
+
 	public User search(String id) {
 		try {
 			User user = dao.search(id);
-			if(user == null) {
+			if (user == null) {
 				throw new UserException("등록되지 않은 아이디입니다.");
-			}else {
-			   return user;
+			} else {
+				return user;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -31,7 +32,15 @@ public class UserServiceImpl implements UserService {
 	public List<User> searchAll() {
 		try {
 			return dao.searchAll();
-		}catch (SQLException e) {
+		} catch (SQLException e) {
+			throw new UserException();
+		}
+	}
+
+	public List<User> searchTop5() {
+		try {
+			return dao.searchTop5();
+		} catch (SQLException e) {
 			throw new UserException();
 		}
 	}
@@ -40,12 +49,12 @@ public class UserServiceImpl implements UserService {
 		try {
 			User user = dao.search(id);
 			System.out.println(user);
-			if(user == null) {
+			if (user == null) {
 				throw new UserException("등록되지 않은 회원 아이디입니다.");
-			}else {
-				if(pw.equals(user.getPassword())) {
+			} else {
+				if (pw.equals(user.getPassword())) {
 					return true;
-				}else {
+				} else {
 					throw new UserException("비밀 번호 오류");
 				}
 			}
@@ -58,34 +67,36 @@ public class UserServiceImpl implements UserService {
 	public boolean checkID(String id) {
 		try {
 			User user = dao.search(id);
-			if(user == null) {
+			if (user == null) {
 				return false;
-			}else {
+			} else {
 				return true;
 			}
 		} catch (SQLException e) {
 			throw new UserException();
 		}
 	}
+
 	public void add(User user) {
 		try {
 			User find = dao.search(user.getId());
-			System.out.println("find.................................."+find);
-			if(find != null) {
+			System.out.println("find.................................." + find);
+			if (find != null) {
 				throw new UserException("이미 등록된 아이디입니다.");
-			}else {
+			} else {
 				dao.add(user);
 			}
 		} catch (SQLException e) {
 			throw new UserException();
 		}
 	}
+
 	public void update(User user) {
 		try {
 			User find = dao.search(user.getId());
-			if(find == null) {
+			if (find == null) {
 				throw new UserException("수정할 회원 정보가 없습니다.");
-			}else {
+			} else {
 				dao.update(user);
 			}
 		} catch (SQLException e) {
@@ -96,10 +107,10 @@ public class UserServiceImpl implements UserService {
 	public void remove(String id) {
 		try {
 			User find = dao.search(id);
-			System.out.println("remove................."+find);
-			if(find == null) {
+			System.out.println("remove................." + find);
+			if (find == null) {
 				throw new UserException("탈퇴할 회원 정보가 없습니다.");
-			}else {
+			} else {
 				dao.remove(id);
 			}
 		} catch (SQLException e) {

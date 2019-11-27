@@ -56,7 +56,7 @@ public class UserController {
 		}
 		
 		System.out.println("id:" + id + " pw:" + pw);
-		service.add(new User(id, pw, name, email, phone, address, al));
+		service.add(new User(id, pw, name, email, phone, address, al, 0));
 
 		session.setAttribute("id", id);
 		return "redirect:index.do";
@@ -103,7 +103,7 @@ public class UserController {
 				}
 			}
 		
-		User u = new User(id, pw, name, email, phone, address, alle);
+		User u = new User(id, pw, name, email, phone, address, alle, 0);
 				
 		service.update(u);
 		return "redirect:index.do";

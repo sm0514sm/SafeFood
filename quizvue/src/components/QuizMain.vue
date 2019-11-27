@@ -24,9 +24,9 @@ export default {
   created() {
     // 초기화를 해줍니다
     this.$store.state.score = 0;
-    this.$store.state.quizNo = 0;
     this.$store.state.solvedCnt = 0;
     this.$store.state.level = 1;
+    this.$store.state.quizNo = [];
   },
   computed: {
     id() {

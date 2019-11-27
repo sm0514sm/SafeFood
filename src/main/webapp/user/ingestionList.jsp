@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -247,7 +248,7 @@ function DoRed(){
 					<c:if test="${not empty list}">
 						<h3 class="widget-header min-title">내 섭취 정보</h3><hr/>
 					</c:if>
-					<span style="float:right"><b style="color:'red'">*알레르기 성분은 빨갛게 표시 됩니다.</b></span>
+					<span style="float:right"><b style="color:red">*알레르기 성분은 빨갛게 표시 됩니다.</b></span>
 					<table class="table table-responsive product-dashboard-table" style="margin-bottom: 80px">
 						<c:forEach items="${list}" var="food">
 							<thead>
@@ -256,8 +257,8 @@ function DoRed(){
 									<th>Name</th>
 									<th class="text-center">Date</th>
 									<!-- <th class="text-center">칼로리</th> -->
-									<th class="text-center">Allergy</th>
-									<th class="text-center">Delete</th>
+									<th class="text-center">Quantity</th>
+									<th class="text-center">Funtion</th>
 								</tr>
 							</thead>
 
@@ -266,17 +267,28 @@ function DoRed(){
 									href="foodDetail.do?code=${food.code}"> <img
 										width="150px;" height="auto" src="${food.img}"
 										alt="image description" />
+<%-- 									<input type="hidden" id="ino" name="ino" value="${food.ino}"/> --%>
 								</a></td>
 								<td class="product-details" style="vertical-align: middle; !important"><a
-									href="foodDetail.do?code=${food.code}">${food.foodName}</a></td>
-								<td style="vertical-align: middle; !important">${food.ingdate}</td>
-								<%-- <td style="vertical-align: middle; !important">${food.calory}</td> --%>
-								<td style="vertical-align: middle; !important" class="allergyTd">${food.allergy}</td>
-								<td style="vertical-align: middle; !important"><a href="removeIng.do?ino=${food.ino }">삭제</a></td>
+									href="foodDetail.do?code=${food.code}">${food.foodName}</a>
+								</td>
+								<td style="vertical-align: middle; !important" class="allergyTd">${food.allergy}</td>	
+								<td style="vertical-align: middle; !important">
+									<input type="date" value="${fn:substring(food.ingdate,0,10)}" id="ingdate"/>
+<%-- 								${food.ingdate} --%>
+								</td>
+								<td style="vertical-align: middle; !important ">
+									<input type="number" required="required" min="1" id="quantity" name="quantity" size="50" value="${food.quantity}"/>
+								</td>
+								<td style="vertical-align: middle; !important">
+<%-- 								<a href="removeIng.do?ino=${food.ino }">수정</a> --%>
+									<button type="button" class="btn btn-info btn-sm" onclick="updateIngestion('${food.ino}')" style="margin:3px;">수정</button>
+									 
+									<button type="button" class="btn btn-info btn-sm" onclick="deleteIngestion('${food.ino}')">삭제</button>
+								</td>
 							</tr>
 							<tr style="text-align: center;">
-								<td colspan="4" style="vertical-align: middle; !important" class="allergyTd"><div style="display: inline-block;  overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.2; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
-								" >
+								<td colspan="4" style="vertical-align: middle; !important" class="allergyTd"><div style="display: inline-block;  overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.2; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;" >
 									${food.material}
 									<c:if test="contain"></c:if>
 								</div>

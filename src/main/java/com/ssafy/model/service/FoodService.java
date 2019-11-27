@@ -43,6 +43,8 @@ public interface FoodService {
 	
 	public List<Ingestion> selectSelectFood(String id);		//찜한 음식 조회
 	
+	public void updateSelectFood(Ingestion ingestion);		//찜한 음식 수정
+	
 	public void deleteSelectFood(String ino);				//찜한 음식 삭제
 	
 	public List<Food> searchNutrientS(String id);					//그래프 정보

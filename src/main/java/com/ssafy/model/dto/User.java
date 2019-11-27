@@ -3,22 +3,26 @@ package com.ssafy.model.dto;
 /** 식품 정보 */
 public class User {
 	String address, email, id, name, password, phone, allergy;
-	
+	int best_quiz_score;
+
 	/*
-		CREATE TABLE `ssafydb`.`user` (
-		  `id` VARCHAR(15) NOT NULL,
-		  `password` VARCHAR(45) NULL,
-		  `address` VARCHAR(300) NULL,
-		  `email` VARCHAR(45) NULL,
-		  `name` VARCHAR(20) NULL,
-		  `phone` VARCHAR(45) NULL,
-		  `allergy` VARCHAR(1000) NULL,
-		  PRIMARY KEY (`id`));
-
-
+	 * CREATE TABLE `ssafydb`.`user` ( `id` VARCHAR(15) NOT NULL, `password`
+	 * VARCHAR(45) NULL, `address` VARCHAR(300) NULL, `email` VARCHAR(45) NULL,
+	 * `name` VARCHAR(20) NULL, `phone` VARCHAR(45) NULL, `allergy` VARCHAR(1000)
+	 * NULL, PRIMARY KEY (`id`));
+	 * 
+	 * 
 	 */
 	public User() {
 		super();
+	}
+
+	public int getBest_quiz_score() {
+		return best_quiz_score;
+	}
+
+	public void setBest_quiz_score(int best_quiz_score) {
+		this.best_quiz_score = best_quiz_score;
 	}
 
 	public User(String id, String name, String email, String phone) {
@@ -29,7 +33,8 @@ public class User {
 		this.phone = phone;
 	}
 
-	public User(String id, String password, String name, String email, String phone, String address, String allergy) {
+	public User(String id, String password, String name, String email, String phone, String address, String allergy,
+			int bestScore) {
 		super();
 		this.address = address;
 		this.email = email;
@@ -38,6 +43,7 @@ public class User {
 		this.password = password;
 		this.phone = phone;
 		this.allergy = allergy;
+		this.best_quiz_score = bestScore;
 	}
 
 	public String getAddress() {
@@ -102,6 +108,4 @@ public class User {
 				+ password + ", phone=" + phone + ", allergy=" + allergy + "]";
 	}
 
-	
-	
 }

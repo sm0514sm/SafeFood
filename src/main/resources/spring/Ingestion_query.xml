@@ -7,7 +7,7 @@
    		insert into ingestion (id, code, ingdate, quantity)
    		values ( #{id:VARCHAR}
    		        ,#{code:INTEGER}
-   		        , now()
+   		        ,#{ingdate}
    		        ,#{quantity:INTEGER}
    		        )
    </insert>
@@ -17,10 +17,9 @@
    </delete>
    
    <update id="update"		parameterType="ingestion">
-   		update ingestion set id = #{id:VARCHAR}
-		   		        ,code = #{code:INTEGER}
-		   		        ,ingdate = #{ingdate:VARCHAR}
-		   		        ,quantity = #{quantity:INTEGER}
+   		update ingestion 
+   		set ingdate = #{ingdate:VARCHAR}
+		   	,quantity = #{quantity:INTEGER}
    		where ino=#{ino:INTEGER}
    </update>
    

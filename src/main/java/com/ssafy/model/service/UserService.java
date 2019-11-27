@@ -7,6 +7,7 @@ import com.ssafy.model.dto.User;
 public interface UserService {
 	public User search(String id);
 	public List<User> searchAll();
+	public List<User> searchTop5();
 	public boolean login(String id, String pw);
 	public boolean checkID(String id);
 	public void add(User user);
