@@ -314,6 +314,7 @@ export default {
       this.$store.dispatch(Constant.GET_BESTSCORE, "");
     },
     isAnswer(click) {
+      this.$store.dispatch(Constant.GET_TOP5);
       clearInterval(this.timer);
       if (this.quiz.answer == click) {
         this.correct = true;

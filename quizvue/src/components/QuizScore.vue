@@ -30,7 +30,7 @@ export default {
     this.getTop5();
     setInterval(() => {
       this.getTop5();
-    }, 5000);
+    }, 4000);
   },
   computed: {
     top5() {
