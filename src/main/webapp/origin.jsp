@@ -11,12 +11,11 @@
 <meta name="author" content="">
 <title>SafeFood - 원산지 정보</title>
 <jsp:include page="link_script.jsp" />
-<script type='text/javascript' src='js/jquery-3.3.1.js'></script>
 </head>
 
 <body role="document">
 	<jsp:include page="header.jsp" />
-	<div class="header-margin" style="margin-top: 150px;"></div>
+	<div class="header-margin" style="margin-top: 170px;"></div>
 	<section class="dashboard section">
 		<!-- Container Start -->
 		<div class="container">
