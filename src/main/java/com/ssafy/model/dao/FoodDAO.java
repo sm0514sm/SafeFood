@@ -42,6 +42,8 @@ public interface FoodDAO {
 	
 	public void insertSelectFood(Ingestion ingestion);		//찜한 음식 추가
 	
+	public void updateSelectFood(Ingestion ingestion);		//찜한 음식 수정
+	
 	public List<Ingestion> selectSelectFood(String id);		//찜한 음식 조회
 	
 	public void deleteSelectFood(String ino);				//찜한 음식 삭제

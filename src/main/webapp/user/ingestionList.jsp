@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +21,53 @@ $(function(){
 	DoughnutChart();
 	DoRed();
 });
+
+function updateIngestion(ino){
+	console.log("## updateIngestion() ");
+	var objParams = {
+			"ino" : ino,
+			"ingdate" : $('#ingdate').val(),
+			"quantity" : $('#quantity').val()
+		};
+		
+		//비동기통신하는데 data JSON.stringify 안하면 spring에서 json데이터를 vo,dto를 컨버팅을 못하니까 까먹지 말고 꼭!
+		$.ajax({
+			url : "rest/ingestion",
+			type : "PUT",
+			dataType:'json',
+			contentType :   "application/json",
+			data : JSON.stringify(objParams),
+			success : function(data){
+				if(data.state == "fail"){
+					alert("섭취 식품 수정에 실패하였습니다.");
+				}else{
+					alert("섭취 식품에 수정되었습니다.");
+				}
+			},
+			error  : function(xhr, status,message){
+				console.log(message);
+			}
+		});
+}
+
+function deleteIngestion(ino){
+	$.ajax({
+		url : "rest/ingestion/"+ino,
+		type : "DELETE",
+		success : function(data){
+			console.log(data);
+			if(data.state == "fail"){
+				alert("섭취 식품 삭제에 실패하였습니다.");
+			}else{
+				alert("섭취 식품이 삭제되었습니다.");
+			}
+			location.href="ingestionList.do";
+		},
+		error  : function(xhr, status,message){
+			console.log(message);
+		}
+	});
+}
 
 function DoughnutChart() {		
 	var ctx = document.getElementById("nutrientChart").getContext('2d');
@@ -254,10 +302,11 @@ function DoRed(){
 								<tr style="text-align: center; background-color:#e1f5fe;">
 									<th width="200">Image</th>
 									<th>Product Title</th>
+									<th class="text-center">Allergy</th>
 									<th class="text-center">Date</th>
 									<!-- <th class="text-center">칼로리</th> -->
-									<th class="text-center">Allergy</th>
-									<th class="text-center">Delete</th>
+									<th class="text-center">Quantity</th>
+									<th class="text-center">Funtion</th>
 								</tr>
 							</thead>
 
@@ -266,17 +315,28 @@ function DoRed(){
 									href="foodDetail.do?code=${food.code}"> <img
 										width="150px;" height="auto" src="${food.img}"
 										alt="image description" />
+<%-- 									<input type="hidden" id="ino" name="ino" value="${food.ino}"/> --%>
 								</a></td>
 								<td class="product-details" style="vertical-align: middle; !important"><a
-									href="foodDetail.do?code=${food.code}">${food.foodName}</a></td>
-								<td style="vertical-align: middle; !important">${food.ingdate}</td>
-								<%-- <td style="vertical-align: middle; !important">${food.calory}</td> --%>
-								<td style="vertical-align: middle; !important" class="allergyTd">${food.allergy}</td>
-								<td style="vertical-align: middle; !important"><a href="removeIng.do?ino=${food.ino }">삭제</a></td>
+									href="foodDetail.do?code=${food.code}">${food.foodName}</a>
+								</td>
+								<td style="vertical-align: middle; !important" class="allergyTd">${food.allergy}</td>	
+								<td style="vertical-align: middle; !important">
+									<input type="date" value="${fn:substring(food.ingdate,0,10)}" id="ingdate"/>
+<%-- 								${food.ingdate} --%>
+								</td>
+								<td style="vertical-align: middle; !important ">
+									<input type="number" required="required" min="1" id="quantity" name="quantity" size="50" value="${food.quantity}"/>
+								</td>
+								<td style="vertical-align: middle; !important">
+<%-- 								<a href="removeIng.do?ino=${food.ino }">수정</a> --%>
+									<button type="button" class="btn btn-info btn-sm" onclick="updateIngestion('${food.ino}')" style="margin:3px;">수정</button>
+									 
+									<button type="button" class="btn btn-info btn-sm" onclick="deleteIngestion('${food.ino}')">삭제</button>
+								</td>
 							</tr>
 							<tr style="text-align: center;">
-								<td colspan="4" style="vertical-align: middle; !important" class="allergyTd"><div style="display: inline-block;  overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.2; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
-								" >
+								<td colspan="4" style="vertical-align: middle; !important" class="allergyTd"><div style="display: inline-block;  overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.2; text-align: left; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;" >
 									${food.material}
 									<c:if test="contain"></c:if>
 								</div>

@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +31,6 @@ import io.swagger.annotations.ApiOperation;
 public class FoodRestController {
 	@Autowired
 	private FoodService service;
-	
 	@Autowired
 	private IngestionService ingestionService;
 
@@ -80,17 +82,57 @@ public class FoodRestController {
 		}
 		return handleSuccess(results);
 	}
-
+	
+	//섭취 음식 
+	@ApiOperation("섭취 음식 추가")
+	@PostMapping("/rest/ingestion")
+	public ResponseEntity<Map<String, Object>> insertIngestion(@RequestBody Ingestion ingestion){
+		ingestionService.add(ingestion);
+		return handleSuccess("섭취 등록 성공");
+	}
+	
+	@ApiOperation("섭취 음식 수정")
+	@PutMapping("/rest/ingestion")
+	public ResponseEntity<Map<String, Object>> updateIngestion(@RequestBody Ingestion ingestion){
+		ingestionService.update(ingestion);
+		return handleSuccess("섭취 등록 성공");
+	}
+	
+	@ApiOperation("섭취 음식 조회")
+	@GetMapping("/rest/ingestion/{id}")
+	public ResponseEntity<Map<String, Object>> selectIngestion(@PathVariable String id){
+		List<Ingestion> list = ingestionService.searchAll(id);
+		return handleSuccess(list);
+	}
+	@ApiOperation("섭취 음식 삭제")
+	@DeleteMapping("/rest/ingestion/{ino}")
+	public ResponseEntity<Map<String, Object>> deleteIngestion(@PathVariable String ino){
+		ingestionService.remove(Integer.parseInt(ino));
+		return handleSuccess("섭취 삭제 성공");
+	}
+	
+	
+	//찜한 음식
+	
 	@ApiOperation("찜한 음식 추가")
 	@PostMapping("/rest/selectfood")
-	public ResponseEntity<Map<String, Object>> insertSelectFood(@RequestBody Ingestion ingestion){
+	public ResponseEntity<Map<String, Object>> insertSelectFood(@RequestBody Ingestion ingestion, HttpSession session){
+		ingestion.setId((String)session.getAttribute("id"));
 		service.insertSelectFood(ingestion);
+		return handleSuccess("찜 등록 성공");
+	}
+	
+	@ApiOperation("찜한 음식 수정")
+	@PutMapping("/rest/selectfood")
+	public ResponseEntity<Map<String, Object>> updateSelectFood(@RequestBody Ingestion ingestion, HttpSession session){
+		ingestion.setId((String)session.getAttribute("id"));
+		
 		return handleSuccess("찜 등록 성공");
 	}
 	
 	@ApiOperation("찜한 음식 조회")
 	@GetMapping("/rest/selectfood/{id}")
-	public ResponseEntity<Map<String, Object>> insertSelectFood(@PathVariable String id){
+	public ResponseEntity<Map<String, Object>> selectSelectFood(@PathVariable String id){
 		List<Ingestion> list = service.selectSelectFood(id);
 		return handleSuccess(list);
 	}

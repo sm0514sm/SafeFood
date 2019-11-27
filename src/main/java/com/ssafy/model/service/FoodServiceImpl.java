@@ -122,6 +122,16 @@ public class FoodServiceImpl implements FoodService{
 		}
 	}
 	
+	public void updateSelectFood(Ingestion ingestion) {
+		try {
+			System.out.println(ingestion);
+			dao.updateSelectFood(ingestion);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("찜 목록 수정 중 오류");
+		}
+	}
+	
 	public List<Ingestion> selectSelectFood(String id){
 		try {
 			return dao.selectSelectFood(id);

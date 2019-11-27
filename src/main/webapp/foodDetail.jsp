@@ -14,12 +14,86 @@
 $(function(){
 	DoughnutChart();
 });
-function ingestion(code){
-	console.log("## code : " + code);
+function ingestion(id, code){
 	var date = $('#date').val();
 	var quantity = $('#quantity').val();
+	if(quantity == ""){
+		alert("수량을 입력해주세요!");
+		return false;
+	}else if(quantity < 1){
+		alert("1 이상의 숫자를 입력해주세요!");
+		return false;
+	}
+	
+	//입력 정보의 객체화
+	var objParams = {
+		"id" : id,
+		"code" : code,
+		"ingdate" : date,
+		"quantity" : quantity
+	};
+	
+	//비동기통신하는데 data JSON.stringify 안하면 spring에서 json데이터를 vo,dto를 컨버팅을 못하니까 까먹지 말고 꼭!
+	$.ajax({
+		url : "rest/ingestion",
+		type : "POST",
+		dataType:'json',
+		contentType :   "application/json",
+		data : JSON.stringify(objParams),
+		success : function(data){
+			console.log(data);
+			if(data.state == "fail"){
+				alert("섭취 식품 등록에 실패하였습니다.");
+			}else{
+				alert("섭취 식품에 추가되었습니다.");
+			}
+		},
+		error  : function(xhr, status,message){
+			console.log(message);
+		}
+	});
 	
 }
+
+function selectfood(id, code){
+	var date = $('#date').val();
+	var quantity = $('#quantity').val();
+	if(quantity == ""){
+		alert("수량을 입력해주세요!");
+		return false;
+	}else if(quantity < 1){
+		alert("1 이상의 숫자를 입력해주세요!");
+		return false;
+	}
+	
+	var objParams = {
+		"id" : id,
+		"code" : code,
+		"ingdate" : date,
+		"quantity" : quantity
+	};
+	
+	$.ajax({
+		url : "rest/selectfood",
+		type : "POST",
+		dataType:'json',
+		contentType :   "application/json",
+		data : JSON.stringify(objParams),
+		success : function(data){
+			console.log(data);
+			if(data.state == "fail"){
+				alert("찜 목록 등록에 실패하였습니다.");
+			}else{
+				alert("찜 목록에 추가되었습니다.");
+			}
+		},
+		error  : function(xhr, status,message){
+			console.log(message);
+		}
+	});
+	
+}
+
 function DoughnutChart() {		
 	// 우선 컨텍스트를 가져옵니다. 
 	var ctx = document.getElementById("myChart").getContext('2d');
@@ -122,21 +196,23 @@ th, td {
 				<th>조회수</th>
 				<td>${food.count}</td>
 			</tr>
-			<tr>
-				
-					<td style="width: 250px">
-						날짜 <input type="date" required="required" id="date" name="date" style="width: 150px;"/>
-					</td>
-					<td style="width: 150px">
-						수량 <input type="number" required="required" min="1" id="quantity" name="quantity" size="50"
-							style="width: 50px;"/>
-					</td>
-					<td style="text-align: right">
-<%-- 						<button type="button" class="btn btn-info btn-sm" onclick="location.href='ingestion.do?code=${food.code}'">추가</button>  --%>
-						<button type="button" class="btn btn-info btn-sm" onclick="ingestion('${food.code}')">추가</button> 
-						<button type="button" class="btn btn-info btn-sm" onclick="location.href='selectfood.do?code=${food.code}'">찜</button>
-					</td>
-			</tr>
+			<c:if test="${sessionScope.id != null}">
+				<tr>
+					
+						<td style="width: 250px">
+							날짜 <input type="date" required="required" id="date" name="date" style="width: 150px;"/>
+						</td>
+						<td style="width: 150px">
+							수량 <input type="number" required="required" min="1" id="quantity" name="quantity" size="50"
+								style="width: 50px;"/>
+						</td>
+						<td style="text-align: right">
+	<%-- 						<button type="button" class="btn btn-info btn-sm" onclick="location.href='ingestion.do?code=${food.code}'">추가</button>  --%>
+							<button type="button" class="btn btn-info btn-sm" onclick="ingestion('${sessionScope.id}','${food.code}')">추가</button> 
+							<button type="button" class="btn btn-info btn-sm" onclick="selectfood('${sessionScope.id}','${food.code}')">찜</button>
+						</td>
+				</tr>
+			</c:if>
 		</table>
 		</form>
 	</div>
