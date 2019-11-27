@@ -27,9 +27,6 @@ import Constant from "../Constant";
 
 export default {
   name: "quiz",
-  created() {
-    this.nextQuiz();
-  },
   computed: {
     id() {
       return this.$store.state.id;

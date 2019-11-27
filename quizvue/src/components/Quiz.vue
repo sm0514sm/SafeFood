@@ -19,7 +19,10 @@
         <div class="col-sm">사용자 {{ id }}</div>
         <div class="col-sm">현재 레벨 {{ level }}</div>
         <div class="col-sm">맞춘 개수 {{ solvedCnt }}</div>
-        <div class="col-sm">현재 점수 {{ score }}</div>
+        <div class="col-sm">
+          최고 점수 {{ bestScore }} <br />
+          현재 점수 {{ score }}
+        </div>
       </div>
     </div>
     <br /><br />
@@ -252,6 +255,7 @@ export default {
   name: "quiz",
   created() {
     this.nextQuiz();
+    this.$store.dispatch(Constant.GET_BESTSCORE);
   },
   computed: {
     quiz() {
@@ -271,10 +275,15 @@ export default {
     },
     level() {
       return this.$store.state.level;
+    },
+    bestScore() {
+      return this.$store.state.best_quiz_score;
     }
   },
   data() {
     return {
+      warning: false,
+      danger: false,
       progress: 0,
       timer: "",
       possible: true,
@@ -283,6 +292,7 @@ export default {
   },
   methods: {
     nextQuiz() {
+      this.$store.state.quizNo.push(this.quiz.no);
       if (this.solvedCnt >= 10) this.$router.push("/quizEnd");
       this.progress = 0;
       this.timer = "";
@@ -291,25 +301,17 @@ export default {
       this.$store.dispatch(Constant.GET_QUIZ_ONE, {
         level: this.$store.state.level
       });
-      console.log("this.$store.state.quizNo : " + this.$store.state.quizNo);
-      console.log("this.quiz.no  :" + this.quiz.no);
-      console.log(
-        "true? false?" + this.$store.state.quizNo.indexOf(this.quiz.no)
-      );
-
-      if (this.$store.state.quizNo.indexOf(this.quiz.no) != -1) this.nextQuiz();
-      else {
-        this.getId();
-        this.timer = setInterval(() => {
-          this.progress += 1;
-        }, 100);
-      }
+      this.getId();
+      this.timer = setInterval(() => {
+        this.progress += 1;
+      }, 100);
     },
     GoQuizMain() {
       this.$router.push("/quiz.jsp");
     },
     getId() {
       this.$store.dispatch(Constant.GET_ID);
+      this.$store.dispatch(Constant.GET_BESTSCORE, "");
     },
     isAnswer(click) {
       clearInterval(this.timer);
@@ -320,8 +322,14 @@ export default {
         this.$store.state.score += 100 - this.progress;
         this.$store.state.solvedCnt += 1;
         this.$store.state.level = parseInt(this.$store.state.solvedCnt / 4 + 1);
-        this.$store.state.quizNo.push(this.quiz.no);
+        if (this.bestScore < this.$store.state.score) {
+          // 기록 갱신하기
+          this.$store.dispatch(Constant.UPDATE_BESTSCORE, {
+            bestScore: this.score
+          });
+        }
       } else {
+        this.$store.state.quizNo = [];
         this.possible = false;
       }
       this.progress = 0;
@@ -336,6 +344,12 @@ export default {
     }
   },
   updated() {
+    // 만약 있는 거라면 다음문제
+    if (this.$store.state.quizNo.indexOf(this.quiz.no) != -1) {
+      this.$store.dispatch(Constant.GET_QUIZ_ONE, {
+        level: this.$store.state.level
+      });
+    }
     if (this.progress > 75) {
       this.warning = false;
       this.danger = true;

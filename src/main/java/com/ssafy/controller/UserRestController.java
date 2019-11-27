@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,7 @@ import com.ssafy.model.service.UserService;
 
 import io.swagger.annotations.ApiOperation;
 
+@CrossOrigin("*")
 @RestController
 public class UserRestController {
 	@Autowired
@@ -43,6 +45,12 @@ public class UserRestController {
 	@GetMapping("/rest/user/{id}")
 	public ResponseEntity<Map<String, Object>> userInfo(@PathVariable String id) {
 		return handleSuccess(service.search(id));
+	}
+	
+	@ApiOperation("score 높은 top 5 확인 기능")
+	@GetMapping("/rest/user/top5")
+	public ResponseEntity<Map<String, Object>> searchTop5() {
+		return handleSuccess(service.searchTop5());
 	}
 	
 	@ApiOperation("유저 정보 확인 기능")
