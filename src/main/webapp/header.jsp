@@ -16,26 +16,17 @@
 			data : "",
 			success : function(data){
 				var user = data.data;
-				console.log(user);
 				$('#ePassword').val(user.password);
 				$('#eName').val(user.name);
 				$('#ePhone').val(user.phone);
 				$('#eEmail').val(user.email);
 				$('#eAddress').val(user.address);
-				
+
 				var allergy = user.allergy;
 				$("input[name=allergy2]").each(function(){
 					if( allergy.includes( $(this).val() ) ){
-						console.log($(this).val());
-						console.log($(this).is(":checked"));
-						
-// 						this.checked = true;
-// 						$(this).attr("checked", true);
-// 						$(this).prop("checked",true);
-
-						console.log($(this).is(":checked"));
+						$(this).attr("checked","checked");
 					}
-				
 				});
 			},
 			error  : function(xhr, status,message){
@@ -256,34 +247,34 @@ label {
 												<div class="form-group col-12"
 													style="margin-left: 20px; margin-bottom: 0px !important;">
 													<input class="form-check-input" type="checkbox"
-														id="gridCheck1" name="allergy2" value="대두" <c:if test="${fn:contains(user.allergy, '대두')}">checked</c:if>> <label
+														id="gridCheck1" name="allergy" value="대두" <c:if test="${fn:contains(user.allergy, '대두')}">checked</c:if>> <label
 														class="form-check-label" for="gridCheck1"> 대두</label>
 													&nbsp;&nbsp;&nbsp; 
 													
 													<input class="form-check-input"
-														type="checkbox" id="gridCheck2" name="allergy2" value="땅콩" <c:if test="${fn:contains(user.allergy, '땅콩')}">checked</c:if>>
+														type="checkbox" id="gridCheck2" name="allergy" value="땅콩" <c:if test="${fn:contains(user.allergy, '땅콩')}">checked</c:if>>
 													<label for="gridCheck2"> 땅콩 </label> &nbsp;&nbsp;&nbsp; 
 													
 													<input
 														class="form-check-input" type="checkbox" id="gridCheck3"
-														name="allergy2" value="우유"  <c:if test="${fn:contains(user.allergy, '우유')}">checked</c:if>> <label
+														name="allergy" value="우유"  <c:if test="${fn:contains(user.allergy, '우유')}">checked</c:if>> <label
 														class="form-check-label" for="gridCheck3"> 우유</label>
 													&nbsp;&nbsp;&nbsp; 
 													
 													<input class="form-check-input"
-														type="checkbox" id="gridCheck4" name="allergy2" value="게" <c:if test="${fn:contains(user.allergy, '게')}">checked</c:if>>
+														type="checkbox" id="gridCheck4" name="allergy" value="게" <c:if test="${fn:contains(user.allergy, '게')}">checked</c:if>>
 													<label class="form-check-label" for="gridCheck4"> 게</label>
 													&nbsp;&nbsp;&nbsp; <input class="form-check-input"
-														type="checkbox" id="gridCheck5" name="allergy2" value="새우" <c:if test="${fn:contains(user.allergy, '새우')}">checked</c:if>>
+														type="checkbox" id="gridCheck5" name="allergy" value="새우" <c:if test="${fn:contains(user.allergy, '새우')}">checked</c:if>>
 													<label class="form-check-label" for="gridCheck5"> 새우
 													</label> &nbsp;&nbsp;&nbsp; <input class="form-check-input"
-														type="checkbox" id="gridCheck6" name="allergy2" value="참치" >
+														type="checkbox" id="gridCheck6" name="allergy" value="참치" >
 													<label class="form-check-label" for="gridCheck6"> 참치</label>
 													&nbsp;&nbsp;&nbsp; <input class="form-check-input"
-														type="checkbox" id="gridCheck7" name="allergy2" value="연어" <c:if test="${fn:contains(user.allergy, '연어')}">checked</c:if>>
+														type="checkbox" id="gridCheck7" name="allergy" value="연어" <c:if test="${fn:contains(user.allergy, '연어')}">checked</c:if>>
 													<label class="form-check-label" for="gridCheck7"> 연어</label>
 													&nbsp;&nbsp;&nbsp; <input class="form-check-input"
-														type="checkbox" id="gridCheck8" name="allergy2" value="쑥" <c:if test="${fn:contains(user.allergy, '쑥')}">checked</c:if>>
+														type="checkbox" id="gridCheck8" name="allergy" value="쑥" <c:if test="${fn:contains(user.allergy, '쑥')}">checked</c:if>>
 													<label class="form-check-label" for="gridCheck8"> 쑥</label>
 												</div>
 											</div>
@@ -294,19 +285,19 @@ label {
 														id="gridCheck9" name="allergy" value="소고기" <c:if test="${fn:contains(user.allergy, '소고기')}">checked</c:if>> <label
 														class="form-check-label" for="gridCheck9"> 소고기 </label>
 													&nbsp;&nbsp;&nbsp; <input class="form-check-input"
-														type="checkbox" id="gridCheck10" name="allergy2" value="닭고기" <c:if test="${fn:contains(user.allergy, '닭고기')}">checked</c:if>>
+														type="checkbox" id="gridCheck10" name="allergy" value="닭고기" <c:if test="${fn:contains(user.allergy, '닭고기')}">checked</c:if>>
 													<label class="form-check-label" for="gridCheck10">
 														닭고기 </label> &nbsp;&nbsp;&nbsp; <input class="form-check-input"
-														type="checkbox" id="gridCheck11" name="allergy2" value="돼지고기" <c:if test="${fn:contains(user.allergy, '돼지고기')}">checked</c:if>>
+														type="checkbox" id="gridCheck11" name="allergy" value="돼지고기" <c:if test="${fn:contains(user.allergy, '돼지고기')}">checked</c:if>>
 													<label class="form-check-label" for="gridCheck11">
 														돼지고기 </label> &nbsp;&nbsp;&nbsp; <input class="form-check-input"
-														type="checkbox" id="gridCheck12" name="allergy2" value="복숭아" <c:if test="${fn:contains(user.allergy, '복숭아')}">checked</c:if>>
+														type="checkbox" id="gridCheck12" name="allergy" value="복숭아" <c:if test="${fn:contains(user.allergy, '복숭아')}">checked</c:if>>
 													<label class="form-check-label" for="gridCheck12">복숭아
 													</label> &nbsp;&nbsp;&nbsp; <input class="form-check-input"
-														type="checkbox" id="gridCheck13" name="allergy2" value="민들레" <c:if test="${fn:contains(user.allergy, '민들레')}">checked</c:if>>
+														type="checkbox" id="gridCheck13" name="allergy" value="민들레" <c:if test="${fn:contains(user.allergy, '민들레')}">checked</c:if>>
 													<label class="form-check-label" for="gridCheck13">민들레
 													</label> &nbsp;&nbsp;&nbsp; <input class="form-check-input"
-														type="checkbox" id="gridCheck14" name="allergy2" value="계란흰자" <c:if test="${fn:contains(user.allergy, '계란흰자')}">checked</c:if>>
+														type="checkbox" id="gridCheck14" name="allergy" value="계란흰자" <c:if test="${fn:contains(user.allergy, '계란흰자')}">checked</c:if>>
 													<label class="form-check-label" for="gridCheck14">계란흰자
 													</label>
 												</div>
@@ -403,29 +394,29 @@ label {
 												<div class="form-group col-12"
 													style="margin-left: 20px; margin-bottom: 0px !important;">
 													<input class="form-check-input" type="checkbox"
-														id="eGridCheck1" name="allergy" value="대두"> <label
+														id="eGridCheck1" name="allergy2" value="대두"> <label
 														class="form-check-label" for="eGridCheck1"> 대두</label>
 														
 													&nbsp;&nbsp;&nbsp; <input class="form-check-input"
-														type="checkbox" id="eGridCheck2" name="allergy" value="땅콩">
+														type="checkbox" id="eGridCheck2" name="allergy2" value="땅콩">
 													<label class="form-check-label" for="eGridCheck2"> 땅콩 </label> &nbsp;&nbsp;&nbsp; <input
 														class="form-check-input" type="checkbox" id="eGridCheck3"
-														name="allergy" value="우유"> <label
+														name="allergy2" value="우유"> <label
 														class="form-check-label" for="eGridCheck3"> 우유</label>
 													&nbsp;&nbsp;&nbsp; <input class="form-check-input"
-														type="checkbox" id="eGridCheck4" name="allergy" value="게">
+														type="checkbox" id="eGridCheck4" name="allergy2" value="게">
 													<label class="form-check-label" for="eGridCheck4"> 게</label>
 													&nbsp;&nbsp;&nbsp; <input class="form-check-input"
-														type="checkbox" id="eGridCheck5" name="allergy" value="새우">
+														type="checkbox" id="eGridCheck5" name="allergy2" value="새우">
 													<label class="form-check-label" for="eGridCheck5"> 새우
 													</label> &nbsp;&nbsp;&nbsp; <input class="form-check-input"
-														type="checkbox" id="eGridCheck6" name="allergy" value="참치">
+														type="checkbox" id="eGridCheck6" name="allergy2" value="참치">
 													<label class="form-check-label" for="eGridCheck6"> 참치</label>
 													&nbsp;&nbsp;&nbsp; <input class="form-check-input"
-														type="checkbox" id="eGridCheck7" name="allergy" value="연어">
+														type="checkbox" id="eGridCheck7" name="allergy2" value="연어">
 													<label class="form-check-label" for="eGridCheck7"> 연어</label>
 													&nbsp;&nbsp;&nbsp; <input class="form-check-input"
-														type="checkbox" id="eGridCheck8" name="allergy" value="쑥">
+														type="checkbox" id="eGridCheck8" name="allergy2" value="쑥">
 													<label class="form-check-label" for="eGridCheck8"> 쑥</label>
 												</div>
 											</div>
@@ -433,22 +424,22 @@ label {
 												<div class="form-group col-12" style="margin-left: 20px;">
 	
 													<input class="form-check-input" type="checkbox"
-														id="eGridCheck9" name="allergy" value="소고기"> <label
+														id="eGridCheck9" name="allergy2" value="소고기"> <label
 														class="form-check-label" for="eGridCheck9"> 소고기 </label>
 													&nbsp;&nbsp;&nbsp; <input class="form-check-input"
-														type="checkbox" id="eGridCheck10" name="allergy" value="닭고기">
+														type="checkbox" id="eGridCheck10" name="allergy2" value="닭고기">
 													<label class="form-check-label" for="eGridCheck10">
 														닭고기 </label> &nbsp;&nbsp;&nbsp; <input class="form-check-input"
-														type="checkbox" id="eGridCheck11" name="allergy" value="돼지고기">
+														type="checkbox" id="eGridCheck11" name="allergy2" value="돼지고기">
 													<label class="form-check-label" for="eGridCheck11">
 														돼지고기 </label> &nbsp;&nbsp;&nbsp; <input class="form-check-input"
-														type="checkbox" id="eGridCheck12" name="allergy" value="복숭아">
+														type="checkbox" id="eGridCheck12" name="allergy2" value="복숭아">
 													<label class="form-check-label" for="eGridCheck12">복숭아
 													</label> &nbsp;&nbsp;&nbsp; <input class="form-check-input"
-														type="checkbox" id="eGridCheck13" name="allergy" value="민들레">
+														type="checkbox" id="eGridCheck13" name="allergy2" value="민들레">
 													<label class="form-check-label" for="eGridCheck13">민들레
 													</label> &nbsp;&nbsp;&nbsp; <input class="form-check-input"
-														type="checkbox" id="eGridCheck14" name="allergy" value="계란흰자">
+														type="checkbox" id="eGridCheck14" name="allergy2" value="계란흰자">
 													<label class="form-check-label" for="eGridCheck14">계란흰자
 													</label>
 												</div>

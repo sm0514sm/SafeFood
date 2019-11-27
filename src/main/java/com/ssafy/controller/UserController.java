@@ -91,10 +91,10 @@ public class UserController {
 
 	@PostMapping("modify.do")
 	public String modify(String id, String pw, String name, 
-			String email, String address, String phone, String[] allergy) {
+			String email, String address, String phone, String[] allergy2) {
 		String alle = "";
-		if(allergy != null)
-			for (String string : allergy) {
+		if(allergy2 != null)
+			for (String string : allergy2) {
 				if(alle == "") {
 					alle=(string);
 				}else {
