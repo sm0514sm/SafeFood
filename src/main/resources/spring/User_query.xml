@@ -46,7 +46,7 @@
 	<select id="searchTop5" resultType="user">
 		select * from user
 		order by best_quiz_score desc
-		limit 5
+		limit 10
 	</select>
 </mapper>
 
