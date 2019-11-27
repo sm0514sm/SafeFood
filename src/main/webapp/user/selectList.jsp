@@ -187,8 +187,8 @@ function DoughnutChart2() {
 									<th width="300px;">Image</th>
 									<th width="300px;">Product Title</th>
 <!-- 									<th width="300px;" class="text-center">칼로리</th> -->
-									<th width="300px;" class="text-center">알레르기 성분</th>
-									<th width="300px;" class="text-center">섭취</th>
+									<th width="300px;" class="text-center">Allergy</th>
+									<th width="300px;" class="text-center">Function</th>
 								</tr>
 							</thead>
 
