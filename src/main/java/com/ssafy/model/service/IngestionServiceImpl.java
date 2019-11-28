@@ -68,4 +68,29 @@ public class IngestionServiceImpl implements IngestionService{
 			throw new RuntimeException("섭취 음식 삭제 중 오류");
 		}
 	}
+	public List<Food> searchNutrientD(String id){
+		try {
+			return dao.searchNutrientD(id);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("섭취 음식 조회 중 오류 D");
+		}
+	}
+	public List<Food> searchNutrientW(String id){
+		try {
+			return dao.searchNutrientW(id);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("섭취 음식 조회 중 오류 W");
+		}
+	}
+	public List<Food> searchNutrientM(String id){
+		try {
+			return dao.searchNutrientM(id);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("섭취 음식 조회 중 오류 M");
+		}
+	}
+	
 }

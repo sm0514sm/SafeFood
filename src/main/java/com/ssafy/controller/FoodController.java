@@ -124,42 +124,28 @@ public class FoodController {
 		
 		List<Food> list = new LinkedList<>();
 		
-		double calory = 0.0;
-		double carbo = 0.0;
-		double protein = 0.0;
-		double fat = 0.0;
-		double sugar = 0.0;
-		double natrium = 0.0;
-		double chole = 0.0;
-		double fattyacid = 0.0;
-		double transfat = 0.0;
+		double calory = 0.0; 	double carbo = 0.0;		 	double protein = 0.0;
+		double fat = 0.0; 		double sugar = 0.0; 		double natrium = 0.0;
+		double chole = 0.0; 	double fattyacid = 0.0; 	double transfat = 0.0;
 		
 		int idx = 0;
 		for (List<Food> foodList : calList) {
 			calory = carbo = protein = fat = sugar = natrium = chole = fattyacid = transfat = 0.0;
 			
 			for (Food f : foodList) {
-				calory += f.getCalory();
-				carbo += f.getCarbo();
-				protein += f.getProtein();
-				fat += f.getProtein();
-				sugar += f.getProtein();
-				natrium += f.getProtein();
-				chole += f.getProtein();
-				fattyacid += f.getProtein();
-				transfat += f.getProtein();
-				protein += f.getProtein();
+				calory += f.getCalory(); 		carbo += f.getCarbo();
+				protein += f.getProtein(); 		fat += f.getProtein();
+				sugar += f.getProtein(); 		natrium += f.getProtein();
+				chole += f.getProtein(); 		fattyacid += f.getProtein();
+				transfat += f.getProtein(); 	protein += f.getProtein();
 			}
 			
 			Food food = new Food();
-			food.setCalory(calory);
-			food.setCarbo(carbo);
-			food.setProtein(protein);
-			food.setFat(fat);
-			food.setSugar(sugar);
-			food.setNatrium(natrium);
-			food.setChole(chole);
-			food.setFattyacid(fattyacid);
+			
+			food.setCalory(calory);		food.setCarbo(carbo);
+			food.setProtein(protein); 	food.setFat(fat);
+			food.setSugar(sugar); 		food.setNatrium(natrium);
+			food.setChole(chole); 		food.setFattyacid(fattyacid);
 			food.setTransfat(transfat);
 
 			list.add(food);

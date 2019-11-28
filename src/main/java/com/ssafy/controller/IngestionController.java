@@ -104,42 +104,34 @@ public class IngestionController {
 		String id = (String)session.getAttribute("id");
 		String[] allergies = userService.search(id).getAllergy().replaceAll(" ", "").split("[,]");
 		
-		List<Food> list = service.searchNutrient(id);
+		List<Food> list = service.searchNutrientD(id);
+		List<Food> list2 = service.searchNutrientW(id);
+		List<Food> list3 = service.searchNutrientM(id);
 		Food food = new Food();
-		double calory =	 	0.0;
-		double carbo = 		0.0;
-		double protein = 	0.0;
-		double fat = 		0.0;
-		double sugar = 		0.0;
-		double natrium = 	0.0;
-		double chole = 		0.0;
-		double fattyacid = 	0.0;
-		double transfat = 	0.0;
+		Food food2 = new Food();
+		Food food3 = new Food();
+		double calory =	 	0.0; double carbo = 		0.0; double protein = 	0.0;
+		double fat = 		0.0; double sugar = 		0.0; double natrium = 	0.0;
+		double chole = 		0.0; double fattyacid = 	0.0; double transfat = 	0.0;
 		
 		int[] allerCnt = new int[14];
 		String[] allergyList = new String[] {"대두", "땅콩","우유", "게"
 											, "새우", "참치", "연어", "숙"
 											, "소고기", "닭고기", "돼지고기"
 											, "복숭아", "민들레", "계란흰자"};
-
 		
+		//오늘
 		for(Food f : list) {
-			calory 		+= 	f.getCalory();
-			carbo 		+= 	f.getCarbo();
-			protein 	+=	f.getProtein();
-			fat 		+=	f.getProtein();
-			sugar 		+=	f.getProtein();
-			natrium 	+=	f.getProtein();
-			chole 		+=	f.getProtein();
-			fattyacid 	+=	f.getProtein();
-			transfat 	+=	f.getProtein();
-			protein 	+=	f.getProtein();
+			calory 		+= 	f.getCalory(); carbo 		+= 	f.getCarbo();
+			protein 	+=	f.getProtein(); fat 		+=	f.getProtein();
+			sugar 		+=	f.getProtein(); natrium 	+=	f.getProtein();
+			chole 		+=	f.getProtein(); fattyacid 	+=	f.getProtein();
+			transfat 	+=	f.getProtein(); protein 	+=	f.getProtein();
 			for (int i = 0; i < 14; i++) {
 				if(f.getMaterial().contains(allergyList[i]))
 					allerCnt[i]++;
 			}
 		}
-		
 		food.setCalory(calory);
 		food.setCarbo(carbo);
 		food.setProtein(protein);
@@ -149,9 +141,60 @@ public class IngestionController {
 		food.setChole(chole);
 		food.setFattyacid(fattyacid);
 		food.setTransfat(transfat);
-		System.out.println("## food info");
-		System.out.println(food);
 		model.addAttribute("food", food);
+		
+		//이번주
+		calory =	 	0.0; 	carbo = 		0.0; 	protein = 	0.0;
+		fat = 			0.0; 	sugar = 		0.0; 	natrium = 	0.0;
+		chole = 		0.0; 	fattyacid = 	0.0; 	transfat = 	0.0;
+		for(Food f : list2) {
+			calory 		+= 	f.getCalory(); carbo 		+= 	f.getCarbo();
+			protein 	+=	f.getProtein(); fat 		+=	f.getProtein();
+			sugar 		+=	f.getProtein(); natrium 	+=	f.getProtein();
+			chole 		+=	f.getProtein(); fattyacid 	+=	f.getProtein();
+			transfat 	+=	f.getProtein(); protein 	+=	f.getProtein();
+			for (int i = 0; i < 14; i++) {
+				if(f.getMaterial().contains(allergyList[i]))
+					allerCnt[i]++;
+			}
+		}
+		food2.setCalory(calory);
+		food2.setCarbo(carbo);
+		food2.setProtein(protein);
+		food2.setFat(fat);
+		food2.setSugar(sugar);
+		food2.setNatrium(natrium);
+		food2.setChole(chole);
+		food2.setFattyacid(fattyacid);
+		food2.setTransfat(transfat);
+		model.addAttribute("food2", food2);
+		
+		//이번달
+		calory =	 	0.0; 	carbo = 		0.0; 	protein = 	0.0;
+		fat = 			0.0; 	sugar = 		0.0; 	natrium = 	0.0;
+		chole = 		0.0; 	fattyacid = 	0.0; 	transfat = 	0.0;
+		for(Food f : list3) {
+			calory 		+= 	f.getCalory(); carbo 		+= 	f.getCarbo();
+			protein 	+=	f.getProtein(); fat 		+=	f.getProtein();
+			sugar 		+=	f.getProtein(); natrium 	+=	f.getProtein();
+			chole 		+=	f.getProtein(); fattyacid 	+=	f.getProtein();
+			transfat 	+=	f.getProtein(); protein 	+=	f.getProtein();
+			for (int i = 0; i < 14; i++) {
+				if(f.getMaterial().contains(allergyList[i]))
+					allerCnt[i]++;
+			}
+		}
+		food3.setCalory(calory);
+		food3.setCarbo(carbo);
+		food3.setProtein(protein);
+		food3.setFat(fat);
+		food3.setSugar(sugar);
+		food3.setNatrium(natrium);
+		food3.setChole(chole);
+		food3.setFattyacid(fattyacid);
+		food3.setTransfat(transfat);
+		model.addAttribute("food3", food3);
+		
 		
 		model.addAttribute("allerCnt", allerCnt);
 		model.addAttribute("allergies", allergies);
