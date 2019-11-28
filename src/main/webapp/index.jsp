@@ -55,7 +55,7 @@ function search() {
 						<h3>
 							Safe Food <br> Service.
 						</h3>
-						<p style="font-size: 1.5em">made by ssafy seoul team kmando</p>
+						<p style="font-size: 1.5em">made by ssafy seoul team trinity</p>
 						<br>
 						<form method="get" action="searchKeyword.do" id="searchForm">
 							<div class="input-group mb-3" style="margin-bottom: 0px !important;">
@@ -295,10 +295,8 @@ function search() {
 							</div>
 							<div class="testmonial_author">
 								<h3>mingi-kang</h3>
-								<span>kmandu</span>
-								<p>You're had. Subdue grass Meat us winged years you'll
-									doesn't. fruit two also won one yielding creepeth third give
-									may never lie alternet food.</p>
+								<span>Kmandu</span>
+								<p>6반의 자랑 삼성SDI 만두</p>
 							</div>
 						</div>
 						<div class="single_testmonial d-flex">
@@ -308,10 +306,8 @@ function search() {
 							</div>
 							<div class="testmonial_author">
 								<h3>sangmin-lee</h3>
-								<span>lifeon</span>
-								<p>You're had. Subdue grass Meat us winged years you'll
-									doesn't. fruit two also won one yielding creepeth third give
-									may never lie alternet food.</p>
+								<span>Lifaon</span>
+								<p>6반의 귀염둥이 막내</p>
 							</div>
 						</div>
 						<div class="single_testmonial d-flex">
@@ -322,9 +318,7 @@ function search() {
 							<div class="testmonial_author">
 								<h3>juhee kim</h3>
 								<span>smileH</span>
-								<p>You're had. Subdue grass Meat us winged years you'll
-									doesn't. fruit two also won one yielding creepeth third give
-									may never lie alternet food.</p>
+								<p>CSS에 영혼을 갈아넣은 희주</p>
 							</div>
 						</div>
 						<div class="single_testmonial d-flex">
@@ -334,10 +328,8 @@ function search() {
 							</div>
 							<div class="testmonial_author">
 								<h3>mingi-kang</h3>
-								<span>Chief Customer</span>
-								<p>You're had. Subdue grass Meat us winged years you'll
-									doesn't. fruit two also won one yielding creepeth third give
-									may never lie alternet food.</p>
+								<span>Kmandu</span>
+								<p>6반의 자랑 삼성SDI 만두</p>
 							</div>
 						</div>
 						<div class="single_testmonial d-flex">
@@ -347,10 +339,8 @@ function search() {
 							</div>
 							<div class="testmonial_author">
 								<h3>sangmin-lee</h3>
-								<span>Chief Customer</span>
-								<p>You're had. Subdue grass Meat us winged years you'll
-									doesn't. fruit two also won one yielding creepeth third give
-									may never lie alternet food.</p>
+								<span>Lifaon</span>
+								<p>6반의 귀염둥이 막내</p>
 							</div>
 						</div>
 						<div class="single_testmonial d-flex">
@@ -360,10 +350,8 @@ function search() {
 							</div>
 							<div class="testmonial_author">
 								<h3>juhee kim</h3>
-								<span>Chief Customer</span>
-								<p>You're had. Subdue grass Meat us winged years you'll
-									doesn't. fruit two also won one yielding creepeth third give
-									may never lie alternet food.</p>
+								<span>smileH</span>
+								<p>CSS에 영혼을 갈아넣은 희주</p>
 							</div>
 						</div>
 					</div>
