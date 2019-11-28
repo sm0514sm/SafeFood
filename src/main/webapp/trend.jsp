@@ -37,6 +37,13 @@
 								,"category":0,"property":""}
 								, {"exploreQuery":"q=food&geo=KR&date=today 12-m","guestPath":"https://trends.google.co.kr:443/trends/embed/"}); 
 						</script> 
+						<script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/1982_RC01/embed_loader.js"></script> 
+						<script type="text/javascript"> 
+							trends.embed.renderExploreWidget("TIMESERIES"
+								, {"comparisonItem":[{"keyword":"음식","geo":"KR","time":"today 12-m"}]
+								,"category":0,"property":""}
+								, {"exploreQuery":"q=%EC%9D%8C%EC%8B%9D&geo=KR&date=today 12-m","guestPath":"https://trends.google.co.kr:443/trends/embed/"}); 
+						</script> 
 						<script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/1982_RC01/embed_loader.js"></script>
 						<script type="text/javascript"> 
 							trends.embed.renderExploreWidget("GEO_MAP"

@@ -308,12 +308,12 @@ h3 {
 
 /* line 233, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/theme-default.scss */
 .mb-60 {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 /* line 236, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/theme-default.scss */
 .mb-70 {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 /* line 1, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_btn.scss */
@@ -1019,7 +1019,7 @@ h3 {
   background-size: cover;
   background-position: center;
   /* height: 1080px; */
-  height: 700px;
+  height: 900px;
   display: table;
   width: 100%;
   background-size: cover;
@@ -1117,7 +1117,7 @@ h3 {
 
 /* line 1, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_service.scss */
 .service_area {
-  padding-top: 60px;
+  padding-top: 80px;
 }
 
 @media (max-width: 767px) {
@@ -1150,7 +1150,7 @@ h3 {
 
 /* line 19, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_service.scss */
 .service_area .single_service .service_icon i {
-  color: #78b454;
+  color: skyblue;
   font-size: 50px;
 }
 
@@ -1172,7 +1172,7 @@ h3 {
 
 /* line 36, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_service.scss */
 .service_area .single_service:hover {
-  background: #78b454;
+  background: skyblue;
   border: 2px solid transparent;
 }
 
