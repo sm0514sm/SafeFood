@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div>NoticeDetail</div>
     <br />
     <div>
       <div v-if="id == 'root'">

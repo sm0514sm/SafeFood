@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div>Notice.vue 입니다</div>
     <br />
     <div>
       <table>

@@ -1,8 +1,6 @@
 <template>
   <div>
     <!-- 나중에 삭제 바람 -->
-    <div>우리 민기 삼성갑니다!!!5</div>
-    로그인 아이디 : {{ id }}
     <br />
     <div>
       <div v-if="id == bulletin.uid">
