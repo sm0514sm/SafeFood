@@ -22,6 +22,73 @@
 			return true;
 		}
 	}
+// 	function DoughnutChart() {		
+// 		var ctx = document.getElementById("nutrientChart").getContext('2d');
+// 	/*
+// 	- Chart를 생성하면서, 
+// 	- ctx를 첫번째 argument로 넘겨주고, 
+// 	- 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줍니다. 
+// 	*/
+// 		var nutrientChart = new Chart(ctx,
+// 		{
+// 			type : 'bar',
+// 			data : {
+// 				labels :['# 총 합산 영양소'],
+// 				datasets:[{
+// 					label:"칼로리",
+// 					backgroundColor : 'rgba(255, 99, 132, 0.2)',
+// 					data : [${food.calory}]
+// 				},{
+// 					label:"탄수화물",
+// 					backgroundColor : 'rgba(54, 162, 235, 0.2)',
+// 					data : [${food.carbo}]
+// 				},{
+// 					label:"단백질",
+// 					backgroundColor : 'rgba(255, 206, 86, 0.2)',
+// 					data : [${food.protein}]
+// 				},{
+// 					label:"지방",
+// 					backgroundColor : 'rgba(75, 192, 192, 0.2)',
+// 					data : [${food.fat}]
+// 				},{
+// 					label:"당류",
+// 					backgroundColor : 'rgba(153, 102, 255, 0.2)',
+// 					data : [${food.sugar}]
+// 				},{
+// 					label:"나트륨",
+// 					backgroundColor : 'rgba(255, 159, 64, 0.2)',
+// 					data : [${food.natrium}]
+// 				},{
+// 					label:"콜레스테롤",
+// 					backgroundColor : 'rgba(255, 215, 000, 0.2)',
+// 					data : [${food.chole}]
+// 				},{
+// 					label:"포화지방산",
+// 					backgroundColor : 'rgba(075, 000, 130, 0.2)',
+// 					data : [${food.fattyacid}]
+// 				},{
+// 					label:"트랜스지방",
+// 					backgroundColor : 'rgba(105, 105, 105, 0.2)',
+// 					data : [${food.transfat}]
+// 				}]
+// 			},
+// 			options : {
+// 				maintainAspectRatio : true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+// 				scales : {
+// 					yAxes : [{
+// 						ticks : {
+// 							beginAtZero : true
+// 						}
+// 					}]
+// 				},
+// 				legend:{
+// 					display:true,
+// 					position:'bottom'
+// 				}
+				
+// 			}
+// 		});
+// 	}
 </script>
 <style>
 th {
@@ -84,7 +151,7 @@ th {
 					<c:if test="${not empty calory}">
 						<h3 class="widget-header min-title">Calory별 식품 조합</h3><br><br>
 					</c:if>
-					
+					<c:set></c:set>
 					<c:forEach items="${calory}" var="cal" varStatus="status">
 						<h3 style="font-family: 'Sunflower', sans-serif;">${status.count}번째 리스트</h3><hr/>
 						<table class="table table-responsive product-dashboard-table">
@@ -124,8 +191,8 @@ th {
 								</c:forEach>
 							</tr>
 						</table>
-<!-- 						<div> -->
-<!-- 							chart.js -->
+<!-- 						<div class="container theme-showcase" role="main" id="contents" style="margin-bottom: 100px"> -->
+<%-- 							<canvas id="nutrientChart${nutriList.code}"></canvas> --%>
 <!-- 						</div> -->
 					</c:forEach>
 <%-- 					<c:forEach items="${nutriList}" var="f"> chart list--%>
