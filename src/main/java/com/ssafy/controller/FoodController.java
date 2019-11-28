@@ -131,7 +131,8 @@ public class FoodController {
 		double chole = 0.0;
 		double fattyacid = 0.0;
 		double transfat = 0.0;
-
+		
+		int idx = 0;
 		for (List<Food> foodList : calList) {
 			calory = carbo = protein = fat = sugar = natrium = chole = fattyacid = transfat = 0.0;
 			
