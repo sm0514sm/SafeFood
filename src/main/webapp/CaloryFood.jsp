@@ -194,7 +194,7 @@ th {
 <!-- 						<div class="container theme-showcase" role="main" id="contents" style="margin-bottom: 100px"> -->
 <%-- 							<canvas id="nutrientChart${nutriList.code}"></canvas> --%>
 <!-- 						</div> -->
-					</c:forEach>
+					</c:forEach>  
 <%-- 					<c:forEach items="${nutriList}" var="f"> chart list--%>
 <%-- 						<td style="vertical-align: middle; !important">${f.calory}</td> --%>
 <%-- 					</c:forEach> --%>
