@@ -302,6 +302,10 @@ function search() {
 								<h3>Sangmin-Lee</h3>
 								<span>Lifaon</span>
 								<p>우리의 귀염둥이 막내</p>
+								<p>몇 개월 안 남은 25살 초보 개발자, SSAFY 이상민</p>
+								<p>이 프로젝트에서는 Vue를 활용한 공지사항, QnA, 퀴즈 기능을 개발</p>
+								<!-- <p>다룰 수 있는 언어는 자바, 파이썬, C, 자바스크립트이고</p>
+								<p>다뤄본 것들은 스프링 프레임워크, 장고, 빅스비 등이 있다.</p> -->
 							</div>
 						</div>
 						<div class="single_testmonial d-flex">
