@@ -134,14 +134,14 @@ function search() {
 							<i class="flaticon-gift"></i>
 						</div>
 						<h4>식품 영양정보 관리</h4>
-						<p>식품별 첨가물, 영양 정보를 파싱하여 관리하고, 각 식품별 영양소 및 사용자별 알레르기 정보 확인 가능
-						</p>
+						<p>식품별 첨가물, 영양 정보를 파싱하여 관리하고, 각 식품별 영양소 및 사용자별 알레르기 정보 확인 가능</p>
 					</div>
 				</div>
 				<div class="col-xl-4 col-md-6">
 					<div class="single_service">
 						<div class="service_icon">
-							<i class="flaticon-cake"></i>
+							<i class="flaticon-calendar"></i>
+							
 						</div>
 						<h4>섭취식품 영양소 통계</h4>
 						<p>섭취한 식품 데이터를 저장할 수 있고, 일간,월간,주간별 영양소 통계를 그래프를 통해 한눈에 확인 가능</p>
@@ -159,10 +159,19 @@ function search() {
 				<div class="col-xl-4 col-md-6">
 					<div class="single_service">
 						<div class="service_icon">
-							<i class="flaticon-calendar"></i>
+							<i class="flaticon-running-man"></i>
 						</div>
-						<h4>칼로리별 식품 추천</h4>
-						<p>입력한 칼로리에 맞는 식품 조합 정보를 볼 수 있고, 그래프를 통해 각 조합의 영양소 차이를 한눈에 파악 가능</p>
+						<h4>Vue를 활용한 퀴즈</h4>
+						<p>식품에 대한 다양한 정보들을 퀴즈를 통해 쉽고 재밌게 제공하며, Vue를 통해 실제 게임같은 환경을 체험 가능</p>
+					</div>
+				</div>
+				<div class="col-xl-4 col-md-6">
+					<div class="single_service">
+						<div class="service_icon">
+							<i class="flaticon-cake"></i>
+						</div>
+						<h4>Google Trend API</h4>
+						<p>식품 관련 주제와 관련 검색어를 통해 다양한 이슈들을 확인할 수 있으며, 지역별 키워드에 대한 관심도 파악 가능</p>
 					</div>
 				</div>
 				<div class="col-xl-4 col-md-6">
@@ -170,21 +179,8 @@ function search() {
 						<div class="service_icon">
 							<i class="flaticon-businessman"></i>
 						</div>
-						<h4>Corporate Service</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.</p>
-					</div>
-				</div>
-				<div class="col-xl-4 col-md-6">
-					<div class="single_service">
-						<div class="service_icon">
-							<i class="flaticon-running-man"></i>
-						</div>
-						<h4>Catering On Demand</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.</p>
+						<h4>Vue를 이용한  게시판</h4>
+						<p>사용자 유형에 따라 권한을 다르게 주어 게시판 관리가 용이하고, 새로고침 없이 실시간 업데이트 확인 가능</p>
 					</div>
 				</div>
 			</div>
@@ -224,7 +220,7 @@ function search() {
 			<div class="row">
 				<div class="col-xl-12">
 					<div class="section_title mb-70">
-						<h3>Popular Orders</h3>
+						<h3>Best Products</h3>
 						<p>
 							inappropriate behavior is often laughed off as “boys will be
 							boys,” women face higher conduct standards <br> especially
