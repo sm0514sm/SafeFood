@@ -26,9 +26,7 @@ $(function(){
 	}
 	
 	function graph(){
-		console.log('## graph()');
 		var size =  '${nutriList.size()}';
-		console.log(size);
 		
 		var ctx = document.getElementById("nutrientChart0").getContext('2d');
 		

@@ -134,7 +134,7 @@ function search() {
 							<i class="flaticon-gift"></i>
 						</div>
 						<h4>식품 영양정보 관리</h4>
-						<p>식품별 첨가물, 영양 정보를 파싱하여 관리하고, 각 식품별 영양소 및 사용자별 알레르기 정보 확인 가능</p>
+						<p>식품 별 첨가물, 영양 정보를 관리하고, 각 식품별 영양소 및 사용자별 알레르기 정보 확인해보세요 !</p>
 					</div>
 				</div>
 				<div class="col-xl-4 col-md-6">
@@ -144,7 +144,7 @@ function search() {
 							
 						</div>
 						<h4>섭취식품 영양소 통계</h4>
-						<p>섭취한 식품 데이터를 저장할 수 있고, 일간,월간,주간별 영양소 통계를 그래프를 통해 한눈에 확인 가능</p>
+						<p>섭취한 식품 데이터를 저장할 수 있고, 일간, 주간, 월간별 영양소 통계를 그래프를 통해 한눈에 확인 가능합니다 !</p>
 					</div>
 				</div>
 				<div class="col-xl-4 col-md-6">
@@ -153,7 +153,7 @@ function search() {
 							<i class="flaticon-dance"></i>
 						</div>
 						<h4>칼로리별 식품 추천</h4>
-						<p>입력한 칼로리에 맞는 식품 조합 정보를 볼 수 있고, 그래프를 통해 각 조합의 영양소 차이를 한눈에 파악 가능</p>
+						<p>입력한 칼로리에 맞는 식품 조합을 볼 수 있고, 그래프를 통해 영양소 차이를 한눈에 파악 가능합니다 !</p>
 					</div>
 				</div>
 				<div class="col-xl-4 col-md-6">
@@ -161,8 +161,8 @@ function search() {
 						<div class="service_icon">
 							<i class="flaticon-running-man"></i>
 						</div>
-						<h4>Vue를 활용한 퀴즈</h4>
-						<p>식품에 대한 다양한 정보들을 퀴즈를 통해 쉽고 재밌게 제공하며, Vue를 통해 실제 게임같은 환경을 체험 가능</p>
+						<h4>식품 관련 퀴즈</h4>
+						<p>식품에 대한 다양한 퀴즈를 풀고 랭킹을 올려보세요! 실시간으로 랭킹을 확인할 수 있습니다 ! </p>
 					</div>
 				</div>
 				<div class="col-xl-4 col-md-6">
@@ -170,8 +170,8 @@ function search() {
 						<div class="service_icon">
 							<i class="flaticon-cake"></i>
 						</div>
-						<h4>Google Trend API</h4>
-						<p>식품 관련 주제와 관련 검색어를 통해 다양한 이슈들을 확인할 수 있으며, 지역별 키워드에 대한 관심도 파악 가능</p>
+						<h4>Food Trend</h4>
+						<p>식품 관련 주제와 검색어를 통해 다양한 이슈들을 확인하고, 지역별 키워드에 대한 관심도 파악 가능합니다 !</p>
 					</div>
 				</div>
 				<div class="col-xl-4 col-md-6">
@@ -179,8 +179,8 @@ function search() {
 						<div class="service_icon">
 							<i class="flaticon-businessman"></i>
 						</div>
-						<h4>Vue를 이용한  게시판</h4>
-						<p>사용자 유형에 따라 권한을 다르게 주어 게시판 관리가 용이하고, 새로고침 없이 실시간 업데이트 확인 가능</p>
+						<h4> 공지사항과 Q&A</h4>
+						<p> 식품과 관련된 다양한 정보와 게시판을 통해 이용자들과 정보를 공유해보세요 ! </p>
 					</div>
 				</div>
 			</div>
