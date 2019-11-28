@@ -213,6 +213,7 @@ th, td {
 						</td>
 				</tr>
 			</c:if>
+
 		</table>
 		</form>
 	</div>

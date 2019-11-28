@@ -12,6 +12,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script>
 	function check() {
+
 		var str = calory.calval.value;
 		if (typeof str == "undefined" || str == null || str == "" || $("#search2").val() == null) {
 			alert("값을 입력해 주세요.");
@@ -127,7 +128,6 @@ th {
 <!-- 							chart.js -->
 <!-- 						</div> -->
 					</c:forEach>
-					
 <%-- 					<c:forEach items="${nutriList}" var="f"> chart list--%>
 <%-- 						<td style="vertical-align: middle; !important">${f.calory}</td> --%>
 <%-- 					</c:forEach> --%>

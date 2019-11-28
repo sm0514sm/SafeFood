@@ -44,18 +44,33 @@ function findPassword2() {
 		
 		<div class="row">
 		
-			<div class="col-md-12">
+			<div class="col-md-6" style="margin-left: auto; margin-right: auto;">
 				
 				<h3 class="widget-header min-title">비밀번호 찾기</h3><hr />
-				<h3 class="widget-header min-title">아이디</h3>
-				<input type="text" id="findPasswordId" name="findPasswordId"/>
-				<h3 class="widget-header min-title">이름</h3>
-				<input type="text" id="findPasswordName" name="findPasswordName"/>
-				<h3 class="widget-header min-title">이메일</h3>
-				<input type="text" id="findPasswordEmail" name="findPasswordEmail"/>
-				<br/>
-				<button onclick="findPassword2()">비밀번호 찾기</button><br/>
-				<input type="text" id="findPasswordPass" readonly="readonly" value="" placeholder="위의 정보를 입력해주세요"/>
+
+				<div class="form-group col-10 row">
+					<label class="col-4" for="findPasswordId" style="margin: auto;">Id</label> <input type="text"
+						class="form-control col-8" id="findPasswordId" name="findPasswordId" placeholder="Enter Id"
+						required="required">
+				</div>
+				
+				<div class="form-group col-10 row">
+					<label class="col-4" for="findPasswordName" style="margin: auto;">Name</label> <input type="text"
+						class="form-control col-8" id="findPasswordName" name="findPasswordName" placeholder="Enter Name"
+						required="required">
+				</div>
+				
+				<div class="form-group col-10 row">
+					<label class="col-4" for="findPasswordEmail" style="margin: auto;">Email</label> <input type="text"
+						class="form-control col-8" id="findPasswordEmail" name="findPasswordEmail" placeholder="Enter Email"
+						required="required">
+				</div>				
+				<br>
+				<div class="row">
+					<input type="text" class="form-control col-7" id="findPasswordPass" readonly="readonly" value="" placeholder="위의 정보를 입력해주세요"/>
+					<div class="col-1"></div>
+					<button class="btn btn-info col-4" onclick="findPassword2()">비밀번호 찾기</button><br/>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -134,8 +134,8 @@ function search() {
 							<i class="flaticon-gift"></i>
 						</div>
 						<h4>식품 영양정보 관리</h4>
-						<p>공공데이터를 통해 식품별 첨가물, 영양 정보를 파싱하여 관리하고, 식품별, 제조사별, 원재료별 검색 기능을
-							제공</p>
+						<p>식품별 첨가물, 영양 정보를 파싱하여 관리하고, 각 식품별 영양소 및 사용자별 알레르기 정보 확인 가능
+						</p>
 					</div>
 				</div>
 				<div class="col-xl-4 col-md-6">
@@ -143,8 +143,8 @@ function search() {
 						<div class="service_icon">
 							<i class="flaticon-cake"></i>
 						</div>
-						<h4>개인별 데이터 관리</h4>
-						<p>식품 영양 성분, 섭취 식품 통계를 그래프로 표시, CRUD 등록시 회원별 알레르기 주의 경보 표시</p>
+						<h4>섭취식품 영양소 통계</h4>
+						<p>섭취한 식품 데이터를 저장할 수 있고, 일간,월간,주간별 영양소 통계를 그래프를 통해 한눈에 확인 가능</p>
 					</div>
 				</div>
 				<div class="col-xl-4 col-md-6">
@@ -152,8 +152,8 @@ function search() {
 						<div class="service_icon">
 							<i class="flaticon-dance"></i>
 						</div>
-						<h4>섭취식품 영양별 통계</h4>
-						<p>일당, 주당, 월당 통계 (수치, 그래프), 영양소별(나트륨별, 탄수화물 등) Sort, Search</p>
+						<h4>칼로리별 식품 추천</h4>
+						<p>입력한 칼로리에 맞는 식품 조합 정보를 볼 수 있고, 그래프를 통해 각 조합의 영양소 차이를 한눈에 파악 가능</p>
 					</div>
 				</div>
 				<div class="col-xl-4 col-md-6">
@@ -161,10 +161,8 @@ function search() {
 						<div class="service_icon">
 							<i class="flaticon-calendar"></i>
 						</div>
-						<h4>Event Catering</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.</p>
+						<h4>칼로리별 식품 추천</h4>
+						<p>입력한 칼로리에 맞는 식품 조합 정보를 볼 수 있고, 그래프를 통해 각 조합의 영양소 차이를 한눈에 파악 가능</p>
 					</div>
 				</div>
 				<div class="col-xl-4 col-md-6">
@@ -195,7 +193,7 @@ function search() {
 	<!-- service_area-end -->
 
 	<!-- video_area_start -->
-	<div class="video_area video_bg zigzag_bg_1 zigzag_bg_2 ">
+	<!-- <div class="video_area video_bg zigzag_bg_1 zigzag_bg_2 ">
 		<div class="video_area_inner">
 			<div class="container">
 				<div class="row">
@@ -217,7 +215,7 @@ function search() {
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!-- video_area_end -->
 
 	<!-- order_area_start -->
@@ -379,8 +377,7 @@ function search() {
 	</div>
 	<!-- testmonial_area_end -->
 
-	<!-- brand_area-start -->
-	<div class="brand_area">
+	<!-- <div class="brand_area">
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-12">
@@ -457,8 +454,8 @@ function search() {
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- brand_area-end -->
+	</div> -->
+	
 	<jsp:include page="footer.jsp" />
 </body>
 <!-- <script

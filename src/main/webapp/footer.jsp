@@ -8,78 +8,79 @@
 			<div class="row">
 				<div class="col-xl-2 col-md-6 col-lg-2">
 					<div class="footer_widget">
-						<h3 class="heading">Top Products</h3>
+						<h3 class="heading">Notice<br/><br/></h3>
 						<ul>
-							<li><a href="#">Managed Website</a></li>
-							<li><a href="#"> Manage Reputation</a></li>
-							<li><a href="#">Power Tools</a></li>
-							<li><a href="#">Marketing Service</a></li>
+							<li><a href="/notice.do">Notice&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+							<li><a href="/qna.do">Q&A</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-xl-2 col-md-6 col-lg-2">
 					<div class="footer_widget">
-						<h3 class="heading">Quick Links</h3>
+						<h3 class="heading">Food List<br/><br/></h3>
 						<ul>
-							<li><a href="#">Jobs</a></li>
-							<li><a href="#">Brand Assets</a></li>
-							<li><a href="#"> Investor Relations</a></li>
-							<li><a href="#">Terms of Service</a></li>
+							<li><a href="/foodList.do">Food List</a></li>
+							<li><a href="/origin.do">Domestic Origin</a></li>
+							<li><a href="/bestfood.do">Best 5</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-xl-2 col-md-6 col-lg-2">
 					<div class="footer_widget">
-						<h3 class="heading">Features</h3>
+						<h3 class="heading">Recommend Food</h3>
 						<ul>
-							<li><a href="#">Jobs</a></li>
-							<li><a href="#">Brand Assets</a></li>
-							<li><a href="#">Investor Relations</a></li>
-							<li><a href="#">Terms of Service</a></li>
+							<li><a href="/CaloryFood.jsp">Recommend Food</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-xl-2 col-md-6 col-lg-2">
 					<div class="footer_widget">
-						<h3 class="heading">Resources</h3>
+						<h3 class="heading">Food Trend<br/><br/></h3>
 						<ul>
-							<li><a href="#">Guides</a></li>
-							<li><a href="#">Research</a></li>
-							<li><a href="#">Experts</a></li>
-							<li><a href="#">Agencies</a></li>
+							<li><a href="/trend.do">Food Trend</a></li>
 						</ul>
 					</div>
 				</div>
-				<div class="col-xl-4 col-md-12 col-lg-4">
-					<div class="footer_widget">
-						<h3 class="heading">Newsletter</h3>
-						<p class="offer_text">You can trust us. we only send promo
-							offers,</p>
-						<form action="#">
-							<input type="text" placeholder="Your email address">
-							<button type="submit">
-								<i class="ti-arrow-right"></i>
-							</button>
-						</form>
-					</div>
-				</div>
+				<c:choose>
+					<c:when test="${sessionScope.id != null}">
+						<div class="col-xl-2 col-md-6 col-lg-2">
+							<div class="footer_widget">
+								<h3 class="heading">Quiz<br/><br/></h3>
+								<ul>
+									<li><a href="/quiz.jsp">Quiz</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-xl-2 col-md-6 col-lg-2">
+							<div class="footer_widget">
+								<h3 class="heading">My Page<br/><br/></h3>
+								<ul>
+									<li><a href="/ingestionList.do">My Ingestion</a></li>
+									<li><a href="/selectList.do">My Wishlist</a></li>
+								</ul>
+							</div>
+						</div>
+					</c:when>
+				</c:choose>
 			</div>
 		</div>
 	</div>
 	<div class="footer-bottom">
 		<div class="container">
-			<div class="row align-items-center">
+			<div class="row align-items-center" style="margin-bottom: 0px !important;">
 				<div class="col-xl-7 col-md-12 col-lg-8">
 					<div class="copyright">
 						<p class="footer-text">
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							Copyright &copy;
+							Copyright <!-- &copy; -->
 							<script>
 									document.write(new Date().getFullYear());
-								</script>
-							All rights reserved | This template is made with <i
+							</script>
+							. 강민기 김주희 이상민.
+							All rights reserved<!--  | This template is made with <i
 								class="fa fa-heart-o" aria-hidden="true"></i> by <a
-								href="https://colorlib.com" target="_blank">Colorlib</a>
+								href="https://colorlib.com" target="_blank">Colorlib</a> -->
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 						</p>
 					</div>
