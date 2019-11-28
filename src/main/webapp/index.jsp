@@ -71,7 +71,7 @@ function search() {
 									<input type="text" class="form-control" id="searchword"
 										name="searchWord" aria-label="Text input with dropdown button"
 										placeholder="검색어 입력">
-								</div>
+								</div>  
 								<div class="col-2" style="padding: 0px !important;">
 									<a href="javascript:search()">
 										<button id="search" class="btn btn-info" type="button">검색</button>
