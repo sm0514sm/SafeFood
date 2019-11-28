@@ -71,92 +71,201 @@ function deleteIngestion(ino){
 
 function DoughnutChart() {		
 	var ctx = document.getElementById("nutrientChart").getContext('2d');
-/*
-- Chart를 생성하면서, 
-- ctx를 첫번째 argument로 넘겨주고, 
-- 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줍니다. 
-*/
-	var nutrientChart = new Chart(ctx,
-	{
-		type : 'bar',
-		data : {
-			labels :['# 총 합산 영양소'],
-			datasets:[{
-				label:"칼로리",
-				backgroundColor : 'rgba(255, 99, 132, 0.2)',
-				data : [${food.calory}]
-			},{
-				label:"탄수화물",
-				backgroundColor : 'rgba(54, 162, 235, 0.2)',
-				data : [${food.carbo}]
-			},{
-				label:"단백질",
-				backgroundColor : 'rgba(255, 206, 86, 0.2)',
-				data : [${food.protein}]
-			},{
-				label:"지방",
-				backgroundColor : 'rgba(75, 192, 192, 0.2)',
-				data : [${food.fat}]
-			},{
-				label:"당류",
-				backgroundColor : 'rgba(153, 102, 255, 0.2)',
-				data : [${food.sugar}]
-			},{
-				label:"나트륨",
-				backgroundColor : 'rgba(255, 159, 64, 0.2)',
-				data : [${food.natrium}]
-			},{
-				label:"콜레스테롤",
-				backgroundColor : 'rgba(255, 215, 000, 0.2)',
-				data : [${food.chole}]
-			},{
-				label:"포화지방산",
-				backgroundColor : 'rgba(075, 000, 130, 0.2)',
-				data : [${food.fattyacid}]
-			},{
-				label:"트랜스지방",
-				backgroundColor : 'rgba(105, 105, 105, 0.2)',
-				data : [${food.transfat}]
-			}]
-// 				backgroundColor : [ 
-// 						'rgba(255, 99, 132, 0.2)',
-// 						'rgba(54, 162, 235, 0.2)',
-// 						'rgba(255, 206, 86, 0.2)',
-// 						'rgba(75, 192, 192, 0.2)',
-// 						'rgba(153, 102, 255, 0.2)',
-// 						'rgba(255, 159, 64, 0.2)',
-// 						'rgba(255, 215, 000, 0.2)',
-// 						'rgba(075, 000, 130, 0.2)',
-// 						'rgba(105, 105, 105, 0.2)' ],
-// 				borderColor : [ 
-// 						'rgba(255,99,132,1)',
-// 						'rgba(54, 162, 235, 1)',
-// 						'rgba(255, 206, 86, 1)',
-// 						'rgba(75, 192, 192, 1)',
-// 						'rgba(153, 102, 255, 1)',
-// 						'rgba(255, 159, 64, 1)',
-// 						'rgba(255, 215, 000, 1)',
-// 						'rgba(075, 000, 130, 1)',
-// 						'rgba(105, 105, 105, 1)' ],
-// 				borderWidth : 1
-// 				}]
-		},
-		options : {
-			maintainAspectRatio : true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
-			scales : {
-				yAxes : [{
-					ticks : {
-						beginAtZero : true
-					}
+	console.log(ctx);
+	/*
+	- Chart를 생성하면서, 
+	- ctx를 첫번째 argument로 넘겨주고, 
+	- 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줍니다. 
+	*/
+		var nutrientChart = new Chart(ctx,
+		{
+			type : 'bar',
+			data : {
+				labels :['# 오늘 섭취 영양소'],
+				datasets:[{
+					label:"칼로리",
+					backgroundColor : 'rgba(255, 99, 132, 0.2)',
+					data : [${food.calory}]
+				},{
+					label:"탄수화물",
+					backgroundColor : 'rgba(54, 162, 235, 0.2)',
+					data : [${food.carbo}]
+				},{
+					label:"단백질",
+					backgroundColor : 'rgba(255, 206, 86, 0.2)',
+					data : [${food.protein}]
+				},{
+					label:"지방",
+					backgroundColor : 'rgba(75, 192, 192, 0.2)',
+					data : [${food.fat}]
+				},{
+					label:"당류",
+					backgroundColor : 'rgba(153, 102, 255, 0.2)',
+					data : [${food.sugar}]
+				},{
+					label:"나트륨",
+					backgroundColor : 'rgba(255, 159, 64, 0.2)',
+					data : [${food.natrium}]
+				},{
+					label:"콜레스테롤",
+					backgroundColor : 'rgba(255, 215, 000, 0.2)',
+					data : [${food.chole}]
+				},{
+					label:"포화지방산",
+					backgroundColor : 'rgba(075, 000, 130, 0.2)',
+					data : [${food.fattyacid}]
+				},{
+					label:"트랜스지방",
+					backgroundColor : 'rgba(105, 105, 105, 0.2)',
+					data : [${food.transfat}]
 				}]
 			},
-			legend:{
-				display:true,
-				position:'bottom'
+			options : {
+				maintainAspectRatio : true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+				scales : {
+					yAxes : [{
+						ticks : {
+							beginAtZero : true
+						}
+					}]
+				},
+				legend:{
+					display:true,
+					position:'bottom'
+				}
+				
 			}
-			
-		}
-	});
+		});
+		var ctx = document.getElementById("nutrientChart2").getContext('2d');
+		/*
+		- Chart를 생성하면서, 
+		- ctx를 첫번째 argument로 넘겨주고, 
+		- 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줍니다. 
+		*/
+			var nutrientChart = new Chart(ctx,
+			{
+				type : 'bar',
+				data : {
+					labels :['# 이번 주 섭취 영양소'],
+					datasets:[{
+						label:"칼로리",
+						backgroundColor : 'rgba(255, 99, 132, 0.2)',
+						data : [${food2.calory}]
+					},{
+						label:"탄수화물",
+						backgroundColor : 'rgba(54, 162, 235, 0.2)',
+						data : [${food2.carbo}]
+					},{
+						label:"단백질",
+						backgroundColor : 'rgba(255, 206, 86, 0.2)',
+						data : [${food2.protein}]
+					},{
+						label:"지방",
+						backgroundColor : 'rgba(75, 192, 192, 0.2)',
+						data : [${food2.fat}]
+					},{
+						label:"당류",
+						backgroundColor : 'rgba(153, 102, 255, 0.2)',
+						data : [${food2.sugar}]
+					},{
+						label:"나트륨",
+						backgroundColor : 'rgba(255, 159, 64, 0.2)',
+						data : [${food2.natrium}]
+					},{
+						label:"콜레스테롤",
+						backgroundColor : 'rgba(255, 215, 000, 0.2)',
+						data : [${food2.chole}]
+					},{
+						label:"포화지방산",
+						backgroundColor : 'rgba(075, 000, 130, 0.2)',
+						data : [${food2.fattyacid}]
+					},{
+						label:"트랜스지방",
+						backgroundColor : 'rgba(105, 105, 105, 0.2)',
+						data : [${food2.transfat}]
+					}]
+				},
+				options : {
+					maintainAspectRatio : true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+					scales : {
+						yAxes : [{
+							ticks : {
+								beginAtZero : true
+							}
+						}]
+					},
+					legend:{
+						display:true,
+						position:'bottom'
+					}
+					
+				}
+			});
+			var ctx = document.getElementById("nutrientChart3").getContext('2d');
+			/*
+			- Chart를 생성하면서, 
+			- ctx를 첫번째 argument로 넘겨주고, 
+			- 두번째 argument로 그림을 그릴때 필요한 요소들을 모두 넘겨줍니다. 
+			*/
+				var nutrientChart = new Chart(ctx,
+				{
+					type : 'bar',
+					data : {
+						labels :['# 이번 달 섭취 영양소'],
+						datasets:[{
+							label:"칼로리",
+							backgroundColor : 'rgba(255, 99, 132, 0.2)',
+							data : [${food3.calory}]
+						},{
+							label:"탄수화물",
+							backgroundColor : 'rgba(54, 162, 235, 0.2)',
+							data : [${food3.carbo}]
+						},{
+							label:"단백질",
+							backgroundColor : 'rgba(255, 206, 86, 0.2)',
+							data : [${food3.protein}]
+						},{
+							label:"지방",
+							backgroundColor : 'rgba(75, 192, 192, 0.2)',
+							data : [${food3.fat}]
+						},{
+							label:"당류",
+							backgroundColor : 'rgba(153, 102, 255, 0.2)',
+							data : [${food3.sugar}]
+						},{
+							label:"나트륨",
+							backgroundColor : 'rgba(255, 159, 64, 0.2)',
+							data : [${food3.natrium}]
+						},{
+							label:"콜레스테롤",
+							backgroundColor : 'rgba(255, 215, 000, 0.2)',
+							data : [${food3.chole}]
+						},{
+							label:"포화지방산",
+							backgroundColor : 'rgba(075, 000, 130, 0.2)',
+							data : [${food3.fattyacid}]
+						},{
+							label:"트랜스지방",
+							backgroundColor : 'rgba(105, 105, 105, 0.2)',
+							data : [${food3.transfat}]
+						}]
+					},
+					options : {
+						maintainAspectRatio : true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+						scales : {
+							yAxes : [{
+								ticks : {
+									beginAtZero : true
+								}
+							}]
+						},
+						legend:{
+							display:true,
+							position:'bottom'
+						}
+						
+					}
+				});
 	var ctx = document.getElementById("allergyChart").getContext('2d');
 	/*
 	- Chart를 생성하면서, 
@@ -243,6 +352,7 @@ function DoughnutChart() {
 			}
 		});
 }
+
 
 function DoRed(){
 	Array.prototype.forEach.call(document.getElementsByClassName("allergyTd"), function(el) { 
@@ -347,9 +457,17 @@ function DoRed(){
 					</table>
 					
 					<c:if test="${not empty list}">
-						<h3 class="widget-header min-title" style="margin-bottom: 10px">총 합산 영양소</h3><hr/>
+						<h3 class="widget-header min-title" style="margin-bottom: 10px">오늘 섭취 영양소</h3><hr/>
 						<div class="container theme-showcase" role="main" id="contents" style="margin-bottom: 100px">
 							<canvas id="nutrientChart"></canvas>
+						</div>
+						<h3 class="widget-header min-title" style="margin-bottom: 10px">이번 주 섭취 영양소</h3><hr/>
+						<div class="container theme-showcase" role="main" id="contents" style="margin-bottom: 100px">
+							<canvas id="nutrientChart2"></canvas>
+						</div>
+						<h3 class="widget-header min-title" style="margin-bottom: 10px">이번 달 섭취 영양소</h3><hr/>
+						<div class="container theme-showcase" role="main" id="contents" style="margin-bottom: 100px">
+							<canvas id="nutrientChart3"></canvas>
 						</div>
 						<h3 class="widget-header min-title" style="margin-bottom: 10px">알레르기 유발 성분</h3><hr/>
 						<div class="container theme-showcase" role="main" id="contents">

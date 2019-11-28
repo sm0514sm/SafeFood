@@ -11,10 +11,13 @@ import com.ssafy.model.dto.Ingestion;
 @Mapper
 public interface IngestionDAO {
 
-	public List<Ingestion> searchAll(String id) throws SQLException;
-	public Ingestion search(int ino) 			throws SQLException;
-	public List<Food> searchNutrient(String id)	throws SQLException;
-	public void add(Ingestion ingestion)	 	throws SQLException;
-	public void update(Ingestion ingestion)		throws SQLException;
-	public void remove(int ino)    				throws SQLException;
+	public List<Ingestion> searchAll(String id) 	throws SQLException;
+	public Ingestion search(int ino) 				throws SQLException;
+	public List<Food> searchNutrient(String id)		throws SQLException;
+	public void add(Ingestion ingestion)	 		throws SQLException;
+	public void update(Ingestion ingestion)			throws SQLException;
+	public void remove(int ino)    					throws SQLException;
+	public List<Food> searchNutrientD(String id)	throws SQLException;
+	public List<Food> searchNutrientW(String id)	throws SQLException;
+	public List<Food> searchNutrientM(String id)	throws SQLException;
 }

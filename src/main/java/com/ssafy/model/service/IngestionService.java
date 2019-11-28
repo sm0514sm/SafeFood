@@ -14,4 +14,7 @@ public interface IngestionService {
 	public void add(Ingestion ingestion)	 	;
 	public void update(Ingestion ingestion)		;
 	public void remove(int ino)    				;
+	public List<Food> searchNutrientD(String id)	throws SQLException;
+	public List<Food> searchNutrientW(String id)	throws SQLException;
+	public List<Food> searchNutrientM(String id)	throws SQLException;
 }

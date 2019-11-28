@@ -48,6 +48,30 @@
 		where id=#{id};
    </select>
    
+   <select id="searchNutrientD" parameterType="string" resultType="food">
+   		select calory, carbo, protein, fat, sugar, natrium, chole, fattyacid, transfat, material
+		from ingestion i
+		join food f
+		using (code)
+		where id=#{id} and year(ingdate) = year(now()) and month(ingdate) = month(now()) and day(ingdate) = day(now())
+   </select>
+   
+   <select id="searchNutrientW" parameterType="string" resultType="food">
+   		select calory, carbo, protein, fat, sugar, natrium, chole, fattyacid, transfat, material
+		from ingestion i
+		join food f
+		using (code)
+		where id=#{id} and year(ingdate) = year(now()) and month(ingdate) = month(now()) and week(now()) = week(ingdate)
+   </select>
+   
+   <select id="searchNutrientM" parameterType="string" resultType="food">
+   		select calory, carbo, protein, fat, sugar, natrium, chole, fattyacid, transfat, material
+		from ingestion i
+		join food f
+		using (code)
+		where id=#{id} and year(ingdate) = year(now()) and month(ingdate) = month(now());
+   </select>
+   
    
 </mapper>
 
