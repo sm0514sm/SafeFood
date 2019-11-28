@@ -67,11 +67,11 @@ label {
 							<li><a href="#">Food List<i class="ti-angle-down"></i></a>
 								<ul class="submenu">
 									<li><a href="/foodList.do">Food List</a></li>
-									<li><a href="/origin.do">Domestic Origin</a></li>
+									<li><a href="/origin.do">Domestic Food</a></li>
 									<li><a href="/bestfood.do">Best 5</a></li>
 								</ul>
 							</li>
-							<li><a href="/CaloryFood.jsp">Recommend Food</a></li>
+							<li><a href="/CaloryFood.jsp">Combination</a></li>
 							<li><a href="/trend.do">Food Trend</a></li>
 
 							<c:choose>

@@ -8,7 +8,7 @@
 			<div class="row">
 				<div class="col-xl-2 col-md-6 col-lg-2">
 					<div class="footer_widget">
-						<h3 class="heading">Notice<br/><br/></h3>
+						<h3 class="heading">Notice</h3>
 						<ul>
 							<li><a href="/notice.do">Notice&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
@@ -18,25 +18,25 @@
 				</div>
 				<div class="col-xl-2 col-md-6 col-lg-2">
 					<div class="footer_widget">
-						<h3 class="heading">Food List<br/><br/></h3>
+						<h3 class="heading">Food List</h3>
 						<ul>
 							<li><a href="/foodList.do">Food List</a></li>
-							<li><a href="/origin.do">Domestic Origin</a></li>
+							<li><a href="/origin.do">Domestic Food&nbsp;&nbsp;&nbsp;</a></li>
 							<li><a href="/bestfood.do">Best 5</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-xl-2 col-md-6 col-lg-2">
 					<div class="footer_widget">
-						<h3 class="heading">Recommend Food</h3>
+						<h3 class="heading">Combination</h3>
 						<ul>
-							<li><a href="/CaloryFood.jsp">Recommend Food</a></li>
+							<li><a href="/CaloryFood.jsp">Combination</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-xl-2 col-md-6 col-lg-2">
 					<div class="footer_widget">
-						<h3 class="heading">Food Trend<br/><br/></h3>
+						<h3 class="heading">Food Trend</h3>
 						<ul>
 							<li><a href="/trend.do">Food Trend</a></li>
 						</ul>
@@ -46,7 +46,7 @@
 					<c:when test="${sessionScope.id != null}">
 						<div class="col-xl-2 col-md-6 col-lg-2">
 							<div class="footer_widget">
-								<h3 class="heading">Quiz<br/><br/></h3>
+								<h3 class="heading">Quiz</h3>
 								<ul>
 									<li><a href="/quiz.jsp">Quiz</a></li>
 								</ul>
@@ -54,7 +54,7 @@
 						</div>
 						<div class="col-xl-2 col-md-6 col-lg-2">
 							<div class="footer_widget">
-								<h3 class="heading">My Page<br/><br/></h3>
+								<h3 class="heading">My Page</h3>
 								<ul>
 									<li><a href="/ingestionList.do">My Ingestion</a></li>
 									<li><a href="/selectList.do">My Wishlist</a></li>
@@ -68,7 +68,7 @@
 	</div>
 	<div class="footer-bottom">
 		<div class="container">
-			<div class="row align-items-center" style="margin-bottom: 0px !important;">
+			<div class="row align-items-center" style="margin-top: 20px; margin-bottom: 5px !important;">
 				<div class="col-xl-7 col-md-12 col-lg-8">
 					<div class="copyright">
 						<p class="footer-text">
@@ -85,7 +85,7 @@
 						</p>
 					</div>
 				</div>
-				<div class="col-xl-5 col-md-12 col-lg-4">
+				<!-- <div class="col-xl-5 col-md-12 col-lg-4">
 					<div class="social_links">
 						<ul>
 							<li><a href="#"> <i class="fa fa-facebook"></i>
@@ -98,7 +98,7 @@
 							</a></li>
 						</ul>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>

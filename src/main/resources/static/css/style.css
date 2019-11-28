@@ -1131,7 +1131,7 @@ h3 {
 /* line 8, ../../Arafath/CL/CL August/199 Flatter Catering/199 Flatter Catering-HTML/scss/_service.scss */
 .service_area .single_service {
   border: 2px solid #eee;
-  padding: 50px 42px 55px 42px;
+  padding: 47px 42px 52px 42px;
   margin-bottom: 60px;
   border-radius: 10px;
   text-align: center;
@@ -1766,7 +1766,7 @@ h3 {
 .footer_area .footer-bottom .copyright .footer-text {
   font-size: 18px;
   color: #fefffe;
-  font-weight: 300;
+  font-weight: 600;
   margin-bottom: 0;
 }
 

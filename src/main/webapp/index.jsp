@@ -120,9 +120,7 @@ function search() {
 					<div class="section_title mb-60">
 						<h3>Our Services</h3>
 						<p>
-							inappropriate behavior is often laughed off as “boys will be
-							boys,” women face higher conduct standards <br> especially
-							in the workplace. That’s why it’s crucial that, as women.
+							Introducing six representative services from our range of services. We provide not only food information, but also various functions. Our goal is to increase user convenience and satisfy them.
 						</p>
 					</div>
 				</div>
@@ -222,9 +220,7 @@ function search() {
 					<div class="section_title mb-70">
 						<h3>Best Products</h3>
 						<p>
-							inappropriate behavior is often laughed off as “boys will be
-							boys,” women face higher conduct standards <br> especially
-							in the workplace. That’s why it’s crucial that, as women.
+							We picked nine of the most popular food products, with the most viewed items. This choice will not disappoint you. You can see not only these products but also other products.
 						</p>
 					</div>
 				</div>
@@ -278,9 +274,7 @@ function search() {
 					<div class="section_title white mb-60">
 						<h3>This website is made by</h3>
 						<p>
-							inappropriate behavior is often laughed off as “boys will be
-							boys,” women face higher conduct standards <br> especially
-							in the workplace. That’s why it’s crucial that, as women.
+							We are the developers of this website. We innovate every moment and strive to grow endlessly. Our challenge will continue without stopping.
 						</p>
 					</div>
 				</div>
@@ -294,9 +288,9 @@ function search() {
 									style="width: 150px; height: 200px;">
 							</div>
 							<div class="testmonial_author">
-								<h3>mingi-kang</h3>
+								<h3>Mingi-Kang</h3>
 								<span>Kmandu</span>
-								<p>6반의 자랑 삼성SDI 만두</p>
+								<p>우리의 자랑 삼성SDI 만두</p>
 							</div>
 						</div>
 						<div class="single_testmonial d-flex">
@@ -305,9 +299,9 @@ function search() {
 									style="width: 150px; height: 200px;">
 							</div>
 							<div class="testmonial_author">
-								<h3>sangmin-lee</h3>
+								<h3>Sangmin-Lee</h3>
 								<span>Lifaon</span>
-								<p>6반의 귀염둥이 막내</p>
+								<p>우리의 귀염둥이 막내</p>
 							</div>
 						</div>
 						<div class="single_testmonial d-flex">
@@ -316,9 +310,9 @@ function search() {
 									style="width: 150px; height: 200px;">
 							</div>
 							<div class="testmonial_author">
-								<h3>juhee kim</h3>
-								<span>smileH</span>
-								<p>CSS에 영혼을 갈아넣은 희주</p>
+								<h3>Juhee Kim</h3>
+								<span>Heeduu</span>
+								<p>front에 영혼을 갈아넣은 희주</p>
 							</div>
 						</div>
 						<div class="single_testmonial d-flex">
