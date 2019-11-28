@@ -360,10 +360,10 @@ export default {
         level: this.$store.state.level
       });
     }
-    if (this.progress > 75) {
+    if (this.progress > 60) {
       this.warning = false;
       this.danger = true;
-    } else if (this.progress > 35) {
+    } else if (this.progress > 25) {
       this.warning = true;
       this.danger = false;
     } else {
