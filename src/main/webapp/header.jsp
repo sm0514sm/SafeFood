@@ -15,7 +15,7 @@
 		console.log("## modify()");
 		var id = "${sessionScope.id}";
 		$.ajax({
-			url : "rest/user/"+ id,
+			url : "/rest/user/"+ id,
 			type : "get",
 			data : "",
 			success : function(data){

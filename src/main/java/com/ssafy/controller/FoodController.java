@@ -1,7 +1,9 @@
 package com.ssafy.controller;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -317,7 +319,12 @@ public class FoodController {
 		if (session.getAttribute("id") == null) {
 			return "redirect:index.do";
 		}
-		service.insertSelectFood(new Ingestion((String) session.getAttribute("id"), codeInt, 1));
+		//현재 날짜 구하기
+		SimpleDateFormat d = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String s = d.format(new Date());
+		
+		Ingestion ingestion = new Ingestion((String) session.getAttribute("id"), codeInt, s, 1);
+		service.insertSelectFood(ingestion);
 		session.setAttribute("selectFlag", true);
 		return "redirect:foodList.do";
 	}
