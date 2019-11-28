@@ -127,7 +127,7 @@ th {
 <!-- 						<div> -->
 <!-- 							chart.js -->
 <!-- 						</div> -->
-					</c:forEach>
+					</c:forEach>  
 <%-- 					<c:forEach items="${nutriList}" var="f"> chart list--%>
 <%-- 						<td style="vertical-align: middle; !important">${f.calory}</td> --%>
 <%-- 					</c:forEach> --%>
