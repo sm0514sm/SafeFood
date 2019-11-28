@@ -1,7 +1,7 @@
 <template>
   <div>
     <br /><br />
-    <div>Quiz</div>
+    <div>Quiz2</div>
     <div class="progress">
       <div
         id="progressBar"
@@ -41,7 +41,7 @@
           <template v-if="possible == true">
             <div class="row" v-if="quiz.answer_cnt == 2">
               <div
-                class="col-8 col-sm-6 alert alert-dark"
+                class="col-8 col-sm-6 alert alert-primary"
                 role="alert"
                 id="quizAns"
                 @click="isAnswer(1)"
@@ -49,7 +49,7 @@
               />
               &nbsp;
               <div
-                class="col-4 col-sm-6 alert alert-dark"
+                class="col-4 col-sm-6 alert alert-info"
                 role="alert"
                 id="quizAns"
                 @click="isAnswer(2)"
@@ -58,7 +58,7 @@
             </div>
             <div class="row" v-if="quiz.answer_cnt == 3">
               <div
-                class="col-6 col-md-4 alert alert-dark"
+                class="col-6 col-md-4 alert alert-info"
                 role="alert"
                 id="quizAns"
                 @click="isAnswer(1)"
@@ -66,7 +66,7 @@
               />
               &nbsp;
               <div
-                class="col-6 col-md-4 alert alert-dark"
+                class="col-6 col-md-4 alert alert-warning"
                 role="alert"
                 id="quizAns"
                 @click="isAnswer(2)"
@@ -74,7 +74,7 @@
               />
               &nbsp;
               <div
-                class="col-6 col-md-4 alert alert-dark"
+                class="col-6 col-md-4 alert alert-danger"
                 role="alert"
                 id="quizAns"
                 @click="isAnswer(3)"
@@ -83,7 +83,7 @@
             </div>
             <div class="row" v-if="quiz.answer_cnt == 4">
               <div
-                class="col-8 col-sm-6 alert alert-dark"
+                class="col-8 col-sm-6 alert alert-primary"
                 role="alert"
                 id="quizAns"
                 @click="isAnswer(1)"
@@ -91,7 +91,7 @@
               />
               &nbsp;
               <div
-                class="col-4 col-sm-6 alert alert-dark"
+                class="col-4 col-sm-6 alert alert-danger"
                 role="alert"
                 id="quizAns"
                 @click="isAnswer(2)"
@@ -100,7 +100,7 @@
             </div>
             <div class="row" v-if="quiz.answer_cnt == 4">
               <div
-                class="cl-8 col-sm-6 alert alert-dark"
+                class="cl-8 col-sm-6 alert alert-warning"
                 role="alert"
                 id="quizAns"
                 @click="isAnswer(3)"
@@ -108,7 +108,7 @@
               />
               &nbsp;
               <div
-                class="col-4 col-sm-6 alert alert-dark"
+                class="col-4 col-sm-6 alert alert-info"
                 role="alert"
                 id="quizAns"
                 @click="isAnswer(4)"
