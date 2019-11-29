@@ -351,7 +351,7 @@ th {
 								</c:forEach>
 							</tr>
 						</table>
-						<h3 class="widget-header min-title" style="margin-bottom: 10px">영양소</h3><hr/>
+						<h3 class="widget-header min-title" style="margin-bottom: 10px">${status.count}번째 리스트의 영양소 총합</h3><hr/>
 						<div class="container theme-showcase" role="main" id="contents" style="margin-bottom: 100px; margin-left: 0px;">
 							
 							<canvas id="nutrientChart<%=(index++)%>"></canvas>

@@ -290,7 +290,9 @@ function search() {
 							<div class="testmonial_author">
 								<h3>Mingi-Kang</h3>
 								<span>Kmandu</span>
-								<p>우리의 자랑 삼성SDI 만두</p>
+								<p style="font-weight: 600;">우리의 자랑 삼성SDI 만두</p>
+								<p>Chart.js의 신</p>
+								<p>역할: Vue를 활용한 QnA, Google Trend 개발</p>
 							</div>
 						</div>
 						<div class="single_testmonial d-flex">
@@ -301,9 +303,9 @@ function search() {
 							<div class="testmonial_author">
 								<h3>Sangmin-Lee</h3>
 								<span>Lifaon</span>
-								<p>우리의 귀염둥이 막내</p>
-								<p>몇 개월 안 남은 25살 초보 개발자, SSAFY 이상민</p>
-								<p>이 프로젝트에서는 Vue를 활용한 공지사항, QnA, 퀴즈 기능을 개발</p>
+								<p style="font-weight: 600;">우리의 귀염둥이 막내</p>
+								<p>팀에서 귀여움을 맡고 있음</p>
+								<p>역할: Vue를 활용한 공지사항, 퀴즈 기능을 개발</p>
 								<!-- <p>다룰 수 있는 언어는 자바, 파이썬, C, 자바스크립트이고</p>
 								<p>다뤄본 것들은 스프링 프레임워크, 장고, 빅스비 등이 있다.</p> -->
 							</div>
@@ -316,7 +318,9 @@ function search() {
 							<div class="testmonial_author">
 								<h3>Juhee Kim</h3>
 								<span>Heeduu</span>
-								<p>front에 영혼을 갈아넣은 희주</p>
+								<p style="font-weight: 600;">Front에 영혼을 갈아넣은 희주</p>
+								<p>css의 신</p>
+								<p>역할: 모든 UI와 css, 칼로리 알고리즘 개발</p>
 							</div>
 						</div>
 						<div class="single_testmonial d-flex">
@@ -325,9 +329,11 @@ function search() {
 									style="width: 150px; height: 200px;">
 							</div>
 							<div class="testmonial_author">
-								<h3>mingi-kang</h3>
+								<h3>Mingi-Kang</h3>
 								<span>Kmandu</span>
-								<p>6반의 자랑 삼성SDI 만두</p>
+								<p style="font-weight: 600;">우리의 자랑 삼성SDI 만두</p>
+								<p>Chart.js의 신</p>
+								<p>역할: Vue를 활용한 QnA, Google Trend 개발</p>
 							</div>
 						</div>
 						<div class="single_testmonial d-flex">
@@ -336,9 +342,13 @@ function search() {
 									style="width: 150px; height: 200px;">
 							</div>
 							<div class="testmonial_author">
-								<h3>sangmin-lee</h3>
+								<h3>Sangmin-Lee</h3>
 								<span>Lifaon</span>
-								<p>6반의 귀염둥이 막내</p>
+								<p style="font-weight: 600;">우리의 귀염둥이 막내</p>
+								<p>팀에서 귀여움을 맡고 있음</p>
+								<p>역할: Vue를 활용한 공지사항, 퀴즈 기능을 개발</p>
+								<!-- <p>다룰 수 있는 언어는 자바, 파이썬, C, 자바스크립트이고</p>
+								<p>다뤄본 것들은 스프링 프레임워크, 장고, 빅스비 등이 있다.</p> -->
 							</div>
 						</div>
 						<div class="single_testmonial d-flex">
@@ -347,9 +357,11 @@ function search() {
 									style="width: 150px; height: 200px;">
 							</div>
 							<div class="testmonial_author">
-								<h3>juhee kim</h3>
-								<span>smileH</span>
-								<p>CSS에 영혼을 갈아넣은 희주</p>
+								<h3>Juhee Kim</h3>
+								<span>Heeduu</span>
+								<p style="font-weight: 600;">Front에 영혼을 갈아넣은 희주</p>
+								<p>css의 신</p>
+								<p>역할: 모든 UI와 css, 칼로리 알고리즘 개발</p>
 							</div>
 						</div>
 					</div>
